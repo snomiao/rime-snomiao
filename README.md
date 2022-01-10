@@ -31,7 +31,7 @@
 
 ## 自定义
 
-顔文字在 [kaomoji.dict.yaml](../kaomoji.dict.yaml) 里修改
+顔文字在 [kaomoji.dict.yaml](./kaomoji.dict.yaml) 里修改
 
 Emoji 在 `opencc` 文件夹里可以修改
 
