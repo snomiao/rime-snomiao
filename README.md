@@ -19,7 +19,7 @@
   - 運行 `cmd /k cd "C:\Program Files (x86)\Rime\weasel-*\" && rime-install.bat`
   - 輸入 `snomiao/rime-snomiao`
 - 方法 3
-  - 運行 `git clone https://github.com/snomiao/rime-snomiao && .\rime-snomiao\install.bat`
+  - 運行 `git clone https://github.com/snomiao/rime-snomiao && cd rime-snomiao && install.bat`
 
 3. 安装完成后，请 [配置](#配置) 输入法
 
