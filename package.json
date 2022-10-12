@@ -7,8 +7,8 @@
     "type": "git",
     "url": "git+https://github.com/snomiao/rime-snomiao.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["rime", "weasel", "japenese", "chinese"],
+  "author": "snomiao@gmail.com",
   "license": "ISC",
   "scripts": {
     "postinstall": "install.bat"
