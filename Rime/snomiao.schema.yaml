@@ -85,8 +85,24 @@ reverse_lookup:
 punctuator:
   import_preset: default
 
+# key_binder:
+#   import_preset: default
+
 key_binder:
-  import_preset: default
+  bindings:
+    - {accept: "Control+Shift+1", select: .next, when: always}
+    - {accept: "Control+Shift+j", select: japanese, when: always}
+    - {accept: "Control+Shift+J", select: japanese, when: always}
+    - {accept: "Control+Shift+n", select: snomiao, when: always}
+    - {accept: "Control+Shift+N", select: snomiao, when: always}
+    - {accept: "Control+Shift+k", select: korean, when: always}
+    - {accept: "Control+Shift+K", select: korean, when: always}
+    - {accept: "Control+Shift+v", select: vietnamese, when: always}
+    - {accept: "Control+Shift+V", select: vietnamese, when: always}
+    - {accept: "Control+Shift+l", select: international, when: always}
+    - {accept: "Control+Shift+L", select: international, when: always}
+    - {accept: "F16", select: .next, when: always}
+    - {accept: "F19", select: international, when: always}
 
 recognizer:
   import_preset: default

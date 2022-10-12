@@ -1,0 +1,18 @@
+{
+  "name": "rime-snomiao",
+  "version": "1.0.0",
+  "description": "由以下方案混合： 86 版五笔 | 拼音 | Emoji | 顔文字（Kaomoji) | 日本語",
+  "bin": "install.bat",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snomiao/rime-snomiao.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {"postinstall": "install.bat"},
+  "bugs": {
+    "url": "https://github.com/snomiao/rime-snomiao/issues"
+  },
+  "homepage": "https://github.com/snomiao/rime-snomiao#readme"
+}

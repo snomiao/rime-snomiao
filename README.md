@@ -1,10 +1,10 @@
 # 雪星的小狼毫输入法方案
 
-由以下方案混合： 86 版五笔 | 拼音 | Emoji | 顔文字（Kaomoji)
+由以下方案混合： 86 版五笔 | 拼音 | Emoji | 顔文字（Kaomoji) | 日本語
 
 例图：![例图](media/例图.png)
 
-## 安装与配置
+## 安装与配置x
 
 ### 在 Windows 安裝
 
@@ -54,3 +54,7 @@ translator:
 ## 授权
 
 Copyleft，爱用就拿去
+
+## Reference
+
+wubi86
