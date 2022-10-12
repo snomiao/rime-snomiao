@@ -11,7 +11,7 @@ Windows 解压到：`C:\Users\你的用户名\AppData\Roaming\Rime`
 
 Mac 和 Linux 用户自己找自己的目录哈
 
-然后输入法设定里选雪星方案就行t 
+然后输入法设定里选雪星方案就行
 
 ## 自定义
 
