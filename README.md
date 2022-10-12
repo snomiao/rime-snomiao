@@ -27,9 +27,10 @@
 
 1. 安装完成后，请 [配置](#配置) 输入法
 
-### Mac 
+### Mac
 
 - TODO, PR’s welcome
+
 ### Linux
 
 - TODO, PR’s welcome
