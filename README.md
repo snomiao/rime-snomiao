@@ -4,6 +4,17 @@
 
 例图：![例图](media/例图.png)
 
+## Feat 特性
+
+- 雪星五笔
+  - `ctrl+shift+n` 切换
+  - 五笔 86 + 拼音 + 顔文字 + Emoji 混合输入
+  - 拼音反查五笔 86 编码
+- 雪星日本語
+  - `ctrl+shift+j` 切换
+  - 日本語 + 拼音 混合输入
+  - 拼音反查日本語编码
+
 ## 安装与配置
 
 ### 在 Windows 安裝
@@ -12,7 +23,6 @@
    官方网站：[下載及安裝 | RIME | 中州韻輸入法引擎](https://rime.im/download/)
    或使用 Chocolatey 安装 `cup weasel`
 2. 安装本输入方案
-
 
 - 方法 1
   - 將本項目下載解压，将 `./Rime` の内容复制到：`C:\Users\你的用户名\AppData\Roaming\Rime` (即 %APPDATA%\Rime )
@@ -28,9 +38,10 @@
 
 1. 安装完成后，请 [配置](#配置) 输入法
 
-### Mac 
+### Mac
 
 - TODO, PR’s welcome
+
 ### Linux
 
 - TODO, PR’s welcome
