@@ -1,0 +1,110 @@
+# encoding: utf-8
+
+schema:
+  schema_id: snomiao
+  name: "雪星 1.1 - 2MOJI+WUBI+PINYIN"
+  version: "1.1"
+  author:
+    - 雪星实验室
+  description: |
+    五筆字型86版＋漢語拼音混合輸入。
+    碼表源自 ibus-table
+  dependencies:
+    - pinyin_simp
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [中文, 西文]
+  - name: full_shape
+    states: [半角, 全角]
+  - name: extended_charset
+    states: [常用, 增廣]
+  - name: ascii_punct
+    states: [。，, ．，]
+  - name: emoji_suggestion
+    reset: 1
+    states: ["🈚️️\uFE0E", "🈶️️\uFE0F"]
+engine:
+  filters:
+    - simplifier@emoji_suggestion
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - reverse_lookup_translator
+    - table_translator
+
+emoji_suggestion:
+  opencc_config: emoji.json
+  option_name: emoji_suggestion
+  tips: all
+
+speller:
+  delimiter: " ;'"
+  #max_code_length: 4  # 四碼頂字上屏
+
+translator:
+  dictionary: wubi86
+  prism: snomiao
+  enable_charset_filter: true
+  enable_sentence: true
+  enable_encoder: true
+  encode_commit_history: true
+  max_phrase_length: 4
+  disable_user_dict_for_patterns:
+    - "^z.*$"
+
+abc_segmentor:
+  extra_tags:
+    - reverse_lookup
+
+reverse_lookup:
+  dictionary: pinyin_simp
+  prefix: "`"
+  suffix: "'"
+  tips: 〔拼音 / 顔文字〕
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+
+punctuator:
+  import_preset: default
+
+# key_binder:
+#   import_preset: default
+
+key_binder:
+  bindings:
+    - {accept: "Control+Shift+1", select: .next, when: always}
+    - {accept: "Control+Shift+j", select: japanese, when: always}
+    - {accept: "Control+Shift+J", select: japanese, when: always}
+    - {accept: "Control+Shift+n", select: snomiao, when: always}
+    - {accept: "Control+Shift+N", select: snomiao, when: always}
+    - {accept: "Control+Shift+k", select: korean, when: always}
+    - {accept: "Control+Shift+K", select: korean, when: always}
+    - {accept: "Control+Shift+v", select: vietnamese, when: always}
+    - {accept: "Control+Shift+V", select: vietnamese, when: always}
+    - {accept: "Control+Shift+l", select: international, when: always}
+    - {accept: "Control+Shift+L", select: international, when: always}
+    - {accept: "F16", select: .next, when: always}
+    - {accept: "F19", select: international, when: always}
+
+recognizer:
+  import_preset: default
+  patterns:
+    reverse_lookup: "`[a-z]*'?$"
