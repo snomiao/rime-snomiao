@@ -40,6 +40,15 @@
 
 ### Mac
 
+1. [install squirrel ](rime.im)
+2. Install recipe
+   ```shell
+   git clone https://github.com/snomiao/rime-snomiao
+   cp rime-snomiao/Rime/* ~/Library/Rime
+   
+   # and then you must reload squrriel
+   ```
+
 - TODO, PR’s welcome
 
 ### Linux
