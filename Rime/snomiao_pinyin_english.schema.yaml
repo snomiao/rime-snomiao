@@ -2,7 +2,7 @@
 
 schema:
   schema_id: snomiao_pinyin_english
-  name: 雪星拼音英文(20221025.152440)
+  name: 雪星拼音英文
   version: "1.1.1"
   author:
     - 雪星 <snomiao@gmail.com>
@@ -77,8 +77,8 @@ speller:
     - derive/([iu])a(o|ng?)$/a$1$2/
 
 abc_segmentor:
-  extra_tags: []
-    # - pinyin_lookup
+  extra_tags:
+    - pinyin_lookup
 
 translator:
   dictionary: translate_en2zh
@@ -99,7 +99,7 @@ pinyin_lookup:
 pinyin_reverse_lookup:
   tags: [pinyin_lookup]
   dictionary: translate_en2zh
-  spelling_hints: 5
+  spelling_hints: 10
 
 # translate_en2en_lookup:
 #   tag: translate_en2en_lookup
@@ -151,4 +151,5 @@ recognizer:
     # this change.
     punct: "^/([0-9]+[a-z]*|[a-z]+)$"
     pinyin_lookup: "`[a-z;/,.]*`?$"
+    pinyin_reverse_lookup: "`P[a-z;/,.]*`?$"
     # en2zh_reverse_lookup: "`[a-z]*'?$"

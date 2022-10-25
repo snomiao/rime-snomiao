@@ -236,7 +236,7 @@ key_binder:
     - { accept: "Control+Shift+1", select: .next, when: always }
     - { accept: "Control+Shift+2", select: snomiao_wubi, when: always }
     - { accept: "Control+Shift+3", select: snomiao_japanese, when: always }
-    - { accept: "Control+Shift+4", select: snomiao_pinyin, when: always }
+    - { accept: "Control+Shift+4", select: snomiao_pinyin_english, when: always }
     - { accept: "Control+Shift+5", select: international, when: always }
 
 recognizer:
