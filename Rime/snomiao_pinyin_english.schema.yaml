@@ -35,10 +35,10 @@ engine:
     - express_editor
   segmentors:
     - ascii_segmentor
-    - affix_segmentor@pinyin_lookup
     - matcher
     - abc_segmentor
-    - affix_segmentor@translate_en2en_lookup
+    - affix_segmentor@pinyin_lookup
+    # - affix_segmentor@translate_en2en_lookup
     - punct_segmentor
     - fallback_segmentor
   translators:
@@ -49,7 +49,7 @@ engine:
     # - script_translator@translate_en2zh_lookup
   filters:
     - simplifier
-    - simplifier@emoji_suggestion
+    # - simplifier@emoji_suggestion
     - uniquifier
     - reverse_lookup_filter@pinyin_reverse_lookup
     - reverse_lookup_filter@translate_en2zh_reverse_lookup
@@ -64,24 +64,23 @@ speller:
   alphabet: zyxwvutsrqponmlkjihgfedcba
   delimiter: " '"
   # use_space: true
-  # algebra:
-  #   - abbrev/^([a-z]).+$/$1/
-  #   - abbrev/^([zcs]h).+$/$1/
-  #   - derive/^([nl])ue$/$1ve/
-  #   - derive/^([jqxy])u/$1v/
-  #   - derive/un$/uen/
-  #   - derive/ui$/uei/
-  #   - derive/iu$/iou/
-  #   - derive/([aeiou])ng$/$1gn/
-  #   - derive/([dtngkhrzcs])o(u|ng)$/$1o/
-  #   - derive/ong$/on/
-  #   - derive/ao$/oa/
-  #   - derive/([iu])a(o|ng?)$/a$1$2/
+  algebra:
+    - abbrev/^([a-z]).+$/$1/
+    - abbrev/^([zcs]h).+$/$1/
+    - derive/^([nl])ue$/$1ve/
+    - derive/^([jqxy])u/$1v/
+    - derive/un$/uen/
+    - derive/ui$/uei/
+    - derive/iu$/iou/
+    - derive/([aeiou])ng$/$1gn/
+    - derive/([dtngkhrzcs])o(u|ng)$/$1o/
+    - derive/ong$/on/
+    - derive/ao$/oa/
+    - derive/([iu])a(o|ng?)$/a$1$2/
 
 abc_segmentor:
-  extra_tags:
-    # - translate_en2en_lookup
-    - pinyin_lookup
+  extra_tags: []
+    # - pinyin_lookup
 
 translator:
   dictionary: translate_en2zh
@@ -92,7 +91,7 @@ pinyin_lookup:
   tag: pinyin_lookup
   prefix: "`"
   dictionary: pinyin_simp
-  prism: pinyin_simp
+  prism: snomiao_pinyin_english
   preedit_format:
     - xform/([nl])v/$1ü/
     - xform/([nl])ue/$1üe/

@@ -17,6 +17,7 @@
   "author": "snomiao@gmail.com",
   "license": "ISC",
   "scripts": {
+    "dev": "cd src && tsx watch dictParse.ts",
     "postinstall": "install.bat",
     "deploy": "deploy.bat"
   },
@@ -26,12 +27,15 @@
   "homepage": "https://github.com/snomiao/rime-snomiao#readme",
   "dependencies": {
     "d3": "^7.6.1",
+    "execa": "^6.1.0",
     "rambda": "^7.3.0",
     "read-file-utf8": "^2.0.4",
-    "semver": "^7.3.8"
+    "semver": "^7.3.8",
+    "snorun": "^1.1.17"
   },
   "devDependencies": {
     "@types/d3": "^7.4.0",
-    "@types/node": "^18.11.3"
+    "@types/node": "^18.11.3",
+    "tsx": "^3.11.0"
   }
 }

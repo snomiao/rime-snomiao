@@ -5,9 +5,9 @@ cd C:\Program Files (x86)\Rime\weasel-*
 WeaselDeployer.exe /deploy
 WeaselDeployer.exe
 
-start "" WeaselServer.exe
-sleep 10
+@REM start "" WeaselServer.exe
+@REM sleep 10
 
 cd %~dp0
 
-debug
+@REM debug

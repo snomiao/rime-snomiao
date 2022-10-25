@@ -15,6 +15,13 @@
 			"problemMatcher": [],
 			"label": "npm: deploy",
 			"detail": "deploy.bat"
+		},
+		{
+			"type": "npm",
+			"script": "dev",
+			"problemMatcher": [],
+			"label": "npm: dev",
+			"detail": "cd src && tsx dictParse.ts"
 		}
 	]
 }
