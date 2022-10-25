@@ -37,22 +37,20 @@ engine:
     - ascii_segmentor
     - matcher
     - affix_segmentor@pinyin_lookup
-    # - affix_segmentor@translate_en2zh_lookup
+    - affix_segmentor@reverse_lookup
     - abc_segmentor
     - punct_segmentor
     - fallback_segmentor
   translators:
     - punct_translator
-    - script_translator
+    - table_translator
     - script_translator@pinyin_lookup
-    # - script_translator@translate_en2zh_lookup
     - echo_translator
   filters:
     - simplifier
-    # - simplifier@emoji_suggestion
+    - simplifier@emoji_suggestion
     - uniquifier
     - reverse_lookup_filter@pinyin_reverse_lookup
-    - reverse_lookup_filter@translate_en2zh_reverse_lookup
 
 emoji_suggestion:
   opencc_config: emoji.json
@@ -64,18 +62,19 @@ speller:
   delimiter: " '"
   # use_space: true
   algebra:
-    - abbrev/^([a-z]).+$/$1/
-    - abbrev/^([zcs]h).+$/$1/
-    - derive/^([nl])ue$/$1ve/
-    - derive/^([jqxy])u/$1v/
-    - derive/un$/uen/
-    - derive/ui$/uei/
-    - derive/iu$/iou/
-    - derive/([aeiou])ng$/$1gn/
-    - derive/([dtngkhrzcs])o(u|ng)$/$1o/
-    - derive/ong$/on/
-    - derive/ao$/oa/
-    - derive/([iu])a(o|ng?)$/a$1$2/
+    []
+    # - abbrev/^([a-z]).+$/$1/
+    # - abbrev/^([zcs]h).+$/$1/
+    # - derive/^([nl])ue$/$1ve/
+    # - derive/^([jqxy])u/$1v/
+    # - derive/un$/uen/
+    # - derive/ui$/uei/
+    # - derive/iu$/iou/
+    # - derive/([aeiou])ng$/$1gn/
+    # - derive/([dtngkhrzcs])o(u|ng)$/$1o/
+    # - derive/ong$/on/
+    # - derive/ao$/oa/
+    # - derive/([iu])a(o|ng?)$/a$1$2/
 
 abc_segmentor:
   extra_tags:
@@ -83,14 +82,22 @@ abc_segmentor:
 
 translator:
   dictionary: translate_en2zh
-  enable_completion: false
+  enable_completion: true
+  enable_sentence: false
   preedit_format: []
-  spelling_hints: 5
+  spelling_hints: 3
+
+reverse_lookup:
+  dictionary: translate_en2zh
+  prism: snomiao_pinyin_english
+  enable_completion: true
+  prefix: "`"
+  suffix: "'"
+  tips: 〔Reverse Lookup〕
 
 # pinyin_translator
 pinyin_lookup:
   tag: pinyin_lookup
-  enable_completion: false
   prefix: "`"
   suffix: "'"
   dictionary: pinyin_simp
@@ -100,47 +107,15 @@ pinyin_lookup:
     - xform/([nl])ue/$1üe/
     - xform/([jqxy])v/$1u/
   tips: 〔拼音反查〕
-  spelling_hints: 5
+  spelling_hints: 3
 
+# 输入拼音反
 pinyin_reverse_lookup:
   tags: [pinyin_lookup]
   dictionary: translate_en2zh
 
-# translate_en2en_lookup:
-#   tag: translate_en2en_lookup
-#   dictionary: translate_en2en
-#   enable_completion: true
-
-# translate_en2en_reverse_lookup:
-#   tags: [translate_en2en_lookup]
-#   dictionary: translate_en2zh
-#   spelling_hints: 5
-
-reverse_lookup:
-  dictionary: translate_en2zh
-  prism: snomiao_pinyin_english
-  enable_completion: true
-  prefix: "`"
-  suffix: "'"
-  tips: 〔en_cn〕
-  preedit_format:
-    - xform/([nl])v/$1ü/
-    - xform/([nl])ue/$1üe/
-    - xform/([jqxy])v/$1u/
-
-# translate_en2zh translator
-translate_en2zh_lookup:
-  tag: translate_en2zh_lookup
-  dictionary: translate_en2zh
-  tips: 〔en2zh〕
-  enable_completion: true
-  prefix: "`"
-  suffix: "'"
-
-# reverse lookup filter
-en2zh_reverse_lookup:
-  tags: [translate_en2zh_lookup]
-  dictionary: translate_en2zh
+menu:
+  page_size: 9
 
 punctuator:
   import_preset: symbols
@@ -156,4 +131,4 @@ recognizer:
     # this change.
     punct: "^/([0-9]+[a-z]*|[a-z]+)$"
     pinyin_lookup: "`[a-z;/,.]*`?$"
-    # en2zh_reverse_lookup: "`[a-z]*'?$"
+    # translate_en2zh_lookup: "`[a-z]*'?$"
