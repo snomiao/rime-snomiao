@@ -1,12 +1,14 @@
+import "semver";
 import { exec } from "child_process";
 import { csvParse } from "d3";
 import { execa } from "execa";
 import { mkdir, writeFile } from "fs/promises";
 import path from "path";
-import { groupBy, map, mapObjIndexed, sortBy } from "rambda";
+import { groupBy, map, mapObjIndexed, replace, sortBy } from "rambda";
 import readFileUtf8 from "read-file-utf8";
 import snorun from "snorun";
 import { promisify } from "util";
+import { SemVer } from "semver";
 {
   workdirFix();
 
@@ -106,14 +108,26 @@ import { promisify } from "util";
   await dictUpdate("../Rime/translate_en2en.dict.yaml", en2enTSV);
 
   await snorun("cd .. && install.bat");
-  console.log('update done');
+  console.log("update done");
 }
 async function dictUpdate(dictYamlPath: string, dictContent: string) {
-  const replacedYaml = (await readFileUtf8(dictYamlPath)).replace(
+  const theYaml = await readFileUtf8(dictYamlPath);
+
+  const replacedYaml = theYaml.replace(
     /\.\.\.[\s\S]*$/,
-    `...\n\n${dictContent}\n\n`
+    `...\n\n${dictContent}\n`
   );
-  await writeFile(dictYamlPath, replacedYaml);
+  
+  const versionBumpedYaml =
+    replacedYaml === theYaml
+      ? replacedYaml
+      : replacedYaml.replace(
+          /version: "(.*)"/,
+          (_, version) =>
+            'version: "' + new SemVer(version).inc("patch").version + '"'
+        );
+
+  await writeFile(dictYamlPath, versionBumpedYaml);
   console.log(dictYamlPath + " dict content updated");
 }
 

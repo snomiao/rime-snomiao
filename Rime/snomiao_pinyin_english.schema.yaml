@@ -3,7 +3,7 @@
 schema:
   schema_id: snomiao_pinyin_english
   name: 雪星拼音英文(20221025.152440)
-  version: "2022-10-24"
+  version: "1.1.1"
   author:
     - 雪星 <snomiao@gmail.com>
   description: |
@@ -45,7 +45,6 @@ engine:
     - punct_translator
     - script_translator
     - script_translator@pinyin_lookup
-    # - script_translator@translate_en2en_lookup
     # - script_translator@translate_en2zh_lookup
   filters:
     - simplifier
@@ -53,7 +52,6 @@ engine:
     - uniquifier
     - reverse_lookup_filter@pinyin_reverse_lookup
     - reverse_lookup_filter@translate_en2zh_reverse_lookup
-    # - reverse_lookup_filter@en2zh_reverse_lookup
 
 emoji_suggestion:
   opencc_config: emoji.json
