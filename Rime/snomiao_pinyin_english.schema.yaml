@@ -1,0 +1,157 @@
+# encoding: utf-8
+
+schema:
+  schema_id: snomiao_pinyin_english
+  name: 雪星拼音英文(20221025.152440)
+  version: "2022-10-24"
+  author:
+    - 雪星 <snomiao@gmail.com>
+  description: |
+    漢語拼音，英文反查
+  dependencies:
+    - translate_en2zh
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [中文, 西文]
+  - name: full_shape
+    states: [半角, 全角]
+  - name: ascii_punct
+    states: [。，, ．，]
+  - name: emoji_suggestion
+    reset: 1
+    states: ["🈚️️\uFE0E", "🈶️️\uFE0F"]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - affix_segmentor@pinyin_lookup
+    - matcher
+    - abc_segmentor
+    - affix_segmentor@translate_en2en_lookup
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+    - script_translator@pinyin_lookup
+    # - script_translator@translate_en2en_lookup
+    # - script_translator@translate_en2zh_lookup
+  filters:
+    - simplifier
+    - simplifier@emoji_suggestion
+    - uniquifier
+    - reverse_lookup_filter@pinyin_reverse_lookup
+    - reverse_lookup_filter@translate_en2zh_reverse_lookup
+    # - reverse_lookup_filter@en2zh_reverse_lookup
+
+emoji_suggestion:
+  opencc_config: emoji.json
+  option_name: emoji_suggestion
+  tips: all
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  # use_space: true
+  # algebra:
+  #   - abbrev/^([a-z]).+$/$1/
+  #   - abbrev/^([zcs]h).+$/$1/
+  #   - derive/^([nl])ue$/$1ve/
+  #   - derive/^([jqxy])u/$1v/
+  #   - derive/un$/uen/
+  #   - derive/ui$/uei/
+  #   - derive/iu$/iou/
+  #   - derive/([aeiou])ng$/$1gn/
+  #   - derive/([dtngkhrzcs])o(u|ng)$/$1o/
+  #   - derive/ong$/on/
+  #   - derive/ao$/oa/
+  #   - derive/([iu])a(o|ng?)$/a$1$2/
+
+abc_segmentor:
+  extra_tags:
+    # - translate_en2en_lookup
+    - pinyin_lookup
+
+translator:
+  dictionary: translate_en2zh
+  # enable_completion: true
+  preedit_format: []
+
+pinyin_lookup:
+  tag: pinyin_lookup
+  prefix: "`"
+  dictionary: pinyin_simp
+  prism: pinyin_simp
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+  tips: 〔拼音反查〕
+
+pinyin_reverse_lookup:
+  tags: [pinyin_lookup]
+  dictionary: translate_en2zh
+  spelling_hints: 5
+
+# translate_en2en_lookup:
+#   tag: translate_en2en_lookup
+#   dictionary: translate_en2en
+#   enable_completion: true
+
+# translate_en2en_reverse_lookup:
+#   tags: [translate_en2en_lookup]
+#   dictionary: translate_en2zh
+#   spelling_hints: 5
+
+reverse_lookup:
+  dictionary: translate_en2zh
+  prism: snomiao_pinyin_english
+  enable_completion: true
+  prefix: "`"
+  suffix: "'"
+  tips: 〔en_cn〕
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+
+# translate_en2zh translator
+translate_en2zh_lookup:
+  tag: translate_en2zh_lookup
+  dictionary: translate_en2zh
+  tips: 〔en2zh〕
+  enable_completion: true
+  prefix: "`"
+  suffix: "'" 
+
+# reverse lookup filter
+en2zh_reverse_lookup:
+  tags: [translate_en2zh_lookup]
+  dictionary: translate_en2zh
+
+punctuator:
+  import_preset: symbols
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    # hack: to enable "/fh" style symbols, '/' must be mapped to a [list].
+    # so those who have customized '/' for direct commit won't be affected by
+    # this change.
+    punct: "^/([0-9]+[a-z]*|[a-z]+)$"
+    pinyin_lookup: "`[a-z;/,.]*`?$"
+    # en2zh_reverse_lookup: "`[a-z]*'?$"

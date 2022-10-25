@@ -11,8 +11,8 @@
 name: pinyin_simp
 version: "0.1"
 sort: by_weight
-import_tables:
-  - kaomoji
+# import_tables:
+#   - kaomoji
 ...
 
 鼥	ba	0

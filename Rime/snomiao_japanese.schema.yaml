@@ -1,0 +1,273 @@
+# Rime schema
+# vim: set sw=2 sts=2 et:
+# encoding: utf-8
+
+schema:
+  schema_id: snomiao_japanese
+  name: 雪星日本語方案
+  version: "2022-10-24"
+  author:
+    - ensigma96 <ensigma96@gmail.com>
+    - snomiao <snomiao@gmail.com>`
+  dependencies:
+    - terra_pinyin # for using reverse lookup
+    - wubi86 # for using reverse lookup
+    - stroke
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [中文, 西文]
+  - name: full_shape
+    states: [半角, 全角]
+  - name: simplification
+    states: [漢字, 汉字]
+  #- options: [jp_variants, zh_simp, zh_tw ]
+  #- options: [zh_simp, zh_tw ]
+  #  reset: 0
+  #  states:
+  #    - 字形 → 日本
+  #    - 字形 → 大陸
+  #    - 字形 → 台灣
+  - name: ascii_punct
+    states: [。，, ．，]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - affix_segmentor@pinyin_lookup
+    - affix_segmentor@stroke_lookup
+    - affix_segmentor@wubi86_lookup
+    # - affix_segmentor@hannom_lookup
+    # - affix_segmentor@hanja_lookup
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+    - reverse_lookup_translator
+    - script_translator@pinyin_lookup
+    - script_translator@stroke_lookup
+    - script_translator@wubi86_lookup
+    # - script_translator@hannom_lookup
+    # - script_translator@hanja_lookup
+  filters:
+    - simplifier
+    #- simplifier@jp_variants
+    #- simplifier@zh_simp
+    #- simplifier@zh_tw
+    - uniquifier
+    # - reverse_lookup_filter@stroke_lookup
+    - reverse_lookup_filter@pinyin_reverse_lookup
+    - reverse_lookup_filter@stroke_reverse_lookup
+    - reverse_lookup_filter@wubi86_reverse_lookup
+    # - reverse_lookup_filter@hanja_reverse_lookup
+
+abc_segmentor:
+  extra_tags:
+    - pinyin_lookup
+
+speller:
+  alphabet: "zyxwvutsrqponmlkjihgfedcba-_"
+  delimiter: " '"
+  algebra:
+    - "derive/_/x/"
+    - "derive/-/q/"
+    # Add / remove rules the as you wish
+    - "derive/i_e/ye/"
+    # - 'derive/fu/hu/'
+
+translator:
+  dictionary: japanese
+  spelling_hints: 5
+  comment_format:
+    - "xlit|q|ー|"
+  preedit_format:
+    - "xlit|q|ー|"
+
+pinyin_lookup:
+  tag: pinyin_lookup
+  prefix: "`"
+  dictionary: terra_pinyin
+  prism: terra_pinyin
+  preedit_format:
+    - xform/([bpmfdtnljqx])n/$1iao/
+    - xform/(\w)g/$1eng/
+    - xform/(\w)q/$1iu/
+    - xform/(\w)w/$1ei/
+    - xform/([dtnlgkhjqxyvuirzcs])r/$1uan/
+    - xform/(\w)t/$1ve/
+    - xform/(\w)y/$1un/
+    - xform/([dtnlgkhvuirzcs])o/$1uo/
+    - xform/(\w)p/$1ie/
+    - xform/([jqx])s/$1iong/
+    - xform/(\w)s/$1ong/
+    - xform/(\w)d/$1ai/
+    - xform/(\w)f/$1en/
+    - xform/(\w)h/$1ang/
+    - xform/(\w)j/$1an/
+    - xform/([gkhvuirzcs])k/$1uai/
+    - xform/(\w)k/$1ing/
+    - xform/([jqxnl])l/$1iang/
+    - xform/(\w)l/$1uang/
+    - xform/(\w)z/$1ou/
+    - xform/([gkhvuirzcs])x/$1ua/
+    - xform/(\w)x/$1ia/
+    - xform/(\w)c/$1ao/
+    - xform/([dtgkhvuirzcs])v/$1ui/
+    - xform/(\w)b/$1in/
+    - xform/(\w)m/$1ian/
+    - xform/([aoe])\1(\w)/$1$2/
+    - "xform/(^|[ '])v/$1zh/"
+    - "xform/(^|[ '])i/$1ch/"
+    - "xform/(^|[ '])u/$1sh/"
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+    - xform/eh/ê/
+    - 'xform ([aeiou])(ng?|r)([-;/<,>\\.]) $1$3$2'
+    - 'xform ([aeo])([iuo])([-;/<,>\\.]) $1$3$2'
+    - "xform a[-;] ā"
+    - "xform a/ á"
+    - "xform a[<,] ǎ"
+    - 'xform a[>\\.] à'
+    - "xform e[-;] ē"
+    - "xform e/ é"
+    - "xform e[<,] ě"
+    - 'xform e[>\\.] è'
+    - "xform o[-;] ō"
+    - "xform o/ ó"
+    - "xform o[<,] ǒ"
+    - 'xform o[>\\.] ò'
+    - "xform i[-;] ī"
+    - "xform i/ í"
+    - "xform i[<,] ǐ"
+    - 'xform i[>\\.] ì'
+    - "xform u[-;] ū"
+    - "xform u/ ú"
+    - "xform u[<,] ǔ"
+    - 'xform u[>\\.] ù'
+    - "xform ü[-;] ǖ"
+    - "xform ü/ ǘ"
+    - "xform ü[<,] ǚ"
+    - 'xform ü[>\\.] ǜ'
+  comment_format:
+    - xform ([aeiou])(ng?|r)([1234]) $1$3$2
+    - xform ([aeo])([iuo])([1234]) $1$3$2
+    - xform a1 ā
+    - xform a2 á
+    - xform a3 ǎ
+    - xform a4 à
+    - xform e1 ē
+    - xform e2 é
+    - xform e3 ě
+    - xform e4 è
+    - xform o1 ō
+    - xform o2 ó
+    - xform o3 ǒ
+    - xform o4 ò
+    - xform i1 ī
+    - xform i2 í
+    - xform i3 ǐ
+    - xform i4 ì
+    - xform u1 ū
+    - xform u2 ú
+    - xform u3 ǔ
+    - xform u4 ù
+    - xform v1 ǖ
+    - xform v2 ǘ
+    - xform v3 ǚ
+    - xform v4 ǜ
+    - xform/([nljqxy])v/$1ü/
+    - xform/eh[0-5]?/ê/
+    - xform/([a-z]+)[0-5]/$1/
+  tips: 〔拼音反查〕
+
+pinyin_reverse_lookup:
+  tags: [pinyin_lookup]
+  dictionary: japanese
+  spelling_hints: 10
+
+stroke_lookup:
+  tag: stroke_lookup
+  dictionary: stroke
+  enable_completion: true
+  prefix: "`H"
+  suffix: "`"
+  tips: 〔筆畫反查〕
+  preedit_format:
+    - xlit/hspnz/一丨丿丶乙/
+  comment_format:
+    - xlit/hspnz/一丨丿丶乙/
+
+stroke_reverse_lookup:
+  tags: [stroke_lookup]
+  spelling_hints: 10
+  dictionary: japanese
+
+wubi86_lookup:
+  tag: wubi86_lookup
+  prefix: "`W"
+  suffix: "`"
+  dictionary: wubi86
+  tips: 〔五筆86反查〕
+
+wubi86_reverse_lookup:
+  tags: [wubi86_lookup]
+  spelling_hints: 10
+  dictionary: japanese
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  bindings:
+    - { accept: "Control+Shift+1", select: .next, when: always }
+    - { accept: "Control+Shift+2", select: snomiao_wubi, when: always }
+    - { accept: "Control+Shift+3", select: snomiao_japanese, when: always }
+    - { accept: "Control+Shift+4", select: snomiao_pinyin, when: always }
+    - { accept: "Control+Shift+5", select: international, when: always }
+
+recognizer:
+  import_preset: default
+  patterns:
+    stroke_lookup: "`H[a-z]*`?$"
+    wubi86_lookup: "`W[a-z]*`?$"
+    pinyin_lookup: "`[a-z;/,.]*`?$"
+    # hannom_lookup: "`V[a-z]*?$"
+    # hanja_lookup: "`K[a-z]*?$"
+#zh_jp:
+#  option_name: zh_jp
+#  opencc_config: jp_t2s.json
+#  #tips: all
+#  tips: none
+
+# zh_simp:
+#   option_name: zh_simp
+#   opencc_config: t2s.json
+#   tips: none
+
+# zh_tw:
+#   option_name: zh_tw
+#   opencc_config: t2tw.json
+#   tips: none
+
+# jp_variants:
+#   option_name: jp_variants
+#   opencc_config: jp_t2s.json
+#   tips: none
+
+# simplifier:
+#  option_name: jp_variants
+#  opencc_config: jp_t2s.json
