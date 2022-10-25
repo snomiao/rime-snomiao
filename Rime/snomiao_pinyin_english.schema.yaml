@@ -36,9 +36,9 @@ engine:
   segmentors:
     - ascii_segmentor
     - matcher
-    - abc_segmentor
     - affix_segmentor@pinyin_lookup
-    # - affix_segmentor@translate_en2en_lookup
+    # - affix_segmentor@translate_en2zh_lookup
+    - abc_segmentor
     - punct_segmentor
     - fallback_segmentor
   translators:
@@ -46,6 +46,7 @@ engine:
     - script_translator
     - script_translator@pinyin_lookup
     # - script_translator@translate_en2zh_lookup
+    - echo_translator
   filters:
     - simplifier
     # - simplifier@emoji_suggestion
@@ -82,24 +83,28 @@ abc_segmentor:
 
 translator:
   dictionary: translate_en2zh
-  # enable_completion: true
+  enable_completion: false
   preedit_format: []
+  spelling_hints: 5
 
+# pinyin_translator
 pinyin_lookup:
   tag: pinyin_lookup
+  enable_completion: false
   prefix: "`"
+  suffix: "'"
   dictionary: pinyin_simp
-  prism: snomiao_pinyin_english
+  prism: pinyin_simp
   preedit_format:
     - xform/([nl])v/$1ü/
     - xform/([nl])ue/$1üe/
     - xform/([jqxy])v/$1u/
   tips: 〔拼音反查〕
+  spelling_hints: 5
 
 pinyin_reverse_lookup:
   tags: [pinyin_lookup]
   dictionary: translate_en2zh
-  spelling_hints: 10
 
 # translate_en2en_lookup:
 #   tag: translate_en2en_lookup
@@ -130,7 +135,7 @@ translate_en2zh_lookup:
   tips: 〔en2zh〕
   enable_completion: true
   prefix: "`"
-  suffix: "'" 
+  suffix: "'"
 
 # reverse lookup filter
 en2zh_reverse_lookup:
@@ -151,5 +156,4 @@ recognizer:
     # this change.
     punct: "^/([0-9]+[a-z]*|[a-z]+)$"
     pinyin_lookup: "`[a-z;/,.]*`?$"
-    pinyin_reverse_lookup: "`P[a-z;/,.]*`?$"
     # en2zh_reverse_lookup: "`[a-z]*'?$"
