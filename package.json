@@ -25,15 +25,14 @@
     "url": "https://github.com/snomiao/rime-snomiao/issues"
   },
   "homepage": "https://github.com/snomiao/rime-snomiao#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "d3": "^7.6.1",
     "execa": "^6.1.0",
     "rambda": "^7.3.0",
     "read-file-utf8": "^2.0.4",
     "semver": "^7.3.8",
-    "snorun": "^1.1.17"
-  },
-  "devDependencies": {
+    "snorun": "^1.1.17",
     "@types/d3": "^7.4.0",
     "@types/node": "^18.11.3",
     "tsx": "^3.11.0"
