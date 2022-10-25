@@ -106,13 +106,27 @@ pinyin_lookup:
     - xform/([nl])v/$1ü/
     - xform/([nl])ue/$1üe/
     - xform/([jqxy])v/$1u/
+  comment_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
   tips: 〔拼音反查〕
   spelling_hints: 3
 
-# 输入拼音反
+# 输入拼音反英文
 pinyin_reverse_lookup:
   tags: [pinyin_lookup]
   dictionary: translate_en2zh
+  comment_format:
+    - "xform/^/ /"
+    - "xform/ ([a-z]+)(?: -[a-z]+)*? \\1([a-z]+)/ $1 -$2/"
+    - "xform/ (.{61}).+/$1.../"
+    # - "xform/(.{125}).+/$1.../"
+    - "xform/^ /(/"
+    - "xform/$/)/"
+    # - "xlit|abcdefghijklmnopqrstuvwxyz |日月金木水火土竹戈十大中一弓人心手口尸廿山女田止卜片、|"
+  # preedit_format:
+    # - "xlit|zyxwvutsrqponmlkjihgfedcba |日月金木水火土竹戈十大中一弓人心手口尸廿山女田止卜片、|"
 
 menu:
   page_size: 9

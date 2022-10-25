@@ -86,26 +86,37 @@ import { SemVer } from "semver";
   const pairsCount = en2zhDictPairs.length;
   console.log({ pairsCount });
 
-  const groups = groupBy(
+  const enGroups = groupBy(
     ([en, zh]) => en.slice(0, 3).toLowerCase(),
     en2zhDictPairs
   );
-  const anal = sortBy(
+  const zhGroups = groupBy(([en, zh]) => zh, en2zhDictPairs);
+  const setCounting = sortBy(
     ([zh, count]) => count,
-    Object.entries(map((group, zh) => group.length, groups))
+    Object.entries(map((group) => group.length, zhGroups))
   ).reverse();
-  // .filter(([zh, count]) => count > 10);
-  console.log(anal);
 
+  const limitWords = new Set(
+    setCounting.filter(([zh, count]) => count >= 100).map((e) => e[0])
+  );
+  
+  {
+    const zhGroups = groupBy(([en, zh]) => zh, en2zhDictPairs);
+    const setCounting = sortBy(
+      ([zh, count]) => count,
+      Object.entries(map((group) => group.length, zhGroups))
+    ).reverse();
+    console.log(setCounting);
+  }
   const en2zhTSV = en2zhDictPairs
     .map(([en, zh]) => [zh, en.toLowerCase()].join("\t"))
     .join("\n");
   await dictUpdate("../Rime/translate_en2zh.dict.yaml", en2zhTSV);
 
-  const en2enTSV = en2zhDictPairs
-    .map(([en, zh]) => [en, en.toLowerCase()].join("\t"))
-    .join("\n");
-  await dictUpdate("../Rime/translate_en2en.dict.yaml", en2enTSV);
+  // const en2enTSV = en2zhDictPairs
+  //   .map(([en, zh]) => [en, en.toLowerCase()].join("\t"))
+  //   .join("\n");
+  // await dictUpdate("../Rime/translate_en2en.dict.yaml", en2enTSV);
 
   await snorun("cd .. && install.bat");
   console.log("update done");
@@ -117,7 +128,7 @@ async function dictUpdate(dictYamlPath: string, dictContent: string) {
     /\.\.\.[\s\S]*$/,
     `...\n\n${dictContent}\n`
   );
-  
+
   const versionBumpedYaml =
     replacedYaml === theYaml
       ? replacedYaml
