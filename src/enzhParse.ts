@@ -3,12 +3,12 @@ import { exec } from "child_process";
 import { csvParse } from "d3";
 import { execa } from "execa";
 import { mkdir, writeFile } from "fs/promises";
-import path from "path";
 import { groupBy, map, mapObjIndexed, replace, sortBy } from "rambda";
 import readFileUtf8 from "read-file-utf8";
 import snorun from "snorun";
 import { promisify } from "util";
 import { SemVer } from "semver";
+import { workdirFix } from "./workdirFix";
 {
   workdirFix();
 
@@ -27,7 +27,7 @@ import { SemVer } from "semver";
     "detail",
     "audio",
   ] as const;
-  const dictPath = "./en-cn.csv";
+  const dictPath = "./enzh.csv";
   const csv = csvParse<typeof dictFields[number]>(await readFileUtf8(dictPath));
   const csvLineCount = csv.length;
   console.log({ csvLineCount });
@@ -142,8 +142,4 @@ async function dictUpdate(dictYamlPath: string, dictContent: string) {
   console.log(dictYamlPath + " dict content updated");
 }
 
-function workdirFix() {
-  const workdir = path.parse(process.argv[1]).dir;
-  process.chdir(workdir);
-  console.log({ workdir });
-}
+

@@ -122,8 +122,8 @@ pinyin_reverse_lookup:
     - "xform/ ([a-z]+)(?: -[a-z]+)*? \\1([a-z]+)/ $1 -$2/"
     - "xform/ (.{61}).+/$1.../"
     # - "xform/(.{125}).+/$1.../"
-    - "xform/^ /(/"
-    - "xform/$/)/"
+    - "xform/^\\s*/(/"
+    - "xform/\\s*$/)/"
     # - "xlit|abcdefghijklmnopqrstuvwxyz |日月金木水火土竹戈十大中一弓人心手口尸廿山女田止卜片、|"
   # preedit_format:
     # - "xlit|zyxwvutsrqponmlkjihgfedcba |日月金木水火土竹戈十大中一弓人心手口尸廿山女田止卜片、|"
