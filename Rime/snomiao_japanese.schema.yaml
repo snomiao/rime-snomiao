@@ -4,7 +4,7 @@
 
 schema:
   schema_id: snomiao_japanese
-  name: 雪星日本語方案
+  name: "@雪星日本語方案"
   version: "2022-10-24"
   author:
     - ensigma96 <ensigma96@gmail.com>

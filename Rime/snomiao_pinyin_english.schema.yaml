@@ -2,7 +2,7 @@
 
 schema:
   schema_id: snomiao_pinyin_english
-  name: 雪星拼音英文
+  name: "@雪星拼音英文"
   version: "1.1.1"
   author:
     - 雪星 <snomiao@gmail.com>
@@ -43,8 +43,8 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
-    - table_translator
     - script_translator@pinyin_lookup
+    - table_translator
     - echo_translator
   filters:
     - simplifier
@@ -87,6 +87,7 @@ translator:
   preedit_format: []
   spelling_hints: 3
 
+# reverse lookup translator
 reverse_lookup:
   dictionary: translate_en2zh
   prism: snomiao_pinyin_english
@@ -115,18 +116,32 @@ pinyin_lookup:
 
 # 输入拼音反英文
 pinyin_reverse_lookup:
-  tags: [pinyin_lookup]
+  tags: [pinyin_lookup, abc]
   dictionary: translate_en2zh
+  overwrite_comment: true
   comment_format:
     - "xform/^/ /"
-    - "xform/ ([a-z]+)(?: -[a-z]+)*? \\1([a-z]+)/ $1 -$2/"
-    - "xform/ (.{61}).+/$1.../"
+    # 摘要
+    - "xform/(.{80}.+)/$1--/"
+    - "xform/([a-z])-[a-z]+/$1/"
+    - "xform/ (\\S\\S\\S\\S)\\S\\S+(?=.*?--$)/ $1-/"
+    - "xform/^(.*)--$/$1/"
+    # 多层重复项折叠
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 1
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 2
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 3
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 4
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 5
+    # 重复消除
+    - "xform/ (\\S+)( \\1)+/ $1/"
+    # 截断省略
+    - "xform/ (.{60}).+/$1.../"
     # - "xform/(.{125}).+/$1.../"
-    - "xform/^\\s*/(/"
-    - "xform/\\s*$/)/"
+    - "xform/^\\s*//"
+    - "xform/\\s*$//"
     # - "xlit|abcdefghijklmnopqrstuvwxyz |日月金木水火土竹戈十大中一弓人心手口尸廿山女田止卜片、|"
   # preedit_format:
-    # - "xlit|zyxwvutsrqponmlkjihgfedcba |日月金木水火土竹戈十大中一弓人心手口尸廿山女田止卜片、|"
+  # - "xlit|zyxwvutsrqponmlkjihgfedcba |日月金木水火土竹戈十大中一弓人心手口尸廿山女田止卜片、|"
 
 menu:
   page_size: 9
@@ -137,6 +152,11 @@ punctuator:
 key_binder:
   import_preset: default
 
+editor:
+  bindings:
+    Alt_L: commit_comment
+    Shift_L: commit_comment
+
 recognizer:
   import_preset: default
   patterns:
@@ -144,5 +164,5 @@ recognizer:
     # so those who have customized '/' for direct commit won't be affected by
     # this change.
     punct: "^/([0-9]+[a-z]*|[a-z]+)$"
-    pinyin_lookup: "`[a-z;/,.]*`?$"
+    pinyin_lookup: "P[a-z;/,.]*`?$"
     # translate_en2zh_lookup: "`[a-z]*'?$"

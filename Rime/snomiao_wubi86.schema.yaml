@@ -2,7 +2,7 @@
 
 schema:
   schema_id: snomiao_wubi86
-  name: 雪星五笔86方案
+  name: "@雪星五笔86方案"
   version: "1.1"
   author:
     - 雪星实验室
@@ -119,4 +119,3 @@ recognizer:
   patterns:
     reverse_lookup: "^`[a-z]*'?$"
     translate_en2zh_lookup: "^z[a-z]*'?$"
-# 
