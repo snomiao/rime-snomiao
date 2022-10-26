@@ -21,8 +21,8 @@
   "license": "ISC",
   "scripts": {
     "dev": "cd src && tsx watch enzhPasrse.ts",
-    "postinstall": "install.bat",
-    "deploy": "deploy.bat"
+    "postinstall": "cd tools && install.bat",
+    "deploy": "cd tools && deploy.bat"
   },
   "bugs": {
     "url": "https://github.com/snomiao/rime-snomiao/issues"

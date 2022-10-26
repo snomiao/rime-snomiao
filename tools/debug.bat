@@ -7,4 +7,3 @@ copy %TEMP%\rime.weasel.* ..\logs\
 @REM code %~dp0/logs/*
 
 cd %~dp0
-    
