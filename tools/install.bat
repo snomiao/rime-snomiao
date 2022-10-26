@@ -1,6 +1,6 @@
 cd %~dp0
 
-cd Rime
+cd ..\Rime
 robocopy . %APPDATA%\Rime\ *.yaml *.json *.txt /S
 cd %~dp0
 

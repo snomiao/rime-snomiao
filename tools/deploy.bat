@@ -1,4 +1,4 @@
-rm %TEMP%/rime.weasel.*
+del /S /Q %TEMP%\rime.weasel.*
 
 @REM deploy
 cd C:\Program Files (x86)\Rime\weasel-*

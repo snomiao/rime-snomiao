@@ -13,7 +13,7 @@
     "weasel",
     "japenese",
     "chinese"
-  ],
+  ],"files": ["Rime"],
   "author": "snomiao@gmail.com",
   "license": "ISC",
   "scripts": {
