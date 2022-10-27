@@ -52,6 +52,5 @@
     "tsx": "^3.11.0"
   },
   "dependencies": {
-    "node-hmr": "^1.3.1"
   }
 }
