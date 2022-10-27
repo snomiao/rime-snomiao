@@ -1,13 +1,10 @@
+cd %~dp0\..\
+@REM copy files
 del /S /Q %TEMP%\rime.weasel.*
+robocopy Rime %APPDATA%\Rime *.yaml *.json *.txt /S
 
 @REM deploy
 cd C:\Program Files (x86)\Rime\weasel-*
 WeaselDeployer.exe /deploy
-@REM WeaselDeployer.exe
 
-@REM start "" WeaselServer.exe
-@REM sleep 10
-
-cd %~dp0
-
-@REM debug
+cd %~dp0\..

@@ -40,12 +40,13 @@
 
 ### Mac
 
-1. [install squirrel ](rime.im)
+1. Install squirrel by:
+   1. [rime.im](https://rime.im)
+   2. or `brew cask install squirrel`
 2. Install recipe
    ```shell
    git clone https://github.com/snomiao/rime-snomiao
    cp rime-snomiao/Rime/* ~/Library/Rime
-   
    # and then you must reload squrriel
    ```
 

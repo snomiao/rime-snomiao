@@ -1,7 +1,7 @@
 import { csvParse } from "d3";
 import readFileUtf8 from "read-file-utf8";
 import { dictUpdate } from "./dictUpdate";
-import { workdirFix } from "./workdirFix";
+import workdirFix from "./workdirFix";
 
 {
   workdirFix();

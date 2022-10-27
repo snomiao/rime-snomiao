@@ -7,7 +7,7 @@ import { groupBy, map, mapObjIndexed, replace, sortBy } from "rambda";
 import readFileUtf8 from "read-file-utf8";
 import snorun from "snorun";
 import { promisify } from "util";
-import { workdirFix } from "./workdirFix";
+import workdirFix from "./workdirFix";
 import { dictUpdate } from "./dictUpdate";
 {
   workdirFix();

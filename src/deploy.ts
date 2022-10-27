@@ -1,7 +1,7 @@
 import snorun from "snorun";
-import { workdirFix } from "./workdirFix";
+import workdirFix from "./workdirFix";
 
 export async function deploy() {
-    workdirFix();
-    await snorun("cd .. && cd tools && install");
+  await workdirFix();
+  await snorun("cd tools && deploy");
 }

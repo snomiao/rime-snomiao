@@ -1,7 +1,9 @@
 import path from "path";
-
-export function workdirFix() {
-  const workdir = path.parse(process.argv[1]).dir;
+import { packageDirectory } from "pkg-dir";
+export default async function workdirFix() {
+  const jsdir = path.parse(process.argv[1]).dir;
+  const workdir = await packageDirectory({ cwd: jsdir });
+  if (!workdir) throw new Error("Error: pkg not found");
   process.chdir(workdir);
   console.log({ workdir });
 }

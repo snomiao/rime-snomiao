@@ -34,14 +34,16 @@
     "@types/d3": "^7.4.0",
     "@types/node": "^18.11.3",
     "@types/semver": "^7.3.12",
+    "cpy": "^9.0.1",
     "d3": "^7.6.1",
     "execa": "^6.1.0",
+    "fs-extra": "^10.1.0",
+    "mdict-js": "^10.0.1",
+    "pkg-dir": "^7.0.0",
     "rambda": "^7.3.0",
     "read-file-utf8": "^2.0.4",
     "semver": "^7.3.8",
     "snorun": "^1.1.17",
-    "tsx": "^3.11.0",
-    "mdict-js": "^10.0.1"
-  },
-  "dependencies": {}
+    "tsx": "^3.11.0"
+  }
 }
