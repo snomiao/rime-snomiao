@@ -16,6 +16,7 @@
   ],
   "files": [
     "Rime"
+    "tools"
   ],
   "author": "snomiao@gmail.com",
   "license": "ISC",
@@ -24,8 +25,8 @@
     "dev": "nodemon -e yaml,ts -x tsx src/cli-deploy.ts",
     "debug": "cd tools && debug",
     "dev:enzh": "tsx watch src/enzhPasrse.ts",
-    "postinstall": "cd tools && install.bat",
-    "deploy": "cd tools && deploy.bat"
+    "postinstall": "cd tools && install",
+    "deploy": "cd tools && deploy"
   },
   "bugs": {
     "url": "https://github.com/snomiao/rime-snomiao/issues"
