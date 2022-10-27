@@ -24,19 +24,19 @@
    或使用 Chocolatey 安装 `cup weasel`
 2. 安装本输入方案
 
-- 方法 1
-  - 將本項目下載解压，将 `./Rime` の内容复制到：`C:\Users\你的用户名\AppData\Roaming\Rime` (即 %APPDATA%\Rime )
-  - [配置](#配置) 输入法
-- 方法 2（需要連接互聯網）
-  - 運行 `cmd /k cd "C:\Program Files (x86)\Rime\weasel-*\" && rime-install.bat`
-  - 輸入 `snomiao/rime-snomiao`
-  - [配置](#配置) 输入法
-- 方法 3
-  - 運行 `git clone https://github.com/snomiao/rime-snomiao && cd rime-snomiao && install.bat`
-- 方法 4 （自动）
-  - 運行 `npx rime-snomiao`
+   - 方法 1
+     - 將本項目下載解压，将 `./Rime` の内容复制到：`C:\Users\你的用户名\AppData\Roaming\Rime` (即 %APPDATA%\Rime )
+     - [配置](#配置) 输入法
+   - 方法 2（需要連接互聯網）
+     - 運行 `cmd /k cd "C:\Program Files (x86)\Rime\weasel-*\" && rime-install.bat`
+     - 輸入 `snomiao/rime-snomiao`
+     - [配置](#配置) 输入法
+   - 方法 3
+     - 運行 `git clone https://github.com/snomiao/rime-snomiao && cd rime-snomiao && install.bat`
+   - 方法 4 （自动）
+     - 運行 `npx rime-snomiao`
 
-1. 安装完成后，请 [配置](#配置) 输入法
+3. 安装完成后，请 [配置](#配置) 输入法
 
 ### Mac
 
@@ -89,6 +89,7 @@ Copyleft，爱用就拿去
 ## Reference & ThanksTo
 
 wubi86
+
 - [中日英自然码（带辅码）双拼输入法](https://github.com/lippmann/lrime)
 - [Rime double pinyin plus](https://github.com/mutoe/rime)
 - [OpenCC](https://github.com/BYVoid/OpenCC)
