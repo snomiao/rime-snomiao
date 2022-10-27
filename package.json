@@ -14,12 +14,15 @@
     "japenese",
     "chinese"
   ],
+  "files": [
+    "Rime"
+  ],
   "author": "snomiao@gmail.com",
   "license": "ISC",
   "scripts": {
-    "dev": "cd src && tsx watch dictParse.ts",
-    "postinstall": "install.bat",
-    "deploy": "deploy.bat"
+    "dev": "cd src && tsx watch enzhPasrse.ts",
+    "postinstall": "cd tools && install.bat",
+    "deploy": "cd tools && deploy.bat"
   },
   "bugs": {
     "url": "https://github.com/snomiao/rime-snomiao/issues"

@@ -7,8 +7,8 @@ import { groupBy, map, mapObjIndexed, replace, sortBy } from "rambda";
 import readFileUtf8 from "read-file-utf8";
 import snorun from "snorun";
 import { promisify } from "util";
-import { SemVer } from "semver";
 import { workdirFix } from "./workdirFix";
+import { dictUpdate } from "./dictUpdate";
 {
   workdirFix();
 
@@ -27,7 +27,7 @@ import { workdirFix } from "./workdirFix";
     "detail",
     "audio",
   ] as const;
-  const dictPath = "./enzh.csv";
+  const dictPath = "../dict/enzh.csv";
   const csv = csvParse<typeof dictFields[number]>(await readFileUtf8(dictPath));
   const csvLineCount = csv.length;
   console.log({ csvLineCount });
@@ -66,7 +66,7 @@ import { workdirFix } from "./workdirFix";
         .filter((e) => !e.match(/^的(复数|变形)$/g))
         .filter((e) => !e.match(/^家.{1,3}科$/g))
         .filter((e) => !e.match(/^来源于(?:.+?英语|人名)$/g));
-      return [...new Set(ts)].sort().map((t) => [w, t]);
+      return [...new Set(ts)].sort().map((t) => [w, t, e.frq || ""]);
     })
     .flat();
   const en2zhDictPairs = sortBy(
@@ -99,7 +99,7 @@ import { workdirFix } from "./workdirFix";
   const limitWords = new Set(
     setCounting.filter(([zh, count]) => count >= 100).map((e) => e[0])
   );
-  
+
   {
     const zhGroups = groupBy(([en, zh]) => zh, en2zhDictPairs);
     const setCounting = sortBy(
@@ -109,7 +109,7 @@ import { workdirFix } from "./workdirFix";
     console.log(setCounting);
   }
   const en2zhTSV = en2zhDictPairs
-    .map(([en, zh]) => [zh, en.toLowerCase()].join("\t"))
+    .map(([en, zh, frq]) => [zh, en.toLowerCase(), frq].join("\t"))
     .join("\n");
   await dictUpdate("../Rime/translate_en2zh.dict.yaml", en2zhTSV);
 
@@ -121,25 +121,3 @@ import { workdirFix } from "./workdirFix";
   await snorun("cd .. && install.bat");
   console.log("update done");
 }
-async function dictUpdate(dictYamlPath: string, dictContent: string) {
-  const theYaml = await readFileUtf8(dictYamlPath);
-
-  const replacedYaml = theYaml.replace(
-    /\.\.\.[\s\S]*$/,
-    `...\n\n${dictContent}\n`
-  );
-
-  const versionBumpedYaml =
-    replacedYaml === theYaml
-      ? replacedYaml
-      : replacedYaml.replace(
-          /version: "(.*)"/,
-          (_, version) =>
-            'version: "' + new SemVer(version).inc("patch").version + '"'
-        );
-
-  await writeFile(dictYamlPath, versionBumpedYaml);
-  console.log(dictYamlPath + " dict content updated");
-}
-
-
