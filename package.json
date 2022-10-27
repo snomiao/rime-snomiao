@@ -1,6 +1,6 @@
 {
   "name": "rime-snomiao",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "由以下方案混合： 86 版五笔 | 拼音 | Emoji | 顔文字（Kaomoji) | 日本語",
   "bin": "install.bat",
   "type": "module",
