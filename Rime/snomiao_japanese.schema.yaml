@@ -197,7 +197,7 @@ pinyin_reverse_lookup:
 translate_en2jp_lookup:
   tag: translate_en2jp_lookup
   dictionary: translate_en2jp
-  prism: snomiao_japanese
+  prism: translate_en2jp
   tips: 〔English Lookup〕
   prefix: "E"
   suffix: "`"
@@ -262,7 +262,7 @@ recognizer:
     wubi86_lookup: "^W[a-z]*`?$"
     pinyin_lookup: "^P[a-z;/,.]*`?$"
     translate_en2jp_lookup: "^E[a-z;/,.]*`?$"
-
+ 
 # zh_jp:
 #   option_name: zh_jp
 #   opencc_config: jp_t2s.json
