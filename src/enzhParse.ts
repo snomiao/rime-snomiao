@@ -111,7 +111,7 @@ import { dictUpdate } from "./dictUpdate";
   const en2zhTSV = en2zhDictPairs
     .map(([en, zh, frq]) => [zh, en.toLowerCase(), frq].join("\t"))
     .join("\n");
-  await dictUpdate("../Rime/translate_en2zh.dict.yaml", en2zhTSV);
+  await dictUpdate("Rime/translate_en2zh.dict.yaml", en2zhTSV);
 
   // const en2enTSV = en2zhDictPairs
   //   .map(([en, zh]) => [en, en.toLowerCase()].join("\t"))

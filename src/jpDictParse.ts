@@ -2,16 +2,21 @@ import { assert } from "console";
 import Mdict from "mdict-js";
 
 export default function jpDictParse(engWordsSample: string[], mdx: Mdict) {
-    return engWordsSample
+  const wordPairs = [...new Set(engWordsSample)]
+    .sort()
     .map((keyText) => {
       const r = mdx.lookup(keyText);
+      if (r.keyText !== keyText) return [];
       assert(
         r.keyText === keyText,
         JSON.stringify({ rkt: r.keyText, kt: keyText })
       );
-      return r;
+      return [[r.keyText, r.definition] as [string, string]];
     })
-    .map(({ keyText, definition }) => {
+    .flat();
+
+  return [...new Map(wordPairs).entries()]
+    .map(([keyText, definition]) => {
       const word = keyText;
       if (word.match(/^[A-Z]/)) return [];
       if (word.length < 2) return [];
@@ -31,7 +36,6 @@ export default function jpDictParse(engWordsSample: string[], mdx: Mdict) {
         .replace(/\[.*?\]|【.*?】/g, "") // 领域、国家
         .replace(/〔.*?〕/g, "") // 年代
         .replace(/\d\)。/g, "") // 序号
-
         // .replace(/[a-z]+(?:・[a-z]+)+/g, "") //頭言葉
         .replace(/\*|・/g, "") // 符號
         .replace(/[;；,，。.]+/g, ";") // 符號
