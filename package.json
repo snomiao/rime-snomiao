@@ -21,8 +21,8 @@
   "license": "ISC",
   "scripts": {
     "init": "pnpm install && npm run dev",
-    "dev": "nodemon -e yaml,ts -x tsx deploy.ts",
-    "dev:enzh": "cd src && tsx watch enzhPasrse.ts",
+    "dev": "nodemon -e yaml,ts -x tsx src/cli-deploy.ts",
+    "dev:enzh": "tsx watch src/enzhPasrse.ts",
     "postinstall": "cd tools && install.bat",
     "deploy": "cd tools && deploy.bat"
   },

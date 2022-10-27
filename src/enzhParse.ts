@@ -118,6 +118,5 @@ import { dictUpdate } from "./dictUpdate";
   //   .join("\n");
   // await dictUpdate("../Rime/translate_en2en.dict.yaml", en2enTSV);
 
-  await snorun("cd .. && install.bat");
   console.log("update done");
 }
