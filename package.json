@@ -20,7 +20,7 @@
   "author": "snomiao@gmail.com",
   "license": "ISC",
   "scripts": {
-    "dev": "cd src && tsx watch enzhPasrse.ts",
+    "dev": "nodemon -e yaml,ts -x tsx src/cli-deploy.ts",
     "postinstall": "cd tools && install.bat",
     "deploy": "cd tools && deploy.bat"
   },
