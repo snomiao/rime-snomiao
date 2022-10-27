@@ -20,7 +20,9 @@
   "author": "snomiao@gmail.com",
   "license": "ISC",
   "scripts": {
-    "dev": "cd src && tsx watch enzhPasrse.ts",
+    "init": "pnpm install && npm run dev",
+    "dev": "nodemon -e yaml,ts -x tsx deploy.ts",
+    "dev:enzh": "cd src && tsx watch enzhPasrse.ts",
     "postinstall": "cd tools && install.bat",
     "deploy": "cd tools && deploy.bat"
   },
