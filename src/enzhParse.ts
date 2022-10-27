@@ -42,7 +42,7 @@ import { dictUpdate } from "./dictUpdate";
       if (w.match(/ /i)) return []; // no phrase
       const ts = e.translation
         .replace(/&/g, "")
-        .replace(/\<.*?\>/g, "") // ?
+        .replace(/\<.*?\>/g, "") // 專業
         .replace(/\(.*?\)|（.*?）/g, "") // 备注
         .replace(/\[.*?\]|【.*?】/g, "") // 领域、国家
         .replace(/〔.*?〕/g, "") // 年代
