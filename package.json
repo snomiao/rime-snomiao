@@ -22,6 +22,7 @@
   "scripts": {
     "init": "pnpm install && npm run dev",
     "dev": "nodemon -e yaml,ts -x tsx src/cli-deploy.ts",
+    "debug": "cd tools && debug",
     "dev:enzh": "tsx watch src/enzhPasrse.ts",
     "postinstall": "cd tools && install.bat",
     "deploy": "cd tools && deploy.bat"

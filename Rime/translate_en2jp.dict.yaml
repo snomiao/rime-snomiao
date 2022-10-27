@@ -1,0 +1,14 @@
+# encoding: utf-8
+#
+# english_chinese
+#
+#
+
+---
+name: translate_en2jp
+version: "1.1.7"
+sort: by_weight              # 按字頻排序
+max_phrase_length: 1         # 不生成詞彙
+import_tables:
+  - 'translate_en2jp.vp'
+...

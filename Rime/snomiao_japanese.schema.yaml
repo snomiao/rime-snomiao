@@ -4,15 +4,15 @@
 
 schema:
   schema_id: snomiao_japanese
-  name: "@雪星日本語方案"
-  version: "1.1.1"
+  name: "@雪星日本語方案2"
+  version: "1.1.2"
   author:
     - ensigma96 <ensigma96@gmail.com>
-    - snomiao <snomiao@gmail.com>`
+    - snomiao <snomiao@gmail.com>
   dependencies:
-    - terra_pinyin # for using reverse lookup
-    - wubi86 # for using reverse lookup
-    - translate_en2jp_vp # for using reverse lookup
+    - terra_pinyin
+    - wubi86
+    - translate_en2jp
     - stroke
 
 switches:
@@ -46,7 +46,7 @@ engine:
     - ascii_segmentor
     - matcher
     - abc_segmentor
-    - affix_segmentor@en2jp_vp_lookup
+    - affix_segmentor@translate_en2jp_lookup
     - affix_segmentor@pinyin_lookup
     - affix_segmentor@stroke_lookup
     - affix_segmentor@wubi86_lookup
@@ -55,28 +55,22 @@ engine:
   translators:
     - punct_translator
     - script_translator
-    - reverse_lookup_translator
+    # - reverse_lookup_translator
     - script_translator@pinyin_lookup
-    - script_translator@en2jp_vp_lookup
+    - table_translator@translate_en2jp_lookup
     - script_translator@stroke_lookup
     - script_translator@wubi86_lookup
-    # - script_translator@hannom_lookup
-    # - script_translator@hanja_lookup
   filters:
     - simplifier
-    #- simplifier@jp_variants
-    #- simplifier@zh_simp
-    #- simplifier@zh_tw
-    - uniquifier
     - reverse_lookup_filter@pinyin_reverse_lookup
-    - reverse_lookup_filter@en2jp_vp_reverse_lookup
+    - reverse_lookup_filter@translate_en2jp_reverse_lookup
     - reverse_lookup_filter@stroke_reverse_lookup
     - reverse_lookup_filter@wubi86_reverse_lookup
-    # - reverse_lookup_filter@hanja_reverse_lookup
+    - uniquifier
 
 abc_segmentor:
   extra_tags:
-    - en2jp_vp_lookup
+    - translate_en2jp_lookup
     - pinyin_lookup
 
 speller:
@@ -200,17 +194,17 @@ pinyin_reverse_lookup:
   dictionary: japanese
   spelling_hints: 5
 
-en2jp_vp_lookup:
-  tag: en2jp_vp_lookup
-  dictionary: translate_en2jp_vp
-  prism: translate_en2jp_vp
+translate_en2jp_lookup:
+  tag: translate_en2jp_lookup
+  dictionary: translate_en2jp
+  prism: snomiao_japanese
   tips: 〔English Lookup〕
   prefix: "E"
   suffix: "`"
   tips: 〔English 反查〕
 
-en2jp_vp_reverse_lookup:
-  tags: [en2jp_vp_lookup]
+translate_en2jp_reverse_lookup:
+  tags: [translate_en2jp_lookup]
   dictionary: japanese
   spelling_hints: 5
 
@@ -233,10 +227,13 @@ stroke_reverse_lookup:
 
 wubi86_lookup:
   tag: wubi86_lookup
+  dictionary: wubi86
+  enable_completion: true
   prefix: "W"
   suffix: "`"
-  dictionary: wubi86
   tips: 〔五筆86反查〕
+  comment_format:
+    - xlit/gh/-|/
 
 wubi86_reverse_lookup:
   tags: [wubi86_lookup]
@@ -264,7 +261,7 @@ recognizer:
     stroke_lookup: "^H[a-z]*`?$"
     wubi86_lookup: "^W[a-z]*`?$"
     pinyin_lookup: "^P[a-z;/,.]*`?$"
-    en2jp_vp_lookup: "^E[a-z;/,.]*`?$"
+    translate_en2jp_lookup: "^E[a-z;/,.]*`?$"
 
 # zh_jp:
 #   option_name: zh_jp

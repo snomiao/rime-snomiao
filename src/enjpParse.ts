@@ -16,7 +16,7 @@ import workdirFix from "./workdirFix";
     romaji: e["Japanese VP"]?.match(/\((.*)\)/)?.[0],
   }));
   await dictUpdate(
-    "../Rime/translate_en2jp_vp.dict.yaml",
+    "../Rime/translate_en2jp.vp.dict.yaml",
     rows.map(({ en, jp }) => [jp, en].join("\t")).join("\n")
   );
 
