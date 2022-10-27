@@ -12,6 +12,7 @@ schema:
   dependencies:
     - terra_pinyin # for using reverse lookup
     - wubi86 # for using reverse lookup
+    - translate_en2jp_vp # for using reverse lookup
     - stroke
 
 switches:
@@ -22,13 +23,12 @@ switches:
     states: [半角, 全角]
   - name: simplification
     states: [漢字, 汉字]
-  #- options: [jp_variants, zh_simp, zh_tw ]
-  #- options: [zh_simp, zh_tw ]
-  #  reset: 0
-  #  states:
-  #    - 字形 → 日本
-  #    - 字形 → 大陸
-  #    - 字形 → 台灣
+  # - options: [jp_variants, zh_simp, zh_tw]
+  #   reset: 0
+  #   states:
+  #     - 字形 → 日本
+  #     - 字形 → 大陸
+  #     - 字形 → 台灣
   - name: ascii_punct
     states: [。，, ．，]
 
@@ -46,11 +46,10 @@ engine:
     - ascii_segmentor
     - matcher
     - abc_segmentor
+    - affix_segmentor@en2jp_vp_lookup
     - affix_segmentor@pinyin_lookup
     - affix_segmentor@stroke_lookup
     - affix_segmentor@wubi86_lookup
-    # - affix_segmentor@hannom_lookup
-    # - affix_segmentor@hanja_lookup
     - punct_segmentor
     - fallback_segmentor
   translators:
@@ -58,6 +57,7 @@ engine:
     - script_translator
     - reverse_lookup_translator
     - script_translator@pinyin_lookup
+    - script_translator@en2jp_vp_lookup
     - script_translator@stroke_lookup
     - script_translator@wubi86_lookup
     # - script_translator@hannom_lookup
@@ -68,14 +68,15 @@ engine:
     #- simplifier@zh_simp
     #- simplifier@zh_tw
     - uniquifier
-    # - reverse_lookup_filter@stroke_lookup
     - reverse_lookup_filter@pinyin_reverse_lookup
+    - reverse_lookup_filter@en2jp_vp_reverse_lookup
     - reverse_lookup_filter@stroke_reverse_lookup
     - reverse_lookup_filter@wubi86_reverse_lookup
     # - reverse_lookup_filter@hanja_reverse_lookup
 
 abc_segmentor:
   extra_tags:
+    - en2jp_vp_lookup
     - pinyin_lookup
 
 speller:
@@ -98,7 +99,7 @@ translator:
 
 pinyin_lookup:
   tag: pinyin_lookup
-  prefix: "`"
+  prefix: "P"
   dictionary: terra_pinyin
   prism: terra_pinyin
   preedit_format:
@@ -197,13 +198,27 @@ pinyin_lookup:
 pinyin_reverse_lookup:
   tags: [pinyin_lookup]
   dictionary: japanese
-  spelling_hints: 10
+  spelling_hints: 5
+
+en2jp_vp_lookup:
+  tag: en2jp_vp_lookup
+  dictionary: translate_en2jp_vp
+  prism: translate_en2jp_vp
+  tips: 〔English Lookup〕
+  prefix: "E"
+  suffix: "`"
+  tips: 〔English 反查〕
+
+en2jp_vp_reverse_lookup:
+  tags: [en2jp_vp_lookup]
+  dictionary: japanese
+  spelling_hints: 5
 
 stroke_lookup:
   tag: stroke_lookup
   dictionary: stroke
   enable_completion: true
-  prefix: "`H"
+  prefix: "H"
   suffix: "`"
   tips: 〔筆畫反查〕
   preedit_format:
@@ -213,19 +228,19 @@ stroke_lookup:
 
 stroke_reverse_lookup:
   tags: [stroke_lookup]
-  spelling_hints: 10
+  spelling_hints: 5
   dictionary: japanese
 
 wubi86_lookup:
   tag: wubi86_lookup
-  prefix: "`W"
+  prefix: "W"
   suffix: "`"
   dictionary: wubi86
   tips: 〔五筆86反查〕
 
 wubi86_reverse_lookup:
   tags: [wubi86_lookup]
-  spelling_hints: 10
+  spelling_hints: 5
   dictionary: japanese
 
 punctuator:
@@ -236,22 +251,26 @@ key_binder:
     - { accept: "Control+Shift+1", select: .next, when: always }
     - { accept: "Control+Shift+2", select: snomiao_wubi, when: always }
     - { accept: "Control+Shift+3", select: snomiao_japanese, when: always }
-    - { accept: "Control+Shift+4", select: snomiao_pinyin_english, when: always }
+    - {
+        accept: "Control+Shift+4",
+        select: snomiao_pinyin_english,
+        when: always,
+      }
     - { accept: "Control+Shift+5", select: international, when: always }
 
 recognizer:
   import_preset: default
   patterns:
-    stroke_lookup: "`H[a-z]*`?$"
-    wubi86_lookup: "`W[a-z]*`?$"
-    pinyin_lookup: "`[a-z;/,.]*`?$"
-    # hannom_lookup: "`V[a-z]*?$"
-    # hanja_lookup: "`K[a-z]*?$"
-#zh_jp:
-#  option_name: zh_jp
-#  opencc_config: jp_t2s.json
-#  #tips: all
-#  tips: none
+    stroke_lookup: "^H[a-z]*`?$"
+    wubi86_lookup: "^W[a-z]*`?$"
+    pinyin_lookup: "^P[a-z;/,.]*`?$"
+    en2jp_vp_lookup: "^E[a-z;/,.]*`?$"
+
+# zh_jp:
+#   option_name: zh_jp
+#   opencc_config: jp_t2s.json
+#   #tips: all
+#   tips: none
 
 # zh_simp:
 #   option_name: zh_simp
@@ -269,5 +288,5 @@ recognizer:
 #   tips: none
 
 # simplifier:
-#  option_name: jp_variants
-#  opencc_config: jp_t2s.json
+#   option_name: jp_variants
+#   opencc_config: jp_t2s.json
