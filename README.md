@@ -85,6 +85,9 @@ translator:
 
 Copyleft，爱用就拿去
 
-## Reference
+## Reference & ThanksTo
 
 wubi86
+- [中日英自然码（带辅码）双拼输入法](https://github.com/lippmann/lrime)
+- [Rime double pinyin plus](https://github.com/mutoe/rime)
+- [OpenCC](https://github.com/BYVoid/OpenCC)

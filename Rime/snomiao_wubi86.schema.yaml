@@ -89,16 +89,21 @@ reverse_lookup:
     - xform/([nl])ue/$1üe/
     - xform/([jqxy])v/$1u/
 
+easy_en_lookup:
+  dictionary: easy_en
+  enable_completion: true
+  tips: 〔英语〕
+
 translate_en2zh_lookup:
-  dictionary: wubi86
+  dictionary: translate_en2zh
   # enable_completion: true
   prefix: "z"
   suffix: "'"
-  tips: 〔英语〕
+  tips: 〔英语2zh〕
 
 translate_en2zh_reverse_lookup: #
   tags: [translate_en2zh_lookup]
-  dictionary: translate_en2zh
+  dictionary: wubi86
 
 punctuator:
   import_preset: default
