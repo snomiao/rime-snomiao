@@ -8,9 +8,10 @@ import workdirFix from "./workdirFix";
   const words = mdx.keyList.map(({ keyText }) => keyText);
   const engWords = words.filter((e) => e.match(/^[ a-zA-Z]+$/));
   const engWordsSample = engWords.sort(() => Math.random() - 0.5).slice(0, 10);
-  const watchedFile = "src/jpDictUpdate.ts";
   await jpDictUpdate(engWords, mdx);
-  // await snohmr<typeof import("./jpDictUpdate")>(watchedFile, async (m) => {
-  //   await m.default(engWordsSample, mdx);
-  // });
+  // 
+  // await snohmr<typeof import("./jpDictUpdate")>(
+  //   "src/jpDictUpdate.ts",
+  //   async (m) => await m.default(engWordsSample, mdx)
+  // );
 }

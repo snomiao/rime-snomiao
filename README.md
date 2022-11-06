@@ -93,3 +93,6 @@ wubi86
 - [中日英自然码（带辅码）双拼输入法](https://github.com/lippmann/lrime)
 - [Rime double pinyin plus](https://github.com/mutoe/rime)
 - [OpenCC](https://github.com/BYVoid/OpenCC)
+- [gkovacs/rime-japanese: 日语输入法 Input method for typing Japanese with RIME]( https://github.com/gkovacs/rime-japanese/ )
+- [rime/rime-wubi: 【五筆字型】輸入方案]( https://github.com/rime/rime-wubi )
+- 

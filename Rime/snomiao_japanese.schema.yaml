@@ -4,13 +4,13 @@
 
 schema:
   schema_id: snomiao_japanese
-  name: "@雪星日本語方案2"
+  name: "雪星日本語方案2"
   version: "1.1.2"
   author:
     - ensigma96 <ensigma96@gmail.com>
     - snomiao <snomiao@gmail.com>
   dependencies:
-    - terra_pinyin
+    - luna_pinyin
     - wubi86
     - translate_en2jp
     - stroke
@@ -21,16 +21,25 @@ switches:
     states: [中文, 西文]
   - name: full_shape
     states: [半角, 全角]
+  - name: extended_charset
+    states: [常用, 增廣]
   - name: simplification
     states: [漢字, 汉字]
-  # - options: [jp_variants, zh_simp, zh_tw]
-  #   reset: 0
-  #   states:
-  #     - 字形 → 日本
-  #     - 字形 → 大陸
-  #     - 字形 → 台灣
   - name: ascii_punct
     states: [。，, ．，]
+  - name: emoji_suggestion
+    reset: 1
+    states: ["🈚️️\uFE0E", "🈶️️\uFE0F"]
+    
+  # - name: t2jp
+  #   reset: 1
+  #   states: ["T2JP", "OFF"]
+  - options: [jp_variants, zh_simp, zh_tw]
+    reset: 0
+    states:
+      - 字形 → 日本
+      - 字形 → 大陸
+      - 字形 → 台灣
 
 engine:
   processors:
@@ -62,16 +71,17 @@ engine:
     - script_translator@wubi86_lookup
   filters:
     - simplifier
-    - reverse_lookup_filter@pinyin_reverse_lookup
+    - simplifier@emoji_suggestion
+    # - simplifier@t2jp
+    - reverse_lookup_filter@japanese_reverse_lookup
     - reverse_lookup_filter@translate_en2jp_reverse_lookup
-    - reverse_lookup_filter@stroke_reverse_lookup
-    - reverse_lookup_filter@wubi86_reverse_lookup
     - uniquifier
 
 abc_segmentor:
   extra_tags:
     - translate_en2jp_lookup
     - pinyin_lookup
+    - wubi86_lookup
 
 speller:
   alphabet: "zyxwvutsrqponmlkjihgfedcba-_"
@@ -94,8 +104,8 @@ translator:
 pinyin_lookup:
   tag: pinyin_lookup
   prefix: "P"
-  dictionary: terra_pinyin
-  prism: terra_pinyin
+  dictionary: luna_pinyin
+  prism: luna_pinyin
   preedit_format:
     - xform/([bpmfdtnljqx])n/$1iao/
     - xform/(\w)g/$1eng/
@@ -187,12 +197,7 @@ pinyin_lookup:
     - xform/([nljqxy])v/$1ü/
     - xform/eh[0-5]?/ê/
     - xform/([a-z]+)[0-5]/$1/
-  tips: 〔拼音反查〕
-
-pinyin_reverse_lookup:
-  tags: [pinyin_lookup]
-  dictionary: japanese
-  spelling_hints: 5
+  tips: 〔拼音〕
 
 translate_en2jp_lookup:
   tag: translate_en2jp_lookup
@@ -203,27 +208,17 @@ translate_en2jp_lookup:
   suffix: "`"
   tips: 〔English 反查〕
 
-translate_en2jp_reverse_lookup:
-  tags: [translate_en2jp_lookup]
-  dictionary: japanese
-  spelling_hints: 5
-
 stroke_lookup:
   tag: stroke_lookup
   dictionary: stroke
   enable_completion: true
   prefix: "H"
   suffix: "`"
-  tips: 〔筆畫反查〕
+  tips: 〔筆畫輸入〕
   preedit_format:
     - xlit/hspnz/一丨丿丶乙/
   comment_format:
     - xlit/hspnz/一丨丿丶乙/
-
-stroke_reverse_lookup:
-  tags: [stroke_lookup]
-  spelling_hints: 5
-  dictionary: japanese
 
 wubi86_lookup:
   tag: wubi86_lookup
@@ -231,38 +226,21 @@ wubi86_lookup:
   enable_completion: true
   prefix: "W"
   suffix: "`"
-  tips: 〔五筆86反查〕
+  tips: 〔五筆86輸入〕
   comment_format:
     - xlit/gh/-|/
-
-wubi86_reverse_lookup:
-  tags: [wubi86_lookup]
-  spelling_hints: 5
-  dictionary: japanese
-
-punctuator:
-  import_preset: default
-
-key_binder:
-  bindings:
-    - { accept: "Control+Shift+1", select: .next, when: always }
-    - { accept: "Control+Shift+2", select: snomiao_wubi, when: always }
-    - { accept: "Control+Shift+3", select: snomiao_japanese, when: always }
-    - {
-        accept: "Control+Shift+4",
-        select: snomiao_pinyin_english,
-        when: always,
-      }
-    - { accept: "Control+Shift+5", select: international, when: always }
 
 recognizer:
   import_preset: default
   patterns:
-    stroke_lookup: "^H[a-z]*`?$"
-    wubi86_lookup: "^W[a-z]*`?$"
+    easy_en_lookup: "^E[a-z]*'?$"
     pinyin_lookup: "^P[a-z;/,.]*`?$"
-    translate_en2jp_lookup: "^E[a-z;/,.]*`?$"
+    punct: "^/([0-9]+[a-z]*|[a-z]+)$"
+    stroke_lookup: "^H[a-z]*`?$"
+    translate_en2jp_lookup: "^T[a-z;/,.]*`?$"
+    wubi86_lookup: "^W[a-z]*'?$"
  
+# 字形轉化，emoji生成
 # zh_jp:
 #   option_name: zh_jp
 #   opencc_config: jp_t2s.json
@@ -284,6 +262,48 @@ recognizer:
 #   opencc_config: jp_t2s.json
 #   tips: none
 
-# simplifier:
-#   option_name: jp_variants
-#   opencc_config: jp_t2s.json
+simplifier:
+  option_name: jp_variants
+  # opencc_config: jp_t2s.json
+  opencc_config: t2jp.json
+
+emoji_suggestion:
+  opencc_config: emoji.json
+  option_name: emoji_suggestion
+  tips: all
+
+t2jp:
+  option_name: t2jp
+  opencc_config: t2jp.json
+  
+##########################
+# Lookup
+japanese_reverse_lookup:
+  tags: [translate_en2jp_lookup, wubi86_lookup, stroke_lookup, pinyin_lookup]
+  spelling_hints: 5
+  dictionary: japanese
+
+translate_en2jp_reverse_lookup:
+  tags: [translate_en2jp_lookup]
+  spelling_hints: 5
+  dictionary: translate_en2jp
+
+##########################
+# other
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+  bindings:
+    - { accept: "Control+Shift+1", select: .next, when: always }
+
+editor:
+  bindings:
+    Alt_L: commit_comment
+    Shift_L: commit_comment
+
+menu:
+  page_size: 10
+
+
