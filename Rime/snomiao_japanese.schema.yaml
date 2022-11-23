@@ -30,7 +30,6 @@ switches:
   - name: emoji_suggestion
     reset: 1
     states: ["🈚️️\uFE0E", "🈶️️\uFE0F"]
-    
   # - name: t2jp
   #   reset: 1
   #   states: ["T2JP", "OFF"]
@@ -266,6 +265,7 @@ simplifier:
   option_name: jp_variants
   # opencc_config: jp_t2s.json
   opencc_config: t2jp.json
+  tips: all
 
 emoji_suggestion:
   opencc_config: emoji.json
@@ -305,5 +305,3 @@ editor:
 
 menu:
   page_size: 10
-
-
