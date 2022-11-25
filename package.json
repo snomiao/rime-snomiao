@@ -26,7 +26,8 @@
     "debug": "cd tools && debug",
     "postversion": "npm publish",
     "postinstall": "cd tools && install",
-    "deploy": "cd tools && deploy"
+    "deploy": "cd tools && deploy",
+    "test": "vitest"
   },
   "bugs": {
     "url": "https://github.com/snomiao/rime-snomiao/issues"
@@ -42,6 +43,7 @@
     "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
     "mdict-js": "^10.0.1",
+    "opencc": "^1.1.3",
     "pkg-dir": "^7.0.0",
     "rambda": "^7.3.0",
     "read-file-utf8": "^2.0.4",
@@ -50,5 +52,9 @@
     "snorun": "^1.1.17",
     "tsx": "^3.11.0",
     "vite": "^3.2.1"
+  },
+  "dependencies": {
+    "top-level-git": "^1.0.1",
+    "vitest": "^0.25.3"
   }
 }

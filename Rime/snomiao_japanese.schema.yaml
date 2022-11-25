@@ -54,6 +54,7 @@ engine:
     - ascii_segmentor
     - matcher
     - abc_segmentor
+    - affix_segmentor@japanese_lookup
     - affix_segmentor@translate_en2jp_lookup
     - affix_segmentor@pinyin_lookup
     - affix_segmentor@stroke_lookup
@@ -62,25 +63,27 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
-    - script_translator
+    # - script_translator
     # - reverse_lookup_translator
+    - table_translator@japanese_lookup
     - script_translator@pinyin_lookup
     - table_translator@translate_en2jp_lookup
-    - script_translator@stroke_lookup
-    - script_translator@wubi86_lookup
+    - table_translator@stroke_lookup
+    - table_translator@wubi86_lookup
   filters:
     # - simplifier
     - simplifier@emoji_suggestion
-    - simplifier@t2jp
+    - simplifier@simplifier_t2jp
     - uniquifier
     - reverse_lookup_filter@japanese_reverse_lookup
     - reverse_lookup_filter@translate_en2jp_reverse_lookup
 
 abc_segmentor:
   extra_tags:
+    - japanese_lookup
     - translate_en2jp_lookup
-    - pinyin_lookup
     - wubi86_lookup
+    - pinyin_lookup
 
 speller:
   alphabet: "zyxwvutsrqponmlkjihgfedcba-_"
@@ -92,7 +95,9 @@ speller:
     - "derive/i_e/ye/"
     # - 'derive/fu/hu/'
 
-translator:
+
+# lookupers
+japanese_lookup:
   dictionary: japanese
   spelling_hints: 5
   comment_format:
@@ -196,7 +201,7 @@ pinyin_lookup:
     - xform/([nljqxy])v/$1ü/
     - xform/eh[0-5]?/ê/
     - xform/([a-z]+)[0-5]/$1/
-  tips: 〔拼音〕
+  tips: 〔拼音和字〕
 
 translate_en2jp_lookup:
   tag: translate_en2jp_lookup
@@ -272,10 +277,11 @@ emoji_suggestion:
   option_name: emoji_suggestion
   tips: all
 
-t2jp:
-  option_name: t2jp
+simplifier_t2jp:
+  # option_name: t2jp
   opencc_config: t2jp.json
   tips: none
+
 
 ##########################
 # Lookup

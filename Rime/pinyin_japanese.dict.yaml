@@ -28,8 +28,8 @@
 #
 
 ---
-name: luna_pinyin
-version: "2020.08.03"
+name: pinyin_japanese
+version: "1.0.0"
 sort: by_weight
 use_preset_vocabulary: true
 ...
