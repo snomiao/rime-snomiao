@@ -10,7 +10,7 @@ schema:
     - ensigma96 <ensigma96@gmail.com>
     - snomiao <snomiao@gmail.com>
   dependencies:
-    - luna_pinyin
+    - pinyin_japanese
     - wubi86
     - translate_en2jp
     - stroke
@@ -33,12 +33,12 @@ switches:
   # - name: t2jp
   #   reset: 1
   #   states: ["T2JP", "OFF"]
-  - options: [jp_variants, zh_simp, zh_tw]
-    reset: 0
-    states:
-      - 字形 → 日本
-      - 字形 → 大陸
-      - 字形 → 台灣
+  # - options: [jp_variants, zh_simp, zh_tw]
+  #   reset: 0
+  #   states:
+  #     - 字形 → 日本
+  #     - 字形 → 大陸
+  #     - 字形 → 台灣
 
 engine:
   processors:
@@ -69,12 +69,12 @@ engine:
     - script_translator@stroke_lookup
     - script_translator@wubi86_lookup
   filters:
-    - simplifier
+    # - simplifier
     - simplifier@emoji_suggestion
-    # - simplifier@t2jp
+    - simplifier@t2jp
+    - uniquifier
     - reverse_lookup_filter@japanese_reverse_lookup
     - reverse_lookup_filter@translate_en2jp_reverse_lookup
-    - uniquifier
 
 abc_segmentor:
   extra_tags:
@@ -103,8 +103,8 @@ translator:
 pinyin_lookup:
   tag: pinyin_lookup
   prefix: "P"
-  dictionary: luna_pinyin
-  prism: luna_pinyin
+  dictionary: pinyin_japanese
+  prism: pinyin_japanese
   preedit_format:
     - xform/([bpmfdtnljqx])n/$1iao/
     - xform/(\w)g/$1eng/
@@ -238,7 +238,7 @@ recognizer:
     stroke_lookup: "^H[a-z]*`?$"
     translate_en2jp_lookup: "^T[a-z;/,.]*`?$"
     wubi86_lookup: "^W[a-z]*'?$"
- 
+
 # 字形轉化，emoji生成
 # zh_jp:
 #   option_name: zh_jp
@@ -261,11 +261,11 @@ recognizer:
 #   opencc_config: jp_t2s.json
 #   tips: none
 
-simplifier:
-  option_name: jp_variants
-  # opencc_config: jp_t2s.json
-  opencc_config: t2jp.json
-  tips: all
+# simplifier:
+#   option_name: jp_variants
+#   # opencc_config: jp_t2s.json
+#   opencc_config: t2jp.json
+#   tips: none
 
 emoji_suggestion:
   opencc_config: emoji.json
@@ -275,7 +275,8 @@ emoji_suggestion:
 t2jp:
   option_name: t2jp
   opencc_config: t2jp.json
-  
+  tips: none
+
 ##########################
 # Lookup
 japanese_reverse_lookup:
