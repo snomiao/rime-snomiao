@@ -40,7 +40,6 @@ export default function jpDictParse(engWordsSample: string[], mdx: Mdict) {
         .replace(/\*|・/g, "") // 符號
         .replace(/[;；,，。.]+/g, ";") // 符號
         .replace(/"/g, "") // 引号
-
         // 詞性;/
         .replace(
           /\b(?:a|abbr|ad|adj|adv|art|aux|comb|conj|en|exclam|i|ind|ing|int|interj|n|na|ngn|num|onn|pers|ph|phn|phr|pl|pla|pn|pp|pr|pref|prep|pron|st|suff|un|v|vbl|vi|vt)(?:\.|\b)/g,

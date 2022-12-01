@@ -56,7 +56,7 @@ engine:
     - abc_segmentor
     - affix_segmentor@japanese_lookup
     - affix_segmentor@translate_en2jp_lookup
-    - affix_segmentor@pinyin_lookup
+    - affix_segmentor@pinyin_japanese_lookup
     - affix_segmentor@stroke_lookup
     - affix_segmentor@wubi86_lookup
     - punct_segmentor
@@ -66,7 +66,7 @@ engine:
     # - script_translator
     # - reverse_lookup_translator
     - table_translator@japanese_lookup
-    - script_translator@pinyin_lookup
+    - script_translator@pinyin_japanese_lookup
     - table_translator@translate_en2jp_lookup
     - table_translator@stroke_lookup
     - table_translator@wubi86_lookup
@@ -83,7 +83,7 @@ abc_segmentor:
     - japanese_lookup
     - translate_en2jp_lookup
     - wubi86_lookup
-    - pinyin_lookup
+    - pinyin_japanese_lookup
 
 speller:
   alphabet: "zyxwvutsrqponmlkjihgfedcba-_"
@@ -105,11 +105,11 @@ japanese_lookup:
   preedit_format:
     - "xlit|q|ー|"
 
-pinyin_lookup:
-  tag: pinyin_lookup
+pinyin_japanese_lookup:
+  tag: pinyin_japanese_lookup
   prefix: "P"
   dictionary: pinyin_japanese
-  prism: pinyin_japanese
+  prism: snomiao_japanese
   preedit_format:
     - xform/([bpmfdtnljqx])n/$1iao/
     - xform/(\w)g/$1eng/
@@ -238,7 +238,7 @@ recognizer:
   import_preset: default
   patterns:
     easy_en_lookup: "^E[a-z]*'?$"
-    pinyin_lookup: "^P[a-z;/,.]*`?$"
+    pinyin_japanese_lookup: "^P[a-z;/,.]*`?$"
     punct: "^/([0-9]+[a-z]*|[a-z]+)$"
     stroke_lookup: "^H[a-z]*`?$"
     translate_en2jp_lookup: "^T[a-z;/,.]*`?$"
@@ -286,7 +286,7 @@ simplifier_t2jp:
 ##########################
 # Lookup
 japanese_reverse_lookup:
-  tags: [translate_en2jp_lookup, wubi86_lookup, stroke_lookup, pinyin_lookup]
+  tags: [translate_en2jp_lookup, wubi86_lookup, stroke_lookup, pinyin_japanese_lookup]
   spelling_hints: 5
   dictionary: japanese
 
