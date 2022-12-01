@@ -30,15 +30,6 @@ switches:
   - name: emoji_suggestion
     reset: 1
     states: ["🈚️️\uFE0E", "🈶️️\uFE0F"]
-  # - name: t2jp
-  #   reset: 1
-  #   states: ["T2JP", "OFF"]
-  # - options: [jp_variants, zh_simp, zh_tw]
-  #   reset: 0
-  #   states:
-  #     - 字形 → 日本
-  #     - 字形 → 大陸
-  #     - 字形 → 台灣
 
 engine:
   processors:
@@ -56,9 +47,9 @@ engine:
     - abc_segmentor
     - affix_segmentor@japanese_lookup
     - affix_segmentor@translate_en2jp_lookup
+    - affix_segmentor@wubi86_japanese_lookup
     - affix_segmentor@pinyin_japanese_lookup
     - affix_segmentor@stroke_lookup
-    - affix_segmentor@wubi86_japanese_lookup
     - punct_segmentor
     - fallback_segmentor
   translators:
@@ -66,14 +57,12 @@ engine:
     # - script_translator
     # - reverse_lookup_translator
     - table_translator@japanese_lookup
-    - script_translator@pinyin_japanese_lookup
     - table_translator@translate_en2jp_lookup
-    - table_translator@stroke_lookup
     - table_translator@wubi86_japanese_lookup
+    - script_translator@pinyin_japanese_lookup
+    - table_translator@stroke_lookup
   filters:
-    # - simplifier
     - simplifier@emoji_suggestion
-    - simplifier@simplifier_t2jp
     - uniquifier
     - reverse_lookup_filter@japanese_reverse_lookup
     - reverse_lookup_filter@translate_en2jp_reverse_lookup
@@ -245,44 +234,11 @@ recognizer:
     translate_en2jp_lookup: "^T[a-z;/,.]*`?$"
     wubi86_lookup: "^W[a-z]*'?$"
 
-# 字形轉化，emoji生成
-# zh_jp:
-#   option_name: zh_jp
-#   opencc_config: jp_t2s.json
-#   #tips: all
-#   tips: none
-
-# zh_simp:
-#   option_name: zh_simp
-#   opencc_config: t2s.json
-#   tips: none
-
-# zh_tw:
-#   option_name: zh_tw
-#   opencc_config: t2tw.json
-#   tips: none
-
-# jp_variants:
-#   option_name: jp_variants
-#   opencc_config: jp_t2s.json
-#   tips: none
-
-# simplifier:
-#   option_name: jp_variants
-#   # opencc_config: jp_t2s.json
-#   opencc_config: t2jp.json
-#   tips: none
-
+# emoji生成, 注：字形転化会影響反査故本方案使用詞典進行転換。
 emoji_suggestion:
   opencc_config: emoji.json
   option_name: emoji_suggestion
   tips: all
-
-simplifier_t2jp:
-  # option_name: t2jp
-  opencc_config: t2jp.json
-  tips: none
-
 
 ##########################
 # Lookup
