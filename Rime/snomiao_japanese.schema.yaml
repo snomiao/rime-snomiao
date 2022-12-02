@@ -91,7 +91,7 @@ speller:
 
 # lookupers
 japanese_lookup:
-  dictionary: japanese
+  dictionary: snomiao_japanese
   spelling_hints: 5
   comment_format:
     - "xlit|q|ー|"
