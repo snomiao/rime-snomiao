@@ -36,6 +36,9 @@ encoder:
       formula: "AaBaCaCb"
     - length_in_range: [4, 10]
       formula: "AaBaCaZa"
+
+import_tables:
+  - wubi86
 ...
 
 工	a	99454797	aa
