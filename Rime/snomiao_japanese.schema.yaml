@@ -113,10 +113,9 @@ translate_en2jp_lookup:
   tag: translate_en2jp_lookup
   dictionary: translate_en2jp
   prism: translate_en2jp
-  tips: 〔English Lookup〕
   prefix: "E"
   suffix: "`"
-  tips: 〔English 反查〕
+  tips: 〔English->日本語〕
 
 stroke_lookup:
   tag: stroke_lookup
@@ -135,7 +134,7 @@ wubi86_japanese_lookup:
   dictionary: wubi86_japanese
   prism: wubi86_japanese
   enable_completion: true
-  prefix: "W"
+  prefix: "J"
   suffix: "`"
   tips: 〔五筆和字〕
   comment_format:
@@ -171,7 +170,7 @@ emoji_suggestion:
 ##########################
 # Lookup
 japanese_reverse_lookup:
-  tags: [translate_en2jp_lookup, wubi86_lookup, stroke_lookup, pinyin_japanese_lookup]
+  tags: [translate_en2jp_lookup, wubi86_japanese_lookup, stroke_lookup, pinyin_japanese_lookup]
   spelling_hints: 5
   dictionary: japanese
 

@@ -10,8 +10,8 @@ s2t = opencc.OpenCC('s2t.json')
 t2jp = opencc.OpenCC('t2jp.json')
 # i = 'Rime/pinyin_japanese.dict.yaml'
 # o = 'Rime/pinyin_japanese.dict.yaml'
-i = 'Rime/wubi86.dict.yaml'
-o = 'Rime/wubi86_japanese.dict.yaml'
+i = 'Rime/pinyin_simp.dict.yaml'
+o = 'Rime/pinyin_japanese.dict.yaml'
 s = ''
 with open(i) as f:
     s = f.read()
