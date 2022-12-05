@@ -86,6 +86,8 @@ speller:
     - "derive/-/q/"
     # Add / remove rules the as you wish
     - "derive/i_e/ye/"
+    - "derive/tu/tsu/"
+    - "derive/si/shi/"
     # - 'derive/fu/hu/'
 
 
