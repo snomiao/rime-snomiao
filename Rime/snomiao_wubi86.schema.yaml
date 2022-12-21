@@ -147,7 +147,7 @@ translate_en2zh_reverse_lookup:
   dictionary: translate_en2zh
   comment_format:
     - "xform/^/ /"
-    # 英文反会很多，这里做个摘要
+    # 英文反查結果会很多，这里做个摘要否則会crash
     - "xform/(.{80}.+)/$1--/"
     - "xform/([a-z])-[a-z]+/$1/"
     - "xform/ (\\S\\S\\S\\S)\\S\\S+(?=.*?--$)/ $1-/"
