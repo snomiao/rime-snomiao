@@ -121,9 +121,7 @@ translator:
 
 （但如果需要做商用的話得注意項目中包含的其它幾個方案的 license（但应该没有這様的人吧……），如果有這種需求請参見 Reference 电進去自己看他們的 License）
 
-## Reference & ThanksTo
-
-本方案由以下方案排列組合而成：
+### 本方案由以下方案排列組合而成：
 
 - 86 版五笔
 - 拼音
@@ -131,9 +129,27 @@ translator:
 - 日本語(羅馬字)
 - 顔文字（Kaomoji)
 
+## Reference & ThanksTo
+
 - [中日英自然码（带辅码）双拼输入法](https://github.com/lippmann/lrime)
 - [Rime double pinyin plus](https://github.com/mutoe/rime)
 - [OpenCC](https://github.com/BYVoid/OpenCC)
 - [gkovacs/rime-japanese: 日语输入法 Input method for typing Japanese with RIME](https://github.com/gkovacs/rime-japanese/)
 - [rime/rime-wubi: 【五筆字型】輸入方案](https://github.com/rime/rime-wubi)
--
+
+## About
+
+### Author
+
+Author: snomiao <snomiao@gmail.com>
+Website: [snomiao.com](https://snomiao.com)
+
+### Sponsors
+
+- None yet.
+
+Claim your sponsorship by donating snomiao <[Email: snomiao@gmail.com](mailto:snomiao@gmail.com)>
+
+### Contribute
+
+The main repo is in [here](https://github.com/snomiao/js#readme), any issue and PR's welcome.
