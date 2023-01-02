@@ -35,6 +35,7 @@
   "homepage": "https://github.com/snomiao/rime-snomiao#readme",
   "devDependencies": {
     "@types/d3": "^7.4.0",
+    "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.11.3",
     "@types/semver": "^7.3.12",
     "chalk": "^5.1.2",
@@ -42,6 +43,7 @@
     "d3": "^7.6.1",
     "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
+    "lodash-es": "^4.17.21",
     "mdict-js": "^10.0.1",
     "opencc": "^1.1.3",
     "pkg-dir": "^7.0.0",

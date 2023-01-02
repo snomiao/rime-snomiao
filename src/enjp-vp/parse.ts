@@ -1,11 +1,11 @@
 import { csvParse } from "d3";
 import readFileUtf8 from "read-file-utf8";
-import rimeDictFileUpdate from "./rimeDictFileUpdate";
-import { rimeDictUpdate } from "./rimeDictUpdate";
-import workdirFix from "./workdirFix";
+import rimeDictFileUpdate from "../utils/rimeDictFileUpdate";
+import { rimeDictUpdate } from "../utils/rimeDictUpdate";
+import workPackageDir from "../lib/workPackageDir";
 
 {
-  await workdirFix();
+  await workPackageDir();
   // const fields =
   const fields = ["English VP", "Japanese VP"] as const;
   const csv = await readFileUtf8("../dict/English_to_JapaneseVP.csv");

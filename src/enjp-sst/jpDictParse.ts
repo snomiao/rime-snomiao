@@ -1,7 +1,7 @@
 import { assert } from "console";
 import Mdict from "mdict-js";
 
-export default function jpDictParse(engWordsSample: string[], mdx: Mdict) {
+export default function sstDictParse(engWordsSample: string[], mdx: Mdict) {
   const wordPairs = [...new Set(engWordsSample)]
     .sort()
     .map((keyText) => {

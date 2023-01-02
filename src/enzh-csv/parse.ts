@@ -7,11 +7,11 @@ import { groupBy, map, mapObjIndexed, replace, sortBy } from "rambda";
 import readFileUtf8 from "read-file-utf8";
 import snorun from "snorun";
 import { promisify } from "util";
-import workdirFix from "./workdirFix";
-import { rimeDictUpdate } from "./rimeDictUpdate";
-import { uniqueSort } from "./uniqueSort";
+import workPackageDir from "../lib/workPackageDir";
+import { rimeDictUpdate } from "../utils/rimeDictUpdate";
+import { uniqueSort } from "../lib/uniqueSort";
 {
-  await workdirFix();
+  await workPackageDir();
   const dictPath = "dict/enzh.csv";
   const csv = await enzhCsvParse(dictPath);
   const csvLineCount = csv.length;
