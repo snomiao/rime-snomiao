@@ -6,7 +6,6 @@ import workPackageDir from "../lib/workPackageDir";
 
 {
   await workPackageDir();
-  // const fields =
   const fields = ["English VP", "Japanese VP"] as const;
   const csv = await readFileUtf8("../dict/English_to_JapaneseVP.csv");
   const rows = csvParse<typeof fields[number]>(csv)
