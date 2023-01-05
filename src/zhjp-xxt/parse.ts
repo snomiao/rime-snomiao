@@ -8,6 +8,7 @@ export default async function parse(pairs: string[][]) {
     (e) => e.slice(0, 10),
     filter(([k, v]) => Boolean(v)),
     map(([k, v]) => {
+      // get plaint text (maybe there are other simple libraries)
       const text = new JSDOM(v).window.document.body.textContent;
       if (!text) throw new Error("no text");
       const results =
