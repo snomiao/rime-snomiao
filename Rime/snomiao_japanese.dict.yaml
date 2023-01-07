@@ -1,14 +1,12 @@
-# nihong-hybrid.dict.yaml
+# Rime dictionary
 # encoding: utf-8
 
 ---
 name: snomiao_japanese
-version: 'v0.3'
-#2022-12-02
+version: '0.3.2'
 
 import_tables:
-  - japanese
-  - japanese.jmdict
-  - japanese.kana
-  - wubi86_japanese
+  - 'japanese'
+  - 'wubi86_japanese'
+
 ...

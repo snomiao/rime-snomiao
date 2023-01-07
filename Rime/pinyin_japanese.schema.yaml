@@ -26,9 +26,6 @@ switches:
     states: [半角, 全角]
   - name: ascii_punct
     states: [。，, ．，]
-  - name: zhjp_translate
-    reset: 1
-    states: ["🈚️️\uFE0E", "🈶️️\uFE0F"]
 
 engine:
   processors:
@@ -52,21 +49,21 @@ engine:
     - reverse_lookup_translator
     - script_translator
   filters:
-    - simplifier@zhjp_translate
-    # - simplifier@simplifier_t2jp
+    # - simplifier@zhjp_translate
+    - simplifier@simplifier_t2jp
     - uniquifier
 
 ################## simplifier
 
 # 中日翻訳
-zhjp_translate:
-  opencc_config: zhjp.json
-  option_name: zhjp_translate
-  tips: all
+# zhjp_translate:
+#   opencc_config: zhjp.json
+#   option_name: zhjp_translate
+#   tips: all
 
-# simplifier_t2jp:
-#   opencc_config: t2jp.json
-#   tips: none
+simplifier_t2jp:
+  opencc_config: t2jp.json
+  tips: none
 
 ####################### speller
 speller:
