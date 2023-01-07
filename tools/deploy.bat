@@ -1,10 +1,10 @@
+@echo off
 
 cd %~dp0
 cd ..
 
 
 @REM clean outdated logs
-del /S /Q logs\*
 del /S /Q %TEMP%\rime.weasel.*
 
 @REM depreacted, use junction link to develop
@@ -14,6 +14,7 @@ del /S /Q %TEMP%\rime.weasel.*
 @REM deploy
 cd C:\Program Files (x86)\Rime\weasel-*
 WeaselDeployer.exe /deploy
+WeaselServer.exe
 
 cd %~dp0
 debug

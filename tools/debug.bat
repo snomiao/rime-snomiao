@@ -1,15 +1,14 @@
-
+@echo off
 cd %~dp0\..
 
 @REM check logs
+del /S /Q logs\*
 mkdir logs || echo mkdir logs
-copy %TEMP%\rime.weasel.* logs\
+@REM copy %TEMP%\rime.weasel.* logs\
 
 @REM open
-move logs\rime.weasel.*.ERROR.* logs\ERROR.log
-move logs\rime.weasel.*.INFO.* logs\INFO.log
-move logs\rime.weasel.*.WARNING.* logs\WARNING.log
-
-cmd /c code logs\ERROR.log logs\INFO.log logs\WARNING.log
+copy %TEMP%\rime.*ERROR* logs\ERROR.log && cmd /c code logs\ERROR.log
+copy %TEMP%\rime.*INFO* logs\INFO.log && cmd /c code logs\INFO.log
+copy %TEMP%\rime.*WARNING* logs\WARNING.log && cmd /c code logs\WARNING.log
 
 cd %~dp0\..
