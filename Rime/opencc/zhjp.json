@@ -13,9 +13,6 @@
       "dicts": [{
         "type": "text",
         "file": "zhjp_word.txt"
-      }, {
-        "type": "text",
-        "file": "zhjp_category.txt"
       }]
     }
   }]
