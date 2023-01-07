@@ -12,6 +12,7 @@ schema:
   dependencies:
     - pinyin_japanese
     - wubi86_japanese
+    - japanese
     - wubi86
     - translate_en2jp
     - stroke
@@ -30,7 +31,7 @@ switches:
     states: [。，, ．，]
   - name: zhjp_translate
     reset: 1
-    states: [OFF, ON]
+    states: [原文, 辞書]
   - name: emoji_suggestion
     reset: 1
     states: ["🈚️️\uFE0E", "🈶️️\uFE0F"]
@@ -94,10 +95,9 @@ speller:
     - "derive/si/shi/"
     # - 'derive/fu/hu/'
 
-
 # lookupers
 japanese_lookup:
-  dictionary: snomiao_japanese
+  dictionary: japanese
   spelling_hints: 5
   comment_format:
     - "xlit|q|ー|"
@@ -182,7 +182,11 @@ zhjp_translate:
 ##########################
 # Lookup
 japanese_reverse_lookup:
-  tags: [translate_en2jp_lookup, wubi86_japanese_lookup, stroke_lookup, pinyin_japanese_lookup]
+  tags:
+    - translate_en2jp_lookup
+    - wubi86_japanese_lookup
+    - stroke_lookup
+    - pinyin_japanese_lookup
   spelling_hints: 5
   dictionary: japanese
 
@@ -190,6 +194,26 @@ translate_en2jp_reverse_lookup:
   tags: [translate_en2jp_lookup]
   spelling_hints: 5
   dictionary: translate_en2jp
+  comment_format:
+    - "xform/^/ /"
+    # 摘要
+    - "xform/(.{80}.+)/$1--/"
+    - "xform/([a-z])-[a-z]+/$1/"
+    - "xform/ (\\S\\S\\S\\S)\\S\\S+(?=.*?--$)/ $1-/"
+    - "xform/^(.*)--$/$1/"
+    # 多层重复项折叠
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 1
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 2
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 3
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 4
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 5
+    # 重复消除
+    - "xform/ (\\S+)( \\1)+/ $1/"
+    # 截断省略
+    - "xform/ (.{60}).+/$1.../"
+    # - "xform/(.{125}).+/$1.../"
+    - "xform/^\\s*//"
+    - "xform/\\s*$//"
 
 ##########################
 # other
@@ -200,6 +224,7 @@ key_binder:
   import_preset: default
   bindings:
     - { accept: "Control+Shift+1", select: .next, when: always }
+    - { accept: "Alt+Shift+T", toggle: zhjp_translate, when: always}
 
 editor:
   bindings:
