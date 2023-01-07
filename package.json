@@ -23,6 +23,7 @@
   "scripts": {
     "init": "pnpm install && npm run dev",
     "dev": "nodemon -e yaml,ts -x tsx src/cli-deploy.ts",
+    "menu": "start \"\" \"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\小狼毫輸入法\"",
     "debug": "cd tools && debug",
     "postversion": "npm publish",
     "postinstall": "cd tools && install",

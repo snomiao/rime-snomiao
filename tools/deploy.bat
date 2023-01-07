@@ -14,8 +14,10 @@ del /S /Q %TEMP%\rime.weasel.*
 @REM deploy
 cd C:\Program Files (x86)\Rime\weasel-*
 WeaselDeployer.exe /deploy
-WeaselServer.exe
+@REM WeaselServer.exe
+@REM copy data\default.yaml
 
 cd %~dp0
+ping localhost
 debug
 cd %~dp0\..

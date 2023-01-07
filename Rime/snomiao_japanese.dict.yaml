@@ -3,10 +3,13 @@
 
 ---
 name: snomiao_japanese
-version: '0.3.2'
+version: '0.3.3'
 
 import_tables:
   - 'japanese'
+  - 'japanese.mozc'
+  - 'japanese.jmdict'
+  - 'japanese.kana'
   - 'wubi86_japanese'
 
 ...

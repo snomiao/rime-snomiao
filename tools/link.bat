@@ -1,9 +1,16 @@
-
-cd %~dp0\..
+cd %~dp0
 
 taskkill /f /im WeaselServer.exe
-move %APPDATA%\Rime %APPDATA%\Rime-bak-snomiao2
-@REM mklink /J %APPDATA%\Rime Rime
+
+move %APPDATA%\Rime %APPDATA%\Rime-bak-snomiao6
+
+mklink /J %APPDATA%\Rime Rime
+
+rm -rf %APPDATA%\Rime
 mklink /D %APPDATA%\Rime Rime
 
-cd %~dp0\..
+cd C:\Program Files (x86)\Rime\weasel-*
+WeaselServer.exe
+@REM WeaselDeployer.exe /deploy
+
+cd %~dp0
