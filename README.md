@@ -30,8 +30,6 @@
 
 ![](media/2022-12-21-19-37-19.png)
 
-_注：這裏打 i 顕示 ch 是双拼 speller 遺留 bug 造成，TODO 修復_
-
 #### 中文混合輸入
 
 輸入 tt 同時輸出：日本語つつ，繁体五筆，簡体五笔，顔文字（由“派生”，竹（五笔，繁簡一致），頭疼（拼音簡打））
@@ -153,4 +151,4 @@ Claim your sponsorship by donating snomiao <[Email: snomiao@gmail.com](mailto:sn
 
 ### Contribute
 
-The main repo is in [here](https://github.com/snomiao/js#readme), any issue and PR's welcome.
+The main repo is in [here](https://github.com/snomiao/rime-snomiao#readme), any issue and PR's welcome.

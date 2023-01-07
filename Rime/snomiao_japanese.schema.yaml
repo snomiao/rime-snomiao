@@ -71,9 +71,9 @@ engine:
   filters:
     - simplifier@zhjp_translate
     - simplifier@emoji_suggestion
-    - uniquifier
     - reverse_lookup_filter@japanese_reverse_lookup
     - reverse_lookup_filter@translate_en2jp_reverse_lookup
+    - uniquifier
 
 abc_segmentor:
   extra_tags:
@@ -167,7 +167,12 @@ recognizer:
     translate_en2jp_lookup: "^T[a-z;/,.]*`?$"
     wubi86_lookup: "^W[a-z]*'?$"
 
-# emoji生成, 注：字形転化会影響反査故本方案使用詞典進行転換。
+##########################
+# filters
+
+# 注：字形転化会影響反査故本方案使用詞典進行転換。
+
+# emoji生成,
 emoji_suggestion:
   opencc_config: emoji.json
   option_name: emoji_suggestion
@@ -189,6 +194,7 @@ japanese_reverse_lookup:
     - pinyin_japanese_lookup
   spelling_hints: 5
   dictionary: japanese
+
 
 translate_en2jp_reverse_lookup:
   tags: [translate_en2jp_lookup]

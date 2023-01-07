@@ -45,7 +45,7 @@ export async function parse(pairs: string[][]) {
       const text = definitionTextWash(definition);
       return { word, text, definition };
     }),
-    sortBy(({ text }) => -text.length),
+    // sortBy(({ text }) => -text.length),
     (e) =>
       flatMap(e, ({ word, text, definition }) => {
         const jpWords = jpWordsMatch(text, word);
@@ -88,10 +88,8 @@ function jpWordsMatch(text: string, word: string) {
     .map((e) => e.trim())
     .filter(Boolean)
     .filter((e) => e !== `${word}する`)
-
     .filter((e) => !e.match(/とも$/));
-  const jpWordsSorted = sortBy((e) => e.length, jpWords);
-  return jpWordsSorted;
+  return jpWords;
 }
 
 function definitionTextWash(definition: string) {
