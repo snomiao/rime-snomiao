@@ -20,12 +20,15 @@ schema:
 
 switches:
   - name: ascii_mode
+    states: [中文, 西文]
     reset: 0
-    states: [ 中文, 西文 ]
   - name: full_shape
-    states: [ 半角, 全角 ]
+    states: [半角, 全角]
   - name: ascii_punct
-    states: [ 。，, ．， ]
+    states: [。，, ．，]
+  - name: zhjp_translate
+    reset: 1
+    states: ["🈚️️\uFE0E", "🈶️️\uFE0F"]
 
 engine:
   processors:
@@ -49,14 +52,23 @@ engine:
     - reverse_lookup_translator
     - script_translator
   filters:
-    - simplifier@simplifier_t2jp
+    - simplifier@zhjp_translate
+    # - simplifier@simplifier_t2jp
     - uniquifier
 
-simplifier_t2jp:
-  # option_name: t2jp
-  opencc_config: t2jp.json
-  tips: none
+################## simplifier
 
+# 中日翻訳
+zhjp_translate:
+  opencc_config: zhjp.json
+  option_name: zhjp_translate
+  tips: all
+
+# simplifier_t2jp:
+#   opencc_config: t2jp.json
+#   tips: none
+
+####################### speller
 speller:
   alphabet: zyxwvutsrqponmlkjihgfedcba
   delimiter: " '"
@@ -75,6 +87,7 @@ speller:
     - derive/ao$/oa/
     - derive/([iu])a(o|ng?)$/a$1$2/
 
+########## Translator
 translator:
   dictionary: pinyin_japanese
   preedit_format:
@@ -82,6 +95,7 @@ translator:
     - xform/([nl])ue/$1üe/
     - xform/([jqxy])v/$1u/
 
+# custom...
 custom_phrase:
   dictionary: ""
   user_dict: custom_phrase
@@ -89,6 +103,8 @@ custom_phrase:
   enable_completion: false
   enable_sentence: false
   initial_quality: 1
+
+### Reverse
 
 reverse_lookup:
   dictionary: stroke
@@ -110,5 +126,5 @@ key_binder:
 recognizer:
   import_preset: default
   patterns:
-    punct: '^/([0-9]0?|[A-Za-z]+)$'
+    punct: "^/([0-9]0?|[A-Za-z]+)$"
     reverse_lookup: "`[a-z]*'?$"

@@ -1,10 +1,10 @@
-s # Rime schema
+# Rime schema
 # vim: set sw=2 sts=2 et:
 # encoding: utf-8
 
 schema:
   schema_id: snomiao_japanese
-  name: "雪星日本語方案2"
+  name: "雪星日本語方案3"
   version: "1.1.2"
   author:
     - ensigma96 <ensigma96@gmail.com>
@@ -28,6 +28,9 @@ switches:
     states: [漢字, 汉字]
   - name: ascii_punct
     states: [。，, ．，]
+  - name: zhjp_translate
+    reset: 1
+    states: [OFF, ON]
   - name: emoji_suggestion
     reset: 1
     states: ["🈚️️\uFE0E", "🈶️️\uFE0F"]
@@ -65,6 +68,7 @@ engine:
     - table_translator@stroke_lookup
     - table_translator@wubi86_lookup
   filters:
+    - simplifier@zhjp_translate
     - simplifier@emoji_suggestion
     - uniquifier
     - reverse_lookup_filter@japanese_reverse_lookup
@@ -167,6 +171,12 @@ recognizer:
 emoji_suggestion:
   opencc_config: emoji.json
   option_name: emoji_suggestion
+  tips: all
+
+# 中日翻訳
+zhjp_translate:
+  opencc_config: zhjp.json
+  option_name: zhjp_translate
   tips: all
 
 ##########################
