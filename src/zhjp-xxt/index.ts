@@ -45,7 +45,7 @@ export async function parse(pairs: string[][]) {
       const text = definitionTextWash(definition);
       return { word, text, definition };
     }),
-    // sortBy(({ text }) => -text.length),
+    sortBy(({ text }) => -text.length),
     (e) =>
       flatMap(e, ({ word, text, definition }) => {
         const jpWords = jpWordsMatch(text, word);

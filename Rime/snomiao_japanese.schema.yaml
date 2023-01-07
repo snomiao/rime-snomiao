@@ -32,7 +32,7 @@ switches:
   - name: zhjp_translate
     reset: 1
     states: [原文, 辞書]
-  - name: emoji_suggestion
+  - name: zh_emoji_suggestion
     reset: 1
     states: ["🈚️️\uFE0E", "🈶️️\uFE0F"]
 
@@ -70,10 +70,10 @@ engine:
     - table_translator@wubi86_lookup
   filters:
     - simplifier@zhjp_translate
-    - simplifier@emoji_suggestion
+    - simplifier@zh_emoji_suggestion
+    - uniquifier
     - reverse_lookup_filter@japanese_reverse_lookup
     - reverse_lookup_filter@translate_en2jp_reverse_lookup
-    - uniquifier
 
 abc_segmentor:
   extra_tags:
@@ -173,9 +173,9 @@ recognizer:
 # 注：字形転化会影響反査故本方案使用詞典進行転換。
 
 # emoji生成,
-emoji_suggestion:
-  opencc_config: emoji.json
-  option_name: emoji_suggestion
+zh_emoji_suggestion:
+  opencc_config: zh_emoji.json
+  option_name: zh_emoji_suggestion
   tips: all
 
 # 中日翻訳
