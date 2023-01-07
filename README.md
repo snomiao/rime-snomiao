@@ -7,7 +7,7 @@
 - 会英文，在学日語，想知道一個単詞的日語怎麼説？（英語単詞翻訳日語）
 - 会中文，在学日語，想知道同一個字怎麼用日語打？（反查日語）
 - 会五笔，但是有些字反映不過来想用拼音打。（五笔拼音混打）
-- 有時候想打些 emoji 😈。（漢字转emoji）
+- 有時候想打些 emoji 😈。（漢字转 emoji）
 - 同時実現以上夢想（使用本方案）
 
 ## 方案列表/特性
@@ -30,7 +30,7 @@
 
 ![](media/2022-12-21-19-37-19.png)
 
-_注：這裏打i顕示ch是双拼speller遺留bug造成，TODO修復_
+_注：這裏打 i 顕示 ch 是双拼 speller 遺留 bug 造成，TODO 修復_
 
 #### 中文混合輸入
 
@@ -134,8 +134,9 @@ translator:
 - [中日英自然码（带辅码）双拼输入法](https://github.com/lippmann/lrime)
 - [Rime double pinyin plus](https://github.com/mutoe/rime)
 - [OpenCC](https://github.com/BYVoid/OpenCC)
-- [gkovacs/rime-japanese: 日语输入法 Input method for typing Japanese with RIME](https://github.com/gkovacs/rime-japanese/)
+- [rime/rime-pinyin-simp: 【袖珍簡化字拼音】輸入方案](https://github.com/rime/rime-pinyin-simp)
 - [rime/rime-wubi: 【五筆字型】輸入方案](https://github.com/rime/rime-wubi)
+- [gkovacs/rime-japanese: 日语输入法 Input method for typing Japanese with RIME](https://github.com/gkovacs/rime-japanese/)
 
 ## About
 
