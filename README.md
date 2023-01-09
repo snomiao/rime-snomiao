@@ -10,6 +10,10 @@
 - 有時候想打些 emoji 😈。（漢字转 emoji）
 - 同時実現以上夢想（使用本方案）
 
+## rime-snomiao 小白鼠用户交流群
+
+telegram: @rime_snomiao https://t.me/rime_snomiao
+
 ## 方案列表/特性
 
 ### 雪星日本語

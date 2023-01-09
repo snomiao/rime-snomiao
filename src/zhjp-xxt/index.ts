@@ -2,14 +2,10 @@ import chalk from "chalk";
 import esMain from "es-main";
 import { writeFile } from "fs/promises";
 import { flatMap } from "lodash-es";
-import Mdict from "mdict-js";
 import { filter, map, pipe, sortBy } from "rambda";
 import snohmr from "snohmr";
 import workPackageDir from "work-package-dir";
-import sstDictParse from "../enjp-sst/jpDictParse";
 import MDictTypescript from "../lib/mdictTypescript";
-import { uniqueSort } from "../lib/uniqueSort";
-import { rimeDictUpdate } from "../utils/rimeDictUpdate";
 
 if (esMain(import.meta)) await index();
 
@@ -34,7 +30,7 @@ async function dictLoad() {
 
 export async function parse(pairs: string[][]) {
   console.log(chalk.bgWhite("====================================="));
-  let k = 1000;
+  let k = 100;
   const zhjpWordCC = pipe(
     () => pairs,
     // sortBy(Math.random),
@@ -53,7 +49,7 @@ export async function parse(pairs: string[][]) {
         // console.log(chalk.red(jpWords.map((e) => `> ${e}`).join("\n")));
         // console.log(chalk.blue(definition));
         // exceptions checking
-        if (k-- > 0 && word.match("球")) {
+        if (k-- > 0 ) {
           console.log(chalk.bgBlue(word));
           // console.log(chalk.bgYellow(definition));
           console.log(chalk.red(text));
