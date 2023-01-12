@@ -13,7 +13,7 @@ t2jp = opencc.OpenCC('t2jp.json')
 # o = 'Rime/pinyin_japanese.dict.yaml'
 
 i = 'Rime/pinyin_simp.dict.yaml'
-o = 'Rime/pinyin_japanese.dict.yaml'
+o = 'Rime/japanese_pinyin.dict.yaml'
 s = ''
 
 with open(i) as f:
