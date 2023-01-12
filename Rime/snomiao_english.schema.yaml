@@ -1,12 +1,13 @@
 # encoding: utf-8
 schema:
-  schema_id: snomiao_pinyin_english
-  name: "雪星拼音英文" # todo rename：snomiao_english
+  schema_id: snomiao_english
+  name: "雪星英文"
   version: "1.1.1"
   author:
     - 雪星 <snomiao@gmail.com>
   description: |
-    漢語拼音英文反查
+    漢語拼音と五笔と日本語入力
+    英文反查（if possible）
   dependencies:
     - pinyin_simp
     - translate_en2zh
