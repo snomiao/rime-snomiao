@@ -1,5 +1,5 @@
 patch:
   schema_list:
     - {schema: snomiao_japanese}
-    - {schema: snomiao_pinyin_english}
+    - {schema: snomiao_english}
     - {schema: snomiao_wubi86}

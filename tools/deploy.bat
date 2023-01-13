@@ -11,7 +11,7 @@ del /S /Q %TEMP%\rime.weasel.*
 @REM copy files
 @REM robocopy Rime %APPDATA%\Rime *.yaml *.json *.txt *.ocd *.ocd2 /S
 
-@REM deploy
+echo weasel deploy start
 cd C:\Program Files (x86)\Rime\weasel-*
 WeaselDeployer.exe /deploy
 @REM WeaselServer.exe

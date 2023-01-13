@@ -1,7 +1,7 @@
-
 # run below to install deps
 """
 !pip install opencc
+py src/zhjp-xxt/zhjpCC.py
 """
 
 from pathlib import Path
