@@ -52,6 +52,23 @@ telegram: @rime_snomiao https://t.me/rime_snomiao
 
 ## 安装与配置
 
+### Install in Mac、OSX に使用する
+
+1. Install squirrel by 在这里安装 squirrel （rime の mac に分支）。
+   1. [rime.im](https://rime.im)
+   2. or `brew cask install squirrel`
+   3.
+2. Install rime-snomiao receipe 安装 rime-snomiao receipe
+
+   ```shell
+   git clone https://github.com/snomiao/rime-snomiao
+   cp -r rime-snomiao/Rime/* ~/Library/Rime
+   ```
+
+3. 屏幕右上角，输入法下拉菜单，点击 Deploy 载入
+
+- TODO, PR’s welcome
+
 ### 在 Windows 安裝
 
 1. 首先安装 Weasel 输入法，
@@ -72,20 +89,6 @@ telegram: @rime_snomiao https://t.me/rime_snomiao
      - 運行 `npx rime-snomiao`
 
 3. 安装完成后，请 [配置](#配置) 输入法
-
-### Mac
-
-1. Install squirrel by:
-   1. [rime.im](https://rime.im)
-   2. or `brew cask install squirrel`
-2. Install recipe
-   ```shell
-   git clone https://github.com/snomiao/rime-snomiao
-   cp rime-snomiao/Rime/* ~/Library/Rime
-   # and then you must reload squrriel
-   ```
-
-- TODO, PR’s welcome
 
 ### Linux
 
