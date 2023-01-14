@@ -7,13 +7,21 @@
       "file": "zhjp_word.txt"
     }
   },
-  "conversion_chain": [{
-    "dict": {
-      "type": "group",
-      "dicts": [{
-        "type": "text",
-        "file": "zhjp_word.txt"
-      }]
+  "conversion_chain": [
+    {
+      "dict": {
+        "type": "group",
+        "dicts": [
+          {
+            "type": "text",
+            "file": "zhjp_word.txt"
+          },
+          {
+            "type": "text",
+            "file": "zhjp_daily.txt"
+          }
+        ]
+      }
     }
-  }]
+  ]
 }

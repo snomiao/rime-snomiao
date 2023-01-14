@@ -1,4 +1,4 @@
-# 雪星的小狼毫输入法方案
+# rime-snomiao 雪星的小狼毫输入法方
 
 本方案主要解決以下問題：
 
@@ -100,13 +100,15 @@ telegram: @rime_snomiao https://t.me/rime_snomiao
 | --------------------------- | --------------------------- |
 | ![config](media/config.png) | ![select](media/select.png) |
 
-## 自定义
+### Custom / カスタム / 自定義
 
-顔文字在 [kaomoji.dict.yaml](./kaomoji.dict.yaml) 里修改
+顔文字在 [kaomoji.dict.yaml](./kaomoji.dict.yaml) 里修改（黙認不使用，需要手動引入）
 
-Emoji 在 `opencc` 文件夹里可以修改
+- [Emoji / 絵文字 / Emoji](./Rime/opencc/zh_emoji_word.json)
+- [Pinyin Schema 拼音方案](./Rime/sno_pinyin.schema.yaml)
+- [Japanese Schema 日本語方案 ](./Rime/sno_japanese.schema.yaml)
 
-拼音可以在 `snomiao.schema.yaml` 里改
+拼音可以在 `` 里改
 
 ```yaml
 dependencies:
@@ -120,13 +122,24 @@ translator:
   dictionary: wubi86
 ```
 
+## Dictionary contribute 詞典贡献
+
+Dictionary contribute 詞典贡献
+
+1. fork rime-snomiao to your account, and clone to local
+2. put this dictionary into /dict
+3. git commit -a -m "YOUR dictionary NAME"
+4. git push
+5. view your forked branch in github
+6. PR button should shown, click it
+
 ## 授权
 
 本項目 Copyleft，本項目爱用就拿去。
 
 （但如果需要做商用的話得注意項目中包含的其它幾個方案的 license（但应该没有這様的人吧……），如果有這種需求請参見 Reference 电進去自己看他們的 License）
 
-### 本方案由以下方案排列組合而成：
+### 本方案由以下方案排列組合而成
 
 - 86 版五笔
 - 拼音

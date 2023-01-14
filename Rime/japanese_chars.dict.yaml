@@ -1,0 +1,134 @@
+# Rime dictionary
+# encoding: utf-8
+#
+# A minimal Pinyin dictionary for simplified Chinese script
+#
+# Derived from android open source project:
+# http://android.git.kernel.org/?p=platform/packages/inputmethods/PinyinIME.git
+#
+
+---
+name: japanese_chars
+version: "0.1"
+sort: by_weight
+import_tables:
+  - pinyin_simp
+...
+
+・	den
+、	den
+×	times
+
+々	ga
+ゝ	su
+ゞ	zu
+〆	shime
+'	n
+
+℃	ces
+μ	mu
+Ω	oumu
+
+0	zero
+1	ichi
+2	ni
+3	san
+4	yon
+5	go
+6	roku
+7	nana
+8	ha
+9	kyu
+!	warn
+@	at
+/	slash
+\	backslash
+*	star
+★	star
+*	any
+|	or
+&	and
+%	percent
+=	equals
+?	question
+～	wave
+。	end
+_	lodash
+-	dash
+.	den
+‥	denden
+…	dendenden
+“	quote
+”	quote
+(	quote
+)	quote
+[	quote
+]	quote
+{	quote
+}	quote
+〈	quote
+〉	quote
+《	quote
+》	quote
+「	quote
+」	quote
+『	quote
+』	quote
+【	quote
+】	quote
+〔	quote
+〕	quote
+
+q	q
+w	w
+e	e
+r	r
+t	t
+y	y
+u	u
+i	i
+o	o
+p	p
+a	a
+s	s
+d	d
+f	f
+g	g
+h	h
+j	j
+k	k
+l	l
+z	z
+x	x
+c	c
+v	v
+b	b
+n	n
+m	m
+
+Q	q
+W	w
+E	e
+R	r
+T	t
+Y	y
+U	u
+I	i
+O	o
+P	p
+A	a
+S	s
+D	d
+F	f
+G	g
+H	h
+J	j
+K	k
+L	l
+Z	z
+X	x
+C	c
+V	v
+B	b
+N	n
+M	m

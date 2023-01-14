@@ -14,6 +14,7 @@ del /S /Q %TEMP%\rime.weasel.*
 echo weasel deploy start
 cd C:\Program Files (x86)\Rime\weasel-*
 WeaselDeployer.exe /deploy
+echo weasel deploy done
 @REM WeaselServer.exe
 @REM copy data\default.yaml
 
