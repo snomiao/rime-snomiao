@@ -45,6 +45,8 @@
 
 ### 雪星英文（+中翻英）
 
+![](media/zh2en.png)
+
 - Wubi86 + Pinyin -> 翻訳成英文
 - English + Emoji 混合输入
 - 詳情見下图吧
@@ -171,3 +173,9 @@ Claim your sponsorship by donating snomiao <[Email: snomiao@gmail.com](mailto:sn
 ### Contribute
 
 The main repo is in [here](https://github.com/snomiao/rime-snomiao#readme), any issue and PR's welcome.
+
+### Published
+
+- [Telegram Rime](https://t.me/loverime/41196)
+- [Twitter](https://twitter.com/snomiao/status/1614586337822375936?s=20)
+- 
