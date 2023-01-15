@@ -67,12 +67,7 @@ export async function parse(pairs: string[][]) {
           );
           console.log("");
         }
-        return [
-          `${zhWord}	${[
-            // word,
-            ...enWords.map((w) => `${w}\u00A0`),
-          ].join(" ")}`,
-        ];
+        return [`${zhWord}	${[...enWords.map((w) => `${w}`), word].join(" ")}`];
       }),
     // sortBy((e) => -e.length),
     (e) => e.join("\n")

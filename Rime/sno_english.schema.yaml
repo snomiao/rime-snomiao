@@ -238,12 +238,14 @@ punctuator:
 key_binder:
   import_preset: default
   bindings:
-    - { accept: "Control+Shift+1", select: .next, when: always }
+    - { accept: "Control+Shift+1", select: sno_english, when: always }
+    - { accept: "Control+Shift+2", select: sno_japanese, when: always }
+    - { accept: "Control+Shift+4", select: sno_chinese, when: always }
+    - { accept: "Control+Shift+9", select: .next, when: always }
 
 editor:
   bindings:
-    Alt_L: commit_comment
-    Shift_L: commit_comment
+    Shift_R: commit_comment
 
 menu:
   page_size: 10
