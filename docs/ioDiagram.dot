@@ -1,0 +1,79 @@
+digraph G {
+  rankdir=TB;
+  subgraph cluster_0 {
+    style=filled;
+    color=lightgrey;
+    node [style=filled,color=white, shape=circle];
+    label = "Input Methods";
+    wb[label=Wubi86];
+    py[label=Pinyin_simp];
+    ee[label=Easy_En];
+    ro[label=Romaji];
+  }
+  
+  subgraph cluster_3 {
+    node [style=filled ,shape=circle];
+    label = "Output Languages";
+    color=blue
+    eno[label=EnglishOutput];
+    jao[label=JapaneseOutput];
+    cho[label=ChineseOutput];
+    emo[label=EmojiOutput];
+  }
+  
+  subgraph cluster_10 {
+    label = "sno_english.schema";
+    style=filled;
+    color=lightgrey;
+    node [style=filled,color=white];
+    //
+    wb -> ch10;
+    py -> ch10;
+    ee -> en10;
+    ch10[label="Chinese Simp"]
+    en10[label="English"]
+    em10[label="Emoji"]
+    ch10 -> em10 [label="Chinese To Emoji (Hint Chinese)"]
+    ch10 -> en10 [label="Chinese To English (Hint Wubi86)"]
+    en10 -> eno;
+    em10 -> emo;
+  }
+  
+  subgraph cluster_11 {
+    label = "sno_japanese.schema";
+    style=filled;
+    color=lightgrey;
+    node [style=filled,color=white];
+    wb -> ch11;
+    py -> ch11;
+    ee -> en11;
+    ro -> ja11;
+    ch11[label="Chinese Simp"]
+    ja11[label="Japanese"]
+    en11[label="English"]
+    em11[label="Emoji"]
+    ch11 -> em11 [label="Chinese To Emoji (Hint Chinese)"]
+    ch11 -> ja11 [label="Chinese To Kanji (Hint Romaji)"]
+    en11 -> ja11 [label="English To Japanese (Hint Romaji)"]
+    ja11 -> jao;
+    em11 -> emo;
+  }
+  subgraph cluster_12 {
+    label = "sno_chinese.schema";
+    style=filled;
+    color=lightgrey;
+    node [style=filled,color=white];
+    wb -> ch12;
+    py -> ch12;
+    ee -> en12;
+    ch12[label="Chinese Simp"]
+    en12[label="English"]
+    em12[label="Emoji"]
+    ch12 -> em12 [label="Chinese To Emoji (Hint Chinese)"];
+    en12 -> ch12 [label="English To Chinese (Hint English)"];
+    ch12 -> ch12 [label="(Hint Wubi86)"];
+    ch12 -> cho;
+    em12 -> emo;
+  }
+
+}
