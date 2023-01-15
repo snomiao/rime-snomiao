@@ -14,6 +14,10 @@
 
 telegram: @rime_snomiao https://t.me/rime_snomiao
 
+## Input -> Output Diagram
+
+![Input -> Output Diagram](media/iod.png)
+
 ## 方案列表/特性
 
 ### 雪星日本語

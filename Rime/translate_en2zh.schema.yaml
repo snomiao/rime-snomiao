@@ -8,7 +8,7 @@ schema:
 switches:
   - name: ascii_mode
     reset: 0
-    states: [ ASCII-OFF, ASCII-ON ]
+    states: [ASCII-OFF, ASCII-ON]
 
 engine:
   processors:
@@ -35,6 +35,7 @@ engine:
 speller:
   alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA
   delimiter: " '"
+  useSpace: true
 
 translator:
   dictionary: translate_en2zh
@@ -48,4 +49,4 @@ key_binder:
 recognizer:
   import_preset: default
   patterns:
-    uppercase: ''
+    uppercase: ""

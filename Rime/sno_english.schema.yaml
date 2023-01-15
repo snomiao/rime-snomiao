@@ -126,6 +126,7 @@ easy_en_lookup:
   enable_sentence: true
   preedit_format: []
   spelling_hints: 3
+  initial_quality: 1.5
 
 # 五筆输入方式
 wubi86_lookup:

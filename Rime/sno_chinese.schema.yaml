@@ -17,7 +17,7 @@ schema:
     碼表源自 ibus-table
   dependencies:
     - pinyin_simp
-    # - translate_en2zh
+    - translate_en2zh
 switches:
   - name: ascii_mode
     reset: 0
@@ -46,9 +46,9 @@ engine:
   segmentors:
     - ascii_segmentor
     - matcher
-    - affix_segmentor@easy_en_lookup # 识别 recognizer 指定的 translator
+    # - affix_segmentor@easy_en_lookup # 识别 recognizer 指定的 translator
     - affix_segmentor@pinyin_lookup # 识别 recognizer 指定的 translator
-    # - affix_segmentor@translate_en2zh_lookup # 识别 recognizer 指定的 translator
+    - affix_segmentor@translate_en2zh_lookup # 识别 recognizer 指定的 translator
     - affix_segmentor@wubi86_lookup # 识别 recognizer 指定的 translator
     - abc_segmentor # 混合输入
     - punct_segmentor
@@ -56,9 +56,9 @@ engine:
   translators:
     - punct_translator # 标点输入
     - table_translator@wubi86_lookup # main
-    - table_translator@easy_en_lookup
+    # - table_translator@easy_en_lookup
     - script_translator@pinyin_lookup
-    # - table_translator@translate_en2zh_lookup
+    - table_translator@translate_en2zh_lookup
   filters:
     - simplifier
     - simplifier@zh_emoji_suggestion
