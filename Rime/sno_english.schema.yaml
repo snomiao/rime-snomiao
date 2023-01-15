@@ -2,29 +2,34 @@
 schema:
   schema_id: sno_english
   name: "snomiao English"
-  version: "1.1.1"
+  version: "1.1.2"
   author:
     - 雪星 <snomiao@gmail.com>
   description: |
     漢語拼音と五笔と日本語入力
     英文反查（if possible）
   dependencies:
-    # - pinyin_simp
+    - easy_en
+    - pinyin_simp
+    - wubi86
     # - translate_en2zh
     # - translate_zh2en
 switches:
-  - name: ascii_mode
-    reset: 0
-    states: [中文, 西文]
-  - name: full_shape
-    states: [半角, 全角]
-  - name: extended_charset
-    states: [常用, 增廣]
-  - name: simplification
-    states: [漢字, 汉字]
+  # - name: ascii_mode
+  #   reset: 0
+  #   states: [中文, 西文]
+  # - name: full_shape
+  #   states: [半角, 全角]
+  # - name: extended_charset
+  #   states: [常用, 增廣]
+  # - name: simplification
+  #   states: [漢字, 汉字]
   - name: zh_emoji_suggestion
     reset: 1
     states: ["🈚️️\uFE0E", "🈶️️\uFE0F"]
+  - name: zhen_translate
+    reset: 1
+    states: ["无", "汉译英"]
 engine:
   processors:
     - ascii_composer
@@ -39,36 +44,52 @@ engine:
     - ascii_segmentor
     - matcher
     - affix_segmentor@easy_en_lookup # 识别 recognizer 指定的 translator
-    # - affix_segmentor@pinyin_lookup # 识别 recognizer 指定的 translator
+    - affix_segmentor@wubi86_lookup # 识别 recognizer 指定的 translator
+    - affix_segmentor@pinyin_lookup # 识别 recognizer 指定的 translator
     # - affix_segmentor@translate_en2zh_lookup # 识别 recognizer 指定的 translator
-    # - affix_segmentor@wubi86_lookup # 识别 recognizer 指定的 translator
     - abc_segmentor # 混合输入
     - punct_segmentor
     - fallback_segmentor
   translators:
     - punct_translator # 标点输入
     - table_translator@easy_en_lookup # main
-    # - script_translator@pinyin_lookup
+    - table_translator@wubi86_lookup
+    - script_translator@pinyin_lookup
     # - table_translator@translate_en2zh_lookup
-    # - table_translator@wubi86_lookup
     # - table_translator
   filters:
-    - simplifier
+    - simplifier@zhen_translate
     - simplifier@zh_emoji_suggestion
     # - reverse_lookup_filter@en2zh_reverse_lookup
     # - reverse_lookup_filter@translate_zh2en_reverse_lookup
     - uniquifier
 
+# suggestions
+
+zhen_translate:
+  opencc_config: zhen.json
+  option_name: zhen_translate
+  spelling_hints: 5
+  preedit_format:
+    - "xform/^/xxx/"
+    - xform/-/ /
+    - xform/([-])/ /
+  comment_format:
+    - xform/ / /
+  tips: all
+
 zh_emoji_suggestion:
   opencc_config: zh_emoji.json
   option_name: zh_emoji_suggestion
   tips: all
-
+######################
+# speller
 speller:
   alphabet: zyxwvutsrqponmlkjihgfedcba
   delimiter: " ;'"
-  use_space: true
-  algebra: []
+  use_space: false
+  algebra:
+    []
     # - abbrev/^([a-z]).+$/$1/
     # - abbrev/^([zcs]h).+$/$1/
     # - derive/^([nl])ue$/$1ve/
@@ -85,9 +106,9 @@ speller:
 abc_segmentor:
   extra_tags:
     - easy_en_lookup
+    - wubi86_lookup
+    - pinyin_lookup
     # - translate_en2zh_lookup
-    # - pinyin_lookup
-    # - wubi86_lookup
     # - pinyin_lookup
 
 ##################
@@ -106,23 +127,45 @@ easy_en_lookup:
   preedit_format: []
   spelling_hints: 3
 
-# # pinyin_translator
-# pinyin_lookup:
-#   tag: pinyin_lookup
-#   prefix: "`"
-#   suffix: "'"
-#   dictionary: pinyin_simp
-#   prism: pinyin_simp
-#   preedit_format:s
-#     - xform/([nl])v/$1ü/
-#     - xform/([nl])ue/$1üe/
-#     - xform/([jqxy])v/$1u/
-#   comment_format:
-#     - xform/([nl])v/$1ü/
-#     - xform/([nl])ue/$1üe/
-#     - xform/([jqxy])v/$1u/
-#   tips: 〔拼音反查〕
-#   spelling_hints: 3
+# 五筆输入方式
+wubi86_lookup:
+  tag: wubi86_lookup
+  prefix: "W"
+  suffix: "'"
+  dictionary: wubi86
+  prism: wubi86
+  enable_completion: true
+  enable_sentence: true
+  enable_charset_filter: true
+  enable_encoder: true
+  encode_commit_history: true
+  max_phrase_length: 4
+  disable_user_dict_for_patterns:
+    - "^z.*$"
+  tips: 〔Wubi 86〕
+
+# pinyin_translator
+pinyin_lookup:
+  tag: pinyin_lookup
+  prefix: "P"
+  suffix: "'"
+  dictionary: pinyin_simp
+  prism: pinyin_simp
+  enable_completion: true
+  enable_sentence: true
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+  comment_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+  tips: 〔拼音〕
+  spelling_hints: 3
+
+#############################
+# recognizer
 
 recognizer:
   import_preset: default

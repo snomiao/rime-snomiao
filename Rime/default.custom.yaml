@@ -1,6 +1,6 @@
 patch:
   schema_list:
-    - {schema: sno_japanese}
-    - {schema: sno_english}
-    - {schema: sno_chinese}
-    - {schema: easy_en}
+    - { schema: sno_english }
+    - { schema: sno_japanese }
+    - { schema: sno_chinese }
+    - { schema: easy_en }
