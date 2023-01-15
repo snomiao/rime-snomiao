@@ -192,12 +192,12 @@ japanese_reverse_lookup:
     - japanese_wubi86_lookup
     - stroke_lookup
     - japanese_pinyin_lookup
-  spelling_hints: 5
+  spelling_hints: 2
   dictionary: japanese
 
 translate_en2jp_reverse_lookup:
   tags: [translate_en2jp_lookup]
-  spelling_hints: 5
+  spelling_hints: 3
   dictionary: translate_en2jp
   comment_format:
     - "xform/^/ /"
