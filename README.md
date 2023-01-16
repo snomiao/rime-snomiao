@@ -21,7 +21,7 @@
 
 #### 漢日混打 -- wen i he wasa => 問い合わさ
 
-![](media/2022-12-21-19-37-19.png)
+![](media/zhjp-mix.png)
 
 - 用日語輸入法不会打中文，中文輸入法打不了日語，老要切換，怎麼辦？
 - 会中文，在学日語，想知道同一個字怎麼用日語打？
@@ -32,7 +32,7 @@
 
 #### 中文混合輸入
 
-![](media/2022-12-21-19-33-53.png)
+![](media/zhjpmix2.png)
 
 輸入 tt 同時輸出：日本語つつ，繁体五筆，簡体五笔，顔文字（由“派生”，竹（五笔，繁簡一致），頭疼（拼音簡打））
 同時，123 反査日語打法，58 反査五笔打法，emoji 反查関連漢字
@@ -61,7 +61,7 @@
 
 1. Install squirrel by 在这里安装 squirrel （rime の mac に分支）。
    1. [rime.im](https://rime.im)
-   2. or `brew cask install squirrel`
+   2. or `brew install squirrel --cask`
    3.
 2. Install rime-snomiao receipe 安装 rime-snomiao receipe
 
@@ -176,6 +176,11 @@ The main repo is in [here](https://github.com/snomiao/rime-snomiao#readme), any 
 
 ### Published
 
+rime-snomiao 雪星的小狼毫输入法方案
+
+- [github.com/snomiao](https://github.com/snomiao/rime-snomiao)
+- [gitee.com/snomiao](https://gitee.com/snomiao/rime-snomiao)
+- [Zhihu](https://zhuanlan.zhihu.com/p/599268754)
+- [V2EX](https://www.v2ex.com/t/909117)
 - [Telegram Rime](https://t.me/loverime/41196)
-- [Twitter](https://twitter.com/snomiao/status/1614586337822375936?s=20)
-- 
+- [Twitter](https://twitter.com/snomiao/status/1614586337822375936)
