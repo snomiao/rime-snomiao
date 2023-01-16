@@ -21,7 +21,7 @@ export default async function index() {
   }
 }
 
-export async function parse(pairs: string[][]) {
+export async function parse(pairs: (readonly [string, string])[]) {
   console.log(chalk.bgWhite("====================================="));
   let k = 100;
   const zhjpWordCC = pipe(
@@ -56,7 +56,7 @@ export async function parse(pairs: string[][]) {
         return [`${word}	${[word, ...jpWords].join(" ")}`];
       }),
     sortBy((e) => -e.length),
-    (e) => e.join("\r\n")
+    (e) => e.join("\n")
   )();
   await writeFile("Rime/opencc/zhjp_word.txt", zhjpWordCC);
   // console.log(sample.slice(0, 1000));

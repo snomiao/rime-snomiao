@@ -39,9 +39,10 @@
 
 ### 雪星中文（+英翻中）
 
+![](media/en2zh.png)
+
 - 五笔 86 + 拼音 + Emoji 混合输入
 - 反查 86 编码
-- 詳情見下图
 
 ### 雪星英文（+中翻英）
 
@@ -49,9 +50,8 @@
 
 - Wubi86 + Pinyin -> 翻訳成英文
 - English + Emoji 混合输入
-- 詳情見下图吧
 
-### Input -> Output Diagram
+### Input -> Output Diagram 輸入輸出転換流程図
 
 ![Input -> Output Diagram](media/iod.png)
 
