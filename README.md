@@ -180,7 +180,8 @@ rime-snomiao 雪星的小狼毫输入法方案
 
 - [github.com/snomiao](https://github.com/snomiao/rime-snomiao)
 - [gitee.com/snomiao](https://gitee.com/snomiao/rime-snomiao)
+- [github.com/rime/home](https://github.com/rime/home/issues/68#issuecomment-1383913014)
 - [Zhihu](https://zhuanlan.zhihu.com/p/599268754)
-- [V2EX](https://www.v2ex.com/t/909117)
 - [Telegram Rime](https://t.me/loverime/41196)
+- [V2EX](https://www.v2ex.com/t/909117)
 - [Twitter](https://twitter.com/snomiao/status/1614586337822375936)
