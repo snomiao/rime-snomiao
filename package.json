@@ -1,8 +1,7 @@
 {
   "name": "rime-snomiao",
-  "version": "1.4.3",
+  "version": "2.0.0",
   "description": "由以下方案混合： 86 版五笔 | 拼音 | Emoji | 顔文字（Kaomoji) | 日本語",
-  "bin": "install.bat",
   "type": "module",
   "repository": {
     "type": "git",
@@ -29,7 +28,13 @@
     "postinstall": "cd tools && install",
     "deploy": "cd tools && deploy",
     "test": "vitest",
+    "release": "standard-version --commit-all && git push --follow-tag --all",
     "prepare": "husky install"
+  },
+  "standard-version": {
+    "scripts": {
+      "precommit": "node DevTools/versioning.node.mjs && git add ."
+    }
   },
   "bugs": {
     "url": "https://github.com/snomiao/rime-snomiao/issues"
@@ -64,6 +69,7 @@
     "semver": "^7.3.8",
     "snohmr": "^2.0.5",
     "snorun": "^1.1.17",
+    "standard-version": "^9.5.0",
     "tsx": "^3.11.0",
     "vite": "^3.2.1",
     "work-package-dir": "^1.0.0"

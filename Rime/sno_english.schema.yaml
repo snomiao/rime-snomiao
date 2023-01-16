@@ -1,12 +1,13 @@
 # encoding: utf-8
 schema:
   schema_id: sno_english
-  name: "snomiao English"
+  name: "ENG 雪星英語"
   version: "1.1.2"
   author:
     - 雪星 <snomiao@gmail.com>
   description: |
-    漢語拼音と五笔と日本語入力
+    [github.com/snomiao](https://github.com/snomiao/rime-snomiao)
+    漢語拼音と五笔入力
     英文反查（if possible）
   dependencies:
     - easy_en
@@ -241,7 +242,7 @@ key_binder:
   bindings:
     - { accept: "Control+Shift+1", select: sno_english, when: always }
     - { accept: "Control+Shift+2", select: sno_japanese, when: always }
-    - { accept: "Control+Shift+4", select: sno_chinese, when: always }
+    - { accept: "Control+Shift+3", select: sno_chinese, when: always }
     - { accept: "Control+Shift+9", select: .next, when: always }
 
 editor:

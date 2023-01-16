@@ -5,27 +5,20 @@ import { flatMap } from "lodash-es";
 import { filter, map, pipe, sortBy } from "rambda";
 import snohmr from "snohmr";
 import workPackageDir from "work-package-dir";
-import MDictTypescript from "../lib/mdictTypescript";
+import mdxFileParse from "../lib/mdxFileParse";
 
 if (esMain(import.meta)) await index();
 
 export default async function index() {
   await workPackageDir();
-  const pairs = await dictLoad();
+  const entires = await mdxFileParse("dict/《小学馆V2中日辞典》.mdx");
   for await (const { parse } of snohmr(() => import("./index"))) {
-    await parse(pairs)
+    await parse(entires)
       .then(() => {
         // deploy
       })
       .catch(console.error);
   }
-}
-
-async function dictLoad() {
-  const mdx = new MDictTypescript("dict/《小学馆V2中日辞典》.mdx");
-  const words = mdx.keyList.map(({ keyText }) => keyText);
-  const pairs = words.map((word) => [word, mdx.lookup(word).definition]);
-  return pairs;
 }
 
 export async function parse(pairs: string[][]) {
@@ -49,7 +42,8 @@ export async function parse(pairs: string[][]) {
         // console.log(chalk.red(jpWords.map((e) => `> ${e}`).join("\n")));
         // console.log(chalk.blue(definition));
         // exceptions checking
-        if (k-- > 0 ) {
+        if (k > 0) {
+          k--;
           console.log(chalk.bgBlue(word));
           // console.log(chalk.bgYellow(definition));
           console.log(chalk.red(text));

@@ -60,13 +60,14 @@
 ### Install in Mac、OSX に使用する
 
 1. Install squirrel by 在这里安装 squirrel （rime の mac に分支）。
-   1. [rime.im](https://rime.im)
+   1. [rime.im](https://rime.im) (official website)
    2. or `brew install squirrel --cask`
-   3.
+  
 2. Install rime-snomiao receipe 安装 rime-snomiao receipe
 
    ```shell
    git clone https://github.com/snomiao/rime-snomiao
+   git pull origin
    cp -r rime-snomiao/Rime/* ~/Library/Rime
    ```
 
@@ -79,18 +80,18 @@
 1. 首先安装 Weasel 输入法，
    官方网站：[下載及安裝 | RIME | 中州韻輸入法引擎](https://rime.im/download/)
    或使用 Chocolatey 安装 `cup weasel`
+
 2. 安装本输入方案
 
    - 方法 1
-     - 將本項目下載解压，将 `./Rime` の内容复制到：`C:\Users\你的用户名\AppData\Roaming\Rime` (即 %APPDATA%\Rime )
+     - 將本項目下載解压，将 `./Rime` 目録裏的内容复制到：`C:\Users\你的用户名\AppData\Roaming\Rime` (即 %APPDATA%\Rime )
      - [配置](#配置) 输入法
    - 方法 2（需要連接互聯網）
-     - 運行 `cmd /k cd "C:\Program Files (x86)\Rime\weasel-*\" && rime-install.bat`
-     - 輸入 `snomiao/rime-snomiao`
+
      - [配置](#配置) 输入法
    - 方法 3
      - 運行 `git clone https://github.com/snomiao/rime-snomiao && cd rime-snomiao && install.bat`
-   - 方法 4 （自动）
+   - 方法 4 （自动）（失効）
      - 運行 `npx rime-snomiao`
 
 3. 安装完成后，请 [配置](#配置) 输入法
@@ -144,11 +145,11 @@ Dictionary contribute 詞典贡献
 
 （但如果需要做商用的話得注意項目中包含的其它幾個方案的 license（但应该没有這様的人吧……），如果有這種需求請参見 Reference 电進去自己看他們的 License）
 
-## Reference & ThanksTo
-
-### rime-snomiao 小白鼠用户交流群
+## rime-snomiao 小白鼠用户交流群
 
 telegram: @rime_snomiao https://t.me/rime_snomiao
+
+## References & ThanksTo
 
 - [中日英自然码（带辅码）双拼输入法](https://github.com/lippmann/lrime)
 - [Rime double pinyin plus](https://github.com/mutoe/rime)
@@ -156,6 +157,7 @@ telegram: @rime_snomiao https://t.me/rime_snomiao
 - [rime/rime-pinyin-simp: 【袖珍簡化字拼音】輸入方案](https://github.com/rime/rime-pinyin-simp)
 - [rime/rime-wubi: 【五筆字型】輸入方案](https://github.com/rime/rime-wubi)
 - [gkovacs/rime-japanese: 日语输入法 Input method for typing Japanese with RIME](https://github.com/gkovacs/rime-japanese/)
+- [日本人名地名平假名汉字双向词典](https://mdict.org/post/riben-renming-diming/)
 
 ## About
 
