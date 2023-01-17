@@ -1,5 +1,5 @@
 cd %~dp0\..
-tools\deploy.bat
+robocopy Rime %APPDATA%\Rime *.yaml *.json *.txt *.ocd *.ocd2 /S
 WeaselDeployer.exe
 start "" WeaselServer.exe
 cd %~dp0\..
