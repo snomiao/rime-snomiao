@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.1](https://github.com/snomiao/rime-snomiao/compare/v2.2.0...v2.2.1) (2023-01-19)
+
+
+### Bug Fixes
+
+* **.github:** rename workflows ([047f7fe](https://github.com/snomiao/rime-snomiao/commit/047f7feb85a326f83e4e05cf610e378207b569d6))
+
 ## [2.2.0](https://github.com/snomiao/rime-snomiao/compare/v1.4.3...v2.2.0) (2023-01-19)
 
 
