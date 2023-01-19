@@ -1,34 +1,41 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "npm",
-			"script": "install",
-			"group": "none",
-			"problemMatcher": [],
-			"label": "npm: install",
-			"detail": "install dependencies from package"
-		},
-		{
-			"type": "npm",
-			"script": "deploy",
-			"problemMatcher": [],
-			"label": "npm: deploy",
-			"detail": "deploy.bat"
-		},
-		{
-			"type": "npm",
-			"script": "dev",
-			"problemMatcher": [],
-			"label": "npm: dev",
-			"detail": "cd src && tsx dictParse.ts"
-		},
-		{
-			"type": "npm",
-			"script": "debug",
-			"problemMatcher": [],
-			"label": "npm: debug",
-			"detail": "cd tools && debug"
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "install",
+      "group": "none",
+      "problemMatcher": [],
+      "label": "npm: install",
+      "detail": "install dependencies from package"
+    },
+    {
+      "type": "npm",
+      "script": "deploy",
+      "problemMatcher": [],
+      "label": "npm: deploy",
+      "detail": "deploy.bat"
+    },
+    {
+      "type": "npm",
+      "script": "dev",
+      "problemMatcher": [],
+      "label": "npm: dev",
+      "detail": "cd src && tsx dictParse.ts"
+    },
+    {
+      "type": "npm",
+      "script": "debug",
+      "problemMatcher": [],
+      "label": "npm: debug",
+      "detail": "cd tools && debug"
+    },
+    {
+      "type": "npm",
+      "script": "release",
+      "problemMatcher": [],
+      "label": "npm: release",
+      "detail": "standard-version --commit-all && git push --follow-tag --all"
+    }
+  ]
 }
