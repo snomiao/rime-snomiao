@@ -181,7 +181,7 @@ recognizer:
 #########################
 # Reverse Lookup
 
-# # 输入拼音反查英文
+# 输入拼音反查英文 (現在直接輸出英文了)
 # en2zh_reverse_lookup:
 #   tags: [pinyin_lookup]
 #   dictionary: translate_en2zh
@@ -240,10 +240,9 @@ punctuator:
 key_binder:
   import_preset: default
   bindings:
-    - { accept: "Control+Shift+1", select: sno_english, when: always }
-    - { accept: "Control+Shift+2", select: sno_japanese, when: always }
-    - { accept: "Control+Shift+3", select: sno_chinese, when: always }
-    - { accept: "Control+Shift+9", select: .next, when: always }
+    - { accept: "Shift+e", select: sno_english, when: composing }
+    - { accept: "Shift+j", select: sno_japanese, when: composing }
+    - { accept: "Shift+c", select: sno_chinese, when: composing }
 
 editor:
   bindings:

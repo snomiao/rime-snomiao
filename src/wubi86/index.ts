@@ -1,5 +1,6 @@
 import { csvParse } from "d3";
 import esMain from "es-main";
+import { writeFile } from "fs/promises";
 import { globby } from "globby";
 import readFileUtf8 from "read-file-utf8";
 import snohmr from "snohmr";
@@ -13,15 +14,15 @@ export default async function index() {
   const freqs = await globby("src/wubi86/*.txt");
   const freq = new Map(
     (await readFileUtf8(freqs[0]))
-      .replace(/\r/g, "")
+      .replace(/[\uFEFF\r]/g, "")
       .split("\n")
       .map((l) => {
         const [w, f] = l.split("\t");
-        return [w, f];
+        return [w, -Number(f)];
       })
   );
   const ww = (await readFileUtf8(csvs[0]))
-    .replace(/\r/g, "")
+    .replace(/[\uFEFF\r]/g, "")
     .split("\n")
     .flatMap((l) => {
       const [code, ...words] = l.split(",");
@@ -32,5 +33,8 @@ export default async function index() {
       return [word, code, freq.get(word)].join("\t");
     })
     .join("\n");
-  console.log(dictContent);
+  const f = "rime/sno_wubi86.dict.yaml";
+  const cont = await readFileUtf8(f);
+  await writeFile(f, cont.replace(/(?<=\.\.\.\n)(?:\n.*)+/, dictContent));
+  console.log(f);
 }

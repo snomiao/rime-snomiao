@@ -232,11 +232,12 @@ punctuator:
 key_binder:
   import_preset: default
   bindings:
-    - { accept: "Control+Shift+1", select: sno_english, when: always }
-    - { accept: "Control+Shift+2", select: sno_japanese, when: always }
-    - { accept: "Control+Shift+3", select: sno_chinese, when: always }
-    - { accept: "Control+Shift+9", select: .next, when: always }
-    - { accept: "Alt+Shift+T", toggle: zhjp_translate, when: always }
+    - { accept: "Shift+e", select: sno_english, when: always }
+    - { accept: "Shift+E", select: sno_english, when: always }
+    - { accept: "Shift+j", select: sno_japanese, when: always }
+    - { accept: "Shift+J", select: sno_japanese, when: always }
+    - { accept: "Shift+c", select: sno_chinese, when: always }
+    - { accept: "Shift+C", select: sno_chinese, when: always }
 
 editor:
   bindings:

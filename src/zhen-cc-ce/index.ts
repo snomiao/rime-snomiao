@@ -67,7 +67,7 @@ export async function parse(pairs: string[][]) {
           );
           console.log("");
         }
-        return [`${zhWord}	${[...enWords.map((w) => `${w}`), word].join(" ")}`];
+        return [`${zhWord}	${[...enWords.map((w) => `${w}\u00A0`)].join(" ")}`];
       }),
     // sortBy((e) => -e.length),
     (e) => e.join("\n")
@@ -77,11 +77,7 @@ export async function parse(pairs: string[][]) {
 }
 
 function wordsMatch(text: string, word: string) {
-  const words = (text.match(/.+/g) || [])
-    .map((e) => e.trim())
-    .filter(Boolean)
-    .map((e) => e.trim())
-    .filter(Boolean);
+  const words = (text.match(/.+/g) || []).map((e) => e.trim()).filter(Boolean);
   return words;
 }
 
@@ -107,6 +103,7 @@ function definitionTextWash(definition: string) {
       .replace(/[;.-]/gm, "")
       .replace(/ 〔/gm, "〔")
       .replace(/  +/gm, " ")
+      .replace(/old variant of.*/gm, "")
       .trim()
   );
 }

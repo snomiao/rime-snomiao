@@ -88,7 +88,6 @@
      - 將本項目下載解压，将 `./Rime` 目録裏的内容复制到：`C:\Users\你的用户名\AppData\Roaming\Rime` (即 %APPDATA%\Rime )
      - [配置](#配置) 输入法
    - 方法 2（需要連接互聯網）
-
      - [配置](#配置) 输入法
    - 方法 3
      - 運行 `git clone https://github.com/snomiao/rime-snomiao && cd rime-snomiao && install.bat`

@@ -4,3 +4,62 @@ patch:
     - { schema: sno_japanese }
     - { schema: sno_chinese }
     - { schema: easy_en }
+
+key_binder:
+  import_preset: default
+  bindings:
+    - { accept: "Shift+e", select: sno_english, when: always }
+    - { accept: "Shift+E", select: sno_english, when: always }
+    - { accept: "Shift+j", select: sno_japanese, when: always }
+    - { accept: "Shift+J", select: sno_japanese, when: always }
+    - { accept: "Shift+c", select: sno_chinese, when: always }
+    - { accept: "Shift+C", select: sno_chinese, when: always }
+# key_binder:
+#   import_preset: default
+#   bindings:
+# - {accept: "Shift+e", select: sno_english, when: composing }
+# - {accept: "Shift+j", select: sno_japanese, when: composing }
+# - {accept: "Shift+c", select: sno_chinese, when: composing }
+# - {accept: "Control+Shift+9", select: .next, when: always }
+# - {accept: "Control+Shift+1", select: .next, when: always}
+# - {accept: "Control+Shift+2", toggle: ascii_mode, when: always}
+# - {accept: "Control+Shift+3", toggle: full_shape, when: always}
+# - {accept: "Control+Shift+4", toggle: simplification, when: always}
+# - {accept: "Control+Shift+5", toggle: extended_charset, when: always}
+# - {accept: "Control+Shift+exclam", select: .next, when: always}
+# - {accept: "Control+Shift+at", toggle: ascii_mode, when: always}
+# - {accept: "Control+Shift+numbersign", toggle: full_shape, when: always}
+# - {accept: "Control+Shift+dollar", toggle: simplification, when: always}
+# - {accept: "Control+Shift+percent", toggle: extended_charset, when: always}
+# key_binder:
+#   bindings:
+#     - {accept: "Control+p", send: Up, when: composing}
+#     - {accept: "Control+n", send: Down, when: composing}
+#     - {accept: "Control+b", send: Left, when: composing}
+#     - {accept: "Control+f", send: Right, when: composing}
+#     - {accept: "Control+a", send: Home, when: composing}
+#     - {accept: "Control+e", send: End, when: composing}
+#     - {accept: "Control+d", send: Delete, when: composing}
+#     - {accept: "Control+k", send: "Shift+Delete", when: composing}
+#     - {accept: "Control+h", send: BackSpace, when: composing}
+#     - {accept: "Control+g", send: Escape, when: composing}
+#     - {accept: "Control+bracketleft", send: Escape, when: composing}
+#     - {accept: "Alt+v", send: Page_Up, when: composing}
+#     - {accept: "Control+v", send: Page_Down, when: composing}
+#     - {accept: ISO_Left_Tab, send: "Shift+Left", when: composing}
+#     - {accept: "Shift+Tab", send: "Shift+Left", when: composing}
+#     - {accept: Tab, send: "Shift+Right", when: composing}
+#     - {accept: minus, send: Page_Up, when: has_menu}
+#     - {accept: equal, send: Page_Down, when: has_menu}
+#     - {accept: comma, send: Page_Up, when: paging}
+#     - {accept: period, send: Page_Down, when: has_menu}
+#     - {accept: "Control+Shift+1", select: .next, when: always}
+#     - {accept: "Control+Shift+2", toggle: ascii_mode, when: always}
+#     - {accept: "Control+Shift+3", toggle: full_shape, when: always}
+#     - {accept: "Control+Shift+4", toggle: simplification, when: always}
+#     - {accept: "Control+Shift+5", toggle: extended_charset, when: always}
+#     - {accept: "Control+Shift+exclam", select: .next, when: always}
+#     - {accept: "Control+Shift+at", toggle: ascii_mode, when: always}
+#     - {accept: "Control+Shift+numbersign", toggle: full_shape, when: always}
+#     - {accept: "Control+Shift+dollar", toggle: simplification, when: always}
+#     - {accept: "Control+Shift+percent", toggle: extended_charset, when: always}

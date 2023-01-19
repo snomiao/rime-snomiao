@@ -48,6 +48,7 @@ engine:
     - table_translator
 
 speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
   delimiter: " ;'"
   #max_code_length: 4
 
