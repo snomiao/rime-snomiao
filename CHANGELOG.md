@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.3](https://github.com/snomiao/rime-snomiao/compare/v2.2.2...v2.2.3) (2023-01-20)
+
+
+### Bug Fixes
+
+* **rime-snomiao:** encoder ([a519a72](https://github.com/snomiao/rime-snomiao/commit/a519a7284520ee295836d3d9f401d31dd11f7233))
+* **workflows:** node 18 ([85b3920](https://github.com/snomiao/rime-snomiao/commit/85b3920f46b0ae68feff7a93ead1d79df99cac07))
+
 ### [2.2.2](https://github.com/snomiao/rime-snomiao/compare/v2.2.1...v2.2.2) (2023-01-20)
 
 
