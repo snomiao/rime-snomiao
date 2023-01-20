@@ -27,8 +27,13 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "bin": "dist/cli.mjs",
+  "directories": {
+    "Rime": "Rime"
+  },
   "files": [
     "Rime",
+    "rime",
+    "dist",
     "tools"
   ],
   "scripts": {
@@ -38,11 +43,11 @@
     "dev": "nodemon -e yaml,ts -x tsx src/cli-deploy.ts",
     "init": "pnpm install && npm run dev",
     "menu": "start \"\" \"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\小狼毫輸入法\"",
-    "postversion": "npm publish",
     "prepack": "npm run build",
     "prepare": "husky install",
     "release": "standard-version --commit-all && git push --follow-tag --all",
-    "test": "vitest"
+    "test": "vitest",
+    "postversion": "npm publish"
   },
   "lint-staged": {
     "*.{js,ts,json,yaml}": "prettier -w"
