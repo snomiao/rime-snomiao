@@ -8,11 +8,15 @@ import snohmr from "snohmr";
 import workPackageDir from "work-package-dir";
 import MDictTypescript from "../lib/mdictTypescript";
 import { format } from "prettier";
+import mdxEntriesParse from "../lib/mdxFileParse";
 if (esMain(import.meta)) await index();
 
 export default async function index() {
   await workPackageDir();
-  const pairs = await dictLoad();
+  const [file, ...rest] = await globby("dict/CC-CEDICT*/*.mdx");
+  if (rest.length) throw new Error("too many dict files");
+  const pairs = mdxEntriesParse(file);
+
   for await (const { parse } of snohmr(() => import("./index"))) {
     await parse(pairs)
       .then(() => {
@@ -22,19 +26,7 @@ export default async function index() {
   }
 }
 
-async function dictLoad() {
-  const files = await globby("dict/CC-CEDICT*/*.mdx");
-  if (files.length > 1) throw new Error("mdx file too many");
-  if (!files.length) throw new Error("mdx file not found");
-  const file = files[0];
-  const mdx = new MDictTypescript(file);
-  console.log("dict loaded");
-  const words = mdx.keyList.map(({ keyText }) => keyText);
-  const pairs = words.map(word => [word, mdx.lookup(word).definition]);
-  return pairs;
-}
-
-export async function parse(pairs: string[][]) {
+export async function parse(pairs: (readonly [string, string])[]) {
   console.log(chalk.bgWhite("====================================="));
   let k = 10;
   const zhjpWordCC = pipe(

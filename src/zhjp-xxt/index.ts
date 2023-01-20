@@ -6,13 +6,13 @@ import { pipe, sortBy } from "rambda";
 import snohmr from "snohmr";
 import { m } from "vitest/dist/index-9f5bc072";
 import workPackageDir from "work-package-dir";
-import mdxFileParse from "../lib/mdxFileParse";
+import mdxEntriesParse from "../lib/mdxFileParse";
 
 if (esMain(import.meta)) await index();
 
 export default async function index() {
   await workPackageDir();
-  const entires = await mdxFileParse("dict/《小学馆V2中日辞典》.mdx");
+  const entires = await mdxEntriesParse("dict/《小学馆V2中日辞典》.mdx");
   for await (const { parse } of snohmr(() => import("./index"))) {
     await parse(entires)
       .then(() => {

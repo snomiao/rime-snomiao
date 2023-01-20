@@ -31,8 +31,8 @@ export default async function index() {
       return [word, code, freq.get(word)].join("\t");
     })
     .join("\n");
-  const f = "rime/sno_wubi86.dict.yaml";
+  const f = "Rime/sno_wubi86.dict.yaml";
   const cont = await readFileUtf8(f);
-  await writeFile(f, cont.replace(/(?<=\.\.\.\n)(?:\n.*)+/, dictContent));
+  await writeFile(f, cont.replace(/(?<=\.\.\.\n)(?:.*\n?)+/, dictContent));
   console.log(f);
 }

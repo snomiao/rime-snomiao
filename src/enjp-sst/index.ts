@@ -1,22 +1,15 @@
-import { assert } from "console";
-import Mdict from "mdict-js";
-
-export default function sstDictParse(engWordsSample: string[], mdx: Mdict) {
-  const wordPairs = [...new Set(engWordsSample)]
-    .sort()
-    .map(keyText => {
-      const r = mdx.lookup(keyText);
-      if (r.keyText !== keyText) return [];
-      assert(
-        r.keyText === keyText,
-        JSON.stringify({ rkt: r.keyText, kt: keyText })
-      );
-      return [[r.keyText, r.definition] as [string, string]];
-    })
-    .flat();
-
-  return [...new Map(wordPairs).entries()]
-    .map(([keyText, definition]) => {
+import { sortedUniq } from "lodash-es";
+import mdxEntriesParse from "mdxentriesparse";
+import workPackageDir from "work-package-dir";
+import { rimeDictArrayUpdate } from "../utils/rimeDictUpdate";
+{
+  await main();
+}
+async function main() {
+  await workPackageDir();
+  const entries = await mdxEntriesParse("dict/三省堂超级大辞林第二版.mdx");
+  const r = entries
+    .flatMap(([keyText, definition]) => {
       const word = keyText;
       if (word.match(/^[A-Z]/)) return [];
       if (word.length < 2) return [];
@@ -36,10 +29,12 @@ export default function sstDictParse(engWordsSample: string[], mdx: Mdict) {
         .replace(/\[.*?\]|【.*?】/g, "") // 领域、国家
         .replace(/〔.*?〕/g, "") // 年代
         .replace(/\d\)。/g, "") // 序号
+
         // .replace(/[a-z]+(?:・[a-z]+)+/g, "") //頭言葉
         .replace(/\*|・/g, "") // 符號
         .replace(/[;；,，。.]+/g, ";") // 符號
         .replace(/"/g, "") // 引号
+
         // 詞性;/
         .replace(
           /\b(?:a|abbr|ad|adj|adv|art|aux|comb|conj|en|exclam|i|ind|ing|int|interj|n|na|ngn|num|onn|pers|ph|phn|phr|pl|pla|pn|pp|pr|pref|prep|pron|st|suff|un|v|vbl|vi|vt)(?:\.|\b)/g,
@@ -56,7 +51,12 @@ export default function sstDictParse(engWordsSample: string[], mdx: Mdict) {
         .filter(e => !e.match(/^[a-z0-9]+$/i))
         .filter(e => e.length < 16);
       if (!translations.length) return [];
-      return [{ word, definition, translations }];
+      return [{ word, translations }];
     })
+    .map(({ word, translations }) =>
+      sortedUniq(translations).map(t => [t, word])
+    )
     .flat();
+  console.log(r);
+  await rimeDictArrayUpdate("translate_en2jp", r);
 }

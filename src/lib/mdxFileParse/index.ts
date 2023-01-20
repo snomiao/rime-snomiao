@@ -1,6 +1,6 @@
 import MDictTypescript from "../mdictTypescript";
 
-export default async function mdxFileParse(mdxFile: string) {
+export default async function mdxEntriesParse(mdxFile: string) {
   const mdx = new MDictTypescript(mdxFile);
   const words = mdx.keyList.map(({ keyText }) => keyText);
   const entires = words.map(
