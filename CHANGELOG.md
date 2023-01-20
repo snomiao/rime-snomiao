@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.5](https://github.com/snomiao/rime-snomiao/compare/v2.2.4...v2.2.5) (2023-01-20)
+
+
+### Bug Fixes
+
+* **rime-snomiao:** cli-node head ([d4005fb](https://github.com/snomiao/rime-snomiao/commit/d4005fba2bb2be0ebccde26fef885ec156779db5))
+
 ### [2.2.4](https://github.com/snomiao/rime-snomiao/compare/v2.2.3...v2.2.4) (2023-01-20)
 
 ### [2.2.3](https://github.com/snomiao/rime-snomiao/compare/v2.2.2...v2.2.3) (2023-01-20)
