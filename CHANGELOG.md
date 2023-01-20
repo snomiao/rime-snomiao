@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.1](https://github.com/snomiao/rime-snomiao/compare/v2.2.8...v2.3.1) (2023-01-20)
+
+
+### Bug Fixes
+
+* **rime-snomiao:** snobuild installed ([a01a378](https://github.com/snomiao/rime-snomiao/commit/a01a37888dd688b009887ec14fea8bf95841f641))
+* **rime-snomiao:** version ([92ba7b0](https://github.com/snomiao/rime-snomiao/commit/92ba7b00291536d018e17bad6c9dfa2ed4d84c9a))
+
 ### [2.2.9](https://github.com/snomiao/rime-snomiao/compare/v2.2.8...v2.2.9) (2023-01-20)
 
 ### [2.2.8](https://github.com/snomiao/rime-snomiao/compare/v2.2.7...v2.2.8) (2023-01-20)
