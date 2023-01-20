@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.8](https://github.com/snomiao/rime-snomiao/compare/v2.2.7...v2.2.8) (2023-01-20)
+
 ### [2.2.5](https://github.com/snomiao/rime-snomiao/compare/v2.2.4...v2.2.5) (2023-01-20)
 
 
