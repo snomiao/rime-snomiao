@@ -19,13 +19,13 @@ schema:
 switches:
   - name: ascii_mode
     reset: 0
-    states: [ 中文, 西文 ]
+    states: [中文, 西文]
   - name: full_shape
-    states: [ 半角, 全角 ]
+    states: [半角, 全角]
   - name: extended_charset
-    sitates: [ 常用, 增廣 ]
+    sitates: [常用, 增廣]
   - name: ascii_punct
-    states: [ 。，, ．， ]
+    states: [。，, ．，]
 
 engine:
   processors:
@@ -81,5 +81,5 @@ key_binder:
 recognizer:
   import_preset: default
   patterns:
-    punct: '^/([0-9]0?|[A-Za-z]+)$'
+    punct: "^/([0-9]0?|[A-Za-z]+)$"
     reverse_lookup: "^z[a-z]*'?$"

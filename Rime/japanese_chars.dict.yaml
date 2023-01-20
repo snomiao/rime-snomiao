@@ -13,8 +13,7 @@ version: "0.1"
 sort: by_weight
 import_tables:
   - pinyin_simp
-...
-
+---
 ・	den
 、	den
 ×	times

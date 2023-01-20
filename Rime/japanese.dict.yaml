@@ -3,10 +3,9 @@
 
 ---
 name: japanese
-version: 'v0.2-20180411'
+version: "v0.2-20180411"
 
 import_tables:
-  - 'japanese.mozc'
-  - 'japanese.jmdict'
-  - 'japanese.kana'
-...
+  - "japanese.mozc"
+  - "japanese.jmdict"
+  - "japanese.kana"

@@ -8,7 +8,7 @@ schema:
 switches:
   - name: ascii_mode
     reset: 0
-    states: [ ASCII-OFF, ASCII-ON ]
+    states: [ASCII-OFF, ASCII-ON]
 
 engine:
   processors:
@@ -48,4 +48,4 @@ key_binder:
 recognizer:
   import_preset: default
   patterns:
-    uppercase: ''
+    uppercase: ""

@@ -66,18 +66,16 @@ export async function parse(entries: (readonly [string, string])[]) {
         .match(/.+?．|.+/g) || [];
     const words = rawWords
       // remove quote and chars
-      .map((e) => e.replace(/．/gm, ""))
-      .flatMap((e) =>
-        [...e.matchAll(/(?:(?:.+),)?(.+?)(?:;|$)|(.+)/g)].map(
-          (e) => e[1] || e[2]
-        )
+      .map(e => e.replace(/．/gm, ""))
+      .flatMap(e =>
+        [...e.matchAll(/(?:(?:.+),)?(.+?)(?:;|$)|(.+)/g)].map(e => e[1] || e[2])
       )
-      .map((e) => e.replace(/^................+/gm, "")) // no more than 20 chars
-      .map((e) => e.trim())
+      .map(e => e.replace(/^................+/gm, "")) // no more than 20 chars
+      .map(e => e.trim())
       // dont only suru, dont tomo
-      .filter((e) => e !== `${w0}する`)
-      .filter((e) => !e.match(/^,+$/))
-      .filter((e) => !e.match(/とも$/))
+      .filter(e => e !== `${w0}する`)
+      .filter(e => !e.match(/^,+$/))
+      .filter(e => !e.match(/とも$/))
       .filter(Boolean);
     if (!words.length) return [];
     if (/* k > 0 ||  */ w0 === "打") {
@@ -88,7 +86,7 @@ export async function parse(entries: (readonly [string, string])[]) {
       console.log(chalk.green(wordsIndicate(words)));
       console.log("");
     }
-    return words.map((w1) => [w0, w1]);
+    return words.map(w1 => [w0, w1]);
   });
 
   const zhjp = pipe(
@@ -101,8 +99,8 @@ export async function parse(entries: (readonly [string, string])[]) {
           )
           .entries(),
       ].map(([w0, w1s]) => `${w0}\t${w0} ${w1s.join(" ")}`),
-    sortBy((e) => -e.length),
-    (e) => e.join("\n")
+    sortBy(e => -e.length),
+    e => e.join("\n")
   )();
   const jpzh = pipe(
     () =>
@@ -114,8 +112,8 @@ export async function parse(entries: (readonly [string, string])[]) {
           )
           .entries(),
       ].map(([w0, w1s]) => `${w0}\t${w0} ${w1s.join(" ")}`),
-    sortBy((e) => -e.length),
-    (e) => e.join("\n")
+    sortBy(e => -e.length),
+    e => e.join("\n")
   )();
   // return [
   //   `${w0}	${[w0, ...words].join(" ")}`,
@@ -127,5 +125,5 @@ export async function parse(entries: (readonly [string, string])[]) {
   // console.log(sample.slice(0, 1000));
 }
 function wordsIndicate(words: string[]) {
-  return words.join("\n").replace(/^.+/gm, (e) => "> " + e);
+  return words.join("\n").replace(/^.+/gm, e => "> " + e);
 }

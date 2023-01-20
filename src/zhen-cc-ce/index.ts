@@ -30,7 +30,7 @@ async function dictLoad() {
   const mdx = new MDictTypescript(file);
   console.log("dict loaded");
   const words = mdx.keyList.map(({ keyText }) => keyText);
-  const pairs = words.map((word) => [word, mdx.lookup(word).definition]);
+  const pairs = words.map(word => [word, mdx.lookup(word).definition]);
   return pairs;
 }
 
@@ -48,36 +48,36 @@ export async function parse(pairs: string[][]) {
       return { word, text, definition };
     }),
     sortBy(({ text }) => text.length),
-    (e) =>
+    e =>
       flatMap(e, ({ word, text, definition }) => {
         const enPharses = wordsMatch(text, word);
         if (!enPharses.length) return [];
         const zhWord = word.replace(/，/g, "");
         const enWords = uniq(enPharses)
-          .map((phrase) => phrase.replace(/^to /g, ""))
-          .map((e) => e.trim())
-          .map((e) => e.replace(/ /g, "\u00A0"));
+          .map(phrase => phrase.replace(/^to /g, ""))
+          .map(e => e.trim())
+          .map(e => e.replace(/ /g, "\u00A0"));
         if ((text && k) || word === "和") {
           k && k--;
           console.log(chalk.bgBlue(word));
           console.log(chalk.blue(format(definition, { parser: "html" })));
           console.log(chalk.red(text));
           console.log(
-            chalk.green(enWords.join("\n").replace(/^.+/gm, (e) => `> ${e}.`))
+            chalk.green(enWords.join("\n").replace(/^.+/gm, e => `> ${e}.`))
           );
           console.log("");
         }
-        return [`${zhWord}	${[...enWords.map((w) => `${w}\u00A0`)].join(" ")}`];
+        return [`${zhWord}	${[...enWords.map(w => `${w}\u00A0`)].join(" ")}`];
       }),
     // sortBy((e) => -e.length),
-    (e) => e.join("\n")
+    e => e.join("\n")
   )();
   await writeFile("Rime/opencc/zhen_word.txt", zhjpWordCC);
   // console.log(sample.slice(0, 1000));
 }
 
 function wordsMatch(text: string, word: string) {
-  const words = (text.match(/.+/g) || []).map((e) => e.trim()).filter(Boolean);
+  const words = (text.match(/.+/g) || []).map(e => e.trim()).filter(Boolean);
   return words;
 }
 

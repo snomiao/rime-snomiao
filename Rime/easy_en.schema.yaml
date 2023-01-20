@@ -9,8 +9,7 @@ schema:
   author:
     - Patrick <ipatrickmac@gmail.com>
     - BlindingDark <blindingdark@outlook.com>
-  description:
-    Easy English
+  description: Easy English
 
 easy_en:
   split_sentence: true
@@ -18,7 +17,7 @@ easy_en:
 switches:
   - name: ascii_mode
     reset: 0
-    states: [ ASCII-OFF, ASCII-ON ]
+    states: [ASCII-OFF, ASCII-ON]
 
 engine:
   processors:
@@ -58,4 +57,4 @@ key_binder:
 recognizer:
   import_preset: default
   patterns:
-    uppercase: ''
+    uppercase: ""

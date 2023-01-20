@@ -1,15 +1,10 @@
-import "semver";
-import { exec } from "child_process";
 import { csvParse } from "d3";
-import { execa } from "execa";
-import { mkdir, writeFile } from "fs/promises";
-import { groupBy, map, mapObjIndexed, replace, sortBy } from "rambda";
+import { sortBy } from "rambda";
 import readFileUtf8 from "read-file-utf8";
-import snorun from "snorun";
-import { promisify } from "util";
-import workPackageDir from "../lib/workPackageDir";
-import { rimeDictUpdate } from "../utils/rimeDictUpdate";
-import { uniqueSort } from "../lib/uniqueSort";
+import "semver";
+import { rimeDictArrayUpdate } from "../utils/rimeDictUpdate";
+import { sortedUniq } from "lodash-es";
+import workPackageDir from "work-package-dir";
 {
   await workPackageDir();
   const dictPath = "dict/enzh.csv";
@@ -17,7 +12,7 @@ import { uniqueSort } from "../lib/uniqueSort";
   const csvLineCount = csv.length;
   console.log({ csvLineCount });
   const entries = csv
-    .map((e) => {
+    .map(e => {
       // filter
       if (!e.word) return [];
       if (!e.word?.match(/^[a-zA-Z ]+$/)) return [];
@@ -44,23 +39,23 @@ import { uniqueSort } from "../lib/uniqueSort";
         .replace(/…+/g, "什么")
         .replace(/\.\.\.+/g, "什么")
         .split(";")
-        .map((e) => e.trim())
+        .map(e => e.trim())
         .filter(Boolean)
-        .filter((e) => !e.match(/^\d+$/))
-        .map((e) => e.replace(/\s+/g, " "))
-        .filter((e) => !e.match(/^人名$/g))
-        .filter((e) => !e.match(/^的(复数|变形)$/g))
-        .filter((e) => !e.match(/^家.{1,3}科$/g))
-        .filter((e) => !e.match(/^来源于(?:.+?英语|人名)$/g));
-      return uniqueSort(ts).map((translation) => ({
+        .filter(e => !e.match(/^\d+$/))
+        .map(e => e.replace(/\s+/g, " "))
+        .filter(e => !e.match(/^人名$/g))
+        .filter(e => !e.match(/^的(复数|变形)$/g))
+        .filter(e => !e.match(/^家.{1,3}科$/g))
+        .filter(e => !e.match(/^来源于(?:.+?英语|人名)$/g));
+      return sortedUniq(ts).map(translation => ({
         word,
         translation,
         frequent: e.frq || "",
       }));
     })
     .flat();
-  const sortedEntries = sortBy((e) => e.word.toLowerCase(), entries);
-  const abbr = sortedEntries.map((e) => ({
+  const sortedEntries = sortBy(e => e.word.toLowerCase(), entries);
+  const abbr = sortedEntries.map(e => ({
     w: e.word,
     lower: e.word.toLowerCase(),
     tr: e.translation,
@@ -70,13 +65,13 @@ import { uniqueSort } from "../lib/uniqueSort";
   console.log({ pairsCount });
 
   await Promise.all([
-    rimeDictUpdate(
+    rimeDictArrayUpdate(
       "translate_en2zh",
-      abbr.map((e) => [e.tr, e.lower, e.frq])
+      abbr.map(e => [e.tr, e.lower, e.frq])
     ),
-    rimeDictUpdate(
+    rimeDictArrayUpdate(
       "translate_zh2en",
-      abbr.map((e) => [e.lower, e.tr])
+      abbr.map(e => [e.lower, e.tr])
     ),
     // rimeDictUpdate(
     //   "translate_en2en",
@@ -101,6 +96,8 @@ async function enzhCsvParse(dictPath: string) {
     "detail",
     "audio",
   ] as const;
-  const csv = csvParse<typeof dictFields[number]>(await readFileUtf8(dictPath));
+  const csv = csvParse<(typeof dictFields)[number]>(
+    await readFileUtf8(dictPath)
+  );
   return csv;
 }

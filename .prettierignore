@@ -1,0 +1,13 @@
+# Logs
+logs
+*.log
+node_modules/
+
+Rime/build
+Rime/*.userdb
+Rime/installation.yaml
+Rime/user.yaml
+Rime/*.dict.yaml
+
+dist
+dict

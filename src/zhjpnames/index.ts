@@ -13,7 +13,7 @@ if (esMain(import.meta)) await index();
 
 export default async function index() {
   await workPackageDir();
-  const entires = await mdxFileParse((await globby("src/zhjpnames/*.mdx"))[0]);
+  const entires = await mdxFileParse((await globby("dict/jpnames/*.mdx"))[0]);
   for await (const { parse } of snohmr(() => import("./index"))) {
     await parse(entires)
       .then(() => {
@@ -29,7 +29,7 @@ export async function parse(entries: (readonly [string, string])[]) {
   const zhjpWordCC = pipe(
     () => entries,
     // sortBy(Math.random),
-    (e) => e.slice(0, 100),
+    e => e.slice(0, 100),
     filter(([k, v]) => Boolean(v)),
     filter(([word, v]) => !word.match(/[\s]/)),
     map(([word, definition]) => {
@@ -37,7 +37,7 @@ export async function parse(entries: (readonly [string, string])[]) {
       return { word, text, definition };
     }),
     sortBy(({ text }) => -text.length),
-    (e) =>
+    e =>
       e.flatMap(({ word, text, definition }) => {
         const jpWords = jpWordsMatch(text, word);
         if (!jpWords.length) return [];
@@ -51,14 +51,14 @@ export async function parse(entries: (readonly [string, string])[]) {
           console.log(chalk.red(text));
           console.log(chalk.blue(definition));
           console.log(
-            chalk.green(jpWords.join("\n").replace(/^.+/gm, (e) => "> " + e))
+            chalk.green(jpWords.join("\n").replace(/^.+/gm, e => "> " + e))
           );
           console.log("");
         }
         return [`${word}	${[word, ...jpWords].join(" ")}`];
       }),
-    sortBy((e) => -e.length),
-    (e) => e.join("\n")
+    sortBy(e => -e.length),
+    e => e.join("\n")
   )();
   await writeFile("Rime/opencc/zhjp_names.txt", zhjpWordCC);
   // console.log(sample.slice(0, 1000));

@@ -7,13 +7,17 @@
       "file": "zhen_word.txt"
     }
   },
-  "conversion_chain": [{
-    "dict": {
-      "type": "group",
-      "dicts": [{
-        "type": "text",
-        "file": "zhen_word.txt"
-      }]
+  "conversion_chain": [
+    {
+      "dict": {
+        "type": "group",
+        "dicts": [
+          {
+            "type": "text",
+            "file": "zhen_word.txt"
+          }
+        ]
+      }
     }
-  }]
+  ]
 }

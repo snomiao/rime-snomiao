@@ -4,7 +4,7 @@ import Mdict from "mdict-js";
 export default function sstDictParse(engWordsSample: string[], mdx: Mdict) {
   const wordPairs = [...new Set(engWordsSample)]
     .sort()
-    .map((keyText) => {
+    .map(keyText => {
       const r = mdx.lookup(keyText);
       if (r.keyText !== keyText) return [];
       assert(
@@ -51,10 +51,10 @@ export default function sstDictParse(engWordsSample: string[], mdx: Mdict) {
         .replace(/\s+/, " ")
         .trim()
         .split(";")
-        .map((e) => e.replace(/\s+/g, " ").trim())
+        .map(e => e.replace(/\s+/g, " ").trim())
         .filter(Boolean)
-        .filter((e) => !e.match(/^[a-z0-9]+$/i))
-        .filter((e) => e.length < 16);
+        .filter(e => !e.match(/^[a-z0-9]+$/i))
+        .filter(e => e.length < 16);
       if (!translations.length) return [];
       return [{ word, definition, translations }];
     })

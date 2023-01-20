@@ -1,6 +1,7 @@
 # rime-snomiao 雪星的小狼毫输入法方
 
 本方案主要解決以下問題：
+
 - 用日語輸入法不会打中文，中文輸入法打不了日語，老要切換，怎麼辦？（拼日混打）
 - 並且系統自帯日語輸入法也不能直接打英文……（rime 直接 enter）
 - 会英文，在学日語，想知道一個単詞的日語怎麼説？（英語単詞翻訳日語）
@@ -61,9 +62,10 @@
 ### Install in Mac、OSX に使用する
 
 1. Install squirrel by 在这里安装 squirrel （rime の mac に分支）。
+
    1. [rime.im](https://rime.im) (official website)
    2. or `brew install squirrel --cask`
-  
+
 2. Install rime-snomiao receipe 安装 rime-snomiao receipe
 
    ```shell
