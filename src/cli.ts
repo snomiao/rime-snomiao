@@ -1,11 +1,21 @@
 #!/usr/bin/env node
 import aswitcher from "aswitcher";
+import path from "path";
 import snorun from "snorun";
+import workPackageDir from "work-package-dir";
+import { packageDirectory } from "pkg-dir";
 // TODO
 {
   main();
 }
 async function main() {
+  const [node, js, ...argv] = process.argv;
+  const pkgdir = await packageDirectory({ cwd: path.parse(js).dir });
+  if (!pkgdir)
+    throw new Error(
+      "package not found, please contact snomiao@gmail.com to report this bug"
+    );
+  process.chdir(pkgdir);
   await aswitcher(process.platform, {
     aix: async () => console.log("auto install not supported"),
     android: async () => console.log("auto install not supported"),

@@ -38,11 +38,11 @@
     "dev": "nodemon -e yaml,ts -x tsx src/cli-deploy.ts",
     "init": "pnpm install && npm run dev",
     "menu": "start \"\" \"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\小狼毫輸入法\"",
+    "postversion": "npm publish",
     "prepack": "npm run build",
     "prepare": "husky install",
     "release": "standard-version --commit-all && git push --follow-tag --all",
-    "test": "vitest",
-    "postversion": "npm publish"
+    "test": "vitest"
   },
   "lint-staged": {
     "*.{js,ts,json,yaml}": "prettier -w"
