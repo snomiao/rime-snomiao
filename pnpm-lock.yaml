@@ -7,7 +7,7 @@ specifiers:
   "@types/node": ^18.11.3
   "@types/semver": ^7.3.12
   "@types/yargs": ^17.0.20
-  aswitcher: ^1.0.0
+  aswitcher: ^1.0.1
   chalk: ^5.1.2
   cpy: ^9.0.1
   d3: ^7.6.1
@@ -49,7 +49,7 @@ devDependencies:
   "@types/lodash-es": 4.17.6
   "@types/node": 18.11.3
   "@types/semver": 7.3.12
-  aswitcher: 1.0.0
+  aswitcher: 1.0.1
   chalk: 5.1.2
   cpy: 9.0.1
   d3: 7.6.1
@@ -797,10 +797,10 @@ packages:
     engines: { node: ">=8" }
     dev: true
 
-  /aswitcher/1.0.0:
+  /aswitcher/1.0.1:
     resolution:
       {
-        integrity: sha512-WG/bku9areDYvYKNEMKnBCRR+lvEOxpxcHCz5oqVPS0NmY2CnQs+UJmZboXYcrk/mdc6Qk6e1h2udPOLRy7Jug==,
+        integrity: sha512-GdrQoFE76blprl0nZLWuw5RAUwDP9ziKXfOWQx378LyxL6ujS+vDdRQc1x9ujVIFOUhCzolViLSCzKCymie5IA==,
       }
     dev: true
 

@@ -1,54 +1,65 @@
 {
   "name": "rime-snomiao",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "由以下方案混合： 86 版五笔 | 拼音 | Emoji | 顔文字（Kaomoji) | 日本語",
-  "type": "module",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/snomiao/rime-snomiao.git"
-  },
   "keywords": [
     "rime",
     "weasel",
     "japenese",
     "chinese"
   ],
+  "homepage": "https://github.com/snomiao/rime-snomiao#readme",
+  "bugs": {
+    "url": "https://github.com/snomiao/rime-snomiao/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snomiao/rime-snomiao.git"
+  },
+  "license": "ISC",
+  "author": "snomiao@gmail.com",
+  "type": "module",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.mjs"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "bin": "dist/cli.mjs",
   "files": [
     "Rime",
     "tools"
   ],
-  "author": "snomiao@gmail.com",
-  "license": "ISC",
   "scripts": {
-    "init": "pnpm install && npm run dev",
-    "dev": "nodemon -e yaml,ts -x tsx src/cli-deploy.ts",
-    "menu": "start \"\" \"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\小狼毫輸入法\"",
+    "build": "snobuild",
     "debug": "cd tools && debug",
-    "postversion": "npm publish",
     "deploy": "cd tools && deploy",
-    "test": "vitest",
+    "dev": "nodemon -e yaml,ts -x tsx src/cli-deploy.ts",
+    "init": "pnpm install && npm run dev",
+    "menu": "start \"\" \"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\小狼毫輸入法\"",
+    "prepack": "npm run build",
+    "prepare": "husky install",
     "release": "standard-version --commit-all && git push --follow-tag --all",
-    "prepare": "husky install"
-  },
-  "standard-version": {
-    "scripts": {
-      "precommit": "git add ."
-    }
-  },
-  "bugs": {
-    "url": "https://github.com/snomiao/rime-snomiao/issues"
+    "test": "vitest",
+    "postversion": "npm publish"
   },
   "lint-staged": {
     "*.{js,ts,json,yaml}": "prettier -w"
   },
-  "homepage": "https://github.com/snomiao/rime-snomiao#readme",
+  "dependencies": {
+    "@types/yargs": "^17.0.20",
+    "top-level-git": "^1.0.1",
+    "vitest": "^0.25.3",
+    "yargs": "^17.6.2"
+  },
   "devDependencies": {
     "@types/d3": "^7.4.0",
     "@types/jsdom": "^20.0.1",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.11.3",
     "@types/semver": "^7.3.12",
-    "aswitcher": "^1.0.0",
+    "aswitcher": "^1.0.1",
     "chalk": "^5.1.2",
     "cpy": "^9.0.1",
     "d3": "^7.6.1",
@@ -75,10 +86,9 @@
     "vite": "^3.2.1",
     "work-package-dir": "^1.0.0"
   },
-  "dependencies": {
-    "@types/yargs": "^17.0.20",
-    "top-level-git": "^1.0.1",
-    "vitest": "^0.25.3",
-    "yargs": "^17.6.2"
+  "standard-version": {
+    "scripts": {
+      "precommit": "git add ."
+    }
   }
 }
