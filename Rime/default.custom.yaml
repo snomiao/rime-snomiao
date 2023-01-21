@@ -3,8 +3,7 @@ patch:
     - { schema: sno_english }
     - { schema: sno_japanese }
     - { schema: sno_chinese }
-    - { schema: sno_wubi86 }
-    - { schema: easy_en }
+    - { schema: sno_wubi }
 
 key_binder:
   import_preset: default
@@ -15,3 +14,9 @@ key_binder:
     - { accept: "Shift+J", select: sno_japanese, when: always }
     - { accept: "Shift+c", select: sno_chinese, when: always }
     - { accept: "Shift+C", select: sno_chinese, when: always }
+    - { accept: "Control+Shift+e", select: sno_english, when: always }
+    - { accept: "Control+Shift+E", select: sno_english, when: always }
+    - { accept: "Control+Shift+j", select: sno_japanese, when: always }
+    - { accept: "Control+Shift+J", select: sno_japanese, when: always }
+    - { accept: "Control+Shift+c", select: sno_chinese, when: always }
+    - { accept: "Control+Shift+C", select: sno_chinese, when: always }

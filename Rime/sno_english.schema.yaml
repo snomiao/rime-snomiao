@@ -240,9 +240,12 @@ punctuator:
 key_binder:
   import_preset: default
   bindings:
-    - { accept: "Shift+e", select: sno_english, when: composing }
-    - { accept: "Shift+j", select: sno_japanese, when: composing }
-    - { accept: "Shift+c", select: sno_chinese, when: composing }
+    - { accept: "Shift+e", select: sno_english, when: always }
+    - { accept: "Shift+E", select: sno_english, when: always }
+    - { accept: "Shift+j", select: sno_japanese, when: always }
+    - { accept: "Shift+J", select: sno_japanese, when: always }
+    - { accept: "Shift+c", select: sno_chinese, when: always }
+    - { accept: "Shift+C", select: sno_chinese, when: always }
 
 editor:
   bindings:

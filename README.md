@@ -50,8 +50,14 @@
 
 ![](media/zh2en.png)
 
-- Wubi86 + Pinyin -> 翻訳成英文
+- 雪星五笔 + Pinyin -> 翻訳成英文
 - English + Emoji 混合输入
+
+### 雪星五笔
+
+![](media/vary-length-wubi.png)
+
+- 基于微软五笔码表改进了变长编码技术, 五笔长句输入效率大幅提升
 
 ### Input -> Output Diagram 輸入輸出転換流程図
 

@@ -17,7 +17,7 @@ schema:
       中文
     碼表源自 ibus-table
   dependencies:
-    - sno_wubi86
+    - sno_wubi
     - pinyin_simp
     - translate_en2zh
 switches:
@@ -51,20 +51,20 @@ engine:
     # - affix_segmentor@easy_en_lookup # 识别 recognizer 指定的 translator
     - affix_segmentor@pinyin_lookup # 识别 recognizer 指定的 translator
     - affix_segmentor@translate_en2zh_lookup # 识别 recognizer 指定的 translator
-    - affix_segmentor@sno_wubi86_lookup # 识别 recognizer 指定的 translator
+    - affix_segmentor@sno_wubi_lookup # 识别 recognizer 指定的 translator
     - abc_segmentor # 混合输入
     - punct_segmentor
     - fallback_segmentor
   translators:
     - punct_translator # 标点输入
-    - table_translator@sno_wubi86_lookup # main
+    - table_translator@sno_wubi_lookup # main
     # - table_translator@easy_en_lookup
     - script_translator@pinyin_lookup
     - table_translator@translate_en2zh_lookup
   filters:
     - simplifier
     - simplifier@zh_emoji_suggestion
-    - reverse_lookup_filter@sno_wubi86_reverse_lookup
+    - reverse_lookup_filter@sno_wubi_reverse_lookup
     # - reverse_lookup_filter@translate_en2zh_reverse_lookup
     - reverse_lookup_filter@pinyin_reverse_lookup
     - uniquifier
@@ -85,16 +85,16 @@ speller:
 # 混合输入
 abc_segmentor:
   extra_tags:
-    - sno_wubi86_lookup
+    - sno_wubi_lookup
     - pinyin_lookup
     - easy_en_lookup
     - translate_en2zh_lookup
 
 # 五筆输入方式
-sno_wubi86_lookup:
-  tag: sno_wubi86_lookup
-  dictionary: sno_wubi86
-  prism: sno_wubi86
+sno_wubi_lookup:
+  tag: sno_wubi_lookup
+  dictionary: sno_wubi
+  prism: sno_wubi
   enable_charset_filter: true
   enable_sentence: true
   enable_encoder: true
@@ -140,18 +140,18 @@ recognizer:
     punct: "^/([0-9]+[a-z]*|[a-z]+)$"
     stroke_lookup: "^H[a-z]*`?$"
     translate_en2zh_lookup: "^T[a-z]*'?$"
-    sno_wubi86_lookup: "^W[a-z]*'?$"
+    sno_wubi_lookup: "^W[a-z]*'?$"
 
 ##########################
 # 汉字循环反查， 显示到候选项的comments上
 
 # 五筆反查
-sno_wubi86_reverse_lookup:
+sno_wubi_reverse_lookup:
   tags: [pinyin_lookup]
-  dictionary: sno_wubi86
+  dictionary: sno_wubi
 # 英文反查
 translate_en2zh_reverse_lookup:
-  tags: [sno_wubi86_lookup]
+  tags: [sno_wubi_lookup]
   dictionary: translate_en2zh
   comment_format:
     - "xform/^/ /"
