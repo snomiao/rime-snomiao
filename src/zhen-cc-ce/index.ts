@@ -3,11 +3,10 @@ import esMain from "es-main";
 import { writeFile } from "fs/promises";
 import { globby } from "globby";
 import { flatMap } from "lodash-es";
+import { format } from "prettier";
 import { filter, map, pipe, sortBy, uniq } from "rambda";
 import snohmr from "snohmr";
 import workPackageDir from "work-package-dir";
-import MDictTypescript from "../lib/mdictTypescript";
-import { format } from "prettier";
 import mdxEntriesParse from "../lib/mdxFileParse";
 if (esMain(import.meta)) await index();
 
@@ -15,10 +14,10 @@ export default async function index() {
   await workPackageDir();
   const [file, ...rest] = await globby("dict/CC-CEDICT*/*.mdx");
   if (rest.length) throw new Error("too many dict files");
-  const pairs = mdxEntriesParse(file);
+  const entries = await mdxEntriesParse(file);
 
   for await (const { parse } of snohmr(() => import("./index"))) {
-    await parse(pairs)
+    await parse(entries)
       .then(() => {
         // maybe deploy
       })
@@ -26,11 +25,11 @@ export default async function index() {
   }
 }
 
-export async function parse(pairs: (readonly [string, string])[]) {
+export async function parse(entries: (readonly [string, string])[]) {
   console.log(chalk.bgWhite("====================================="));
   let k = 10;
   const zhjpWordCC = pipe(
-    () => pairs,
+    () => entries,
     sortBy(Math.random),
     // (e) => e.slice(0, 100),
     filter(([k, v]) => Boolean(v)),

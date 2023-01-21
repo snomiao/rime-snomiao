@@ -16,20 +16,26 @@ async function main() {
     );
   process.chdir(pkgdir);
   await aswitcher(process.platform, {
-    aix: async () => console.log("auto install not supported"),
-    android: async () => console.log("auto install not supported"),
-    cygwin: async () => console.log("auto install not supported"),
+    aix: async () => notSupportedYet(),
+    android: async () => notSupportedYet(),
+    cygwin: async () => notSupportedYet(),
     darwin: async () => {
       console.log({ pkgdir, cwd: process.cwd() });
-      await snorun("cp -r Rime/* ~/Library/Rime");
-      console.log("go to your task bar, find <deploy> button and click.");
+      (await snorun("cp -r Rime/* ~/Library/Rime"))
+        ? console.log("go to your task bar, find <deploy> button and click.")
+        : await notSupportedYet();
     },
-    freebsd: async () => console.log("auto install not supported"),
-    haiku: async () => console.log("auto install not supported"),
-    linux: async () => console.log("auto install not supported"),
-    netbsd: async () => console.log("auto install not supported"),
-    openbsd: async () => console.log("auto install not supported"),
-    sunos: async () => console.log("auto install not supported"),
+    freebsd: async () => notSupportedYet(),
+    haiku: async () => notSupportedYet(),
+    linux: async () => notSupportedYet(),
+    netbsd: async () => notSupportedYet(),
+    openbsd: async () => notSupportedYet(),
+    sunos: async () => notSupportedYet(),
     win32: async () => await snorun("cd tools && install"),
   });
+  async function notSupportedYet() {
+    console.log("[rime-snomiao] auto install not supported yet");
+    console.log(`[rime-snomiao] plz copy from this folder ${`${pkgdir}/Rime`}`);
+    console.log(`[rime-snomiao] to your Rime user configuration directory`);
+  }
 }
