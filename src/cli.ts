@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 import aswitcher from "aswitcher";
 import path from "path";
-import snorun from "snorun";
-import workPackageDir from "work-package-dir";
 import { packageDirectory } from "pkg-dir";
+import snorun from "snorun";
 // TODO
 {
   main();
@@ -21,6 +20,7 @@ async function main() {
     android: async () => console.log("auto install not supported"),
     cygwin: async () => console.log("auto install not supported"),
     darwin: async () => {
+      console.log({ pkgdir, cwd: process.cwd() });
       await snorun("cp -r Rime/* ~/Library/Rime");
       console.log("go to your task bar, find <deploy> button and click.");
     },
