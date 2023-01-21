@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.4](https://github.com/snomiao/rime-snomiao/compare/v2.3.3...v2.3.4) (2023-01-21)
+
+
+### Bug Fixes
+
+* **wubi:** 基于微软五笔码表改进了变长编码技术, 五笔长句输入效率大幅提升 ([b230a7b](https://github.com/snomiao/rime-snomiao/commit/b230a7b455ee4dc23dd71e4997c66f243bc42165))
+
 ### [2.3.3](https://github.com/snomiao/rime-snomiao/compare/v2.3.2...v2.3.3) (2023-01-21)
 
 ### [2.3.2](https://github.com/snomiao/rime-snomiao/compare/v2.3.1...v2.3.2) (2023-01-21)
