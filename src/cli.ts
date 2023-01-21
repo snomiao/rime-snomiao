@@ -21,7 +21,7 @@ async function main() {
     android: async () => console.log("auto install not supported"),
     cygwin: async () => console.log("auto install not supported"),
     darwin: async () => {
-      await snorun("cp -r rime-snomiao/Rime/* ~/Library/Rime");
+      await snorun("cp -r Rime/* ~/Library/Rime");
       console.log("go to your task bar, find <deploy> button and click.");
     },
     freebsd: async () => console.log("auto install not supported"),
