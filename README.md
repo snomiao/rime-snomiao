@@ -86,17 +86,26 @@
 
 2. 安装本输入方案
 
-   - 方法 1
-     - 將本項目下載解压，将 `./Rime` 目録裏的内容复制到：`C:\Users\你的用户名\AppData\Roaming\Rime` (即 %APPDATA%\Rime )
-     - [配置](#配置) 输入法
-   - 方法 2（需要連接互聯網）
-     - [配置](#配置) 输入法
-   - 方法 3
-     - 運行 `git clone https://github.com/snomiao/rime-snomiao && cd rime-snomiao && install.bat`
-   - 方法 4 （自动）（失効）
-     - 運行 `npx rime-snomiao`
+- 方法 0
+  - 下载 Release 然后解压到 `C:\Users\你的用户名\AppData\Roaming\Rime`
+  - https://github.com/snomiao/rime-snomiao/releases/
+- 方法 1
+  - 將本項目下載解压，将 `./Rime` 目録裏的内容复制到：`C:\Users\你的用户名\AppData\Roaming\Rime` (即 %APPDATA%\Rime )
+  - [配置](#配置) 输入法（或重启系统）
+- 方法 2
+  - 運行
+    ```
+    git clone https://github.com/snomiao/rime-snomiao
+    cd rime-snomiao
+    git pull
+    cd devtools
+    install.bat
+    ```
+- 方法 3 （自动）
+  - 運行 `npx rime-snomiao@latest`
+注意本输入方案无法使用东风破 (plum) 安装。
 
-3. 安装完成后，请 [配置](#配置) 输入法
+1. 安装完成后，请 [配置](#配置) 输入法
 
 ### Linux
 

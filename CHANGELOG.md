@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.2](https://github.com/snomiao/rime-snomiao/compare/v2.3.1...v2.3.2) (2023-01-21)
+
+
+### Bug Fixes
+
+* **cli:** darwin path ([1d75bb6](https://github.com/snomiao/rime-snomiao/commit/1d75bb6c2c95f715b27d45f29e8c1417ad43c6f0))
+
 ### [2.3.1](https://github.com/snomiao/rime-snomiao/compare/v2.2.8...v2.3.1) (2023-01-20)
 
 
