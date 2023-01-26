@@ -52,8 +52,7 @@
     "prepare": "husky install",
     "release": "standard-version --commit-all && git push --follow-tag --all",
     "semantic-release": "semantic-release",
-    "test": "vitest",
-    "postversion": "npm publish"
+    "test": "vitest"
   },
   "lint-staged": {
     "*.{js,ts,json,yaml}": "prettier -w"
