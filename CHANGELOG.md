@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.1](https://github.com/snomiao/rime-snomiao/compare/v2.4.0...v2.4.1) (2023-01-26)
+
+
+### Bug Fixes
+
+* **rime-snomiao:** ignore userdb ([5ab3759](https://github.com/snomiao/rime-snomiao/commit/5ab3759482b95e823cb8f04f86886e3254576629))
+* **rime-snomiao:** remove old userdb ([e0199ff](https://github.com/snomiao/rime-snomiao/commit/e0199ff7b4503e889757063868f0fb5cc48c3caa))
+
 ## [2.4.0](https://github.com/snomiao/rime-snomiao/compare/v2.3.6...v2.4.0) (2023-01-26)
 
 
