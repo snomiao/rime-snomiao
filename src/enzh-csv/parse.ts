@@ -1,10 +1,10 @@
 import { csvParse } from "d3";
+import { sortedUniq } from "lodash-es";
 import { sortBy } from "rambda";
 import readFileUtf8 from "read-file-utf8";
 import "semver";
-import { rimeDictArrayUpdate } from "../utils/rimeDictUpdate";
-import { sortedUniq } from "lodash-es";
 import workPackageDir from "work-package-dir";
+import rimeDictFileUpdate from "../utils/rimeDictFileUpdate";
 {
   await workPackageDir();
   const dictPath = "dict/enzh.csv";
@@ -65,13 +65,19 @@ import workPackageDir from "work-package-dir";
   console.log({ pairsCount });
 
   await Promise.all([
-    rimeDictArrayUpdate(
-      "translate_en2zh",
-      abbr.map(e => [e.tr, e.lower, e.frq])
+    rimeDictFileUpdate(
+      "Rime/translate_en2zh.dict.yaml",
+      abbr
+        .map(e => [e.tr, e.lower, e.frq])
+        .map(e => e.join("\t"))
+        .join("\n")
     ),
-    rimeDictArrayUpdate(
-      "translate_zh2en",
-      abbr.map(e => [e.lower, e.tr])
+    rimeDictFileUpdate(
+      "Rime/translate_zh2en.dict.yaml",
+      abbr
+        .map(e => [e.lower, e.tr])
+        .map(e => e.join("\t"))
+        .join("\n")
     ),
     // rimeDictUpdate(
     //   "translate_en2en",
