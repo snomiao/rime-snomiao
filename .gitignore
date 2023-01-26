@@ -5,6 +5,7 @@ node_modules/
 
 Rime/build
 Rime/*.userdb
+Rime/*.userdb.*
 Rime/installation.yaml
 Rime/user.yaml
 
