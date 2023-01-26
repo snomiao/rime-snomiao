@@ -1,9 +1,0 @@
-2023/01/26-21:19:53.213000 899456 Log #72: 0 ops saved to Table #74 OK
-2023/01/26-21:19:53.215000 899456 Archiving C:\Users\snomi\AppData\Roaming\Rime\japanese_wubi86.userdb/000072.log: OK
-2023/01/26-21:19:53.217000 899456 Table #62: 594 entries OK
-2023/01/26-21:19:53.218000 899456 Table #68: 2 entries OK
-2023/01/26-21:19:53.219000 899456 Table #71: 128 entries OK
-2023/01/26-21:19:53.220000 899456 Table #72: 128 entries OK
-2023/01/26-21:19:53.222000 899456 Table #73: 472 entries OK
-2023/01/26-21:19:53.226000 899456 Archiving C:\Users\snomi\AppData\Roaming\Rime\japanese_wubi86.userdb/MANIFEST-000070: OK
-2023/01/26-21:19:53.273000 899456 **** Repaired leveldb C:\Users\snomi\AppData\Roaming\Rime\japanese_wubi86.userdb; recovered 5 files; 37192 bytes. Some data may have been lost. ****

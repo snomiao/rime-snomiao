@@ -1,6 +1,0 @@
-2023/01/26-21:21:56.899000 890384 Log #150: 0 ops saved to Table #151 OK
-2023/01/26-21:21:56.902000 890384 Archiving C:\Users\snomi\AppData\Roaming\Rime\translate_en2jp.userdb/000150.log: OK
-2023/01/26-21:21:56.902000 890384 Table #143: 32 entries OK
-2023/01/26-21:21:56.902000 890384 Table #145: 22 entries OK
-2023/01/26-21:21:56.906000 890384 Archiving C:\Users\snomi\AppData\Roaming\Rime\translate_en2jp.userdb/MANIFEST-000001: OK
-2023/01/26-21:21:56.919000 890384 **** Repaired leveldb C:\Users\snomi\AppData\Roaming\Rime\translate_en2jp.userdb; recovered 2 files; 2163 bytes. Some data may have been lost. ****
