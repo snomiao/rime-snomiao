@@ -1,43 +1,43 @@
 import esMain from "es-main";
-import { writeFile } from "fs/promises";
 import { globby } from "globby";
-import { map, pipe, sortBy } from "rambda";
+import { map, pipe, sortBy, uniq } from "rambda";
 import readFileUtf8 from "read-file-utf8";
 import workPackageDir from "work-package-dir";
-import { yamlVersionPatch } from "../utils/rimeDictFileUpdate";
+import rimeDictFileUpdate from "../utils/rimeDictFileUpdate";
 
 if (esMain(import.meta)) await index();
 
 export default async function index() {
   await workPackageDir();
-  const csvs = await globby("dict/wubi/*.csv");
-  const freqs = await globby("dict/wubi/*.txt");
-  const freq = new Map<string, number>(
-    (await readFileUtf8(freqs[0]))
-      .replace(/[\uFEFF\r]/g, "")
-      .split("\n")
-      .map(l => {
-        const [w, f] = l.split("\t");
-        return [w, -Number(f)] as const;
-      })
-  );
-  const ww = (await readFileUtf8(csvs[0]))
+  const csv = (await globby("src/wubi/*.csv"))[0];
+  const freqContent = await readFileUtf8((await globby("src/wubi/*.txt"))[0]);
+  const freqm = pipe(
+    () => freqContent,
+    e => e.replace(/[\uFEFF\r]/g, ""),
+    e => e.split("\n"),
+    map(l => {
+      const [w, freq] = l.split("\t");
+      return [w, -Number(freq)] as const;
+    }),
+    e => new Map<string, number>(e)
+  )();
+  const ww = (await readFileUtf8(csv))
     .replace(/[\uFEFF\r]/g, "")
     .split("\n")
     .flatMap(l => {
       const [code, ...words] = l.split(",");
       return words.map(word => [code, word] as const);
     });
-  const lpc = new Map(
-    pipe(
-      () => ww,
-      sortBy(([code, w]) => -code.length),
-      map(([c, w]) => [w, c] as const)
-    )()
-  );
+  const lpc = pipe(
+    () => ww,
+    sortBy(([code, w]) => code.length),
+    map(([c, w]) => [w, c] as const),
+    e => new Map(e)
+  )();
+  console.log(lpc);
   const dictContent = pipe(
     () => ww,
-    map(([code, word]) => [word, code, freq.get(word) || 0] as const),
+    map(([code, word]) => [word, code, freqm.get(word) || 0] as const),
     sortBy(([, , freq]) => -freq),
     map(([word, code, freq]) =>
       word.length <= 2
@@ -46,19 +46,21 @@ export default async function index() {
             word,
             word
               .split("")
-              .map(char => lpc.get(char)?.slice(0, 2) || "zz")
+              .map(char => {
+                const charcode = lpc.get(char)?.slice(0, 2);
+                console.assert(
+                  charcode?.length === 2,
+                  "expect charcode.length===2, got " + charcode
+                );
+                return charcode || "zz";
+              })
               .join(""),
             freq,
           ]
     ),
     map(r => r.join("\t")),
+    e => uniq(e),
     e => e.join("\n")
   )();
-  const f = "Rime/sno_wubi.dict.yaml";
-  const cont = await readFileUtf8(f);
-  await writeFile(
-    f,
-    yamlVersionPatch(cont.replace(/(?<=\n\.\.\.\n)(?:.*\n?)+/, dictContent))
-  );
-  console.log(f);
+  await rimeDictFileUpdate("Rime/sno_wubi.dict.yaml", dictContent);
 }
