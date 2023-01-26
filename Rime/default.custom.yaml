@@ -3,6 +3,7 @@ patch:
     - { schema: sno_english }
     - { schema: sno_japanese }
     - { schema: sno_chinese }
+    - { schema: sno_emoji }
     - { schema: sno_wubi }
 
 key_binder:

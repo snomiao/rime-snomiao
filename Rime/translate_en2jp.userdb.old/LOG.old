@@ -1,0 +1,11 @@
+2023/01/26-21:21:56.709000 890384 Log #148: 0 ops saved to Table #151 OK
+2023/01/26-21:21:56.712000 890384 Archiving C:\Users\snomi\AppData\Roaming\Rime\translate_en2jp.userdb/000148.log: OK
+2023/01/26-21:21:56.712000 890384 Log #150: ignoring conversion error: IO error: C:\Users\snomi\AppData\Roaming\Rime\translate_en2jp.userdb/000150.log: プロセスはファイルにアクセスできません。別のプロセスが使用中です。
+2023/01/26-21:21:56.713000 890384 Archiving C:\Users\snomi\AppData\Roaming\Rime\translate_en2jp.userdb/000150.log: IO error: C:\Users\snomi\AppData\Roaming\Rime\translate_en2jp.userdb/000150.log: プロセスはファイルにアクセスできません。別のプロセスが使用中です。
+
+2023/01/26-21:21:56.716000 890384 Table #143: 32 entries OK
+2023/01/26-21:21:56.716000 890384 Table #145: 22 entries OK
+2023/01/26-21:21:56.719000 890384 Archiving C:\Users\snomi\AppData\Roaming\Rime\translate_en2jp.userdb/MANIFEST-000147: OK
+2023/01/26-21:21:56.720000 890384 Archiving C:\Users\snomi\AppData\Roaming\Rime\translate_en2jp.userdb/MANIFEST-000149: IO error: C:\Users\snomi\AppData\Roaming\Rime\translate_en2jp.userdb/MANIFEST-000149: プロセスはファイルにアクセスできません。別のプロセスが使用中です。
+
+2023/01/26-21:21:56.738000 890384 **** Repaired leveldb C:\Users\snomi\AppData\Roaming\Rime\translate_en2jp.userdb; recovered 2 files; 2163 bytes. Some data may have been lost. ****

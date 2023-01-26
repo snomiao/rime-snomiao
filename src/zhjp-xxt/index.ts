@@ -4,7 +4,6 @@ import { writeFile } from "fs/promises";
 import { flatMap } from "lodash-es";
 import { pipe, sortBy } from "rambda";
 import snohmr from "snohmr";
-import { m } from "vitest/dist/index-9f5bc072";
 import workPackageDir from "work-package-dir";
 import mdxEntriesParse from "../lib/mdxFileParse";
 
@@ -115,10 +114,6 @@ export async function parse(entries: (readonly [string, string])[]) {
     sortBy(e => -e.length),
     e => e.join("\n")
   )();
-  // return [
-  //   `${w0}	${[w0, ...words].join(" ")}`,
-  //   ...words.map((w1) => `${w1}	${[w0, ...words].join(" ")}`),
-  // ];
   await writeFile("Rime/opencc/zhjp_word.txt", zhjp + "\n" + jpzh);
   console.log(new Date());
 

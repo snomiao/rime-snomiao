@@ -3,8 +3,8 @@
 
 schema:
   schema_id: sno_wubi
-  name: "雪星五笔86"
-  version: "0.21"
+  name: "WUB 雪星五笔"
+  version: "0.21.0"
   author:
     - 發明人 王永民先生
     - 雪星微调 <snomiao@gmail.com>
@@ -44,7 +44,6 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
-    - reverse_lookup_translator
     - table_translator
 
 speller:
@@ -58,19 +57,9 @@ translator:
   enable_sentence: true
   enable_encoder: true
   encode_commit_history: true
-  max_phrase_length: 4
+  # max_phrase_length: 4
   disable_user_dict_for_patterns:
     - "^z.*$"
-
-reverse_lookup:
-  dictionary: pinyin_simp
-  prefix: "z"
-  suffix: "'"
-  tips: 〔拼音〕
-  preedit_format:
-    - xform/([nl])v/$1ü/
-    - xform/([nl])ue/$1üe/
-    - xform/([jqxy])v/$1u/
 
 punctuator:
   import_preset: symbols

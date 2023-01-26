@@ -129,7 +129,9 @@
 
 - [Emoji / 絵文字 / Emoji](./Rime/opencc/zh_emoji_word.json)
 - [Pinyin Schema 拼音方案](./Rime/sno_pinyin.schema.yaml)
-- [Japanese Schema 日本語方案 ](./Rime/sno_japanese.schema.yaml)
+- [JPN Japanese 日本語方案](./Rime/sno_japanese.schema.yaml)
+- [ENG English 英国語方案](./Rime/sno_english.schema.yaml)
+- [CHN Chinese 中国語方案](./Rime/sno_chinese.schema.yaml)
 
 拼音可以在 `` 里改
 
@@ -168,6 +170,7 @@ telegram: @rime_snomiao https://t.me/rime_snomiao
 
 ## References & ThanksTo
 
+- [Full Emoji Database](https://www.kaggle.com/datasets/eliasdabbas/emoji-data-descriptions-codepoints?resource=download)
 - [中日英自然码（带辅码）双拼输入法](https://github.com/lippmann/lrime)
 - [Rime double pinyin plus](https://github.com/mutoe/rime)
 - [OpenCC](https://github.com/BYVoid/OpenCC)

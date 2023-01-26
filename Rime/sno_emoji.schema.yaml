@@ -1,0 +1,47 @@
+# Rime schema settings
+# encoding: utf-8
+
+schema:
+  schema_id: sno_emoji
+  name: "EMO 雪星顔文字"
+  version: "0.0.1"
+  author:
+    - Snowstar Miao <snomiao@gmail.com>
+  description: |
+    雪星顔文字
+switches:
+  - name: ascii_punct
+    states: [。，, ．，]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - reverse_lookup_translator
+    - table_translator
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " ;'"
+
+translator:
+  dictionary: sno_emoji
+  enable_sentence: true
+  enable_encoder: true
+  encode_commit_history: true
+  disable_user_dict_for_patterns:
+    - "^z.*$"

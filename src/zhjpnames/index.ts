@@ -13,11 +13,8 @@ if (esMain(import.meta)) await index();
 
 export default async function index() {
   await workPackageDir();
-  const entires = await mdxEntriesParse(
-    (
-      await globby("dict/jpnames/*.mdx")
-    )[0]
-  );
+  const glob = "dict/jpnames/*.mdx";
+  const entires = await mdxEntriesParse((await globby(glob))[0]);
   for await (const { parse } of snohmr(() => import("./index"))) {
     await parse(entires)
       .then(() => {

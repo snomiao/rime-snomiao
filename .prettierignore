@@ -9,5 +9,7 @@ Rime/installation.yaml
 Rime/user.yaml
 Rime/*.dict.yaml
 
-dist
-dict
+*.csv
+*.txt
+*.mdx
+*.mdd

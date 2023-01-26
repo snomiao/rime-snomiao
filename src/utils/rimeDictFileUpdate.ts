@@ -4,17 +4,25 @@ import readFileUtf8 from "read-file-utf8";
 import { SemVer } from "semver";
 export default async function rimeDictFileUpdate(f: string, content: string) {
   const y0 = await readFileUtf8(f);
-  const y1 = yamlDictContentUpdate(y0);
-  await writeFile(f, y0 !== y1 ? yamlVersionPatch(y1) : y1);
-  console.log(chalk.blue(f) + " dict content updated");
+
+  const versionReg = /(?<=^\s*version: ["']).*?(?=["']$)/im;
+  const version = y0.match(versionReg)?.[0];
+  if (!version) throw new Error("Invalid yaml version");
+
+  const y1 = yamlDictContentUpdate(y0, content);
+  if (y0 !== y1) {
+    const patchedVersion = new SemVer(version).inc("patch").version;
+    const patchedContent = y1.replace(versionReg, () => patchedVersion);
+
+    await writeFile(f, patchedContent);
+    console.log(
+      chalk.blue(f) + ` dict content updated ${version} => ${patchedVersion}`
+    );
+  } else {
+    console.log(chalk.blue(f) + " dict content has not changed.");
+  }
 }
 
-export function yamlDictContentUpdate(y: string) {
-  return y.replace(/\.\.\.[\s\S]*$/, `...\n\n\n`);
-}
-export function yamlVersionPatch(y: string) {
-  return y.replace(
-    /(?<=version: "?).*?(?="?)$/,
-    v => new SemVer(v).inc("patch").version
-  );
+export function yamlDictContentUpdate(y: string, content: string) {
+  return y.replace(/\.\.\.[\s\S]*$/, `...\n\n${content}\n`);
 }
