@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/snomiao/rime-snomiao/compare/v2.3.6...v2.4.0) (2023-01-26)
+
+
+### Features
+
+* **emoji:** draft ([ae39e8d](https://github.com/snomiao/rime-snomiao/commit/ae39e8d522f909afa6868bd613976b3f30434059))
+* **wubi:** up to 26 char long words ([64e11d1](https://github.com/snomiao/rime-snomiao/commit/64e11d1b3df3655111aed3eaf718949c03a01d37))
+
 ### [2.3.6](https://github.com/snomiao/rime-snomiao/compare/v2.3.5...v2.3.6) (2023-01-21)
 
 
