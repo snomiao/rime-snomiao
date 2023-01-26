@@ -75,7 +75,7 @@
     ]
   },
   "dependencies": {
-    "@types/yargsk": "^17.0.20",
+    "@types/yargs": "^17.0.20",
     "top-level-git": "^1.0.1",
     "vitest": "^0.25.3",
     "yargs": "^17.6.2"
