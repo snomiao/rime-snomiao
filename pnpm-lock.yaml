@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@types/node': ^18.11.18
   aswitcher: ^1.0.1
+  pkg-dir: ^7.0.0
   semantic-release: ^20.1.0
   snobuild: ^3.2.11
   snorun: ^1.1.17
@@ -11,6 +12,7 @@ specifiers:
 devDependencies:
   '@types/node': 18.11.18
   aswitcher: 1.0.1
+  pkg-dir: 7.0.0
   semantic-release: 20.1.0
   snobuild: 3.2.11
   snorun: 1.1.17
@@ -1978,6 +1980,13 @@ packages:
     dependencies:
       find-up: 2.1.0
       load-json-file: 4.0.0
+    dev: true
+
+  /pkg-dir/7.0.0:
+    resolution: {integrity: sha512-Ie9z/WINcxxLp27BKOCHGde4ITq9UklYKDzVo1nhk5sqGEXU3FpkwP5GM2voTGJkGd9B3Otl+Q4uwSOeSUtOBA==}
+    engines: {node: '>=14.16'}
+    dependencies:
+      find-up: 6.3.0
     dev: true
 
   /process-nextick-args/2.0.1:

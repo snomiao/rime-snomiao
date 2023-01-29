@@ -33,6 +33,7 @@
   "devDependencies": {
     "@types/node": "^18.11.18",
     "aswitcher": "^1.0.1",
+    "pkg-dir": "^7.0.0",
     "semantic-release": "^20.1.0",
     "snobuild": "^3.2.11",
     "snorun": "^1.1.17",
