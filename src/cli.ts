@@ -1,21 +1,44 @@
 #!/usr/bin/env node
 import aswitcher from "aswitcher";
-import snorun from "snorun";
+import path from "path";
+import { packageDirectory } from "pkg-dir";
 import workPackageDir from "work-package-dir";
+import snorun from "snorun";
 
-aswitcher(process.platform, {
-  aix: () => console.log("not supported"),
-  android: () => console.log("not supported"),
-  darwin: () => console.log("not supported"),
-  freebsd: () => console.log("not supported"),
-  haiku: () => console.log("not supported"),
-  linux: () => console.log("not supported"),
-  openbsd: () => console.log("not supported"),
-  sunos: () => console.log("not supported"),
-  win32: async () => {
-    await workPackageDir();
-    await snorun("tools/install.bat");
-  },
-  cygwin: () => console.log("not supported"),
-  netbsd: () => console.log("not supported"),
-});
+// TODO
+{
+  main();
+}
+async function main() {
+  await workPackageDir();
+  const [node, js, ...argv] = process.argv;
+  const pkgdir = await packageDirectory({ cwd: path.parse(js).dir });
+  if (!pkgdir)
+    throw new Error(
+      "package not found, please contact snomiao@gmail.com to report this bug"
+    );
+  process.chdir(pkgdir);
+  await aswitcher(process.platform, {
+    aix: async () => notSupportedYet(),
+    android: async () => notSupportedYet(),
+    cygwin: async () => notSupportedYet(),
+    darwin: async () => {
+      console.log({ pkgdir, cwd: process.cwd() });
+      (await snorun("cp -r Rime/* ~/Library/Rime"))
+        ? console.log("go to your task bar, find <deploy> button and click.")
+        : await notSupportedYet();
+    },
+    freebsd: async () => notSupportedYet(),
+    haiku: async () => notSupportedYet(),
+    linux: async () => notSupportedYet(),
+    netbsd: async () => notSupportedYet(),
+    openbsd: async () => notSupportedYet(),
+    sunos: async () => notSupportedYet(),
+    win32: async () => await snorun("cd tools && install"),
+  });
+  async function notSupportedYet() {
+    console.log("[rime-snomiao] auto install not supported yet");
+    console.log(`[rime-snomiao] plz copy from this folder ${`${pkgdir}/Rime`}`);
+    console.log(`[rime-snomiao] to your Rime user configuration directory`);
+  }
+}
