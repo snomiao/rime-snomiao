@@ -1,0 +1,42 @@
+{
+  "name": "rime-snomiao",
+  "version": "3.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/snomiao/rime-snomiao#readme",
+  "bugs": {
+    "url": "https://github.com/snomiao/rime-snomiao/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snomiao/rime-snomiao.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.mjs"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "bin": "dist/cli.mjs",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "snobuild",
+    "prepack": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "aswitcher": "^1.0.1",
+    "semantic-release": "^20.1.0",
+    "snobuild": "^3.2.11",
+    "snorun": "^1.1.17",
+    "work-package-dir": "^1.0.0"
+  },
+  "semantic-release": "semantic-release"
+}
