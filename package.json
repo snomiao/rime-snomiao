@@ -30,6 +30,21 @@
     "prepack": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "release": {
+    "branches": [
+      "main",
+      "next",
+      "next-major",
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ]
+  },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "aswitcher": "^1.0.1",
