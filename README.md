@@ -43,7 +43,7 @@
 - 方法 1
   - 將本項目下載解压，将 `./Rime` 目録裏的内容复制到：`C:\Users\你的用户名\AppData\Roaming\Rime` (即 %APPDATA%\Rime )
   - [配置](#配置) 输入法（或重启系统）
-- 方法 2
+<!-- - 方法 2
   - 運行
     ```
     git clone https://github.com/snomiao/rime-snomiao
@@ -51,7 +51,7 @@
     git pull
     cd devtools
     install.bat
-    ```
+    ``` -->
 - 方法 3 （自动）
   - 運行 `npx rime-snomiao@latest`
     注意本输入方案无法使用东风破 (plum) 安装。
