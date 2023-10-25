@@ -1,0 +1,66 @@
+# Rime schema settings
+# encoding: utf-8
+
+schema:
+  schema_id: sno_wubi_kanji
+  name: "WUK 雪星五笔漢字"
+  version: "0.21.0"
+  author:
+    - 發明人 王永民先生
+    - 雪星微调 <snomiao@gmail.com>
+  description: |
+    五筆字型86版
+    碼表源自 Microsoft Wubi 86
+    敲 z 鍵進入拼音反查
+  dependencies:
+    - pinyin_simp
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [中文, 西文]
+  - name: full_shape
+    states: [半角, 全角]
+  - name: extended_charset
+    states: [常用, 增廣]
+  - name: ascii_punct
+    states: [。，, ．，]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - table_translator
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " ;'"
+
+translator:
+  dictionary: sno_wubi_kanji
+  enable_charset_filter: true
+  enable_sentence: true
+  enable_encoder: true
+  encode_commit_history: true
+  disable_user_dict_for_patterns:
+    - "^z.*$"
+
+punctuator:
+  import_preset: symbols
+
+key_binder:
+  import_preset: default

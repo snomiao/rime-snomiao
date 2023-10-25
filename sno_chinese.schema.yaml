@@ -1,0 +1,199 @@
+# encoding: utf-8
+
+schema:
+  schema_id: sno_chinese
+  name: "CHN 雪星中文"
+  version: "1.2.1"
+  author:
+    - 佚名
+    - snomiao <snomiao@gmail.com>
+  description: |
+    [github.com/snomiao](https://github.com/snomiao/rime-snomiao)
+    源自 Android 拼音
+    输入方式：
+      五筆字型86版
+      漢語拼音混合輸入。
+    输出：
+      中文
+    碼表源自 ibus-table
+  dependencies:
+    - sno_wubi
+    - pinyin_simp
+    - translate_en2zh
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [中文, 西文]
+  - name: full_shape
+    states: [半角, 全角]
+  - name: extended_charset
+    states: [常用, 增廣]
+  - name: simplification
+    states: [漢字, 汉字]
+  - name: ascii_punct
+    states: [。，, ．，]
+  - name: zh_emoji_suggestion
+    reset: 1
+    states: ["🈶️️\uFE0F", "🈚️️\uFE0E"]
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    # - affix_segmentor@easy_en_lookup # 识别 recognizer 指定的 translator
+    - affix_segmentor@pinyin_lookup # 识别 recognizer 指定的 translator
+    - affix_segmentor@translate_en2zh_lookup # 识别 recognizer 指定的 translator
+    - affix_segmentor@sno_wubi_lookup # 识别 recognizer 指定的 translator
+    - abc_segmentor # 混合输入
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator # 标点输入
+    - table_translator@sno_wubi_lookup # main
+    # - table_translator@easy_en_lookup
+    - script_translator@pinyin_lookup
+    - table_translator@translate_en2zh_lookup
+  filters:
+    - simplifier
+    - simplifier@zh_emoji_suggestion
+    - reverse_lookup_filter@sno_wubi_reverse_lookup
+    # - reverse_lookup_filter@translate_en2zh_reverse_lookup
+    - reverse_lookup_filter@pinyin_reverse_lookup
+    - uniquifier
+
+zh_emoji_suggestion:
+  opencc_config: zh_emoji.json
+  option_name: zh_emoji_suggestion
+  tips: all
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " ;'"
+  #max_code_length: 4  # 四碼頂字上屏
+
+##########################
+# 输入
+
+# 混合输入
+abc_segmentor:
+  extra_tags:
+    - sno_wubi_lookup
+    - pinyin_lookup
+    - easy_en_lookup
+    - translate_en2zh_lookup
+
+# 五筆输入方式
+sno_wubi_lookup:
+  tag: sno_wubi_lookup
+  dictionary: sno_wubi
+  prism: sno_wubi
+  enable_charset_filter: true
+  enable_sentence: true
+  enable_encoder: true
+  encode_commit_history: true
+  max_phrase_length: 4
+  disable_user_dict_for_patterns:
+    - "^z.*$"
+
+# 拼音混合输入
+pinyin_lookup:
+  tag: pinyin_lookup
+  dictionary: pinyin_simp
+  prefix: "P"
+  suffix: "'"
+  tips: 〔拼音〕
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+
+# 英译中
+translate_en2zh_lookup:
+  tag: translate_en2zh_lookup
+  dictionary: translate_en2zh
+  enable_completion: true
+  prefix: "T"
+  suffix: "'"
+  tips: 〔英译中〕
+
+# 英文混合输入
+easy_en_lookup:
+  tag: easy_en_lookup
+  dictionary: easy_en
+  enable_completion: true
+  tips: 〔英语〕
+
+# 识别指定输入方式
+recognizer:
+  import_preset: default
+  patterns:
+    easy_en_lookup: "^E[a-z]*'?$"
+    pinyin_lookup: "^P[a-z;/,.]*`?$"
+    punct: "^/([0-9]+[a-z]*|[a-z]+)$"
+    stroke_lookup: "^H[a-z]*`?$"
+    translate_en2zh_lookup: "^T[a-z]*'?$"
+    sno_wubi_lookup: "^W[a-z]*'?$"
+
+##########################
+# 汉字循环反查， 显示到候选项的comments上
+
+# 五筆反查
+sno_wubi_reverse_lookup:
+  tags: [pinyin_lookup]
+  dictionary: sno_wubi
+# 英文反查
+translate_en2zh_reverse_lookup:
+  tags: [sno_wubi_lookup]
+  dictionary: translate_en2zh
+  comment_format:
+    - "xform/^/ /"
+    # 英文反查結果会很多，这里做个摘要否則会crash
+    - "xform/(.{80}.+)/$1--/"
+    - "xform/([a-z])-[a-z]+/$1/"
+    - "xform/ (\\S\\S\\S\\S)\\S\\S+(?=.*?--$)/ $1-/"
+    - "xform/^(.*)--$/$1/"
+    # 多层重复项折叠
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 1
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 2
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 3
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 4
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 5
+    # 重复消除
+    - "xform/ (\\S+)( \\1)+/ $1/"
+    # 截断省略
+    - "xform/ (.{60}).+/$1.../"
+    # - "xform/(.{125}).+/$1.../"
+    - "xform/^\\s*//"
+    - "xform/\\s*$//"
+####################
+# 反查
+pinyin_reverse_lookup:
+  tags: [translate_en2zh_lookup]
+  dictionary: pinyin_simp
+
+##########################
+# 其他
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+  bindings:
+    - { accept: "Shift+e", select: sno_english, when: composing }
+    - { accept: "Shift+j", select: sno_japanese, when: composing }
+    - { accept: "Shift+c", select: sno_chinese, when: composing }
+
+editor:
+  bindings:
+    Shift_R: commit_comment
+
+menu:
+  page_size: 10

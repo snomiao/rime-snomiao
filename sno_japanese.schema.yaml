@@ -1,0 +1,316 @@
+# Rime schema
+# encoding: utf-8
+schema:
+  schema_id: sno_japanese
+  name: "JPN 雪星日語"
+  version: "1.1.5"
+  author:
+    - ensigma96 <ensigma96@gmail.com>
+    - snomiao <snomiao@gmail.com>
+  description: |
+    [github.com/snomiao](https://github.com/snomiao/rime-snomiao)
+    漢語拼音と五笔86と日本語入力
+    英文反查（if possible）
+  dependencies:
+    - japanese
+    - japanese_pinyin
+    - sno_emoji
+    - sno_wubi
+    - sno_wubi_kanji
+    - translate_en2jp
+    # - stroke
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [中文, 西文]
+  - name: full_shape
+    states: [半角, 全角]
+  - name: extended_charset
+    states: [常用, 增廣]
+  - name: simplification
+    states: [漢字, 汉字]
+  - name: ascii_punct
+    states: [。，, ．，]
+  - name: zhjp_translate_suggestion
+    reset: 1
+    states: [原文, 辞書]
+  - name: sno_emoji_lookup
+    reset: 1
+    states: ["🈚️️\uFE0E", "🈶️️\uFE0F"]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - affix_segmentor@translate_en2jp_lookup
+    - affix_segmentor@japanese_lookup
+    - affix_segmentor@sno_emoji_lookup
+    - affix_segmentor@sno_wubi_kanji_lookup
+    - affix_segmentor@sno_wubi_lookup
+    - affix_segmentor@japanese_pinyin_lookup
+    # extra
+    # - affix_segmentor@stroke_lookup
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    # - script_translator
+    # - reverse_lookup_translator
+    - table_translator@translate_en2jp_lookup
+    - table_translator@japanese_lookup
+    - table_translator@sno_emoji_lookup
+    - table_translator@sno_wubi_kanji_lookup
+    - table_translator@sno_wubi_lookup
+    - script_translator@japanese_pinyin_lookup
+    # extra
+    # - table_translator@stroke_lookup
+  filters:
+    - simplifier@zhjp_translate_suggestion
+    - simplifier@jpzh_translate_suggestion
+    - simplifier@zh_emoji_suggestion
+    - uniquifier
+    - reverse_lookup_filter@sno_emoji_lookup
+    - reverse_lookup_filter@japanese_reverse_lookup
+    - reverse_lookup_filter@translate_en2jp_reverse_lookup
+
+abc_segmentor:
+  extra_tags:
+    - translate_en2jp_lookup
+    - japanese_lookup
+    - sno_emoji_lookup
+    - sno_wubi_kanji_lookup
+    - sno_wubi_lookup
+    - japanese_pinyin_lookup
+
+speller:
+  alphabet: "zyxwvutsrqponmlkjihgfedcba-_"
+  delimiter: " '"
+  algebra:
+    - "derive/_/x/"
+    - "derive/-/q/"
+    # Add / remove rules the as you wish
+    - "derive/i_e/ye/"
+    - "derive/tu/tsu/"
+    - "derive/si/shi/"
+    # - 'derive/fu/hu/'
+
+# lookupers
+japanese_lookup:
+  dictionary: japanese
+  spelling_hints: 5
+  comment_format:
+    - "xlit|q|ー|"
+  preedit_format:
+    - "xlit|q|ー|"
+
+japanese_pinyin_lookup:
+  tag: japanese_pinyin_lookup
+  prefix: "P"
+  dictionary: japanese_pinyin
+  prism: japanese_pinyin
+  tips: 〔拼音和字〕
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+
+translate_en2jp_lookup:
+  tag: translate_en2jp_lookup
+  dictionary: translate_en2jp
+  prism: translate_en2jp
+  prefix: "E"
+  suffix: "`"
+  tips: 〔英语は日本語翻訳〕
+
+# stroke_lookup:
+#   tag: stroke_lookup
+#   dictionary: stroke
+#   enable_completion: true
+#   prefix: "H"
+#   suffix: "`"
+#   tips: 〔筆畫輸入〕
+#   preedit_format:
+#     - xlit/hspnz/一丨丿丶乙/
+#   comment_format:
+#     - xlit/hspnz/一丨丿丶乙/
+
+sno_wubi_kanji_lookup:
+  tag: sno_wubi_kanji_lookup
+  dictionary: sno_wubi_kanji
+  prism: sno_wubi_kanji
+  enable_completion: true
+  prefix: "J"
+  suffix: "`"
+  tips: 〔五筆漢字〕
+  comment_format: []
+
+sno_wubi_lookup:
+  tag: sno_wubi_lookup
+  dictionary: sno_wubi
+  prism: sno_wubi
+  enable_completion: true
+  prefix: "W"
+  suffix: "`"
+  tips: 〔五筆汉字〕
+  comment_format: []
+
+sno_emoji_lookup:
+  tag: sno_emoji_lookup
+  tags: [sno_emoji_lookup]
+  prism: sno_emoji
+  prefix: "M"
+  suffix: "`"
+  tips: 〔Emoji〕
+  dictionary: sno_emoji
+  enable_sentence: true
+  enable_completion: true
+  enable_encoder: true
+  encode_commit_history: true
+  disable_user_dict_for_patterns:
+    - "^z.*$"
+  comment_format:
+    - "xform/^/ /"
+    # 摘要
+    - "xform/(.{80}.+)/$1--/"
+    - "xform/([a-z])-[a-z]+/$1/"
+    - "xform/ (\\S\\S\\S\\S)\\S\\S+(?=.*?--$)/ $1-/"
+    - "xform/^(.*)--$/$1/"
+    # fold-prefixes
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 1
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 2
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 3
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 4
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 5
+    # remove duplicates
+    - "xform/ (\\S+)( \\1)+/ $1/"
+    # clip...
+    - "xform/ (.{60}).+/$1.../"
+    # - "xform/(.{125}).+/$1.../"
+    - "xform/^\\s*//"
+    - "xform/\\s*$//"
+
+recognizer:
+  import_preset: default
+  patterns:
+    easy_en_lookup: "^E[a-z]*'?$"
+    japanese_pinyin_lookup: "^P[a-z;/,.]*`?$"
+    punct: "^/([0-9]+[a-z]*|[a-z]+)$"
+    # stroke_lookup: "^H[a-z]*`?$"
+    translate_en2jp_lookup: "^T[a-z;/,.]*`?$"
+    sno_wubi_kanji_lookup: "^J[a-z]*'?$"
+    sno_wubi_lookup: "^W[a-z]*'?$"
+    sno_emoji_lookup: "^M[a-z]*'?$"
+
+##########################
+# filters
+
+# 注：字形転化会影響反査故本方案使用詞典進行転換。
+
+# emoji生成,
+zh_emoji_suggestion:
+  opencc_config: zh_emoji.json
+  option_name: zh_emoji_suggestion
+  tips: all
+
+# 漢->日翻訳
+zhjp_translate_suggestion:
+  opencc_config: zhjp.json
+  option_name: zhjp_translate_suggestion
+  tags:
+    - sno_wubi_kanji_lookup
+    - japanese_pinyin_lookup
+  # show_in_comment: true
+  tips: none
+
+# 日->漢翻訳
+jpzh_translate_suggestion:
+  opencc_config: jpzh.json
+  option_name: jpzh_translate_suggestion
+  tags:
+    - japanese
+  show_in_comment: true
+  tips: none
+
+##########################
+# Lookup
+japanese_reverse_lookup:
+  tags:
+    - translate_en2jp_lookup
+    - sno_wubi_kanji_lookup
+    # - stroke_lookup
+    - japanese_pinyin_lookup
+  spelling_hints: 2
+  dictionary: japanese
+
+# japanese_reverse_lookup:
+#   tags:
+#     - translate_en2jp_lookup
+#     - sno_wubi_kanji_lookup
+#     - stroke_lookup
+#     - japanese_pinyin_lookup
+#   spelling_hints: 2
+#   dictionary: japanese
+
+emoji_reverse_lookup:
+  tags:
+    - sno_emoji_lookup
+  spelling_hints: 2
+  dictionary: sno_emoji
+
+translate_en2jp_reverse_lookup:
+  tags: [translate_en2jp_lookup]
+  spelling_hints: 3
+  dictionary: translate_en2jp
+  comment_format:
+    - "xform/^/ /"
+    # 摘要
+    - "xform/(.{80}.+)/$1--/"
+    - "xform/([a-z])-[a-z]+/$1/"
+    - "xform/ (\\S\\S\\S\\S)\\S\\S+(?=.*?--$)/ $1-/"
+    - "xform/^(.*)--$/$1/"
+    # 多层重复项折叠
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 1
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 2
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 3
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 4
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 5
+    # 重复消除
+    - "xform/ (\\S+)( \\1)+/ $1/"
+    # 截断省略
+    - "xform/ (.{60}).+/$1.../"
+    # - "xform/(.{125}).+/$1.../"
+    - "xform/^\\s*//"
+    - "xform/\\s*$//"
+
+##########################
+# other
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+  bindings:
+    - { accept: "Shift+e", select: sno_english, when: always }
+    - { accept: "Shift+E", select: sno_english, when: always }
+    - { accept: "Shift+j", select: sno_japanese, when: always }
+    - { accept: "Shift+J", select: sno_japanese, when: always }
+    - { accept: "Shift+c", select: sno_chinese, when: always }
+    - { accept: "Shift+C", select: sno_chinese, when: always }
+
+editor:
+  bindings:
+    Shift_R: commit_comment
+
+menu:
+  page_size: 10

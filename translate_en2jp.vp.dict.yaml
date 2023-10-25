@@ -1,0 +1,2797 @@
+# encoding: utf-8
+#
+# english_chinese
+#
+#
+
+---
+name: translate_en2jp.vp
+version: "1.1.7"
+sort: by_weight              # 按字頻排序
+max_phrase_length: 1         # 不生成詞彙
+...
+
+たべる	eat
+たべた	ate
+たべる	will eat
+たべない	doesnt eat
+たべなかった	didnt eat
+たべない	wont eat
+たべている	eating
+たべていた	was eating
+たべている	will be eating
+たべていない	not eating
+たべていなかった	was not eating
+たべていない	will not be eating
+たべた	have ate
+たべた	had ate
+たべる	will have ate
+たべなかった	have not ate
+たべなかった	had not ate
+たべない	will have not ate
+たべている	have being eating
+たべていた	had been eating
+たべている	will have been eating
+たべていない	have not being eating
+たべていなかった	had not been eating
+たべていない	will have not been eating
+のむ	drink
+のんだ	drank
+のむ	will drink
+のまない	doesnt drink
+のまなかった	didnt drink
+のまない	wont drink
+のんでいる	drinking
+のんでいた	was drinking
+のんでいる	will be drinking
+のんでいない	not drinking
+のんでいなかった	was not drinking
+のんでいない	will not be drinking
+のんだ	have drank
+のんだ	had drank
+のむ	will have drank
+のまなかった	have not drank
+のまなかった	had not drank
+のまない	will have not drank
+のんでいる	have being drinking
+のんでいた	had been drinking
+のんでいる	will have been drinking
+のんでいない	have not being drinking
+のんでいなかった	had not been drinking
+のんでいない	will have not been drinking
+かう	buy
+かった	bought
+かう	will buy
+かわない	doesnt buy
+かわなかった	didnt buy
+かわない	wont buy
+かっている	buying
+かっていた	was buying
+かっている	will be buying
+かっていない	not buying
+かっていなかった	was not buying
+かっていない	will not be buying
+かった	have bought
+かった	had bought
+かう	will have bought
+かわなかった	have not bought
+かわなかった	had not bought
+かわない	will have not bought
+かっている	have being buying
+かっていた	had been buying
+かっている	will have been buying
+かっていない	have not being buying
+かっていなかった	had not been buying
+かっていない	will have not been buying
+みる	watch
+みた	watched
+みる	will watch
+みない	doesnt watch
+みなかった	didnt watch
+みない	wont watch
+みている	watching
+みていた	was watching
+みている	will be watching
+みていない	not watching
+みていなかった	was not watching
+みていない	will not be watching
+みた	have watched
+みた	had watched
+みる	will have watched
+みなかった	have not watched
+みなかった	had not watched
+みない	will have not watched
+みている	have being watching
+みていた	had been watching
+みている	will have been watching
+みていない	have not being watching
+みていなかった	had not been watching
+みていない	will have not been watching
+みる	look
+みた	looked
+みる	will look
+みない	doesnt look
+みなかった	didnt look
+みない	wont look
+みている	looking
+みていた	was looking
+みている	will be looking
+みていない	not looking
+みていなかった	was not looking
+みていない	will not be looking
+みた	have looked
+みた	had looked
+みる	will have looked
+みなかった	have not looked
+みなかった	had not looked
+みない	will have not looked
+みている	have being looking
+みていた	had been looking
+みている	will have been looking
+みていない	have not being looking
+みていなかった	had not been looking
+みていない	will have not been looking
+みる	see
+みた	saw
+みる	will see
+みない	doesnt see
+みなかった	didnt see
+みない	wont see
+みている	seeing
+みていた	was seeing
+みている	will be seeing
+みていない	not seeing
+みていなかった	was not seeing
+みていない	will not be seeing
+みた	have saw
+みた	had saw
+みる	will have saw
+みなかった	have not saw
+みなかった	had not saw
+みない	will have not saw
+みている	have being seeing
+みていた	had been seeing
+みている	will have been seeing
+みていない	have not being seeing
+みていなかった	had not been seeing
+みていない	will have not been seeing
+おく	put
+おいた	puted
+おく	will put
+おかない	doesnt put
+おかなかった	didnt put
+おかない	wont put
+おいている	puting
+おいていた	was puting
+おいている	will be puting
+おいていない	not puting
+おいていなかった	was not puting
+おいていない	will not be puting
+おいた	have puted
+おいた	had puted
+おく	will have puted
+おかなかった	have not puted
+おかなかった	had not puted
+おかない	will have not puted
+おいている	have being puting
+おいていた	had been puting
+おいている	will have been puting
+おいていない	have not being puting
+おいていなかった	had not been puting
+おいていない	will have not been puting
+かく	write
+かいた	wrote
+かく	will write
+かかない	doesnt write
+かかなかった	didnt write
+かかない	wont write
+かいている	writing
+かいていた	was writing
+かいている	will be writing
+かいていない	not writing
+かいていなかった	was not writing
+かいていない	will not be writing
+かいた	have wrote
+かいた	had wrote
+かく	will have wrote
+かかなかった	have not wrote
+かかなかった	had not wrote
+かかない	will have not wrote
+かいている	have being writing
+かいていた	had been writing
+かいている	will have been writing
+かいていない	have not being writing
+かいていなかった	had not been writing
+かいていない	will have not been writing
+かく	draw
+かいた	drew
+かく	will draw
+かかない	doesnt draw
+かかなかった	didnt draw
+かかない	wont draw
+かいている	drawing
+かいていた	was drawing
+かいている	will be drawing
+かいていない	not drawing
+かいていなかった	was not drawing
+かいていない	will not be drawing
+かいた	have drew
+かいた	had drew
+かく	will have drew
+かかなかった	have not drew
+かかなかった	had not drew
+かかない	will have not drew
+かいている	have being drawing
+かいていた	had been drawing
+かいている	will have been drawing
+かいていない	have not being drawing
+かいていなかった	had not been drawing
+かいていない	will have not been drawing
+みせる	show
+みせた	showed
+みせる	will show
+みせない	doesnt show
+みせなかった	didnt show
+みせない	wont show
+みせている	showing
+みせていた	was showing
+みせている	will be showing
+みせていない	not showing
+みせていなかった	was not showing
+みせていない	will not be showing
+みせた	have showed
+みせた	had showed
+みせる	will have showed
+みせなかった	have not showed
+みせなかった	had not showed
+みせない	will have not showed
+みせている	have being showing
+みせていた	had been showing
+みせている	will have been showing
+みせていない	have not being showing
+みせていなかった	had not been showing
+みせていない	will have not been showing
+おくる	send
+おくった	sent
+おくる	will send
+おくらない	doesnt send
+おくらなかった	didnt send
+おくらない	wont send
+おくっている	sending
+おくっていた	was sending
+おくっている	will be sending
+おくっていない	not sending
+おくっていなかった	was not sending
+おくっていない	will not be sending
+おくった	have sent
+おくった	had sent
+おくる	will have sent
+おくらなかった	have not sent
+おくらなかった	had not sent
+おくらない	will have not sent
+おくっている	have being sending
+おくっていた	had been sending
+おくっている	will have been sending
+おくっていない	have not being sending
+おくっていなかった	had not been sending
+おくっていない	will have not been sending
+いく	go
+いった	went
+いく	will go
+いかない	doesnt go
+いかなかった	didnt go
+いかない	wont go
+いっている	going
+いっていた	was going
+いっている	will be going
+いっていない	not going
+いっていなかった	was not going
+いっていない	will not be going
+いった	have went
+いった	had went
+いく	will have went
+いかなかった	have not went
+いかなかった	had not went
+いかない	will have not went
+いっている	have being going
+いっていた	had been going
+いっている	will have been going
+いっていない	have not being going
+いっていなかった	had not been going
+いっていない	will have not been going
+あう	meet
+あった	met
+あう	will meet
+あわない	doesnt meet
+あわなかった	didnt meet
+あわない	wont meet
+あっている	meeting
+あっていた	was meeting
+あっている	will be meeting
+あっていない	not meeting
+あっていなかった	was not meeting
+あっていない	will not be meeting
+あった	have met
+あった	had met
+あう	will have met
+あわなかった	have not met
+あわなかった	had not met
+あわない	will have not met
+あっている	have being meeting
+あっていた	had been meeting
+あっている	will have been meeting
+あっていない	have not being meeting
+あっていなかった	had not been meeting
+あっていない	will have not been meeting
+つくる	make
+つくった	made
+つくる	will make
+つくらない	doesnt make
+つくらなかった	didnt make
+つくらない	wont make
+つくっている	making
+つくっていた	was making
+つくっている	will be making
+つくっていない	not making
+つくっていなかった	was not making
+つくっていない	will not be making
+つくった	have made
+つくった	had made
+つくる	will have made
+つくらなかった	have not made
+つくらなかった	had not made
+つくらない	will have not made
+つくっている	have being making
+つくっていた	had been making
+つくっている	will have been making
+つくっていない	have not being making
+つくっていなかった	had not been making
+つくっていない	will have not been making
+つくる	produce
+つくった	produced
+つくる	will produce
+つくらない	doesnt produce
+つくらなかった	didnt produce
+つくらない	wont produce
+つくっている	producing
+つくっていた	was producing
+つくっている	will be producing
+つくっていない	not producing
+つくっていなかった	was not producing
+つくっていない	will not be producing
+つくった	have produced
+つくった	had produced
+つくる	will have produced
+つくらなかった	have not produced
+つくらなかった	had not produced
+つくらない	will have not produced
+つくっている	have being producing
+つくっていた	had been producing
+つくっている	will have been producing
+つくっていない	have not being producing
+つくっていなかった	had not been producing
+つくっていない	will have not been producing
+かえる	return
+かえた	returned
+かえる	will return
+かえない	doesnt return
+かえなかった	didnt return
+かえない	wont return
+かえている	returning
+かえていた	was returning
+かえている	will be returning
+かえていない	not returning
+かえていなかった	was not returning
+かえていない	will not be returning
+かえた	have returned
+かえた	had returned
+かえる	will have returned
+かえなかった	have not returned
+かえなかった	had not returned
+かえない	will have not returned
+かえている	have being returning
+かえていた	had been returning
+かえている	will have been returning
+かえていない	have not being returning
+かえていなかった	had not been returning
+かえていない	will have not been returning
+ふえる	increase
+ふえた	increased
+ふえる	will increase
+ふえない	doesnt increase
+ふえなかった	didnt increase
+ふえない	wont increase
+ふえている	increasing
+ふえていた	was increasing
+ふえている	will be increasing
+ふえていない	not increasing
+ふえていなかった	was not increasing
+ふえていない	will not be increasing
+ふえた	have increased
+ふえた	had increased
+ふえる	will have increased
+ふえなかった	have not increased
+ふえなかった	had not increased
+ふえない	will have not increased
+ふえている	have being increasing
+ふえていた	had been increasing
+ふえている	will have been increasing
+ふえていない	have not being increasing
+ふえていなかった	had not been increasing
+ふえていない	will have not been increasing
+へる	decrease
+へった	decreased
+へる	will decrease
+へらない	doesnt decrease
+へらなかった	didnt decrease
+へらない	wont decrease
+へっている	decreasing
+へっていた	was decreasing
+へっている	will be decreasing
+へっていない	not decreasing
+へっていなかった	was not decreasing
+へっていない	will not be decreasing
+へった	have decreased
+へった	had decreased
+へる	will have decreased
+へらなかった	have not decreased
+へらなかった	had not decreased
+へらない	will have not decreased
+へっている	have being decreasing
+へっていた	had been decreasing
+へっている	will have been decreasing
+へっていない	have not being decreasing
+へっていなかった	had not been decreasing
+へっていない	will have not been decreasing
+ならう	learn
+ならった	learned
+ならう	will learn
+ならわない	doesnt learn
+ならわなかった	didnt learn
+ならわない	wont learn
+ならっている	learning
+ならっていた	was learning
+ならっている	will be learning
+ならっていない	not learning
+ならっていなかった	was not learning
+ならっていない	will not be learning
+ならった	have learned
+ならった	had learned
+ならう	will have learned
+ならわなかった	have not learned
+ならわなかった	had not learned
+ならわない	will have not learned
+ならっている	have being learning
+ならっていた	had been learning
+ならっている	will have been learning
+ならっていない	have not being learning
+ならっていなかった	had not been learning
+ならっていない	will have not been learning
+おぼえる	memorize
+おぼえた	memorized
+おぼえる	will memorize
+おぼえない	doesnt memorize
+おぼえなかった	didnt memorize
+おぼえない	wont memorize
+おぼえている	memorizing
+おぼえていた	was memorizing
+おぼえている	will be memorizing
+おぼえていない	not memorizing
+おぼえていなかった	was not memorizing
+おぼえていない	will not be memorizing
+おぼえた	have memorized
+おぼえた	had memorized
+おぼえる	will have memorized
+おぼえなかった	have not memorized
+おぼえなかった	had not memorized
+おぼえない	will have not memorized
+おぼえている	have being memorizing
+おぼえていた	had been memorizing
+おぼえている	will have been memorizing
+おぼえていない	have not being memorizing
+おぼえていなかった	had not been memorizing
+おぼえていない	will have not been memorizing
+おしえる	teach
+おしえた	taught
+おしえる	will teach
+おしえない	doesnt teach
+おしえなかった	didnt teach
+おしえない	wont teach
+おしえている	teaching
+おしえていた	was teaching
+おしえている	will be teaching
+おしえていない	not teaching
+おしえていなかった	was not teaching
+おしえていない	will not be teaching
+おしえた	have taught
+おしえた	had taught
+おしえる	will have taught
+おしえなかった	have not taught
+おしえなかった	had not taught
+おしえない	will have not taught
+おしえている	have being teaching
+おしえていた	had been teaching
+おしえている	will have been teaching
+おしえていない	have not being teaching
+おしえていなかった	had not been teaching
+おしえていない	will have not been teaching
+おしえる	notify
+おしえた	notified
+おしえる	will notify
+おしえない	doesnt notify
+おしえなかった	didnt notify
+おしえない	wont notify
+おしえている	notifying
+おしえていた	was notifying
+おしえている	will be notifying
+おしえていない	not notifying
+おしえていなかった	was not notifying
+おしえていない	will not be notifying
+おしえた	have notified
+おしえた	had notified
+おしえる	will have notified
+おしえなかった	have not notified
+おしえなかった	had not notified
+おしえない	will have not notified
+おしえている	have being notifying
+おしえていた	had been notifying
+おしえている	will have been notifying
+おしえていない	have not being notifying
+おしえていなかった	had not been notifying
+おしえていない	will have not been notifying
+しらべる	check
+しらべた	checked
+しらべる	will check
+しらべない	doesnt check
+しらべなかった	didnt check
+しらべない	wont check
+しらべている	checking
+しらべていた	was checking
+しらべている	will be checking
+しらべていない	not checking
+しらべていなかった	was not checking
+しらべていない	will not be checking
+しらべた	have checked
+しらべた	had checked
+しらべる	will have checked
+しらべなかった	have not checked
+しらべなかった	had not checked
+しらべない	will have not checked
+しらべている	have being checking
+しらべていた	had been checking
+しらべている	will have been checking
+しらべていない	have not being checking
+しらべていなかった	had not been checking
+しらべていない	will have not been checking
+わすれる	forget
+わすれた	forgot
+わすれる	will forget
+わすれない	doesnt forget
+わすれなかった	didnt forget
+わすれない	wont forget
+わすれている	forgeting
+わすれていた	was forgeting
+わすれている	will be forgeting
+わすれていない	not forgeting
+わすれていなかった	was not forgeting
+わすれていない	will not be forgeting
+わすれた	have forgot
+わすれた	had forgot
+わすれる	will have forgot
+わすれなかった	have not forgot
+わすれなかった	had not forgot
+わすれない	will have not forgot
+わすれている	have being forgeting
+わすれていた	had been forgeting
+わすれている	will have been forgeting
+わすれていない	have not being forgeting
+わすれていなかった	had not been forgeting
+わすれていない	will have not been forgeting
+にげる	escape
+にげた	escaped
+にげる	will escape
+にげない	doesnt escape
+にげなかった	didnt escape
+にげない	wont escape
+にげている	escaping
+にげていた	was escaping
+にげている	will be escaping
+にげていない	not escaping
+にげていなかった	was not escaping
+にげていない	will not be escaping
+にげた	have escaped
+にげた	had escaped
+にげる	will have escaped
+にげなかった	have not escaped
+にげなかった	had not escaped
+にげない	will have not escaped
+にげている	have being escaping
+にげていた	had been escaping
+にげている	will have been escaping
+にげていない	have not being escaping
+にげていなかった	had not been escaping
+にげていない	will have not been escaping
+はじめる	start
+はじめた	started
+はじめる	will start
+はじめない	doesnt start
+はじめなかった	didnt start
+はじめない	wont start
+はじめている	starting
+はじめていた	was starting
+はじめている	will be starting
+はじめていない	not starting
+はじめていなかった	was not starting
+はじめていない	will not be starting
+はじめた	have started
+はじめた	had started
+はじめる	will have started
+はじめなかった	have not started
+はじめなかった	had not started
+はじめない	will have not started
+はじめている	have being starting
+はじめていた	had been starting
+はじめている	will have been starting
+はじめていない	have not being starting
+はじめていなかった	had not been starting
+はじめていない	will have not been starting
+うつ	shoot
+うった	shooted
+うつ	will shoot
+うたない	doesnt shoot
+うたなかった	didnt shoot
+うたない	wont shoot
+うっている	shooting
+うっていた	was shooting
+うっている	will be shooting
+うっていない	not shooting
+うっていなかった	was not shooting
+うっていない	will not be shooting
+うった	have shooted
+うった	had shooted
+うつ	will have shooted
+うたなかった	have not shooted
+うたなかった	had not shooted
+うたない	will have not shooted
+うっている	have being shooting
+うっていた	had been shooting
+うっている	will have been shooting
+うっていない	have not being shooting
+うっていなかった	had not been shooting
+うっていない	will have not been shooting
+わらう	laugh
+わらった	laughed
+わらう	will laugh
+わらわない	doesnt laugh
+わらわなかった	didnt laugh
+わらわない	wont laugh
+わらっている	laughing
+わらっていた	was laughing
+わらっている	will be laughing
+わらっていない	not laughing
+わらっていなかった	was not laughing
+わらっていない	will not be laughing
+わらった	have laughed
+わらった	had laughed
+わらう	will have laughed
+わらわなかった	have not laughed
+わらわなかった	had not laughed
+わらわない	will have not laughed
+わらっている	have being laughing
+わらっていた	had been laughing
+わらっている	will have been laughing
+わらっていない	have not being laughing
+わらっていなかった	had not been laughing
+わらっていない	will have not been laughing
+すう	suck
+すった	sucked
+すう	will suck
+すわない	doesnt suck
+すわなかった	didnt suck
+すわない	wont suck
+すっている	sucking
+すっていた	was sucking
+すっている	will be sucking
+さないっていない	not sucking
+さっていなかった	was not sucking
+さないっていない	will not be sucking
+すった	have sucked
+すった	had sucked
+すう	will have sucked
+すわなかった	have not sucked
+すわなかった	had not sucked
+すわない	will have not sucked
+すっている	have being sucking
+すっていた	had been sucking
+すっている	will have been sucking
+さないっていない	have not being sucking
+さっていなかった	had not been sucking
+さないっていない	will have not been sucking
+なく	cry
+ないた	cried
+なく	will cry
+なかない	doesnt cry
+なかなかった	didnt cry
+なかない	wont cry
+ないている	crying
+ないていた	was crying
+ないている	will be crying
+ないていない	not crying
+ないていなかった	was not crying
+ないていない	will not be crying
+ないた	have cried
+ないた	had cried
+なく	will have cried
+なかなかった	have not cried
+なかなかった	had not cried
+なかない	will have not cried
+ないている	have being crying
+ないていた	had been crying
+ないている	will have been crying
+ないていない	have not being crying
+ないていなかった	had not been crying
+ないていない	will have not been crying
+おわる	finish
+おわった	finished
+おわる	will finish
+おわらない	doesnt finish
+おわらなかった	didnt finish
+おわらない	wont finish
+おわっている	finishing
+おわっていた	was finishing
+おわっている	will be finishing
+おわっていない	not finishing
+おわっていなかった	was not finishing
+おわっていない	will not be finishing
+おわった	have finished
+おわった	had finished
+おわる	will have finished
+おわらなかった	have not finished
+おわらなかった	had not finished
+おわらない	will have not finished
+おわっている	have being finishing
+おわっていた	had been finishing
+おわっている	will have been finishing
+おわっていない	have not being finishing
+おわっていなかった	had not been finishing
+おわっていない	will have not been finishing
+あける	open
+あけた	opened
+あける	will open
+あけない	doesnt open
+あけなかった	didnt open
+あけない	wont open
+あけている	opening
+あけていた	was opening
+あけている	will be opening
+あけていない	not opening
+あけていなかった	was not opening
+あけていない	will not be opening
+あけた	have opened
+あけた	had opened
+あける	will have opened
+あけなかった	have not opened
+あけなかった	had not opened
+あけない	will have not opened
+あけている	have being opening
+あけていた	had been opening
+あけている	will have been opening
+あけていない	have not being opening
+あけていなかった	had not been opening
+あけていない	will have not been opening
+とじる	close
+とじた	closed
+とじる	will close
+とじない	doesnt close
+とじなかった	didnt close
+とじない	wont close
+とじている	closing
+とじていた	was closing
+とじている	will be closing
+とじていない	not closing
+とじていなかった	was not closing
+とじていない	will not be closing
+とじた	have closed
+とじた	had closed
+とじる	will have closed
+とじなかった	have not closed
+とじなかった	had not closed
+とじない	will have not closed
+とじている	have being closing
+とじていた	had been closing
+とじている	will have been closing
+とじていない	have not being closing
+とじていなかった	had not been closing
+とじていない	will have not been closing
+かつ	win
+かった	won
+かつ	will win
+かたない	doesnt win
+かたなかった	didnt win
+かたない	wont win
+かっている	winning
+かっていた	was winning
+かっている	will be winning
+かっていない	not winning
+かっていなかった	was not winning
+かっていない	will not be winning
+かった	have won
+かった	had won
+かつ	will have won
+かたなかった	have not won
+かたなかった	had not won
+かたない	will have not won
+かっている	have being winning
+かっていた	had been winning
+かっている	will have been winning
+かっていない	have not being winning
+かっていなかった	had not been winning
+かっていない	will have not been winning
+はなす	talk
+はなした	talked
+はなす	will talk
+はなさない	doesnt talk
+はなさなかった	didnt talk
+はなさない	wont talk
+はなしている	talking
+はなしていた	was talking
+はなしている	will be talking
+はなしていない	not talking
+はなしていなかった	was not talking
+はなしていない	will not be talking
+はなした	have talked
+はなした	had talked
+はなす	will have talked
+はなさなかった	have not talked
+はなさなかった	had not talked
+はなさない	will have not talked
+はなしている	have being talking
+はなしていた	had been talking
+はなしている	will have been talking
+はなしていない	have not being talking
+はなしていなかった	had not been talking
+はなしていない	will have not been talking
+はなす	speak
+はなした	spoke
+はなす	will speak
+はなさない	doesnt speak
+はなさなかった	didnt speak
+はなさない	wont speak
+はなしている	speaking
+はなしていた	was speaking
+はなしている	will be speaking
+はなしていない	not speaking
+はなしていなかった	was not speaking
+はなしていない	will not be speaking
+はなした	have spoke
+はなした	had spoke
+はなす	will have spoke
+はなさなかった	have not spoke
+はなさなかった	had not spoke
+はなさない	will have not spoke
+はなしている	have being speaking
+はなしていた	had been speaking
+はなしている	will have been speaking
+はなしていない	have not being speaking
+はなしていなかった	had not been speaking
+はなしていない	will have not been speaking
+まがる	turn
+まがった	turned
+まがる	will turn
+まがらない	doesnt turn
+まがらなかった	didnt turn
+まがらない	wont turn
+まがっている	turning
+まがっていた	was turning
+まがっている	will be turning
+まがっていない	not turning
+まがっていなかった	was not turning
+まがっていない	will not be turning
+まがった	have turned
+まがった	had turned
+まがる	will have turned
+まがらなかった	have not turned
+まがらなかった	had not turned
+まがらない	will have not turned
+まがっている	have being turning
+まがっていた	had been turning
+まがっている	will have been turning
+まがっていない	have not being turning
+まがっていなかった	had not been turning
+まがっていない	will have not been turning
+とまる	stop
+とまった	stoped
+とまる	will stop
+とまらない	doesnt stop
+とまらなかった	didnt stop
+とまらない	wont stop
+とまっている	stoping
+とまっていた	was stoping
+とまっている	will be stoping
+とまっていない	not stoping
+とまっていなかった	was not stoping
+とまっていない	will not be stoping
+とまった	have stoped
+とまった	had stoped
+とまる	will have stoped
+とまらなかった	have not stoped
+とまらなかった	had not stoped
+とまらない	will have not stoped
+とまっている	have being stoping
+とまっていた	had been stoping
+とまっている	will have been stoping
+とまっていない	have not being stoping
+とまっていなかった	had not been stoping
+とまっていない	will have not been stoping
+とまる	stay
+とまった	staied
+とまる	will stay
+とまらない	doesnt stay
+とまらなかった	didnt stay
+とまらない	wont stay
+とまっている	staying
+とまっていた	was staying
+とまっている	will be staying
+とまっていない	not staying
+とまっていなかった	was not staying
+とまっていない	will not be staying
+とまった	have staied
+とまった	had staied
+とまる	will have staied
+とまらなかった	have not staied
+とまらなかった	had not staied
+とまらない	will have not staied
+とまっている	have being staying
+とまっていた	had been staying
+とまっている	will have been staying
+とまっていない	have not being staying
+とまっていなかった	had not been staying
+とまっていない	will have not been staying
+すわる	sit
+すわった	sat
+すわる	will sit
+すわらない	doesnt sit
+すわらなかった	didnt sit
+すわらない	wont sit
+すわっている	sitting
+すわっていた	was sitting
+すわっている	will be sitting
+すわっていない	not sitting
+すわっていなかった	was not sitting
+すわっていない	will not be sitting
+すわった	have sat
+すわった	had sat
+すわる	will have sat
+すわらなかった	have not sat
+すわらなかった	had not sat
+すわらない	will have not sat
+すわっている	have being sitting
+すわっていた	had been sitting
+すわっている	will have been sitting
+すわっていない	have not being sitting
+すわっていなかった	had not been sitting
+すわっていない	will have not been sitting
+あらう	wash
+あらった	washed
+あらう	will wash
+あらわない	doesnt wash
+あらわなかった	didnt wash
+あらわない	wont wash
+あらっている	washing
+あらっていた	was washing
+あらっている	will be washing
+あらっていない	not washing
+あらっていなかった	was not washing
+あらっていない	will not be washing
+あらった	have washed
+あらった	had washed
+あらう	will have washed
+あらわなかった	have not washed
+あらわなかった	had not washed
+あらわない	will have not washed
+あらっている	have being washing
+あらっていた	had been washing
+あらっている	will have been washing
+あらっていない	have not being washing
+あらっていなかった	had not been washing
+あらっていない	will have not been washing
+あげる	give
+あげた	gave
+あげる	will give
+あげない	doesnt give
+あげなかった	didnt give
+あげない	wont give
+あげている	giving
+あげていた	was giving
+あげている	will be giving
+あげていない	not giving
+あげていなかった	was not giving
+あげていない	will not be giving
+あげた	have gave
+あげた	had gave
+あげる	will have gave
+あげなかった	have not gave
+あげなかった	had not gave
+あげない	will have not gave
+あげている	have being giving
+あげていた	had been giving
+あげている	will have been giving
+あげていない	have not being giving
+あげていなかった	had not been giving
+あげていない	will have not been giving
+こわれる	break
+こわれた	broke
+こわれる	will break
+こわれない	doesnt break
+こわれなかった	didnt break
+こわれない	wont break
+こわれている	breaking
+こわれていた	was breaking
+こわれている	will be breaking
+こわれていない	not breaking
+こわれていなかった	was not breaking
+こわれていない	will not be breaking
+こわれた	have broke
+こわれた	had broke
+こわれる	will have broke
+こわれなかった	have not broke
+こわれなかった	had not broke
+こわれない	will have not broke
+こわれている	have being breaking
+こわれていた	had been breaking
+こわれている	will have been breaking
+こわれていない	have not being breaking
+こわれていなかった	had not been breaking
+こわれていない	will have not been breaking
+ねる	sleep
+ねた	slept
+ねる	will sleep
+ねない	doesnt sleep
+ねなかった	didnt sleep
+ねない	wont sleep
+ねている	sleeping
+ねていた	was sleeping
+ねている	will be sleeping
+ねていない	not sleeping
+ねていなかった	was not sleeping
+ねていない	will not be sleeping
+ねた	have slept
+ねた	had slept
+ねる	will have slept
+ねなかった	have not slept
+ねなかった	had not slept
+ねない	will have not slept
+ねている	have being sleeping
+ねていた	had been sleeping
+ねている	will have been sleeping
+ねていない	have not being sleeping
+ねていなかった	had not been sleeping
+ねていない	will have not been sleeping
+おきる	wake
+おきた	waked
+おきる	will wake
+おきない	doesnt wake
+おきなかった	didnt wake
+おきない	wont wake
+おきている	waking
+おきていた	was waking
+おきている	will be waking
+おきていない	not waking
+おきていなかった	was not waking
+おきていない	will not be waking
+おきた	have waked
+おきた	had waked
+おきる	will have waked
+おきなかった	have not waked
+おきなかった	had not waked
+おきない	will have not waked
+おきている	have being waking
+おきていた	had been waking
+おきている	will have been waking
+おきていない	have not being waking
+おきていなかった	had not been waking
+おきていない	will have not been waking
+やく	grill
+やいた	grilled
+やく	will grill
+やかない	doesnt grill
+やかなかった	didnt grill
+やかない	wont grill
+やいている	grilling
+やいていた	was grilling
+やいている	will be grilling
+やいていない	not grilling
+やいていなかった	was not grilling
+やいていない	will not be grilling
+やいた	have grilled
+やいた	had grilled
+やく	will have grilled
+やかなかった	have not grilled
+やかなかった	had not grilled
+やかない	will have not grilled
+やいている	have being grilling
+やいていた	had been grilling
+やいている	will have been grilling
+やいていない	have not being grilling
+やいていなかった	had not been grilling
+やいていない	will have not been grilling
+やく	roast
+やいた	roasted
+やく	will roast
+やかない	doesnt roast
+やかなかった	didnt roast
+やかない	wont roast
+やいている	roasting
+やいていた	was roasting
+やいている	will be roasting
+やいていない	not roasting
+やいていなかった	was not roasting
+やいていない	will not be roasting
+やいた	have roasted
+やいた	had roasted
+やく	will have roasted
+やかなかった	have not roasted
+やかなかった	had not roasted
+やかない	will have not roasted
+やいている	have being roasting
+やいていた	had been roasting
+やいている	will have been roasting
+やいていない	have not being roasting
+やいていなかった	had not been roasting
+やいていない	will have not been roasting
+なおす	repair
+なおした	repaired
+なおす	will repair
+なおさない	doesnt repair
+なおさなかった	didnt repair
+なおさない	wont repair
+なおしている	repairing
+なおしていた	was repairing
+なおしている	will be repairing
+なおしていない	not repairing
+なおしていなかった	was not repairing
+なおしていない	will not be repairing
+なおした	have repaired
+なおした	had repaired
+なおす	will have repaired
+なおさなかった	have not repaired
+なおさなかった	had not repaired
+なおさない	will have not repaired
+なおしている	have being repairing
+なおしていた	had been repairing
+なおしている	will have been repairing
+なおしていない	have not being repairing
+なおしていなかった	had not been repairing
+なおしていない	will have not been repairing
+なおす	fix
+なおした	fixed
+なおす	will fix
+なおさない	doesnt fix
+なおさなかった	didnt fix
+なおさない	wont fix
+なおしている	fixing
+なおしていた	was fixing
+なおしている	will be fixing
+なおしていない	not fixing
+なおしていなかった	was not fixing
+なおしていない	will not be fixing
+なおした	have fixed
+なおした	had fixed
+なおす	will have fixed
+なおさなかった	have not fixed
+なおさなかった	had not fixed
+なおさない	will have not fixed
+なおしている	have being fixing
+なおしていた	had been fixing
+なおしている	will have been fixing
+なおしていない	have not being fixing
+なおしていなかった	had not been fixing
+なおしていない	will have not been fixing
+うける	receive
+うけた	received
+うける	will receive
+うけない	doesnt receive
+うけなかった	didnt receive
+うけない	wont receive
+うけている	receiving
+うけていた	was receiving
+うけている	will be receiving
+うけていない	not receiving
+うけていなかった	was not receiving
+うけていない	will not be receiving
+うけた	have received
+うけた	had received
+うける	will have received
+うけなかった	have not received
+うけなかった	had not received
+うけない	will have not received
+うけている	have being receiving
+うけていた	had been receiving
+うけている	will have been receiving
+うけていない	have not being receiving
+うけていなかった	had not been receiving
+うけていない	will have not been receiving
+かりる	borrow
+かりた	borrowed
+かりる	will borrow
+かりない	doesnt borrow
+かりなかった	didnt borrow
+かりない	wont borrow
+かりている	borrowing
+かりていた	was borrowing
+かりている	will be borrowing
+かりていない	not borrowing
+かりていなかった	was not borrowing
+かりていない	will not be borrowing
+かりた	have borrowed
+かりた	had borrowed
+かりる	will have borrowed
+かりなかった	have not borrowed
+かりなかった	had not borrowed
+かりない	will have not borrowed
+かりている	have being borrowing
+かりていた	had been borrowing
+かりている	will have been borrowing
+かりていない	have not being borrowing
+かりていなかった	had not been borrowing
+かりていない	will have not been borrowing
+あがる	rise
+あがった	rose
+あがる	will rise
+あがらない	doesnt rise
+あがらなかった	didnt rise
+あがらない	wont rise
+あがっている	rising
+あがっていた	was rising
+あがっている	will be rising
+あがっていない	not rising
+あがっていなかった	was not rising
+あがっていない	will not be rising
+あがった	have rose
+あがった	had rose
+あがる	will have rose
+あがらなかった	have not rose
+あがらなかった	had not rose
+あがらない	will have not rose
+あがっている	have being rising
+あがっていた	had been rising
+あがっている	will have been rising
+あがっていない	have not being rising
+あがっていなかった	had not been rising
+あがっていない	will have not been rising
+きる	wear
+きった	wore
+きる	will wear
+きらない	doesnt wear
+きらなかった	didnt wear
+きらない	wont wear
+きっている	wearing
+きっていた	was wearing
+きっている	will be wearing
+きっていない	not wearing
+きっていなかった	was not wearing
+きっていない	will not be wearing
+きった	have wore
+きった	had wore
+きる	will have wore
+きらなかった	have not wore
+きらなかった	had not wore
+きらない	will have not wore
+きっている	have being wearing
+きっていた	had been wearing
+きっている	will have been wearing
+きっていない	have not being wearing
+きっていなかった	had not been wearing
+きっていない	will have not been wearing
+およぐ	swim
+およいだ	swam
+およぐ	will swim
+およがない	doesnt swim
+およがなかった	didnt swim
+およがない	wont swim
+およいでいる	swiming
+およいでいた	was swiming
+およいでいる	will be swiming
+およいでいない	not swiming
+およいでいなかった	was not swiming
+およいでいない	will not be swiming
+およいだ	have swam
+およいだ	had swam
+およぐ	will have swam
+およがなかった	have not swam
+およがなかった	had not swam
+およがない	will have not swam
+およいでいる	have being swiming
+およいでいた	had been swiming
+およいでいる	will have been swiming
+およいでいない	have not being swiming
+およいでいなかった	had not been swiming
+およいでいない	will have not been swiming
+いきる	live
+いきた	lived
+いきる	will live
+いきない	doesnt live
+いきなかった	didnt live
+いきない	wont live
+いきている	living
+いきていた	was living
+いきている	will be living
+いきていない	not living
+いきていなかった	was not living
+いきていない	will not be living
+いきた	have lived
+いきた	had lived
+いきる	will have lived
+いきなかった	have not lived
+いきなかった	had not lived
+いきない	will have not lived
+いきている	have being living
+いきていた	had been living
+いきている	will have been living
+いきていない	have not being living
+いきていなかった	had not been living
+いきていない	will have not been living
+きく	listen
+きいた	listened
+きく	will listen
+きかない	doesnt listen
+きかなかった	didnt listen
+きかない	wont listen
+きいている	listening
+きいていた	was listening
+きいている	will be listening
+きいていない	not listening
+きいていなかった	was not listening
+きいていない	will not be listening
+きいた	have listened
+きいた	had listened
+きく	will have listened
+きかなかった	have not listened
+きかなかった	had not listened
+きかない	will have not listened
+きいている	have being listening
+きいていた	had been listening
+きいている	will have been listening
+きいていない	have not being listening
+きいていなかった	had not been listening
+きいていない	will have not been listening
+まぜる	mix
+まぜた	mixed
+まぜる	will mix
+まぜない	doesnt mix
+まぜなかった	didnt mix
+まぜない	wont mix
+まぜている	mixing
+まぜていた	was mixing
+まぜている	will be mixing
+まぜていない	not mixing
+まぜていなかった	was not mixing
+まぜていない	will not be mixing
+まぜた	have mixed
+まぜた	had mixed
+まぜる	will have mixed
+まぜなかった	have not mixed
+まぜなかった	had not mixed
+まぜない	will have not mixed
+まぜている	have being mixing
+まぜていた	had been mixing
+まぜている	will have been mixing
+まぜていない	have not being mixing
+まぜていなかった	had not been mixing
+まぜていない	will have not been mixing
+はしる	run
+はしった	ran
+はしる	will run
+はしらない	doesnt run
+はしらなかった	didnt run
+はしらない	wont run
+はしっている	runing
+はしっていた	was runing
+はしっている	will be runing
+はしっていない	not runing
+はしっていなかった	was not runing
+はしっていない	will not be runing
+はしった	have ran
+はしった	had ran
+はしる	will have ran
+はしらなかった	have not ran
+はしらなかった	had not ran
+はしらない	will have not ran
+はしっている	have being runing
+はしっていた	had been runing
+はしっている	will have been runing
+はしっていない	have not being runing
+はしっていなかった	had not been runing
+はしっていない	will have not been runing
+おどる	dance
+おどった	danced
+おどる	will dance
+おどらない	doesnt dance
+おどらなかった	didnt dance
+おどらない	wont dance
+おどっている	dancing
+おどっていた	was dancing
+おどっている	will be dancing
+おどっていない	not dancing
+おどっていなかった	was not dancing
+おどっていない	will not be dancing
+おどった	have danced
+おどった	had danced
+おどる	will have danced
+おどらなかった	have not danced
+おどらなかった	had not danced
+おどらない	will have not danced
+おどっている	have being dancing
+おどっていた	had been dancing
+おどっている	will have been dancing
+おどっていない	have not being dancing
+おどっていなかった	had not been dancing
+おどっていない	will have not been dancing
+おこる	anger
+おこった	angered
+おこる	will anger
+おこらない	doesnt anger
+おこらなかった	didnt anger
+おこらない	wont anger
+おこっている	angering
+おこっていた	was angering
+おこっている	will be angering
+おこっていない	not angering
+おこっていなかった	was not angering
+おこっていない	will not be angering
+おこった	have angered
+おこった	had angered
+おこる	will have angered
+おこらなかった	have not angered
+おこらなかった	had not angered
+おこらない	will have not angered
+おこっている	have being angering
+おこっていた	had been angering
+おこっている	will have been angering
+おこっていない	have not being angering
+おこっていなかった	had not been angering
+おこっていない	will have not been angering
+あそぶ	play
+あそんだ	plaied
+あそぶ	will play
+あそばない	doesnt play
+あそばなかった	didnt play
+あそばない	wont play
+あそんでいる	playing
+あそんでいた	was playing
+あそんでいる	will be playing
+あそんでいない	not playing
+あそんでいなかった	was not playing
+あそんでいない	will not be playing
+あそんだ	have plaied
+あそんだ	had plaied
+あそぶ	will have plaied
+あそばなかった	have not plaied
+あそばなかった	had not plaied
+あそばない	will have not plaied
+あそんでいる	have being playing
+あそんでいた	had been playing
+あそんでいる	will have been playing
+あそんでいない	have not being playing
+あそんでいなかった	had not been playing
+あそんでいない	will have not been playing
+にらむ	scowl
+にらんだ	scowled
+にらむ	will scowl
+にらまない	doesnt scowl
+にらまなかった	didnt scowl
+にらまない	wont scowl
+にらんでいる	scowling
+にらんでいた	was scowling
+にらんでいる	will be scowling
+にらんでいない	not scowling
+にらんでいなかった	was not scowling
+にらんでいない	will not be scowling
+にらんだ	have scowled
+にらんだ	had scowled
+にらむ	will have scowled
+にらまなかった	have not scowled
+にらまなかった	had not scowled
+にらまない	will have not scowled
+にらんでいる	have being scowling
+にらんでいた	had been scowling
+にらんでいる	will have been scowling
+にらんでいない	have not being scowling
+にらんでいなかった	had not been scowling
+にらんでいない	will have not been scowling
+ほしがる	want
+ほしがった	wanted
+ほしがる	will want
+ほしがらない	doesnt want
+ほしがらなかった	didnt want
+ほしがらない	wont want
+ほしがっている	wanting
+ほしがっていた	was wanting
+ほしがっている	will be wanting
+ほしがっていない	not wanting
+ほしがっていなかった	was not wanting
+ほしがっていない	will not be wanting
+ほしがった	have wanted
+ほしがった	had wanted
+ほしがる	will have wanted
+ほしがらなかった	have not wanted
+ほしがらなかった	had not wanted
+ほしがらない	will have not wanted
+ほしがっている	have being wanting
+ほしがっていた	had been wanting
+ほしがっている	will have been wanting
+ほしがっていない	have not being wanting
+ほしがっていなかった	had not been wanting
+ほしがっていない	will have not been wanting
+さす	stab
+さした	stabed
+さす	will stab
+ささない	doesnt stab
+ささなかった	didnt stab
+ささない	wont stab
+さしている	stabing
+さしていた	was stabing
+さしている	will be stabing
+さしていない	not stabing
+さしていなかった	was not stabing
+さしていない	will not be stabing
+さした	have stabed
+さした	had stabed
+さす	will have stabed
+ささなかった	have not stabed
+ささなかった	had not stabed
+ささない	will have not stabed
+さしている	have being stabing
+さしていた	had been stabing
+さしている	will have been stabing
+さしていない	have not being stabing
+さしていなかった	had not been stabing
+さしていない	will have not been stabing
+さがす	search
+さがした	searched
+さがす	will search
+さがさない	doesnt search
+さがさなかった	didnt search
+さがさない	wont search
+さがしている	searching
+さがしていた	was searching
+さがしている	will be searching
+さがしていない	not searching
+さがしていなかった	was not searching
+さがしていない	will not be searching
+さがした	have searched
+さがした	had searched
+さがす	will have searched
+さがさなかった	have not searched
+さがさなかった	had not searched
+さがさない	will have not searched
+さがしている	have being searching
+さがしていた	had been searching
+さがしている	will have been searching
+さがしていない	have not being searching
+さがしていなかった	had not been searching
+さがしていない	will have not been searching
+みつける	find
+みつけた	finded
+みつける	will find
+みつけない	doesnt find
+みつけなかった	didnt find
+みつけない	wont find
+みつけている	finding
+みつけていた	was finding
+みつけている	will be finding
+みつけていない	not finding
+みつけていなかった	was not finding
+みつけていない	will not be finding
+みつけた	have finded
+みつけた	had finded
+みつける	will have finded
+みつけなかった	have not finded
+みつけなかった	had not finded
+みつけない	will have not finded
+みつけている	have being finding
+みつけていた	had been finding
+みつけている	will have been finding
+みつけていない	have not being finding
+みつけていなかった	had not been finding
+みつけていない	will have not been finding
+なげる	throw
+なげた	threw
+なげる	will throw
+なげない	doesnt throw
+なげなかった	didnt throw
+なげない	wont throw
+なげている	throwing
+なげていた	was throwing
+なげている	will be throwing
+なげていない	not throwing
+なげていなかった	was not throwing
+なげていない	will not be throwing
+なげた	have threw
+なげた	had threw
+なげる	will have threw
+なげなかった	have not threw
+なげなかった	had not threw
+なげない	will have not threw
+なげている	have being throwing
+なげていた	had been throwing
+なげている	will have been throwing
+なげていない	have not being throwing
+なげていなかった	had not been throwing
+なげていない	will have not been throwing
+まもる	protect
+まもった	protected
+まもる	will protect
+まもらない	doesnt protect
+まもらなかった	didnt protect
+まもらない	wont protect
+まもっている	protecting
+まもっていた	was protecting
+まもっている	will be protecting
+まもっていない	not protecting
+まもっていなかった	was not protecting
+まもっていない	will not be protecting
+まもった	have protected
+まもった	had protected
+まもる	will have protected
+まもらなかった	have not protected
+まもらなかった	had not protected
+まもらない	will have not protected
+まもっている	have being protecting
+まもっていた	had been protecting
+まもっている	will have been protecting
+まもっていない	have not being protecting
+まもっていなかった	had not been protecting
+まもっていない	will have not been protecting
+はらう	pay
+はらった	paied
+はらう	will pay
+はらわない	doesnt pay
+はらわなかった	didnt pay
+はらわない	wont pay
+はらっている	paying
+はらっていた	was paying
+はらっている	will be paying
+はらっていない	not paying
+はらっていなかった	was not paying
+はらっていない	will not be paying
+はらった	have paied
+はらった	had paied
+はらう	will have paied
+はらわなかった	have not paied
+はらわなかった	had not paied
+はらわない	will have not paied
+はらっている	have being paying
+はらっていた	had been paying
+はらっている	will have been paying
+はらっていない	have not being paying
+はらっていなかった	had not been paying
+はらっていない	will have not been paying
+たつ	stand
+たった	standed
+たつ	will stand
+たたない	doesnt stand
+たたなかった	didnt stand
+たたない	wont stand
+たっている	standing
+たっていた	was standing
+たっている	will be standing
+たっていない	not standing
+たっていなかった	was not standing
+たっていない	will not be standing
+たった	have standed
+たった	had standed
+たつ	will have standed
+たたなかった	have not standed
+たたなかった	had not standed
+たたない	will have not standed
+たっている	have being standing
+たっていた	had been standing
+たっている	will have been standing
+たっていない	have not being standing
+たっていなかった	had not been standing
+たっていない	will have not been standing
+おぼえる	remember
+おぼえた	remembered
+おぼえる	will remember
+おぼえない	doesnt remember
+おぼえなかった	didnt remember
+おぼえない	wont remember
+おぼえている	remembering
+おぼえていた	was remembering
+おぼえている	will be remembering
+おぼえていない	not remembering
+おぼえていなかった	was not remembering
+おぼえていない	will not be remembering
+おぼえた	have remembered
+おぼえた	had remembered
+おぼえる	will have remembered
+おぼえなかった	have not remembered
+おぼえなかった	had not remembered
+おぼえない	will have not remembered
+おぼえている	have being remembering
+おぼえていた	had been remembering
+おぼえている	will have been remembering
+おぼえていない	have not being remembering
+おぼえていなかった	had not been remembering
+おぼえていない	will have not been remembering
+かぞえる	count
+かぞえった	counted
+かぞえる	will count
+かぞえらない	doesnt count
+かぞえらなかった	didnt count
+かぞえらない	wont count
+かぞえっている	counting
+かぞえっていた	was counting
+かぞえっている	will be counting
+かぞえっていない	not counting
+かぞえっていなかった	was not counting
+かぞえっていない	will not be counting
+かぞえった	have counted
+かぞえった	had counted
+かぞえる	will have counted
+かぞえらなかった	have not counted
+かぞえらなかった	had not counted
+かぞえらない	will have not counted
+かぞえっている	have being counting
+かぞえっていた	had been counting
+かぞえっている	will have been counting
+かぞえっていない	have not being counting
+かぞえっていなかった	had not been counting
+かぞえっていない	will have not been counting
+わかる	understand
+わかった	understood
+わかる	will understand
+わからない	doesnt understand
+わからなかった	didnt understand
+わからない	wont understand
+わかっている	understanding
+わかっていた	was understanding
+わかっている	will be understanding
+わかっていない	not understanding
+わかっていなかった	was not understanding
+わかっていない	will not be understanding
+わかった	have understood
+わかった	had understood
+わかる	will have understood
+わからなかった	have not understood
+わからなかった	had not understood
+わからない	will have not understood
+わかっている	have being understanding
+わかっていた	had been understanding
+わかっている	will have been understanding
+わかっていない	have not being understanding
+わかっていなかった	had not been understanding
+わかっていない	will have not been understanding
+わかる	know
+わかった	knew
+わかる	will know
+わからない	doesnt know
+わからなかった	didnt know
+わからない	wont know
+わかっている	knowing
+わかっていた	was knowing
+わかっている	will be knowing
+わかっていない	not knowing
+わかっていなかった	was not knowing
+わかっていない	will not be knowing
+わかった	have knew
+わかった	had knew
+わかる	will have knew
+わからなかった	have not knew
+わからなかった	had not knew
+わからない	will have not knew
+わかっている	have being knowing
+わかっていた	had been knowing
+わかっている	will have been knowing
+わかっていない	have not being knowing
+わかっていなかった	had not been knowing
+わかっていない	will have not been knowing
+ころす	kill
+ころした	killed
+ころす	will kill
+ころさない	doesnt kill
+ころさなかった	didnt kill
+ころさない	wont kill
+ころしている	killing
+ころしていた	was killing
+ころしている	will be killing
+ころしていない	not killing
+ころしていなかった	was not killing
+ころしていない	will not be killing
+ころした	have killed
+ころした	had killed
+ころす	will have killed
+ころさなかった	have not killed
+ころさなかった	had not killed
+ころさない	will have not killed
+ころしている	have being killing
+ころしていた	had been killing
+ころしている	will have been killing
+ころしていない	have not being killing
+ころしていなかった	had not been killing
+ころしていない	will have not been killing
+ふくらむ	swell
+ふくらんだ	swelled
+ふくらむ	will swell
+ふくらまない	doesnt swell
+ふくらまなかった	didnt swell
+ふくらまない	wont swell
+ふくらんでいる	swelling
+ふくらんでいた	was swelling
+ふくらんでいる	will be swelling
+ふくらんでいない	not swelling
+ふくらんでいなかった	was not swelling
+ふくらんでいない	will not be swelling
+ふくらんだ	have swelled
+ふくらんだ	had swelled
+ふくらむ	will have swelled
+ふくらまなかった	have not swelled
+ふくらまなかった	had not swelled
+ふくらまない	will have not swelled
+ふくらんでいる	have being swelling
+ふくらんでいた	had been swelling
+ふくらんでいる	will have been swelling
+ふくらんでいない	have not being swelling
+ふくらんでいなかった	had not been swelling
+ふくらんでいない	will have not been swelling
+はねる	jump
+はねった	jumped
+はねる	will jump
+はねらない	doesnt jump
+はねらなかった	didnt jump
+はねらない	wont jump
+はねっている	jumping
+はねっていた	was jumping
+はねっている	will be jumping
+はねっていない	not jumping
+はねっていなかった	was not jumping
+はねっていない	will not be jumping
+はねった	have jumped
+はねった	had jumped
+はねる	will have jumped
+はねらなかった	have not jumped
+はねらなかった	had not jumped
+はねらない	will have not jumped
+はねっている	have being jumping
+はねっていた	had been jumping
+はねっている	will have been jumping
+はねっていない	have not being jumping
+はねっていなかった	had not been jumping
+はねっていない	will have not been jumping
+ふむ	step
+ふんだ	steped
+ふむ	will step
+ふまない	doesnt step
+ふまなかった	didnt step
+ふまない	wont step
+ふんでいる	steping
+ふんでいた	was steping
+ふんでいる	will be steping
+ふんでいない	not steping
+ふんでいなかった	was not steping
+ふんでいない	will not be steping
+ふんだ	have steped
+ふんだ	had steped
+ふむ	will have steped
+ふまなかった	have not steped
+ふまなかった	had not steped
+ふまない	will have not steped
+ふんでいる	have being steping
+ふんでいた	had been steping
+ふんでいる	will have been steping
+ふんでいない	have not being steping
+ふんでいなかった	had not been steping
+ふんでいない	will have not been steping
+とぶ	fly
+とんだ	flew
+とぶ	will fly
+とばない	doesnt fly
+とばなかった	didnt fly
+とばない	wont fly
+とんでいる	flying
+とんでいた	was flying
+とんでいる	will be flying
+とんでいない	not flying
+とんでいなかった	was not flying
+とんでいない	will not be flying
+とんだ	have flew
+とんだ	had flew
+とぶ	will have flew
+とばなかった	have not flew
+とばなかった	had not flew
+とばない	will have not flew
+とんでいる	have being flying
+とんでいた	had been flying
+とんでいる	will have been flying
+とんでいない	have not being flying
+とんでいなかった	had not been flying
+とんでいない	will have not been flying
+うたう	sing
+うたった	sang
+うたう	will sing
+うたわない	doesnt sing
+うたわなかった	didnt sing
+うたわない	wont sing
+うたっている	singing
+うたっていた	was singing
+うたっている	will be singing
+うたっていない	not singing
+うたっていなかった	was not singing
+うたっていない	will not be singing
+うたった	have sang
+うたった	had sang
+うたう	will have sang
+うたわなかった	have not sang
+うたわなかった	had not sang
+うたわない	will have not sang
+うたっている	have being singing
+うたっていた	had been singing
+うたっている	will have been singing
+うたっていない	have not being singing
+うたっていなかった	had not been singing
+うたっていない	will have not been singing
+のぼる	climb
+のぼった	climbed
+のぼる	will climb
+のぼらない	doesnt climb
+のぼらなかった	didnt climb
+のぼらない	wont climb
+のぼっている	climbing
+のぼっていた	was climbing
+のぼっている	will be climbing
+のぼっていない	not climbing
+のぼっていなかった	was not climbing
+のぼっていない	will not be climbing
+のぼった	have climbed
+のぼった	had climbed
+のぼる	will have climbed
+のぼらなかった	have not climbed
+のぼらなかった	had not climbed
+のぼらない	will have not climbed
+のぼっている	have being climbing
+のぼっていた	had been climbing
+のぼっている	will have been climbing
+のぼっていない	have not being climbing
+のぼっていなかった	had not been climbing
+のぼっていない	will have not been climbing
+しぬ	die
+しんだ	died
+しぬ	will die
+しなない	doesnt die
+しななかった	didnt die
+しなない	wont die
+しんでいる	dying
+しんでいた	was dying
+しんでいる	will be dying
+しんでいない	not dying
+しんでいなかった	was not dying
+しんでいない	will not be dying
+しんだ	have died
+しんだ	had died
+しぬ	will have died
+しななかった	have not died
+しななかった	had not died
+しなない	will have not died
+しんでいる	have being dying
+しんでいた	had been dying
+しんでいる	will have been dying
+しんでいない	have not being dying
+しんでいなかった	had not been dying
+しんでいない	will have not been dying
+たすける	help
+たすけた	helped
+たすける	will help
+たすけない	doesnt help
+たすけなかった	didnt help
+たすけない	wont help
+たすけている	helping
+たすけていた	was helping
+たすけている	will be helping
+たすけていない	not helping
+たすけていなかった	was not helping
+たすけていない	will not be helping
+たすけた	have helped
+たすけた	had helped
+たすける	will have helped
+たすけなかった	have not helped
+たすけなかった	had not helped
+たすけない	will have not helped
+たすけている	have being helping
+たすけていた	had been helping
+たすけている	will have been helping
+たすけていない	have not being helping
+たすけていなかった	had not been helping
+たすけていない	will have not been helping
+べんきょうする	study
+べんきょうした	studied
+べんきょうする	will study
+べんきょうしない	doesnt study
+べんきょうしなかった	didnt study
+べんきょうしない	wont study
+べんきょうしている	studying
+べんきょうしていた	was studying
+べんきょうしている	will be studying
+べんきょうしていない	not studying
+べんきょうしていなかった	was not studying
+べんきょうしていない	will not be studying
+べんきょうした	have studied
+べんきょうした	had studied
+べんきょうする	will have studied
+べんきょうしなかった	have not studied
+べんきょうしなかった	had not studied
+べんきょうしない	will have not studied
+べんきょうしている	have being studying
+べんきょうしていた	had been studying
+べんきょうしている	will have been studying
+べんきょうしていない	have not being studying
+べんきょうしていなかった	had not been studying
+べんきょうしていない	will have not been studying
+ちょうさする	investigate
+ちょうさした	investigated
+ちょうさする	will investigate
+ちょうさしない	doesnt investigate
+ちょうさしなかった	didnt investigate
+ちょうさしない	wont investigate
+ちょうさしている	investigating
+ちょうさしていた	was investigating
+ちょうさしている	will be investigating
+ちょうさしていない	not investigating
+ちょうさしていなかった	was not investigating
+ちょうさしていない	will not be investigating
+ちょうさした	have investigated
+ちょうさした	had investigated
+ちょうさする	will have investigated
+ちょうさしなかった	have not investigated
+ちょうさしなかった	had not investigated
+ちょうさしない	will have not investigated
+ちょうさしている	have being investigating
+ちょうさしていた	had been investigating
+ちょうさしている	will have been investigating
+ちょうさしていない	have not being investigating
+ちょうさしていなかった	had not been investigating
+ちょうさしていない	will have not been investigating
+こうかんする	exchange
+こうかんした	exchanged
+こうかんする	will exchange
+こうかんしない	doesnt exchange
+こうかんしなかった	didnt exchange
+こうかんしない	wont exchange
+こうかんしている	exchanging
+こうかんしていた	was exchanging
+こうかんしている	will be exchanging
+こうかんしていない	not exchanging
+こうかんしていなかった	was not exchanging
+こうかんしていない	will not be exchanging
+こうかんした	have exchanged
+こうかんした	had exchanged
+こうかんする	will have exchanged
+こうかんしなかった	have not exchanged
+こうかんしなかった	had not exchanged
+こうかんしない	will have not exchanged
+こうかんしている	have being exchanging
+こうかんしていた	had been exchanging
+こうかんしている	will have been exchanging
+こうかんしていない	have not being exchanging
+こうかんしていなかった	had not been exchanging
+こうかんしていない	will have not been exchanging
+れんらくする	contact
+れんらくした	contacted
+れんらくする	will contact
+れんらくしない	doesnt contact
+れんらくしなかった	didnt contact
+れんらくしない	wont contact
+れんらくしている	contacting
+れんらくしていた	was contacting
+れんらくしている	will be contacting
+れんらくしていない	not contacting
+れんらくしていなかった	was not contacting
+れんらくしていない	will not be contacting
+れんらくした	have contacted
+れんらくした	had contacted
+れんらくする	will have contacted
+れんらくしなかった	have not contacted
+れんらくしなかった	had not contacted
+れんらくしない	will have not contacted
+れんらくしている	have being contacting
+れんらくしていた	had been contacting
+れんらくしている	will have been contacting
+れんらくしていない	have not being contacting
+れんらくしていなかった	had not been contacting
+れんらくしていない	will have not been contacting
+はんたいする	oppose
+はんたいした	opposed
+はんたいする	will oppose
+はんたいしない	doesnt oppose
+はんたいしなかった	didnt oppose
+はんたいしない	wont oppose
+はんたいしている	opposing
+はんたいしていた	was opposing
+はんたいしている	will be opposing
+はんたいしていない	not opposing
+はんたいしていなかった	was not opposing
+はんたいしていない	will not be opposing
+はんたいした	have opposed
+はんたいした	had opposed
+はんたいする	will have opposed
+はんたいしなかった	have not opposed
+はんたいしなかった	had not opposed
+はんたいしない	will have not opposed
+はんたいしている	have being opposing
+はんたいしていた	had been opposing
+はんたいしている	will have been opposing
+はんたいしていない	have not being opposing
+はんたいしていなかった	had not been opposing
+はんたいしていない	will have not been opposing
+れんしゅうする	practice
+れんしゅうした	practiced
+れんしゅうする	will practice
+れんしゅうしない	doesnt practice
+れんしゅうしなかった	didnt practice
+れんしゅうしない	wont practice
+れんしゅうしている	practicing
+れんしゅうしていた	was practicing
+れんしゅうしている	will be practicing
+れんしゅうしていない	not practicing
+れんしゅうしていなかった	was not practicing
+れんしゅうしていない	will not be practicing
+れんしゅうした	have practiced
+れんしゅうした	had practiced
+れんしゅうする	will have practiced
+れんしゅうしなかった	have not practiced
+れんしゅうしなかった	had not practiced
+れんしゅうしない	will have not practiced
+れんしゅうしている	have being practicing
+れんしゅうしていた	had been practicing
+れんしゅうしている	will have been practicing
+れんしゅうしていない	have not being practicing
+れんしゅうしていなかった	had not been practicing
+れんしゅうしていない	will have not been practicing
+はっぴょうする	announce
+はっぴょうした	announced
+はっぴょうする	will announce
+はっぴょうしない	doesnt announce
+はっぴょうしなかった	didnt announce
+はっぴょうしない	wont announce
+はっぴょうしている	announcing
+はっぴょうしていた	was announcing
+はっぴょうしている	will be announcing
+はっぴょうしていない	not announcing
+はっぴょうしていなかった	was not announcing
+はっぴょうしていない	will not be announcing
+はっぴょうした	have announced
+はっぴょうした	had announced
+はっぴょうする	will have announced
+はっぴょうしなかった	have not announced
+はっぴょうしなかった	had not announced
+はっぴょうしない	will have not announced
+はっぴょうしている	have being announcing
+はっぴょうしていた	had been announcing
+はっぴょうしている	will have been announcing
+はっぴょうしていない	have not being announcing
+はっぴょうしていなかった	had not been announcing
+はっぴょうしていない	will have not been announcing
+へんかする	change
+へんかした	changed
+へんかする	will change
+へんかしない	doesnt change
+へんかしなかった	didnt change
+へんかしない	wont change
+へんかしている	changing
+へんかしていた	was changing
+へんかしている	will be changing
+へんかしていない	not changing
+へんかしていなかった	was not changing
+へんかしていない	will not be changing
+へんかした	have changed
+へんかした	had changed
+へんかする	will have changed
+へんかしなかった	have not changed
+へんかしなかった	had not changed
+へんかしない	will have not changed
+へんかしている	have being changing
+へんかしていた	had been changing
+へんかしている	will have been changing
+へんかしていない	have not being changing
+へんかしていなかった	had not been changing
+へんかしていない	will have not been changing
+へんじする	reply
+へんじした	replied
+へんじする	will reply
+へんじしない	doesnt reply
+へんじしなかった	didnt reply
+へんじしない	wont reply
+へんじしている	replying
+へんじしていた	was replying
+へんじしている	will be replying
+へんじしていない	not replying
+へんじしていなかった	was not replying
+へんじしていない	will not be replying
+へんじした	have replied
+へんじした	had replied
+へんじする	will have replied
+へんじしなかった	have not replied
+へんじしなかった	had not replied
+へんじしない	will have not replied
+へんじしている	have being replying
+へんじしていた	had been replying
+へんじしている	will have been replying
+へんじしていない	have not being replying
+へんじしていなかった	had not been replying
+へんじしていない	will have not been replying
+しごとする	work
+しごとした	worked
+しごとする	will work
+しごとしない	doesnt work
+しごとしなかった	didnt work
+しごとしない	wont work
+しごとしている	working
+しごとしていた	was working
+しごとしている	will be working
+しごとしていない	not working
+しごとしていなかった	was not working
+しごとしていない	will not be working
+しごとした	have worked
+しごとした	had worked
+しごとする	will have worked
+しごとしなかった	have not worked
+しごとしなかった	had not worked
+しごとしない	will have not worked
+しごとしている	have being working
+しごとしていた	had been working
+しごとしている	will have been working
+しごとしていない	have not being working
+しごとしていなかった	had not been working
+しごとしていない	will have not been working
+うんどうする	exercise
+うんどうした	exercised
+うんどうする	will exercise
+うんどうしない	doesnt exercise
+うんどうしなかった	didnt exercise
+うんどうしない	wont exercise
+うんどうしている	exercising
+うんどうしていた	was exercising
+うんどうしている	will be exercising
+うんどうしていない	not exercising
+うんどうしていなかった	was not exercising
+うんどうしていない	will not be exercising
+うんどうした	have exercised
+うんどうした	had exercised
+うんどうする	will have exercised
+うんどうしなかった	have not exercised
+うんどうしなかった	had not exercised
+うんどうしない	will have not exercised
+うんどうしている	have being exercising
+うんどうしていた	had been exercising
+うんどうしている	will have been exercising
+うんどうしていない	have not being exercising
+うんどうしていなかった	had not been exercising
+うんどうしていない	will have not been exercising
+けっこんする	marry
+けっこんした	married
+けっこんする	will marry
+けっこんしない	doesnt marry
+けっこんしなかった	didnt marry
+けっこんしない	wont marry
+けっこんしている	marrying
+けっこんしていた	was marrying
+けっこんしている	will be marrying
+けっこんしていない	not marrying
+けっこんしていなかった	was not marrying
+けっこんしていない	will not be marrying
+けっこんした	have married
+けっこんした	had married
+けっこんする	will have married
+けっこんしなかった	have not married
+けっこんしなかった	had not married
+けっこんしない	will have not married
+けっこんしている	have being marrying
+けっこんしていた	had been marrying
+けっこんしている	will have been marrying
+けっこんしていない	have not being marrying
+けっこんしていなかった	had not been marrying
+けっこんしていない	will have not been marrying
+そつぎょうする	graduate
+そつぎょうした	graduated
+そつぎょうする	will graduate
+そつぎょうしない	doesnt graduate
+そつぎょうしなかった	didnt graduate
+そつぎょうしない	wont graduate
+そつぎょうしている	graduating
+そつぎょうしていた	was graduating
+そつぎょうしている	will be graduating
+そつぎょうしていない	not graduating
+そつぎょうしていなかった	was not graduating
+そつぎょうしていない	will not be graduating
+そつぎょうした	have graduated
+そつぎょうした	had graduated
+そつぎょうする	will have graduated
+そつぎょうしなかった	have not graduated
+そつぎょうしなかった	had not graduated
+そつぎょうしない	will have not graduated
+そつぎょうしている	have being graduating
+そつぎょうしていた	had been graduating
+そつぎょうしている	will have been graduating
+そつぎょうしていない	have not being graduating
+そつぎょうしていなかった	had not been graduating
+そつぎょうしていない	will have not been graduating
+ちゅうもんする	order
+ちゅうもんした	ordered
+ちゅうもんする	will order
+ちゅうもんしない	doesnt order
+ちゅうもんしなかった	didnt order
+ちゅうもんしない	wont order
+ちゅうもんしている	ordering
+ちゅうもんしていた	was ordering
+ちゅうもんしている	will be ordering
+ちゅうもんしていない	not ordering
+ちゅうもんしていなかった	was not ordering
+ちゅうもんしていない	will not be ordering
+ちゅうもんした	have ordered
+ちゅうもんした	had ordered
+ちゅうもんする	will have ordered
+ちゅうもんしなかった	have not ordered
+ちゅうもんしなかった	had not ordered
+ちゅうもんしない	will have not ordered
+ちゅうもんしている	have being ordering
+ちゅうもんしていた	had been ordering
+ちゅうもんしている	will have been ordering
+ちゅうもんしていない	have not being ordering
+ちゅうもんしていなかった	had not been ordering
+ちゅうもんしていない	will have not been ordering
+うんてんする	drive
+うんてんした	drove
+うんてんする	will drive
+うんてんしない	doesnt drive
+うんてんしなかった	didnt drive
+うんてんしない	wont drive
+うんてんしている	driving
+うんてんしていた	was driving
+うんてんしている	will be driving
+うんてんしていない	not driving
+うんてんしていなかった	was not driving
+うんてんしていない	will not be driving
+うんてんした	have drove
+うんてんした	had drove
+うんてんする	will have drove
+うんてんしなかった	have not drove
+うんてんしなかった	had not drove
+うんてんしない	will have not drove
+うんてんしている	have being driving
+うんてんしていた	had been driving
+うんてんしている	will have been driving
+うんてんしていない	have not being driving
+うんてんしていなかった	had not been driving
+うんてんしていない	will have not been driving
+けいさんする	calculate
+けいさんした	calculated
+けいさんする	will calculate
+けいさんしない	doesnt calculate
+けいさんしなかった	didnt calculate
+けいさんしない	wont calculate
+けいさんしている	calculating
+けいさんしていた	was calculating
+けいさんしている	will be calculating
+けいさんしていない	not calculating
+けいさんしていなかった	was not calculating
+けいさんしていない	will not be calculating
+けいさんした	have calculated
+けいさんした	had calculated
+けいさんする	will have calculated
+けいさんしなかった	have not calculated
+けいさんしなかった	had not calculated
+けいさんしない	will have not calculated
+けいさんしている	have being calculating
+けいさんしていた	had been calculating
+けいさんしている	will have been calculating
+けいさんしていない	have not being calculating
+けいさんしていなかった	had not been calculating
+けいさんしていない	will have not been calculating
+かんせいする	complete
+かんせいした	completed
+かんせいする	will complete
+かんせいしない	doesnt complete
+かんせいしなかった	didnt complete
+かんせいしない	wont complete
+かんせいしている	completing
+かんせいしていた	was completing
+かんせいしている	will be completing
+かんせいしていない	not completing
+かんせいしていなかった	was not completing
+かんせいしていない	will not be completing
+かんせいした	have completed
+かんせいした	had completed
+かんせいする	will have completed
+かんせいしなかった	have not completed
+かんせいしなかった	had not completed
+かんせいしない	will have not completed
+かんせいしている	have being completing
+かんせいしていた	had been completing
+かんせいしている	will have been completing
+かんせいしていない	have not being completing
+かんせいしていなかった	had not been completing
+かんせいしていない	will have not been completing
+かいはつする	develop
+かいはつした	developed
+かいはつする	will develop
+かいはつしない	doesnt develop
+かいはつしなかった	didnt develop
+かいはつしない	wont develop
+かいはつしている	developing
+かいはつしていた	was developing
+かいはつしている	will be developing
+かいはつしていない	not developing
+かいはつしていなかった	was not developing
+かいはつしていない	will not be developing
+かいはつした	have developed
+かいはつした	had developed
+かいはつする	will have developed
+かいはつしなかった	have not developed
+かいはつしなかった	had not developed
+かいはつしない	will have not developed
+かいはつしている	have being developing
+かいはつしていた	had been developing
+かいはつしている	will have been developing
+かいはつしていない	have not being developing
+かいはつしていなかった	had not been developing
+かいはつしていない	will have not been developing
+ほうこくする	report
+ほうこくした	reported
+ほうこくする	will report
+ほうこくしない	doesnt report
+ほうこくしなかった	didnt report
+ほうこくしない	wont report
+ほうこくしている	reporting
+ほうこくしていた	was reporting
+ほうこくしている	will be reporting
+ほうこくしていない	not reporting
+ほうこくしていなかった	was not reporting
+ほうこくしていない	will not be reporting
+ほうこくした	have reported
+ほうこくした	had reported
+ほうこくする	will have reported
+ほうこくしなかった	have not reported
+ほうこくしなかった	had not reported
+ほうこくしない	will have not reported
+ほうこくしている	have being reporting
+ほうこくしていた	had been reporting
+ほうこくしている	will have been reporting
+ほうこくしていない	have not being reporting
+ほうこくしていなかった	had not been reporting
+ほうこくしていない	will have not been reporting
+しゅうcひゅうする	focus
+しゅうcひゅうした	focused
+しゅうcひゅうする	will focus
+しゅうcひゅうしない	doesnt focus
+しゅうcひゅうしなかった	didnt focus
+しゅうcひゅうしない	wont focus
+しゅうcひゅうしている	focusing
+しゅうcひゅうしていた	was focusing
+しゅうcひゅうしている	will be focusing
+しゅうcひゅうしていない	not focusing
+しゅうcひゅうしていなかった	was not focusing
+しゅうcひゅうしていない	will not be focusing
+しゅうcひゅうした	have focused
+しゅうcひゅうした	had focused
+しゅうcひゅうする	will have focused
+しゅうcひゅうしなかった	have not focused
+しゅうcひゅうしなかった	had not focused
+しゅうcひゅうしない	will have not focused
+しゅうcひゅうしている	have being focusing
+しゅうcひゅうしていた	had been focusing
+しゅうcひゅうしている	will have been focusing
+しゅうcひゅうしていない	have not being focusing
+しゅうcひゅうしていなかった	had not been focusing
+しゅうcひゅうしていない	will have not been focusing
+こくはくする	confess
+こくはくした	confessed
+こくはくする	will confess
+こくはくしない	doesnt confess
+こくはくしなかった	didnt confess
+こくはくしない	wont confess
+こくはくしている	confessing
+こくはくしていた	was confessing
+こくはくしている	will be confessing
+こくはくしていない	not confessing
+こくはくしていなかった	was not confessing
+こくはくしていない	will not be confessing
+こくはくした	have confessed
+こくはくした	had confessed
+こくはくする	will have confessed
+こくはくしなかった	have not confessed
+こくはくしなかった	had not confessed
+こくはくしない	will have not confessed
+こくはくしている	have being confessing
+こくはくしていた	had been confessing
+こくはくしている	will have been confessing
+こくはくしていない	have not being confessing
+こくはくしていなかった	had not been confessing
+こくはくしていない	will have not been confessing
+さんせいする	agree
+さんせいした	agreed
+さんせいする	will agree
+さんせいしない	doesnt agree
+さんせいしなかった	didnt agree
+さんせいしない	wont agree
+さんせいしている	agreeing
+さんせいしていた	was agreeing
+さんせいしている	will be agreeing
+さんせいしていない	not agreeing
+さんせいしていなかった	was not agreeing
+さんせいしていない	will not be agreeing
+さんせいした	have agreed
+さんせいした	had agreed
+さんせいする	will have agreed
+さんせいしなかった	have not agreed
+さんせいしなかった	had not agreed
+さんせいしない	will have not agreed
+さんせいしている	have being agreeing
+さんせいしていた	had been agreeing
+さんせいしている	will have been agreeing
+さんせいしていない	have not being agreeing
+さんせいしていなかった	had not been agreeing
+さんせいしていない	will have not been agreeing
+ゆんびする	prepare
+ゆんびした	prepared
+ゆんびする	will prepare
+ゆんびしない	doesnt prepare
+ゆんびしなかった	didnt prepare
+ゆんびしない	wont prepare
+ゆんびしている	preparing
+ゆんびしていた	was preparing
+ゆんびしている	will be preparing
+ゆんびしていない	not preparing
+ゆんびしていなかった	was not preparing
+ゆんびしていない	will not be preparing
+ゆんびした	have prepared
+ゆんびした	had prepared
+ゆんびする	will have prepared
+ゆんびしなかった	have not prepared
+ゆんびしなかった	had not prepared
+ゆんびしない	will have not prepared
+ゆんびしている	have being preparing
+ゆんびしていた	had been preparing
+ゆんびしている	will have been preparing
+ゆんびしていない	have not being preparing
+ゆんびしていなかった	had not been preparing
+ゆんびしていない	will have not been preparing
+せつめいする	explain
+せつめいした	explained
+せつめいする	will explain
+せつめいしない	doesnt explain
+せつめいしなかった	didnt explain
+せつめいしない	wont explain
+せつめいしている	explaining
+せつめいしていた	was explaining
+せつめいしている	will be explaining
+せつめいしていない	not explaining
+せつめいしていなかった	was not explaining
+せつめいしていない	will not be explaining
+せつめいした	have explained
+せつめいした	had explained
+せつめいする	will have explained
+せつめいしなかった	have not explained
+せつめいしなかった	had not explained
+せつめいしない	will have not explained
+せつめいしている	have being explaining
+せつめいしていた	had been explaining
+せつめいしている	will have been explaining
+せつめいしていない	have not being explaining
+せつめいしていなかった	had not been explaining
+せつめいしていない	will have not been explaining
+かいものする	shop
+かいものした	shoped
+かいものする	will shop
+かいものしない	doesnt shop
+かいものしなかった	didnt shop
+かいものしない	wont shop
+かいものしている	shoping
+かいものしていた	was shoping
+かいものしている	will be shoping
+かいものしていない	not shoping
+かいものしていなかった	was not shoping
+かいものしていない	will not be shoping
+かいものした	have shoped
+かいものした	had shoped
+かいものする	will have shoped
+かいものしなかった	have not shoped
+かいものしなかった	had not shoped
+かいものしない	will have not shoped
+かいものしている	have being shoping
+かいものしていた	had been shoping
+かいものしている	will have been shoping
+かいものしていない	have not being shoping
+かいものしていなかった	had not been shoping
+かいものしていない	will have not been shoping
+りょこうする	travel
+りょこうした	traveled
+りょこうする	will travel
+りょこうしない	doesnt travel
+りょこうしなかった	didnt travel
+りょこうしない	wont travel
+りょこうしている	traveling
+りょこうしていた	was traveling
+りょこうしている	will be traveling
+りょこうしていない	not traveling
+りょこうしていなかった	was not traveling
+りょこうしていない	will not be traveling
+りょこうした	have traveled
+りょこうした	had traveled
+りょこうする	will have traveled
+りょこうしなかった	have not traveled
+りょこうしなかった	had not traveled
+りょこうしない	will have not traveled
+りょこうしている	have being traveling
+りょこうしていた	had been traveling
+りょこうしている	will have been traveling
+りょこうしていない	have not being traveling
+りょこうしていなかった	had not been traveling
+りょこうしていない	will have not been traveling
+やくそくする	promise
+やくそくした	promised
+やくそくする	will promise
+やくそくしない	doesnt promise
+やくそくしなかった	didnt promise
+やくそくしない	wont promise
+やくそくしている	promising
+やくそくしていた	was promising
+やくそくしている	will be promising
+やくそくしていない	not promising
+やくそくしていなかった	was not promising
+やくそくしていない	will not be promising
+やくそくした	have promised
+やくそくした	had promised
+やくそくする	will have promised
+やくそくしなかった	have not promised
+やくそくしなかった	had not promised
+やくそくしない	will have not promised
+やくそくしている	have being promising
+やくそくしていた	had been promising
+やくそくしている	will have been promising
+やくそくしていない	have not being promising
+やくそくしていなかった	had not been promising
+やくそくしていない	will have not been promising
+しゅっせきする	attend
+しゅっせきした	attended
+しゅっせきする	will attend
+しゅっせきしない	doesnt attend
+しゅっせきしなかった	didnt attend
+しゅっせきしない	wont attend
+しゅっせきしている	attending
+しゅっせきしていた	was attending
+しゅっせきしている	will be attending
+しゅっせきしていない	not attending
+しゅっせきしていなかった	was not attending
+しゅっせきしていない	will not be attending
+しゅっせきした	have attended
+しゅっせきした	had attended
+しゅっせきする	will have attended
+しゅっせきしなかった	have not attended
+しゅっせきしなかった	had not attended
+しゅっせきしない	will have not attended
+しゅっせきしている	have being attending
+しゅっせきしていた	had been attending
+しゅっせきしている	will have been attending
+しゅっせきしていない	have not being attending
+しゅっせきしていなかった	had not been attending
+しゅっせきしていない	will have not been attending
+かんりする	manage
+かんりした	managed
+かんりする	will manage
+かんりしない	doesnt manage
+かんりしなかった	didnt manage
+かんりしない	wont manage
+かんりしている	managing
+かんりしていた	was managing
+かんりしている	will be managing
+かんりしていない	not managing
+かんりしていなかった	was not managing
+かんりしていない	will not be managing
+かんりした	have managed
+かんりした	had managed
+かんりする	will have managed
+かんりしなかった	have not managed
+かんりしなかった	had not managed
+かんりしない	will have not managed
+かんりしている	have being managing
+かんりしていた	had been managing
+かんりしている	will have been managing
+かんりしていない	have not being managing
+かんりしていなかった	had not been managing
+かんりしていない	will have not been managing
+いんさつする	print
+いんさつした	printed
+いんさつする	will print
+いんさつしない	doesnt print
+いんさつしなかった	didnt print
+いんさつしない	wont print
+いんさつしている	printing
+いんさつしていた	was printing
+いんさつしている	will be printing
+いんさつしていない	not printing
+いんさつしていなかった	was not printing
+いんさつしていない	will not be printing
+いんさつした	have printed
+いんさつした	had printed
+いんさつする	will have printed
+いんさつしなかった	have not printed
+いんさつしなかった	had not printed
+いんさつしない	will have not printed
+いんさつしている	have being printing
+いんさつしていた	had been printing
+いんさつしている	will have been printing
+いんさつしていない	have not being printing
+いんさつしていなかった	had not been printing
+いんさつしていない	will have not been printing
+しょうかいする	introduce
+しょうかいした	introduced
+しょうかいする	will introduce
+しょうかいしない	doesnt introduce
+しょうかいしなかった	didnt introduce
+しょうかいしない	wont introduce
+しょうかいしている	introducing
+しょうかいしていた	was introducing
+しょうかいしている	will be introducing
+しょうかいしていない	not introducing
+しょうかいしていなかった	was not introducing
+しょうかいしていない	will not be introducing
+しょうかいした	have introduced
+しょうかいした	had introduced
+しょうかいする	will have introduced
+しょうかいしなかった	have not introduced
+しょうかいしなかった	had not introduced
+しょうかいしない	will have not introduced
+しょうかいしている	have being introducing
+しょうかいしていた	had been introducing
+しょうかいしている	will have been introducing
+しょうかいしていない	have not being introducing
+しょうかいしていなかった	had not been introducing
+しょうかいしていない	will have not been introducing
+かくにんする	verify
+かくにんした	verified
+かくにんする	will verify
+かくにんしない	doesnt verify
+かくにんしなかった	didnt verify
+かくにんしない	wont verify
+かくにんしている	verifying
+かくにんしていた	was verifying
+かくにんしている	will be verifying
+かくにんしていない	not verifying
+かくにんしていなかった	was not verifying
+かくにんしていない	will not be verifying
+かくにんした	have verified
+かくにんした	had verified
+かくにんする	will have verified
+かくにんしなかった	have not verified
+かくにんしなかった	had not verified
+かくにんしない	will have not verified
+かくにんしている	have being verifying
+かくにんしていた	had been verifying
+かくにんしている	will have been verifying
+かくにんしていない	have not being verifying
+かくにんしていなかった	had not been verifying
+かくにんしていない	will have not been verifying
+そうじする	clean
+そうじした	cleaned
+そうじする	will clean
+そうじしない	doesnt clean
+そうじしなかった	didnt clean
+そうじしない	wont clean
+そうじしている	cleaning
+そうじしていた	was cleaning
+そうじしている	will be cleaning
+そうじしていない	not cleaning
+そうじしていなかった	was not cleaning
+そうじしていない	will not be cleaning
+そうじした	have cleaned
+そうじした	had cleaned
+そうじする	will have cleaned
+そうじしなかった	have not cleaned
+そうじしなかった	had not cleaned
+そうじしない	will have not cleaned
+そうじしている	have being cleaning
+そうじしていた	had been cleaning
+そうじしている	will have been cleaning
+そうじしていない	have not being cleaning
+そうじしていなかった	had not been cleaning
+そうじしていない	will have not been cleaning
