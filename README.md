@@ -1,5 +1,8 @@
 # rime-snomiao iRime
 
+
+- Language: [English] | [简体中文](./README.chs.md)
+
 ## List of Plans/Features
 
 ### Snowstar-Wubi ⌨️
