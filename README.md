@@ -153,3 +153,4 @@ rime-snomiao 雪星的小狼毫输入法方案
 - [Telegram Rime](https://t.me/loverime/41196)
 - [V2EX](https://www.v2ex.com/t/909117)
 - [Twitter](https://twitter.com/snomiao/status/1614586337822375936)
+
