@@ -25,7 +25,9 @@
     "rime-snomiao": "dist/cli.mjs"
   },
   "files": [
-    "dist"
+    "dist",
+  "dist/*.yaml",
+  "opencc"
   ],
   "scripts": {
     "build": "snobuild",
