@@ -41,4 +41,5 @@ async function main() {
     console.log(`[rime-snomiao] plz copy from this folder ${`${pkgdir}/Rime`}`);
     console.log(`[rime-snomiao] to your Rime user configuration directory`);
   }
+
 }
