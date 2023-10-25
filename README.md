@@ -14,15 +14,16 @@
 
 1. Install squirrel by 在这里安装 squirrel （rime の mac に分支）。
 
-   1. [rime.im](https://rime.im) (official website)
+   1. [rime.im](https://rime.im) (official website)s
    2. or `brew install squirrel --cask`
 
 2. Install rime-snomiao receipe 安装 rime-snomiao receipe
 
    ```shell
    git clone https://github.com/snomiao/rime-snomiao
+   cd rime-snomiao
    git pull origin
-   cp -r rime-snomiao/Rime/* ~/Library/Rime
+   cp -r ./* ~/Library/Rime/
    ```
 
 3. 屏幕右上角，输入法下拉菜单，点击 Deploy 载入
@@ -43,9 +44,9 @@
 - 方法 1
   - 將本項目下載解压，将 `./Rime` 目録裏的内容复制到：`C:\Users\你的用户名\AppData\Roaming\Rime` (即 %APPDATA%\Rime )
   - [配置](#配置) 输入法（或重启系统）
-<!-- - 方法 2
+  <!-- - 方法 2
   - 運行
-    ```
+    ````
     git clone https://github.com/snomiao/rime-snomiao
     cd rime-snomiao
     git pull

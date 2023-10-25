@@ -1,7 +1,7 @@
 {
   "name": "rime-snomiao",
   "version": "3.0.0",
-  "description": "",
+  "description": "rime-snomiao is a rime schema that provides a set of ime plugins for typing in Chinese, Japanese, and English. It is designed to be used with the rime input method engine.",
   "keywords": [],
   "homepage": "https://github.com/snomiao/rime-snomiao#readme",
   "bugs": {
@@ -21,7 +21,9 @@
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "bin": "dist/cli.mjs",
+  "bin": {
+    "rime-snomiao": "dist/cli.mjs"
+  },
   "files": [
     "dist"
   ],
@@ -33,8 +35,6 @@
   "release": {
     "branches": [
       "main",
-      "next",
-      "next-major",
       {
         "name": "beta",
         "prerelease": true
@@ -49,13 +49,12 @@
     "@types/node": "^18.11.18",
     "aswitcher": "^1.0.1",
     "pkg-dir": "^7.0.0",
+    "prettier-plugin-organize-imports": "^3.2.2",
+    "prettier-plugin-packagejson": "^2.4.0",
+    "prettier-plugin-tsconfig": "^0.0.1",
     "semantic-release": "^20.1.0",
     "snobuild": "^3.2.11",
     "snorun": "^1.1.17",
-    "work-package-dir": "^1.0.0",
-    "prettier-plugin-organize-imports": "^3.2.2",
-    "prettier-plugin-packagejson": "^2.4.0",
-    "prettier-plugin-tsconfig": "^0.0.1"
-  },
-  "semantic-release": "semantic-release"
+    "work-package-dir": "^1.0.0"
+  }
 }
