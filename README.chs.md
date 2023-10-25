@@ -1,23 +1,23 @@
 # rime-snomiao iRime
 
-## List of Plans/Features
+## 方案列表/特性
 
-### Snowstar-Wubi ⌨️
+### 雪星五笔 ⌨️
 
 ![](media/vary-length-wubi.png)
 
-- Improved variable-length encoding technology based on the Microsoft Wubi code table, greatly enhancing the efficiency of long sentence input in Wubi
+- 基于微软五笔码表改进了变长编码技术, 五笔长句输入效率大幅提升
 
-## Installation and Configuration 🗳️
+## 安装与配置 🗳️
 
-### Install in Mac, Use with OSX 🍎
+### Install in Mac、OSX に使用する 🍎
 
-1. Install Squirrel here (branch for Rime on Mac).
+1. Install squirrel by 在这里安装 squirrel （rime の mac に分支）。
 
-   1. [rime.im](https://rime.im) (official website)
+   1. [rime.im](https://rime.im) (official website)s
    2. or `brew install squirrel --cask`
 
-2. Install rime-snomiao receipe.
+2. Install rime-snomiao receipe 安装 rime-snomiao receipe
 
    ```shell
    git clone https://github.com/snomiao/rime-snomiao
@@ -26,26 +26,26 @@
    cp -r ./* ~/Library/Rime/
    ```
 
-1. In the upper right corner of the screen, in the input method drop-down menu, click on 'Deploy' to load.
+3. 屏幕右上角，输入法下拉菜单，点击 Deploy 载入
 
-- TODO, PR's welcome.
+- TODO, PR’s welcome
 
-### Install on Windows 🪟
+### 在 Windows 安裝 🪟
 
-1. Firstly, install the Weasel input method,
-   Official website: [Download and Installation | RIME | Zhongzhou Rhyme Input Method Engine](https://rime.im/download/)
-   or use Chocolatey to install `cup weasel`
+1. 首先安装 Weasel 输入法，
+   官方网站：[下載及安裝 | RIME | 中州韻輸入法引擎](https://rime.im/download/)
+   或使用 Chocolatey 安装 `cup weasel`
 
-2. Install this input scheme
+2. 安装本输入方案
 
-- Method 0
-  - Download the Release and then unzip it to `C:\Users\Your username\AppData\Roaming\Rime`
+- 方法 0
+  - 下载 Release 然后解压到 `C:\Users\你的用户名\AppData\Roaming\Rime`
   - https://github.com/snomiao/rime-snomiao/releases/
-- Method 1
-  - Download, unzip this project and copy the content of `./Rime` folder to: `C:\Users\Your username\AppData\Roaming\Rime` (i.e., %APPDATA%\Rime )
-  - [Configure](#configure) the input method (or restart the system)
-  <!-- - Method 2
-  - Run
+- 方法 1
+  - 將本項目下載解压，将 `./Rime` 目録裏的内容复制到：`C:\Users\你的用户名\AppData\Roaming\Rime` (即 %APPDATA%\Rime )
+  - [配置](#配置) 输入法（或重启系统）
+  <!-- - 方法 2
+  - 運行
     ````
     git clone https://github.com/snomiao/rime-snomiao
     cd rime-snomiao
@@ -53,39 +53,38 @@
     cd devtools
     install.bat
     ``` -->
-- Method 3 (Automatic)
-  - Run `npx rime-snomiao@latest`
-    Please note that this input scheme cannot use Dongfeng Po (plum) to install.
+- 方法 3 （自动）
+  - 運行 `npx rime-snomiao@latest`
+    注意本输入方案无法使用东风破 (plum) 安装。
 
-1. After the installation is complete, please [configure](#configure) the input method
-
+1. 安装完成后，请 [配置](#配置) 输入法
 
 ### Linux 🐧
 
 - TODO, PR’s welcome
 
-## Configuration
+## 配置
 
 | WeaselDeployer.exe          | F4                          |
 | --------------------------- | --------------------------- |
 | ![config](media/config.png) | ![select](media/select.png) |
 
-### Custom
+### Custom / カスタム / 自定義
 
-You can modify the emoticons in [kaomoji.dict.yaml](./kaomoji.dict.yaml) (not used by default, need to be manually imported)
+顔文字在 [kaomoji.dict.yaml](./kaomoji.dict.yaml) 里修改（黙認不使用，需要手動引入）
 
-- [Emoji](./Rime/opencc/zh_emoji_word.json)
-- [JPN Japanese 日本語 Scheme](./Rime/sno_japanese.schema.yaml)
-- [CHN Chinese 中国語 Scheme](./Rime/sno_chinese.schema.yaml)
+- [Emoji / 絵文字 / Emoji](./Rime/opencc/zh_emoji_word.json)
+- [JPN Japanese 日本語方案](./Rime/sno_japanese.schema.yaml)
+- [CHN Chinese 中国語方案](./Rime/sno_chinese.schema.yaml)
 
-Pinyin can be changed in ``
+拼音可以在 `` 里改
 
 ```yaml
 dependencies:
   - pinyin_simp
 ```
 
-You can replace Wubi with 98 or others, at the following location
+五笔可以自己换 98 或别的，位置如下
 
 ```yaml
 translator:
@@ -105,11 +104,11 @@ Dictionary contribute 詞典贡献
 
 ## LICENSE
 
-This project is Copyleft, take it if you love it.
+本項目 Copyleft，本項目爱用就拿去。
 
-(But if you need it for commercial purposes, be aware of the licenses of the other few schemes included in the project (but there shouldn't be such people ...), if you have this requirement, please refer to Reference and go in to see their License for yourself)
+（但如果需要做商用的話得注意項目中包含的其它幾個方案的 license（但应该没有這様的人吧……），如果有這種需求請参見 Reference 电進去自己看他們的 License）
 
-## rime-snomiao Social Network
+## rime-snomiao 小白鼠用户交流群
 
 telegram: @rime_snomiao https://t.me/rime_snomiao
 
