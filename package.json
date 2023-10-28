@@ -26,8 +26,9 @@
   },
   "files": [
     "dist",
-  "./*.yaml",
-  "opencc"
+     "./*.yaml",
+    "opencc",
+    "tools"
   ],
   "scripts": {
     "build": "snobuild",
@@ -50,6 +51,8 @@
   "devDependencies": {
     "@types/node": "^18.11.18",
     "aswitcher": "^1.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
     "pkg-dir": "^7.0.0",
     "prettier-plugin-organize-imports": "^3.2.2",
     "prettier-plugin-packagejson": "^2.4.0",
