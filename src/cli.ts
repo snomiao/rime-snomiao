@@ -34,7 +34,9 @@ async function main() {
     netbsd: async () => notSupportedYet(),
     openbsd: async () => notSupportedYet(),
     sunos: async () => notSupportedYet(),
-    win32: async () => await snorun("cd tools && install"),
+    win32: async () => {
+      console.log({ pkgdir, cwd: process.cwd() });
+      await snorun("cd tools && install")},
   });
   async function notSupportedYet() {
     console.log("[rime-snomiao] auto install not supported yet");
