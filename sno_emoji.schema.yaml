@@ -46,7 +46,7 @@ speller:
 
 sno_emoji_lookup:
   tag: sno_emoji_lookup
-  tags: [sno_emoji_lookup]
+  tags: [sno_emoji_lookup]x
   prism: sno_emoji
   prefix: "M"
   suffix: "`"

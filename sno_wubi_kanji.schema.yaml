@@ -3,7 +3,7 @@
 
 schema:
   schema_id: sno_wubi_kanji
-  name: "WUK 雪星五笔漢字"
+  name: "WUK 雪星五笔漢字（日本語漢字）"
   version: "0.21.0"
   author:
     - 發明人 王永民先生
