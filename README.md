@@ -62,7 +62,6 @@
 
 1. After the installation is complete, please [configure](#configure) the input method
 
-
 ### Linux 🐧
 
 - TODO, PR’s welcome

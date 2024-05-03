@@ -1,5 +1,5 @@
 # Rime schema
-# encoding: utf-8
+encoding: utf-8
 schema:
   schema_id: sno_japanese
   name: "JPN 雪星日語"
@@ -54,6 +54,7 @@ engine:
     - matcher
     - abc_segmentor
     - affix_segmentor@translate_en2jp_lookup
+    - affix_segmentor@translate_en2zh_lookup
     - affix_segmentor@japanese_lookup
     - affix_segmentor@sno_emoji_lookup
     - affix_segmentor@sno_wubi_kanji_lookup
@@ -68,6 +69,7 @@ engine:
     # - script_translator
     # - reverse_lookup_translator
     - table_translator@translate_en2jp_lookup
+    - table_translator@translate_en2zh_lookup
     - table_translator@japanese_lookup
     - table_translator@sno_emoji_lookup
     - table_translator@sno_wubi_kanji_lookup
@@ -87,6 +89,7 @@ engine:
 abc_segmentor:
   extra_tags:
     - translate_en2jp_lookup
+    - translate_en2zh_lookup
     - japanese_lookup
     - sno_emoji_lookup
     - sno_wubi_kanji_lookup
@@ -272,6 +275,31 @@ translate_en2jp_reverse_lookup:
   tags: [translate_en2jp_lookup]
   spelling_hints: 3
   dictionary: translate_en2jp
+  comment_format:
+    - "xform/^/ /"
+    # 摘要
+    - "xform/(.{80}.+)/$1--/"
+    - "xform/([a-z])-[a-z]+/$1/"
+    - "xform/ (\\S\\S\\S\\S)\\S\\S+(?=.*?--$)/ $1-/"
+    - "xform/^(.*)--$/$1/"
+    # 多层重复项折叠
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 1
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 2
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 3
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 4
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 5
+    # 重复消除
+    - "xform/ (\\S+)( \\1)+/ $1/"
+    # 截断省略
+    - "xform/ (.{60}).+/$1.../"
+    # - "xform/(.{125}).+/$1.../"
+    - "xform/^\\s*//"
+    - "xform/\\s*$//"
+
+translate_en2zh_reverse_lookup:
+  tags: [translate_en2zh_lookup]
+  spelling_hints: 3
+  dictionary: translate_en2zh
   comment_format:
     - "xform/^/ /"
     # 摘要

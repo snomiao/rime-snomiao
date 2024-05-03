@@ -31,7 +31,8 @@
     "tools"
   ],
   "scripts": {
-    "build": "snobuild",
+    "start": "node dist/cli.mjs",
+    "build": "tsc",
     "prepack": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
