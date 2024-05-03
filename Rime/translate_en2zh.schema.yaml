@@ -35,7 +35,6 @@ engine:
 speller:
   alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA
   delimiter: " '"
-  useSpace: true
 
 translator:
   dictionary: translate_en2zh

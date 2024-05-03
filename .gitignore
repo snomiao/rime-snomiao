@@ -3,6 +3,7 @@ node_modules
 ./dist
 
 # rime files
-build
-installation.yaml
-user.yaml
+Rime/build
+Rime/installation.yaml
+Rime/user.yaml
+Rime/*.userdb
