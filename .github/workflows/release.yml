@@ -10,7 +10,7 @@ jobs:
     if: github.repository == 'snomiao/rime-snomiao'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2
         with:
           version: 8
