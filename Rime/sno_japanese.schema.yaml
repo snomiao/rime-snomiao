@@ -118,6 +118,7 @@ speller:
 # lookupers
 japanese_lookup:
   dictionary: japanese
+  enable_completion: false
   spelling_hints: 5
   comment_format:
     - "xlit|q|ー|"
@@ -127,6 +128,7 @@ japanese_lookup:
 japanese_pinyin_lookup:
   tag: japanese_pinyin_lookup
   prefix: "P"
+  enable_completion: false
   dictionary: japanese_pinyin
   prism: japanese_pinyin
   tips: 〔拼音和字〕
@@ -138,6 +140,7 @@ japanese_pinyin_lookup:
 translate_en2jp_lookup:
   tag: translate_en2jp_lookup
   dictionary: translate_en2jp
+  enable_completion: false
   prism: translate_en2jp
   prefix: "J"
   suffix: "`"
@@ -145,6 +148,7 @@ translate_en2jp_lookup:
 
 translate_en2zh_lookup:
   tag: translate_en2zh_lookup
+  enable_completion: false
   dictionary: translate_en2zh
   prism: translate_en2zh
   prefix: "H"
@@ -154,7 +158,7 @@ translate_en2zh_lookup:
 # stroke_lookup:
 #   tag: stroke_lookup
 #   dictionary: stroke
-#   enable_completion: true
+#   enable_completion: false
 #   prefix: "H"
 #   suffix: "`"
 #   tips: 〔筆畫輸入〕
@@ -167,7 +171,7 @@ sno_wubi_kanji_lookup:
   tag: sno_wubi_kanji_lookup
   dictionary: sno_wubi_kanji
   prism: sno_wubi_kanji
-  enable_completion: true
+  enable_completion: false
   prefix: "J"
   suffix: "`"
   tips: 〔五筆漢字〕
@@ -177,7 +181,7 @@ sno_wubi_lookup:
   tag: sno_wubi_lookup
   dictionary: sno_wubi
   prism: sno_wubi
-  enable_completion: true
+  enable_completion: false
   prefix: "W"
   suffix: "`"
   tips: 〔五筆汉字〕
@@ -192,7 +196,7 @@ sno_emoji_lookup:
   tips: 〔Emoji〕
   dictionary: sno_emoji
   enable_sentence: true
-  enable_completion: true
+  enable_completion: false
   enable_encoder: true
   encode_commit_history: true
   disable_user_dict_for_patterns:
@@ -213,8 +217,8 @@ sno_emoji_lookup:
     # remove duplicates
     - "xform/ (\\S+)( \\1)+/ $1/"
     # clip...
-    - "xform/ (.{60}).+/$1.../"
-    # - "xform/(.{125}).+/$1.../"
+    - "xform/ (.{60}).+/$1…/"
+    # - "xform/(.{125}).+/$1…/"
     - "xform/^\\s*//"
     - "xform/\\s*$//"
 
@@ -307,7 +311,7 @@ translate_en2jp_reverse_lookup:
     # 重复消除
     - "xform/ (\\S+)( \\1)+/ $1/"
     # 截断省略
-    - "xform/ (.{60}).+/$1.../"
+    - "xform/ (.{40}).+/$1…/"
     - "xform/^\\s*//"
     - "xform/\\s*$//"
 
@@ -329,9 +333,9 @@ translate_en2zh_reverse_lookup:
     - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 4
     - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 5
     # # 重复消除
-    # - "xform/ (\\S+)( \\1)+/ $1/"
+    - "xform/ (\\S+)( \\1)+/ $1/"
     # 截断省略
-    - "xform/ (.{60}).+/$1.../"
+    - "xform/ (.{30}).+/$1…/"
     - "xform/^\\s*//"
     - "xform/\\s*$//"
 

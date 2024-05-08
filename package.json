@@ -33,6 +33,7 @@
   "scripts": {
     "start": "node dist/cli.mjs",
     "build:rime": "cmd /c \"cd C:\\Program Files (x86)\\Rime\\weasel-* && WeaselDeployer.exe /deploy\"",
+    "watch:rime": "nodemon --ignore Rime/build -e yaml -x npm run build:rime",
     "build": "snobuild",
     "prepack": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
