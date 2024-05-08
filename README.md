@@ -26,7 +26,7 @@
    git clone https://github.com/snomiao/rime-snomiao
    cd rime-snomiao
    git pull origin
-   cp -r ./* ~/Library/Rime/
+   cp -r ./Rime/* ~/Library/Rime/
    ```
 
 1. In the upper right corner of the screen, in the input method drop-down menu, click on 'Deploy' to load.
@@ -42,7 +42,7 @@
 2. Install this input scheme
 
 - Method 0
-  - Download the Release and then unzip it to `C:\Users\Your username\AppData\Roaming\Rime`
+  - Download the Release and then unzip `./Rime/*` to `C:\Users\Your username\AppData\Roaming\Rime`
   - https://github.com/snomiao/rime-snomiao/releases/
 - Method 1
   - Download, unzip this project and copy the content of `./Rime` folder to: `C:\Users\Your username\AppData\Roaming\Rime` (i.e., %APPDATA%\Rime )
@@ -61,7 +61,6 @@
     Please note that this input scheme cannot use Dongfeng Po (plum) to install.
 
 1. After the installation is complete, please [configure](#configure) the input method
-
 
 ### Linux 🐧
 

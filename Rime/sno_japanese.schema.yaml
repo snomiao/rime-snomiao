@@ -1,5 +1,5 @@
 # Rime schema
-# encoding: utf-8
+encoding: utf-8
 schema:
   schema_id: sno_japanese
   name: "JPN 雪星日語"
@@ -9,27 +9,32 @@ schema:
     - snomiao <snomiao@gmail.com>
   description: |
     [github.com/snomiao](https://github.com/snomiao/rime-snomiao)
-    漢語拼音と五笔86と日本語入力
-    英文反查（if possible）
+    漢語拼音と五笔86と日本語混合入力
+    with 英文反查（if possible）
   dependencies:
     - japanese
     - japanese_pinyin
+    # emoji輸入
     - sno_emoji
+    # 五筆
     - sno_wubi
     - sno_wubi_kanji
+    # 英語翻訳
     - translate_en2jp
-    # - stroke
+    - translate_en2zh
 
 switches:
   - name: ascii_mode
-    reset: 0
+    reset: 0j
     states: [中文, 西文]
   - name: full_shape
     states: [半角, 全角]
-  - name: extended_charset
-    states: [常用, 增廣]
+  # - name: extended_charset
+  #   states: [常用, 增廣]
   - name: simplification
     states: [漢字, 汉字]
+  - name: chuugokugo
+    states: [中国語, 日本語]
   - name: ascii_punct
     states: [。，, ．，]
   - name: zhjp_translate_suggestion
@@ -54,6 +59,7 @@ engine:
     - matcher
     - abc_segmentor
     - affix_segmentor@translate_en2jp_lookup
+    - affix_segmentor@translate_en2zh_lookup
     - affix_segmentor@japanese_lookup
     - affix_segmentor@sno_emoji_lookup
     - affix_segmentor@sno_wubi_kanji_lookup
@@ -68,6 +74,7 @@ engine:
     # - script_translator
     # - reverse_lookup_translator
     - table_translator@translate_en2jp_lookup
+    - table_translator@translate_en2zh_lookup
     - table_translator@japanese_lookup
     - table_translator@sno_emoji_lookup
     - table_translator@sno_wubi_kanji_lookup
@@ -76,6 +83,7 @@ engine:
     # extra
     # - table_translator@stroke_lookup
   filters:
+    - simplifier
     - simplifier@zhjp_translate_suggestion
     - simplifier@jpzh_translate_suggestion
     - simplifier@zh_emoji_suggestion
@@ -83,10 +91,12 @@ engine:
     - reverse_lookup_filter@sno_emoji_lookup
     - reverse_lookup_filter@japanese_reverse_lookup
     - reverse_lookup_filter@translate_en2jp_reverse_lookup
+    - reverse_lookup_filter@translate_en2zh_reverse_lookup
 
 abc_segmentor:
   extra_tags:
     - translate_en2jp_lookup
+    - translate_en2zh_lookup
     - japanese_lookup
     - sno_emoji_lookup
     - sno_wubi_kanji_lookup
@@ -108,6 +118,7 @@ speller:
 # lookupers
 japanese_lookup:
   dictionary: japanese
+  enable_completion: false
   spelling_hints: 5
   comment_format:
     - "xlit|q|ー|"
@@ -117,6 +128,7 @@ japanese_lookup:
 japanese_pinyin_lookup:
   tag: japanese_pinyin_lookup
   prefix: "P"
+  enable_completion: false
   dictionary: japanese_pinyin
   prism: japanese_pinyin
   tips: 〔拼音和字〕
@@ -128,15 +140,25 @@ japanese_pinyin_lookup:
 translate_en2jp_lookup:
   tag: translate_en2jp_lookup
   dictionary: translate_en2jp
+  enable_completion: false
   prism: translate_en2jp
-  prefix: "E"
+  prefix: "J"
   suffix: "`"
   tips: 〔英语は日本語翻訳〕
+
+translate_en2zh_lookup:
+  tag: translate_en2zh_lookup
+  enable_completion: false
+  dictionary: translate_en2zh
+  prism: translate_en2zh
+  prefix: "H"
+  suffix: "`"
+  tips: 〔英语は漢語翻訳〕
 
 # stroke_lookup:
 #   tag: stroke_lookup
 #   dictionary: stroke
-#   enable_completion: true
+#   enable_completion: false
 #   prefix: "H"
 #   suffix: "`"
 #   tips: 〔筆畫輸入〕
@@ -149,7 +171,7 @@ sno_wubi_kanji_lookup:
   tag: sno_wubi_kanji_lookup
   dictionary: sno_wubi_kanji
   prism: sno_wubi_kanji
-  enable_completion: true
+  enable_completion: false
   prefix: "J"
   suffix: "`"
   tips: 〔五筆漢字〕
@@ -159,7 +181,7 @@ sno_wubi_lookup:
   tag: sno_wubi_lookup
   dictionary: sno_wubi
   prism: sno_wubi
-  enable_completion: true
+  enable_completion: false
   prefix: "W"
   suffix: "`"
   tips: 〔五筆汉字〕
@@ -174,7 +196,7 @@ sno_emoji_lookup:
   tips: 〔Emoji〕
   dictionary: sno_emoji
   enable_sentence: true
-  enable_completion: true
+  enable_completion: false
   enable_encoder: true
   encode_commit_history: true
   disable_user_dict_for_patterns:
@@ -195,8 +217,8 @@ sno_emoji_lookup:
     # remove duplicates
     - "xform/ (\\S+)( \\1)+/ $1/"
     # clip...
-    - "xform/ (.{60}).+/$1.../"
-    # - "xform/(.{125}).+/$1.../"
+    - "xform/ (.{60}).+/$1…/"
+    # - "xform/(.{125}).+/$1…/"
     - "xform/^\\s*//"
     - "xform/\\s*$//"
 
@@ -206,9 +228,10 @@ recognizer:
     easy_en_lookup: "^E[a-z]*'?$"
     japanese_pinyin_lookup: "^P[a-z;/,.]*`?$"
     punct: "^/([0-9]+[a-z]*|[a-z]+)$"
+    translate_en2jp_lookup: "^J[a-z;/,.]*`?$"
+    translate_en2zh_lookup: "^H[a-z;/,.]*`?$"
     # stroke_lookup: "^H[a-z]*`?$"
-    translate_en2jp_lookup: "^T[a-z;/,.]*`?$"
-    sno_wubi_kanji_lookup: "^J[a-z]*'?$"
+    sno_wubi_kanji_lookup: "^K[a-z]*'?$"
     sno_wubi_lookup: "^W[a-z]*'?$"
     sno_emoji_lookup: "^M[a-z]*'?$"
 
@@ -288,8 +311,31 @@ translate_en2jp_reverse_lookup:
     # 重复消除
     - "xform/ (\\S+)( \\1)+/ $1/"
     # 截断省略
-    - "xform/ (.{60}).+/$1.../"
-    # - "xform/(.{125}).+/$1.../"
+    - "xform/ (.{40}).+/$1…/"
+    - "xform/^\\s*//"
+    - "xform/\\s*$//"
+
+translate_en2zh_reverse_lookup:
+  tags: [translate_en2zh_lookup]
+  spelling_hints: 3
+  dictionary: translate_en2zh
+  comment_format:
+    - "xform/^/ /"
+    # 摘要
+    - "xform/(.{80}.+)/$1--/"
+    - "xform/([a-z])-[a-z]+/$1/"
+    # - "xform/ (\\S\\S\\S\\S)\\S\\S+(?=.*?--$)/ $1-/"
+    - "xform/^(.*)--$/$1/"
+    # # 多层重复项折叠
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 1
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 2
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 3
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 4
+    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 5
+    # # 重复消除
+    - "xform/ (\\S+)( \\1)+/ $1/"
+    # 截断省略
+    - "xform/ (.{30}).+/$1…/"
     - "xform/^\\s*//"
     - "xform/\\s*$//"
 
@@ -298,15 +344,15 @@ translate_en2jp_reverse_lookup:
 punctuator:
   import_preset: default
 
-key_binder:
-  import_preset: default
-  bindings:
-    - { accept: "Shift+e", select: sno_english, when: always }
-    - { accept: "Shift+E", select: sno_english, when: always }
-    - { accept: "Shift+j", select: sno_japanese, when: always }
-    - { accept: "Shift+J", select: sno_japanese, when: always }
-    - { accept: "Shift+c", select: sno_chinese, when: always }
-    - { accept: "Shift+C", select: sno_chinese, when: always }
+# key_binder:
+#   import_preset: default
+#   bindings:
+#     - { accept: "Shift+e", select: sno_english, when: always }
+#     - { accept: "Shift+E", select: sno_english, when: always }
+#     - { accept: "Shift+j", select: sno_japanese, when: always }
+#     - { accept: "Shift+J", select: sno_japanese, when: always }
+#     - { accept: "Shift+c", select: sno_chinese, when: always }
+#     - { accept: "Shift+C", select: sno_chinese, when: always }
 
 editor:
   bindings:

@@ -9,5 +9,3 @@ import_tables:
   - "japanese.mozc"
   - "japanese.jmdict"
   - "japanese.kana"
-
-...

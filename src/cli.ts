@@ -24,7 +24,7 @@ async function main() {
     cygwin: async () => notSupportedYet(),
     darwin: async () => {
       console.log({ pkgdir, cwd: process.cwd() });
-      (await snorun("cp -r ./* ~/Library/Rime"))
+      (await snorun("cp -r ./node_modules/rime-snomiao/* ~/Library/Rime || cp -r ./* ~/Library/Rime"))
         ? console.log("go to your task bar, find <deploy> button and click.")
         : await notSupportedYet();
     },
@@ -34,11 +34,13 @@ async function main() {
     netbsd: async () => notSupportedYet(),
     openbsd: async () => notSupportedYet(),
     sunos: async () => notSupportedYet(),
-    win32: async () => await snorun("cd tools && install"),
+    win32: async () => {
+      console.log({ pkgdir, cwd: process.cwd() });
+      await snorun("cd tools && install")},
   });
   async function notSupportedYet() {
     console.log("[rime-snomiao] auto install not supported yet");
     console.log(`[rime-snomiao] plz copy from this folder ${`${pkgdir}/Rime`}`);
     console.log(`[rime-snomiao] to your Rime user configuration directory`);
-  }
+ }
 }

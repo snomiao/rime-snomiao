@@ -11,8 +11,7 @@
 name: japanese_chars
 version: "0.1"
 sort: by_weight
-...
-
+---
 ・	den
 、	den
 ×	times
