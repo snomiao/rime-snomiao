@@ -8,11 +8,15 @@
 
 ```
 rimraf -rf ./build
-taskkill /f /im WeaselDeployer
-taskkill /f /im WeaselServer
+taskkill /f /im WeaselDeployer.exe
+taskkill /f /im WeaselServer.exe
+cp -r %APPDATA%/Rime/build ./Rime
+cp -r %APPDATA%/Rime/*.userdb ./Rime
 rimraf -rf %APPDATA%\Rime
 move ./Rime %APPDATA%/Rime
 mklink /J .\Rime %APPDATA%\Rime
+cmd /c "cd C:\Program Files (x86)\Rime\weasel-* && WeaselDeployer.exe /deploy"
+cmd /c "cd C:\Program Files (x86)\Rime\weasel-* && WeaselServer.exe /install"
 ```
 
 3. Watch & re-deploy
