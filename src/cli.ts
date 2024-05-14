@@ -36,7 +36,7 @@ async function main() {
     sunos: async () => notSupportedYet(),
     win32: async () => {
       console.log({ pkgdir, cwd: process.cwd() });
-      await snorun("cd tools && install")},
+      await snorun("install")},
   });
   async function notSupportedYet() {
     console.log("[rime-snomiao] auto install not supported yet");

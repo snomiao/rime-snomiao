@@ -1,9 +1,9 @@
 # Rime schema
 encoding: utf-8
 schema:
-  schema_id: sno_japanese
-  name: "JPN 雪星日語"
-  version: "1.1.5"
+  schema_id: sno_jpn_wubi86_eng
+  name: "SNO_JPN_WUBI86_ENG 雪星日語五笔英语 1.1.6"
+  version: "1.1.6"
   author:
     - ensigma96 <ensigma96@gmail.com>
     - snomiao <snomiao@gmail.com>
@@ -15,13 +15,13 @@ schema:
     - japanese
     - japanese_pinyin
     # emoji輸入
-    - sno_emoji
+    # - sno_emoji
     # 五筆
     - sno_wubi
     - sno_wubi_kanji
     # 英語翻訳
     - translate_en2jp
-    - translate_en2zh
+    # - translate_en2zh
 
 switches:
   - name: ascii_mode
@@ -33,16 +33,16 @@ switches:
   #   states: [常用, 增廣]
   - name: simplification
     states: [漢字, 汉字]
-  - name: chuugokugo
-    states: [中国語, 日本語]
+  # - name: chuugokugo
+  #   states: [中国語, 日本語]
   - name: ascii_punct
     states: [。，, ．，]
-  - name: zhjp_translate_suggestion
-    reset: 1
-    states: [原文, 辞書]
-  - name: sno_emoji_lookup
-    reset: 1
-    states: ["🈚️️\uFE0E", "🈶️️\uFE0F"]
+  # - name: zhjp_translate_suggestion
+  #   reset: 1
+  #   states: [原文, 辞書]
+  # - name: sno_emoji_lookup
+  #   reset: 1
+  #   states: ["🈚️️\uFE0E", "🈶️️\uFE0F"]
 
 engine:
   processors:
@@ -59,7 +59,7 @@ engine:
     - matcher
     - abc_segmentor
     - affix_segmentor@translate_en2jp_lookup
-    - affix_segmentor@translate_en2zh_lookup
+    # - affix_segmentor@translate_en2zh_lookup
     - affix_segmentor@japanese_lookup
     - affix_segmentor@sno_emoji_lookup
     - affix_segmentor@sno_wubi_kanji_lookup
@@ -74,7 +74,7 @@ engine:
     # - script_translator
     # - reverse_lookup_translator
     - table_translator@translate_en2jp_lookup
-    - table_translator@translate_en2zh_lookup
+    # - table_translator@translate_en2zh_lookup
     - table_translator@japanese_lookup
     - table_translator@sno_emoji_lookup
     - table_translator@sno_wubi_kanji_lookup
@@ -82,6 +82,8 @@ engine:
     - script_translator@japanese_pinyin_lookup
     # extra
     # - table_translator@stroke_lookup
+    # - lua_translator@calculator_translator
+    - lua_translator@snotest_translator
   filters:
     - simplifier
     - simplifier@zhjp_translate_suggestion
@@ -91,12 +93,12 @@ engine:
     - reverse_lookup_filter@sno_emoji_lookup
     - reverse_lookup_filter@japanese_reverse_lookup
     - reverse_lookup_filter@translate_en2jp_reverse_lookup
-    - reverse_lookup_filter@translate_en2zh_reverse_lookup
+    # - reverse_lookup_filter@translate_en2zh_reverse_lookup
 
 abc_segmentor:
   extra_tags:
     - translate_en2jp_lookup
-    - translate_en2zh_lookup
+    # - translate_en2zh_lookup
     - japanese_lookup
     - sno_emoji_lookup
     - sno_wubi_kanji_lookup
@@ -104,7 +106,7 @@ abc_segmentor:
     - japanese_pinyin_lookup
 
 speller:
-  alphabet: "zyxwvutsrqponmlkjihgfedcba-_"
+  alphabet: "zyxwvutsrqponmlkjihgfedcba-_=1234+*/"
   delimiter: " '"
   algebra:
     - "derive/_/x/"
@@ -146,14 +148,14 @@ translate_en2jp_lookup:
   suffix: "`"
   tips: 〔英语は日本語翻訳〕
 
-translate_en2zh_lookup:
-  tag: translate_en2zh_lookup
-  enable_completion: false
-  dictionary: translate_en2zh
-  prism: translate_en2zh
-  prefix: "H"
-  suffix: "`"
-  tips: 〔英语は漢語翻訳〕
+# translate_en2zh_lookup:
+#   tag: translate_en2zh_lookup
+#   enable_completion: false
+#   dictionary: translate_en2zh
+#   prism: translate_en2zh
+#   prefix: "H"
+#   suffix: "`"
+#   tips: 〔英语は漢語翻訳〕
 
 # stroke_lookup:
 #   tag: stroke_lookup
@@ -229,11 +231,12 @@ recognizer:
     japanese_pinyin_lookup: "^P[a-z;/,.]*`?$"
     punct: "^/([0-9]+[a-z]*|[a-z]+)$"
     translate_en2jp_lookup: "^J[a-z;/,.]*`?$"
-    translate_en2zh_lookup: "^H[a-z;/,.]*`?$"
+    # translate_en2zh_lookup: "^H[a-z;/,.]*`?$"
     # stroke_lookup: "^H[a-z]*`?$"
     sno_wubi_kanji_lookup: "^K[a-z]*'?$"
     sno_wubi_lookup: "^W[a-z]*'?$"
     sno_emoji_lookup: "^M[a-z]*'?$"
+    expression: "^=.*$"
 
 ##########################
 # filters
@@ -315,29 +318,29 @@ translate_en2jp_reverse_lookup:
     - "xform/^\\s*//"
     - "xform/\\s*$//"
 
-translate_en2zh_reverse_lookup:
-  tags: [translate_en2zh_lookup]
-  spelling_hints: 3
-  dictionary: translate_en2zh
-  comment_format:
-    - "xform/^/ /"
-    # 摘要
-    - "xform/(.{80}.+)/$1--/"
-    - "xform/([a-z])-[a-z]+/$1/"
-    # - "xform/ (\\S\\S\\S\\S)\\S\\S+(?=.*?--$)/ $1-/"
-    - "xform/^(.*)--$/$1/"
-    # # 多层重复项折叠
-    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 1
-    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 2
-    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 3
-    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 4
-    - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 5
-    # # 重复消除
-    - "xform/ (\\S+)( \\1)+/ $1/"
-    # 截断省略
-    - "xform/ (.{30}).+/$1…/"
-    - "xform/^\\s*//"
-    - "xform/\\s*$//"
+# translate_en2zh_reverse_lookup:
+#   tags: [translate_en2zh_lookup]
+#   spelling_hints: 3
+#   dictionary: translate_en2zh
+#   comment_format:
+#     - "xform/^/ /"
+#     # 摘要
+#     - "xform/(.{80}.+)/$1--/"
+#     - "xform/([a-z])-[a-z]+/$1/"
+#     # - "xform/ (\\S\\S\\S\\S)\\S\\S+(?=.*?--$)/ $1-/"
+#     - "xform/^(.*)--$/$1/"
+#     # # 多层重复项折叠
+#     - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 1
+#     - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 2
+#     - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 3
+#     - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 4
+#     - "xform/ ([a-z]+)((?:-[a-z]+)*) \\1([a-z]+)/ $1$2-$3/" # 5
+#     # # 重复消除
+#     - "xform/ (\\S+)( \\1)+/ $1/"
+#     # 截断省略
+#     - "xform/ (.{30}).+/$1…/"
+#     - "xform/^\\s*//"
+#     - "xform/\\s*$//"
 
 ##########################
 # other
@@ -360,3 +363,6 @@ editor:
 
 menu:
   page_size: 10
+
+# engine/translators/@next: lua_translator@calculator_translator
+# recognizer/patterns/expression: "^=.*$"
