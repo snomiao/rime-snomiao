@@ -83,7 +83,7 @@ engine:
     # extra
     # - table_translator@stroke_lookup
     # - lua_translator@calculator_translator
-    - lua_translator@snotest_translator
+    # - lua_translator@snotest_translator
   filters:
     - simplifier
     - simplifier@zhjp_translate_suggestion
@@ -106,7 +106,7 @@ abc_segmentor:
     - japanese_pinyin_lookup
 
 speller:
-  alphabet: "zyxwvutsrqponmlkjihgfedcba-_=1234+*/"
+  alphabet: "zyxwvutsrqponmlkjihgfedcba-_"
   delimiter: " '"
   algebra:
     - "derive/_/x/"
