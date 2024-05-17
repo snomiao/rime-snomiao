@@ -30,7 +30,8 @@
     "opencc",
     "tools",
     "install.bat",
-    "weasel*.exe"
+    "weasel*.exe",
+    "Rime"
   ],
   "scripts": {
     "build": "snobuild",
