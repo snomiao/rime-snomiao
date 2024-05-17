@@ -26,12 +26,11 @@
   },
   "files": [
     "dist",
-    "./*.yaml",
-    "opencc",
     "tools",
     "install.bat",
     "weasel*.exe",
-    "Rime/**/*"
+    "Rime/*.yaml",
+    "Rime/opencc/*"
   ],
   "scripts": {
     "build": "snobuild",
