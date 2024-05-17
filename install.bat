@@ -1,6 +1,15 @@
 cd %~dp0\
 
+echo [RIME-SNOMIAO] 接下準備啓動輸入法安装程序
+pause
+
+echo [RIME-SNOMIAO] 正在啓動 weasel 輸入法安装程序，請手動完成安装，然後回到这里
+start "" weasel*.exe
+
+pause
+
 echo [RIME-SNOMIAO] receipe installing...
+echo [RIME-SNOMIAO] 正在安装輸入方案
 
 robocopy ./Rime %APPDATA%\Rime *.yaml /S /XD node_modules /XF pnpm-lock.yaml
 robocopy ./Rime/opencc %APPDATA%\Rime\opencc *.json *.txt *.ocd *.ocd2 /S
