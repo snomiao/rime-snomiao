@@ -1,6 +1,6 @@
 # node files
 node_modules
-./dist
+dist
 
 # rime files
 Rime/build

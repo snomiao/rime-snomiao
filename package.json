@@ -28,15 +28,17 @@
     "dist",
     "./*.yaml",
     "opencc",
-    "tools"
+    "tools",
+    "install.bat",
+    "weasel*.exe"
   ],
   "scripts": {
-    "start": "node dist/cli.mjs",
-    "build:rime": "cmd /c \"cd C:\\Program Files (x86)\\Rime\\weasel-* && WeaselDeployer.exe /deploy\"",
-    "watch:rime": "nodemon --ignore Rime/build -e yaml -x npm run build:rime",
     "build": "snobuild",
+    "build:rime": "cmd /c \"cd C:\\Program Files (x86)\\Rime\\weasel-* && WeaselDeployer.exe /deploy\"",
     "prepack": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/cli.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:rime": "nodemon --ignore Rime/build -e yaml -x npm run build:rime"
   },
   "release": {
     "branches": [
