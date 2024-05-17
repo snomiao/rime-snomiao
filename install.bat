@@ -17,10 +17,8 @@ start "" ./weasel-0.15.0.0-installer.exe
 
 @REM pause
 @REM echo "[RIME-SNOMIAO] Weasel Deploy"
-@REM cd C:\Program Files (x86)\Rime\weasel-*
 @REM taskkill /f /im WeaselServer.exe
-
 @REM cmd /c WeaselDeployer.exe
-@REM cmd /c WeaselServer.exe
+start "" cmd /c "cd C:\Program Files (x86)\Rime\weasel-* && WeaselServer.exe /install"
 
 @REM cd %~dp0\..
