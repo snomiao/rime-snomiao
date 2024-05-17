@@ -1,6 +1,6 @@
 {
   "name": "rime-snomiao",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "rime-snomiao is a rime schema that provides a set of ime plugins for typing in Chinese, Japanese, and English. It is designed to be used with the rime input method engine.",
   "keywords": [],
   "homepage": "https://github.com/snomiao/rime-snomiao#readme",
