@@ -1,3 +1,6 @@
+@echo off
+chcp 65001
+
 cd %~dp0\
 
 echo [RIME-SNOMIAO] 接下準備啓動輸入法安装程序
