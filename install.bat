@@ -4,11 +4,13 @@
 @REM cmd /U /c install.bat
 cd %~dp0\
 
+
 echo "[RIME-SNOMIAO] 接下準備啓動輸入法安装程序"
+echo Current directorsy: %~dp0\
 pause
 
 echo "[RIME-SNOMIAO] 正在啓動 weasel 輸入法安装程序，請手動完成安装，然後回到这里"
-start "" weasel-0.15.0.0-installer.exe
+start "" ./weasel-0.15.0.0-installer.exe
 
 
 echo "[RIME-SNOMIAO] 接下来準備安装輸入方案"
