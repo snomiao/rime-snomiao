@@ -29,13 +29,14 @@
     "tools",
     "install.bat",
     "weasel*.exe",
-    "Rime/*.yaml",
-    "Rime/opencc/*"
+    "./Rime/*.yaml",
+    "./Rime/opencc/*.txt"
   ],
   "scripts": {
     "build": "snobuild",
     "build:rime": "cmd /c \"cd C:\\Program Files (x86)\\Rime\\weasel-* && WeaselDeployer.exe /deploy\"",
     "prepack": "npm run build",
+    "prepublishOnly": "npm run build",
     "start": "node dist/cli.mjs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch:rime": "nodemon --ignore Rime/build -e yaml -x npm run build:rime"

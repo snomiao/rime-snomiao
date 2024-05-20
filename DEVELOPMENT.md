@@ -34,3 +34,8 @@ cmd /c "cd C:\Program Files (x86)\Rime\weasel-* && start ."
 REM install
 cmd /c "cd C:\Program Files (x86)\Rime\weasel-* && WeaselDeployer.exe /install"
 ```
+
+4. Before Publish
+
+mv -r ./Rime ./Rime-tmp
+cp -r ./Rime-tmp ./Rime
