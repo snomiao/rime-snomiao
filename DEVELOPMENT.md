@@ -37,5 +37,4 @@ cmd /c "cd C:\Program Files (x86)\Rime\weasel-* && WeaselDeployer.exe /install"
 
 4. Before Publish
 
-mv -r ./Rime ./Rime-tmp
-cp -r ./Rime-tmp ./Rime
+mv ./Rime ./Rime-tmp && cp -r ./Rime-tmp ./Rime && rm -rf ./Rime-tmp
