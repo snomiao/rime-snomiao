@@ -24,7 +24,7 @@ async function main() {
     cygwin: async () => notSupportedYet(),
     darwin: async () => {
       console.log({ pkgdir, cwd: process.cwd() });
-      (await snorun("cp -r ./node_modules/rime-snomiao/* ~/Library/Rime || cp -r ./* ~/Library/Rime"))
+      (await snorun("cp -r ./node_modules/rime-snomiao/Rime/* ~/Library/Rime || cp -r ./* ~/Library/Rime"))
         ? console.log("go to your task bar, find <deploy> button and click.")
         : await notSupportedYet();
     },
