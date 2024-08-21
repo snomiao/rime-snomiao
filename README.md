@@ -1,6 +1,9 @@
 # rime-snomiao Multilingual IME (EN+JA+ZH)
 
+The integrated input method for multilingual users now supports mixed input of Pinyin, Wubi, Roman letters, and English, with the addition of integrated vocabulary translation.
+
 多语言使用者一体化输入法，集成词汇翻译混合编码输入，现在支持拼音+五笔+罗马字+英语混合输入。
+
 多言語話者向けオールインワン入力ソリューション、統合語彙翻訳ハイブリッドコーディング入力、今ピンイン+五笔+ローマ字+英語の混合入力をサポート。
 
 - Language: [English] | [简体中文](./README.chs.md)
