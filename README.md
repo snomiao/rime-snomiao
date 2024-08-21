@@ -3,9 +3,20 @@
 多语言使用者一体化输入法，集成词汇翻译混合编码输入，现在支持拼音+五笔+罗马字+英语混合输入。
 多言語話者向けオールインワン入力ソリューション、統合語彙翻訳ハイブリッドコーディング入力、今ピンイン+五笔+ローマ字+英語の混合入力をサポート。
 
-
-
 - Language: [English] | [简体中文](./README.chs.md)
+
+## Why?
+
+The project mainly solve the following issues:
+
+- Can't type Chinese using the Japanese input method, and can't type Japanese using the Chinese input method, always having to switch. What to do? (Mixed Chinese and Japanese input)
+- Additionally, the system's default Japanese input method can't directly type English... (Rime by pressing Enter)
+- Know English and are learning Japanese, want to know how to say a word in Japanese? (Translate English words to Japanese)
+- Know Chinese and are learning Japanese, want to know how to type the same character in Japanese? (Reverse lookup for Japanese)
+- Know Wubi, but sometimes can't remember certain characters and want to use Pinyin. (Mixed Wubi and Pinyin input)
+- Sometimes want to type some emojis 😈. (Convert Chinese characters to emojis)
+
+- 🌠 Realize all these dreams simultaneously (using this solution)
 
 ## List of Plans/Features
 
@@ -14,6 +25,22 @@
 ![](media/vary-length-wubi.png)
 
 - Improved variable-length encoding technology based on the Microsoft Wubi code table, greatly enhancing the efficiency of long sentence input in Wubi
+
+## Quick Start
+
+
+- Windows User:
+  Download and Install Engine here: [下載及安裝 \| RIME | 中州韻輸入法引擎]( https://rime.im/download/ )
+  `npx rime-snomiao`
+
+- Linux User:
+  Download and Install Engine here: [下載及安裝 \| RIME | 中州韻輸入法引擎]( https://rime.im/download/ )
+  `brew install squirrel --cask`
+  
+- Mac User:
+  Download and Install Engine here: [下載及安裝 \| RIME | 中州韻輸入法引擎]( https://rime.im/download/ )
+  `brew install squirrel --cask`
+
 
 ## Installation and Configuration 🗳️
 
