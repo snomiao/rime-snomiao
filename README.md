@@ -6,6 +6,10 @@ The integrated input method for multilingual users now supports mixed input of P
 
 多言語話者向けオールインワン入力ソリューション、統合語彙翻訳ハイブリッドコーディング入力、今ピンイン+五笔+ローマ字+英語の混合入力をサポート。
 
+|||
+|-|-|
+|<video src="./media/hai-understand.mp4" autoplay></video>||
+
 - Language: [English] | [简体中文](./README.chs.md)
 
 ## Why?
