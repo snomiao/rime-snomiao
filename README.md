@@ -182,7 +182,7 @@ Claim your sponsorship by donating snomiao <[Email: snomiao@gmail.com](mailto:sn
 
 The main repo is in [here](https://github.com/snomiao/rime-snomiao#readme), any issue and PR's welcome.
 
-### Published 📰
+### References 📰
 
 rime-snomiao 雪星的小狼毫输入法方案
 
@@ -191,6 +191,6 @@ rime-snomiao 雪星的小狼毫输入法方案
 - [github.com/rime/home](https://github.com/rime/home/issues/68#issuecomment-1383913014)
 - [Zhihu](https://zhuanlan.zhihu.com/p/599268754)
 - [Telegram Rime](https://t.me/loverime/41196)
-- [V2EX](https://www.v2ex.com/t/909117)
+- [和老外聊天……打着字就翻訳成外語了？ rime-snomiao 輸入法方案介紹。 - V2EX (2)]( https://www.v2ex.com/t/909117 )
 - [Twitter](https://twitter.com/snomiao/status/1614586337822375936)
 
