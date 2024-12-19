@@ -194,3 +194,6 @@ rime-snomiao 雪星的小狼毫输入法方案
 - [和老外聊天……打着字就翻訳成外語了？ rime-snomiao 輸入法方案介紹。 - V2EX (2)]( https://www.v2ex.com/t/909117 )
 - [Twitter](https://twitter.com/snomiao/status/1614586337822375936)
 
+### Star history 🌟
+
+- [![Stargazers over time](https://starchart.cc/snomiao/rime-snomiao.svg)](https://starchart.cc/snomiao/rime-snomiao)
