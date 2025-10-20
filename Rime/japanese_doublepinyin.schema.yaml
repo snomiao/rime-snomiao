@@ -1,0 +1,145 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: japanese_doublepinyin
+  name: 朙月双拼和字
+  version: "0.1"
+  author:
+    - 佛振 <chen.sst@gmail.com>
+    - Snowstar Miao <snomiao@gmail.com>
+  description: |
+    Rime 双拼輸入方案（小鹤双拼）用于日文输入。
+    基于 japanese_pinyin 方案修改。
+    参考以下作品而创作：
+      * CC-CEDICT
+      * Android open source project
+      * Chewing - 新酷音
+      * opencc - 开放中文转换
+      * 小鹤双拼
+  dependencies:
+    - stroke
+
+switches:
+  - name: ascii_mode
+    states: [中文, 西文]
+    reset: 0
+  - name: full_shape
+    states: [半角, 全角]
+  - name: ascii_punct
+    states: [。，, ．，]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - table_translator@custom_phrase
+    - reverse_lookup_translator
+    - script_translator
+  filters:
+    - simplifier@simplifier_t2jp
+    - uniquifier
+
+################## simplifier
+
+simplifier_t2jp:
+  opencc_config: t2jp.json
+  tips: none
+
+####################### speller
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  algebra:
+    - erase/^xx$/
+    - derive/^([jqxy])u$/$1v/
+    # 零声母音节
+    - derive/^([aoe])([ioun])$/$1$1$2/
+    - xform/^([aoe])(ng)?$/$1$1$2/
+    # 双拼编码规则（小鹤双拼）
+    - xform/iu$/Q/
+    - xform/(.)ei$/$1W/
+    - xform/uan$/R/
+    - xform/[uv]e$/T/
+    - xform/un$/Y/
+    - xform/^sh/U/
+    - xform/^ch/I/
+    - xform/^zh/V/
+    - xform/uo$/O/
+    - xform/ie$/P/
+    - xform/i?ong$/S/
+    - xform/ing$|uai$/K/
+    - xform/(.)ai$/$1D/
+    - xform/(.)en$/$1F/
+    - xform/(.)eng$/$1G/
+    - xform/[iu]ang$/L/
+    - xform/(.)ang$/$1H/
+    - xform/ian$/M/
+    - xform/(.)an$/$1J/
+    - xform/(.)ou$/$1Z/
+    - xform/[iu]a$/X/
+    - xform/iao$/N/
+    - xform/(.)ao$/$1C/
+    - xform/ui$/V/
+    - xform/in$/B/
+    # 转换为小写
+    - xlit/QWRTYUIOPSDFGHJKLZXCVBNM/qwrtyuiopsdfghjklzxcvbnm/
+    # 简拼支持
+    - abbrev/^([a-z]).+$/$1/
+    - abbrev/^([zcs]h).+$/$1/
+
+########## Translator
+translator:
+  dictionary: japanese_pinyin
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+
+# custom...
+custom_phrase:
+  dictionary: ""
+  user_dict: custom_phrase
+  db_class: stabledb
+  enable_completion: false
+  enable_sentence: false
+  initial_quality: 1
+
+### Reverse
+
+reverse_lookup:
+  dictionary: stroke
+  enable_completion: true
+  prefix: "`"
+  suffix: "'"
+  tips: 〔筆畫〕
+  preedit_format:
+    - xlit/hspnz/一丨丿丶乙/
+  comment_format:
+    - xform/([nl])v/$1ü/
+
+punctuator:
+  import_preset: symbols
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    punct: "^/([0-9]0?|[A-Za-z]+)$"
+    reverse_lookup: "`[a-z]*'?$"
