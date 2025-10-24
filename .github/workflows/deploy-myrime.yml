@@ -62,6 +62,11 @@ jobs:
         working-directory: my_rime
         run: pnpm run native
 
+      - name: Setup emsdk
+        uses: mymindstorm/setup-emsdk@v13
+        with:
+          version: 3.1.50
+
       - name: Build schema
         working-directory: my_rime
         run: |
@@ -75,11 +80,6 @@ jobs:
       - name: Build lib
         working-directory: my_rime
         run: pnpm run lib
-
-      - name: Setup emsdk
-        uses: mymindstorm/setup-emsdk@v13
-        with:
-          version: 3.1.50
 
       - name: Build WebAssembly
         working-directory: my_rime
