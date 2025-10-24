@@ -69,12 +69,7 @@ jobs:
           # Workaround: Create minimal valid placeholder schemas for variants
           mkdir -p build/librime_native/bin/build
           for i in {1..10}; do
-            cat > "build/librime_native/bin/build/combo_pinyin_${i}.schema.yaml" << 'EOF' || true
-schema:
-  schema_id: combo_pinyin_${i}
-  name: "Combo Pinyin ${i} Placeholder"
-  version: "1.0"
-EOF
+            printf 'schema:\n  schema_id: combo_pinyin_%s\n  name: "Placeholder"\n  version: "1.0"\n' "$i" > "build/librime_native/bin/build/combo_pinyin_${i}.schema.yaml" || true
           done
           pnpm run schema
 
