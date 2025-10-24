@@ -29,7 +29,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: LibreService/my_rime
-          ref: latest
           path: my_rime
           submodules: recursive
 
