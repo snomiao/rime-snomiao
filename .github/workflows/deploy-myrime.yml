@@ -1,0 +1,114 @@
+name: Deploy my_rime to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - sno-myrime
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout rime-snomiao
+        uses: actions/checkout@v4
+        with:
+          path: rime-snomiao
+
+      - name: Checkout my_rime
+        uses: actions/checkout@v4
+        with:
+          repository: LibreService/my_rime
+          path: my_rime
+          submodules: recursive
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        working-directory: my_rime
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build clang-format \
+            libboost-dev libboost-filesystem-dev libboost-regex-dev \
+            libyaml-cpp-dev libleveldb-dev libmarisa-dev libopencc-dev
+
+      - name: Install node dependencies
+        working-directory: my_rime
+        run: pnpm i
+
+      - name: Download fonts
+        working-directory: my_rime
+        run: pnpm run font
+
+      - name: Build native
+        working-directory: my_rime
+        run: pnpm run native
+
+      - name: Build schema
+        working-directory: my_rime
+        run: pnpm run schema
+
+      - name: Build lib
+        working-directory: my_rime
+        run: pnpm run lib
+
+      - name: Setup emsdk
+        uses: mymindstorm/setup-emsdk@v13
+        with:
+          version: 3.1.50
+
+      - name: Build WebAssembly
+        working-directory: my_rime
+        run: pnpm run wasm
+
+      - name: Build web app
+        working-directory: my_rime
+        run: pnpm run build
+
+      - name: Copy rime-snomiao configs to my_rime
+        run: |
+          mkdir -p my_rime/dist/rime-config
+          cp -r rime-snomiao/Rime/* my_rime/dist/rime-config/
+
+      - name: Create myrime directory and copy landing page
+        run: |
+          mkdir -p dist
+          cp rime-snomiao/index.html dist/index.html
+          mv my_rime/dist dist/myrime
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
