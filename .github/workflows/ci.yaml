@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+jobs:
+  test-installation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install ibus-rime
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ibus-rime
+
+      - name: Install plum
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/rime/plum/master/rime-install | bash
+
+      - name: Install this project to Rime
+        run: |
+          bash rime-install snomiao/rime-snomiao@${{ github.ref_name }}
+
+      - name: Validate installation
+        run: |
+          # Check if Rime user directory exists
+          RIME_USER_DIR="${HOME}/.config/ibus/rime"
+          echo "Checking Rime user directory: $RIME_USER_DIR"
+
+          if [ ! -d "$RIME_USER_DIR" ]; then
+            echo "Error: Rime user directory not found"
+            exit 1
+          fi
+
+          # Check if schema files are installed
+          echo "Checking for schema files..."
+          schema_count=$(find "$RIME_USER_DIR" -name "*.schema.yaml" | wc -l)
+          echo "Found $schema_count schema files"
+
+          if [ "$schema_count" -eq 0 ]; then
+            echo "Error: No schema files found"
+            exit 1
+          fi
+
+          # List installed schemas
+          echo "Installed schemas:"
+          find "$RIME_USER_DIR" -name "*.schema.yaml" -exec basename {} \;
+
+          # Check for key schema files from this project
+          echo "Verifying key schema files..."
+          key_schemas=(
+            "snomiao.schema.yaml"
+            "japanese.schema.yaml"
+            "sno_wubi.schema.yaml"
+          )
+
+          missing_schemas=()
+          for schema in "${key_schemas[@]}"; do
+            if [ -f "$RIME_USER_DIR/$schema" ]; then
+              echo "✓ Found: $schema"
+            else
+              echo "✗ Missing: $schema"
+              missing_schemas+=("$schema")
+            fi
+          done
+
+          if [ ${#missing_schemas[@]} -gt 0 ]; then
+            echo "Error: Missing schemas: ${missing_schemas[*]}"
+            exit 1
+          fi
+
+          echo "✓ Installation validated successfully!"
