@@ -47,11 +47,13 @@ sort: by_weight
 &	and
 %	percent
 =	equals
+　	q=
 ?	question
 ～	wave
 。	end
 _	lodash
 -	dash
+=	equals
 .	den
 ‥	denden
 …	dendenden
