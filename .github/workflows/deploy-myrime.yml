@@ -30,7 +30,6 @@ jobs:
         with:
           repository: LibreService/my_rime
           path: my_rime
-          submodules: recursive
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -53,6 +52,10 @@ jobs:
       - name: Install node dependencies
         working-directory: my_rime
         run: pnpm i
+
+      - name: Get submodules
+        working-directory: my_rime
+        run: pnpm run submodule
 
       - name: Download fonts
         working-directory: my_rime
