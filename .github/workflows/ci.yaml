@@ -21,10 +21,13 @@ jobs:
 
       - name: Install plum
         run: |
-          curl -fsSL https://raw.githubusercontent.com/rime/plum/master/rime-install | bash
+          git clone --depth=1 https://github.com/rime/plum.git
+          cd plum
+          bash rime-install
 
       - name: Install this project to Rime
         run: |
+          cd plum
           bash rime-install snomiao/rime-snomiao@${{ github.ref_name }}
 
       - name: Validate installation
