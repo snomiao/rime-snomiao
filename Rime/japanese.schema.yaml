@@ -73,6 +73,7 @@ speller:
   algebra:
     - "derive/_/x/"
     - "derive/-/q/"
+    - "derive/　/q/"
     # Add / remove rules the as you wish
     - "derive/i_e/ye/"
     # - 'derive/fu/hu/'
