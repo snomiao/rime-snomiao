@@ -28,7 +28,7 @@ jobs:
       - name: Install this project to Rime
         run: |
           cd plum
-          bash rime-install snomiao/rime-snomiao@${{ github.sha }}
+          bash rime-install snomiao/rime-snomiao@${{ github.head_ref || github.ref_name }}
 
       - name: Validate installation
         run: |
