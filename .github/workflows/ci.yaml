@@ -41,9 +41,9 @@ jobs:
             exit 1
           fi
 
-          # Check if schema files are installed
+          # Check if schema files are installed (in Rime/ subdirectory)
           echo "Checking for schema files..."
-          schema_count=$(find "$RIME_USER_DIR" -name "*.schema.yaml" | wc -l)
+          schema_count=$(find "$RIME_USER_DIR/Rime" -name "*.schema.yaml" 2>/dev/null | wc -l)
           echo "Found $schema_count schema files"
 
           if [ "$schema_count" -eq 0 ]; then
@@ -53,7 +53,7 @@ jobs:
 
           # List installed schemas
           echo "Installed schemas:"
-          find "$RIME_USER_DIR" -name "*.schema.yaml" -exec basename {} \;
+          find "$RIME_USER_DIR/Rime" -name "*.schema.yaml" -exec basename {} \;
 
           # Check for key schema files from this project
           echo "Verifying key schema files..."
@@ -65,7 +65,7 @@ jobs:
 
           missing_schemas=()
           for schema in "${key_schemas[@]}"; do
-            if [ -f "$RIME_USER_DIR/$schema" ]; then
+            if [ -f "$RIME_USER_DIR/Rime/$schema" ]; then
               echo "✓ Found: $schema"
             else
               echo "✗ Missing: $schema"
