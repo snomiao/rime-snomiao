@@ -1,24 +1,16 @@
-﻿@chcp 65001
+@chcp 65001
 @echo off
-
-@REM cmd /U /c install.bat
 cd %~dp0\
-echo Current directorsy: %~dp0\
+echo Current directory: %~dp0\
 
-echo "[RIME-SNOMIAO] 正在安装輸入方案"
+echo [RIME-SNOMIAO] Downloading latest Weasel...
+pwsh -ExecutionPolicy Bypass -File "%~dp0download-weasel.ps1"
 
-robocopy ./Rime %APPDATA%\Rime *.yaml /S /XD node_modules /XF pnpm-lock.yaml
+echo [RIME-SNOMIAO] Copying Rime schemas...
+robocopy ./Rime %APPDATA%\Rime /E /XD node_modules
 robocopy ./Rime/opencc %APPDATA%\Rime\opencc *.json *.txt *.ocd *.ocd2 /S
 
-echo "[RIME-SNOMIAO] 接下準備啓動輸入法安装程序"
+echo [RIME-SNOMIAO] Launching Weasel installer...
+for %%f in (%~dp0weasel-*-installer.exe) do start "" "%%f"
 
-echo "[RIME-SNOMIAO] 正在啓動 weasel 輸入法安装程序"
-start "" ./weasel-0.15.0.0-installer.exe
-
-@REM pause
-@REM echo "[RIME-SNOMIAO] Weasel Deploy"
-@REM taskkill /f /im WeaselServer.exe
-@REM cmd /c WeaselDeployer.exe
 start "" cmd /c "cd C:\Program Files (x86)\Rime\weasel-* && WeaselServer.exe /install"
-
-@REM cd %~dp0\..

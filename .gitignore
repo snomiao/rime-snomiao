@@ -8,3 +8,4 @@ Rime/installation.yaml
 Rime/user.yaml
 Rime/*.userdb
 /*.tgz
+/weasel-*.exe
