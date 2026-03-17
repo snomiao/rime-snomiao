@@ -16,7 +16,8 @@
   "type": "module",
   "exports": {
     "require": "./dist/index.cjs",
-    "import": "./dist/index.mjs"
+    "import": "./dist/index.mjs",
+    "types": "./dist/index.d.ts"
   },
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -28,13 +29,13 @@
     "dist",
     "tools",
     "install.bat",
-    "weasel*.exe",
-    "./Rime/*.yaml",
-    "./Rime/opencc/*.txt"
+    "download-weasel.ps1",
+    "Rime"
   ],
   "scripts": {
     "build": "snobuild",
     "build:rime": "cmd /c \"cd C:\\Program Files (x86)\\Rime\\weasel-* && WeaselDeployer.exe /deploy\"",
+    "download-weasel": "pwsh -ExecutionPolicy Bypass -File download-weasel.ps1",
     "prepack": "npm run build",
     "prepublishOnly": "npm run build",
     "start": "node dist/cli.mjs",
@@ -56,16 +57,12 @@
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
-    "aswitcher": "^1.0.1",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
-    "pkg-dir": "^7.0.0",
     "prettier-plugin-organize-imports": "^3.2.2",
     "prettier-plugin-packagejson": "^2.4.0",
     "prettier-plugin-tsconfig": "^0.0.1",
     "semantic-release": "^20.1.0",
-    "snobuild": "^3.2.11",
-    "snorun": "^1.1.17",
-    "work-package-dir": "^1.0.0"
+    "snobuild": "^3.2.11"
   }
 }
