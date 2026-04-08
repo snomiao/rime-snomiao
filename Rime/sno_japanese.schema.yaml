@@ -1,0 +1,100 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: sno_japanese
+  name: "SNO 日語 Japanese Only"
+  version: "1.0.0"
+  author:
+    - ensigma96 <ensigma96@gmail.com>
+    - snomiao <snomiao@gmail.com>
+  description: |
+    [github.com/snomiao](https://github.com/snomiao/rime-snomiao)
+    日本語専用入力モード
+    Japanese-only input mode without interference from other input methods.
+  dependencies:
+    - japanese
+    - japanese_pinyin
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [中文, 西文]
+  - name: full_shape
+    states: [半角, 全角]
+  - name: simplification
+    states: [漢字, 汉字]
+  - name: ascii_punct
+    states: [。，, ．，]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - affix_segmentor@japanese_pinyin_lookup
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+    - script_translator@japanese_pinyin_lookup
+  filters:
+    - simplifier
+    - uniquifier
+
+speller:
+  alphabet: "zyxwvutsrqponmlkjihgfedcba-_"
+  delimiter: " '"
+  algebra:
+    - "derive/_/x/"
+    - "derive/-/q/"
+    # Add / remove rules as you wish
+    - "derive/i_e/ye/"
+    - "derive/tu/tsu/"
+    - "derive/si/shi/"
+
+translator:
+  dictionary: japanese
+  spelling_hints: 5
+  comment_format:
+    - "xlit|q|ー|"
+  preedit_format:
+    - "xlit|q|ー|"
+
+# Japanese Pinyin lookup for Chinese characters to Japanese reading
+japanese_pinyin_lookup:
+  tag: japanese_pinyin_lookup
+  prefix: "P"
+  suffix: "'"
+  tips: 〔拼音和字〕
+  dictionary: japanese_pinyin
+  prism: japanese_pinyin
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+
+recognizer:
+  import_preset: default
+  patterns:
+    japanese_pinyin_lookup: "^P[a-z;/,.]*'?$"
+    punct: "^/([0-9]+[a-z]*|[a-z]+)$"
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+
+menu:
+  page_size: 10

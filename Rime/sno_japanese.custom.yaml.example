@@ -1,0 +1,20 @@
+# Example customization file for sno_japanese schema
+# Copy this file to sno_japanese.custom.yaml to customize your Japanese-only mode
+# 日本語専用モードのカスタマイズ例
+
+patch:
+  # Change menu page size / メニューのページサイズを変更
+  # menu/page_size: 9
+  
+  # Add custom key bindings / カスタムキーバインディングを追加
+  # key_binder/bindings:
+  #   - { accept: "Control+Shift+J", toggle: simplification, when: always }
+  
+  # Change ASCII mode reset value / ASCII モードのリセット値を変更
+  # switches/@0/reset: 1  # Start in English mode / 英語モードで開始
+  
+  # Disable Japanese pinyin lookup / 拼音查詢を無効化
+  # engine/translators:
+  #   - punct_translator
+  #   - script_translator
+  #   # Remove: - script_translator@japanese_pinyin_lookup
