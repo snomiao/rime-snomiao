@@ -1,0 +1,5 @@
+# Rime recipe
+# encoding: utf-8
+
+install_files:
+  - Rime/*.yaml
