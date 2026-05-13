@@ -1,13 +1,17 @@
 #!/usr/bin/env node
 import { execSync } from "child_process";
-import { existsSync, readdirSync } from "fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "fs";
 import { cp, mkdir, writeFile } from "fs/promises";
 import os from "os";
 import path from "path";
 import { fileURLToPath } from "url";
 
+const VERBOSE = process.argv.includes("--verbose") || process.argv.includes("-v");
+const HOME = os.homedir();
+const tilde = (p: string) => (p === HOME || p.startsWith(HOME + path.sep) ? "~" + p.slice(HOME.length) : p);
+
 main().catch((e: Error) => {
-  console.error("[rime-snomiao] Error:", e.message);
+  console.error(`✗ ${e.message}`);
   process.exit(1);
 });
 
@@ -15,9 +19,14 @@ async function main() {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const pkgdir = path.resolve(__dirname, "..");
   const rimeDir = path.join(pkgdir, "Rime");
+  const pkg = JSON.parse(readFileSync(path.join(pkgdir, "package.json"), "utf8")) as { version: string };
 
-  console.log(`[rime-snomiao] platform: ${process.platform}`);
-  console.log(`[rime-snomiao] package dir: ${pkgdir}`);
+  const platformLabel: Record<string, string> = {
+    darwin: "macOS / Squirrel",
+    win32: "Windows / Weasel",
+    linux: "Linux",
+  };
+  console.log(`rime-snomiao ${pkg.version} → ${platformLabel[process.platform] ?? process.platform}`);
 
   switch (process.platform) {
     case "win32":  return setupWindows(rimeDir);
@@ -30,33 +39,34 @@ async function main() {
 // ─── Windows (Weasel 小狼毫) ─────────────────────────────────────────────────
 
 async function setupWindows(rimeDir: string) {
-  // 1. Download and install Weasel if not already present
-  if (!findWeaselDir()) {
+  let weaselDir = findWeaselDir();
+  if (!weaselDir) {
+    console.log("→ Weasel not detected — downloading installer…");
     await downloadAndInstallWeasel();
-    // Give installer time to finish writing files
-    if (!findWeaselDir()) {
-      console.log("[rime-snomiao] Weasel installation not detected yet — please re-run after installation completes.");
+    weaselDir = findWeaselDir();
+    if (!weaselDir) {
+      console.log("→ Re-run this command once the Weasel installer finishes.");
       return;
     }
   } else {
-    console.log("[rime-snomiao] Weasel is already installed.");
+    console.log(`→ Weasel detected at ${weaselDir}`);
   }
 
-  // 2. Copy Rime configs to %APPDATA%\Rime
   const rimeDest = path.join(process.env["APPDATA"]!, "Rime");
   await mkdir(rimeDest, { recursive: true });
-  // robocopy exit code 1 = files copied OK, 0 = nothing to do — both are success
   run(`robocopy "${rimeDir}" "${rimeDest}" /E /XD node_modules`, { allowExitCodes: [0, 1] });
-  console.log(`[rime-snomiao] Configs copied to ${rimeDest}`);
+  const { count, bytes } = summarizeDir(rimeDir);
+  console.log(`→ Copied ${count} files (${formatBytes(bytes)}) → ${rimeDest}`);
 
-  // 3. Deploy
-  const weaselDir = findWeaselDir()!;
   run(`"${path.join(weaselDir, "WeaselServer.exe")}" /install`);
-  console.log("[rime-snomiao] Weasel deployed successfully!");
+  const deployer = path.join(weaselDir, "WeaselDeployer.exe");
+  if (existsSync(deployer)) tryRun(`"${deployer}" /deploy`);
+
+  console.log("");
+  console.log("Done. Right-click 小狼毫 in the system tray → 用户文件夹 / Schema list to pick a schema.");
 }
 
 async function downloadAndInstallWeasel() {
-  console.log("[rime-snomiao] Fetching latest Weasel release...");
   const res = await fetch("https://api.github.com/repos/rime/weasel/releases/latest", {
     headers: { "User-Agent": "rime-snomiao" },
   });
@@ -66,12 +76,10 @@ async function downloadAndInstallWeasel() {
 
   const dest = path.join(os.tmpdir(), asset.name);
   if (!existsSync(dest)) {
-    console.log(`[rime-snomiao] Downloading ${asset.name}...`);
+    console.log(`  downloading ${asset.name}…`);
     const fileRes = await fetch(asset.browser_download_url);
     await writeFile(dest, Buffer.from(await fileRes.arrayBuffer()));
   }
-
-  console.log("[rime-snomiao] Running Weasel installer (follow the on-screen prompts)...");
   run(`"${dest}"`);
 }
 
@@ -89,38 +97,55 @@ function findWeaselDir(): string | null {
 async function setupMacOS(rimeDir: string) {
   const squirrelApp = "/Library/Input Methods/Squirrel.app";
 
-  // 1. Install Squirrel if missing
   if (!existsSync(squirrelApp)) {
-    console.log("[rime-snomiao] Squirrel not found, installing...");
+    console.log("→ Installing Squirrel…");
     await installSquirrel();
-  } else {
-    console.log("[rime-snomiao] Squirrel is already installed.");
   }
+  const v = squirrelVersion(squirrelApp);
+  if (v) console.log(`→ Squirrel ${v} ready`);
 
-  // 2. Copy Rime configs to ~/Library/Rime
-  const rimeDest = path.join(os.homedir(), "Library", "Rime");
+  const rimeDest = path.join(HOME, "Library", "Rime");
   await mkdir(rimeDest, { recursive: true });
   await cp(rimeDir, rimeDest, { recursive: true, force: true });
-  console.log(`[rime-snomiao] Configs copied to ${rimeDest}`);
+  const { count, bytes } = summarizeDir(rimeDir);
+  console.log(`→ Copied ${count} files (${formatBytes(bytes)}) → ${tilde(rimeDest)}`);
 
-  // 3. Deploy
   const squirrelBin = path.join(squirrelApp, "Contents/MacOS/Squirrel");
   if (existsSync(squirrelBin)) {
     run(`"${squirrelBin}" --reload`);
-    console.log("[rime-snomiao] Squirrel reloaded!");
-  } else {
-    console.log("[rime-snomiao] Please click 'Deploy' in the Squirrel menu bar icon.");
+    console.log("→ Squirrel reloaded");
+  }
+
+  // macOS 13+ uses the Keyboard-Settings extension URL; older releases use the legacy pref pane URL.
+  const modern = "x-apple.systempreferences:com.apple.Keyboard-Settings.extension?InputSources";
+  const legacy = "x-apple.systempreferences:com.apple.preference.keyboard?InputSources";
+  if (tryRun(`open "${modern}"`) || tryRun(`open "${legacy}"`)) {
+    console.log("→ Opened System Settings → Keyboard → Input Sources");
+  }
+
+  console.log("");
+  console.log("Done. Click  Edit…  →  +  →  Chinese, Simplified  →  Squirrel  to enable.");
+}
+
+function squirrelVersion(app: string): string | null {
+  try {
+    return execSync(`/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "${app}/Contents/Info.plist"`, {
+      stdio: ["ignore", "pipe", "ignore"],
+    })
+      .toString()
+      .trim();
+  } catch {
+    return null;
   }
 }
 
 async function installSquirrel() {
   if (commandExists("brew")) {
-    run("brew install --cask squirrel");
+    run("brew install --cask squirrel-app");
     return;
   }
 
-  // Fallback: download .pkg from GitHub
-  console.log("[rime-snomiao] Homebrew not found, downloading Squirrel from GitHub...");
+  console.log("  Homebrew not found, downloading Squirrel .pkg…");
   const res = await fetch("https://api.github.com/repos/rime/squirrel/releases/latest", {
     headers: { "User-Agent": "rime-snomiao" },
   });
@@ -130,21 +155,18 @@ async function installSquirrel() {
 
   const dest = path.join(os.tmpdir(), asset.name);
   if (!existsSync(dest)) {
-    console.log(`[rime-snomiao] Downloading ${asset.name}...`);
     const fileRes = await fetch(asset.browser_download_url);
     await writeFile(dest, Buffer.from(await fileRes.arrayBuffer()));
   }
-
   run(`sudo installer -pkg "${dest}" -target /`);
 }
 
 // ─── Linux (ibus-rime / fcitx5-rime) ─────────────────────────────────────────
 
 async function setupLinux(rimeDir: string) {
-  // 1. Detect or install a Rime frontend
   let frontend = detectLinuxFrontend();
   if (!frontend) {
-    console.log("[rime-snomiao] No Rime frontend found, installing...");
+    console.log("→ No Rime frontend found — installing…");
     installLinuxRime();
     frontend = detectLinuxFrontend();
     if (!frontend)
@@ -155,14 +177,13 @@ async function setupLinux(rimeDir: string) {
   }
 
   const { name, configDir } = frontend;
-  console.log(`[rime-snomiao] Using ${name}, config dir: ${configDir}`);
+  console.log(`→ Using ${name}`);
 
-  // 2. Copy Rime configs
   await mkdir(configDir, { recursive: true });
   await cp(rimeDir, configDir, { recursive: true, force: true });
-  console.log(`[rime-snomiao] Configs copied to ${configDir}`);
+  const { count, bytes } = summarizeDir(rimeDir);
+  console.log(`→ Copied ${count} files (${formatBytes(bytes)}) → ${tilde(configDir)}`);
 
-  // 3. Deploy
   if (commandExists("rime_deployer")) {
     run(`rime_deployer --build "${configDir}"`);
   } else if (name.startsWith("fcitx5") && commandExists("fcitx5-remote")) {
@@ -170,14 +191,16 @@ async function setupLinux(rimeDir: string) {
   } else if (commandExists("ibus-daemon")) {
     run("ibus-daemon --replace --daemonize");
   }
-  console.log("[rime-snomiao] Done! You may need to re-login or restart your desktop session.");
+
+  console.log("");
+  console.log(`Done. Open your IME settings (${name.startsWith("fcitx5") ? "fcitx5-config-qt" : "ibus-setup"}) and add Rime as an input source.`);
 }
 
 function detectLinuxFrontend(): { name: string; configDir: string } | null {
   const home = os.homedir();
   const candidates = [
     { name: "fcitx5-rime", binary: "fcitx5",     configDir: path.join(home, ".local/share/fcitx5/rime") },
-    { name: "ibus-rime",   binary: "ibus-setup",  configDir: path.join(home, ".config/ibus/rime") },
+    { name: "ibus-rime",   binary: "ibus-setup", configDir: path.join(home, ".config/ibus/rime") },
   ];
   return candidates.find((c) => commandExists(c.binary)) ?? null;
 }
@@ -201,8 +224,31 @@ function installLinuxRime() {
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
+function summarizeDir(dir: string): { count: number; bytes: number } {
+  let count = 0;
+  let bytes = 0;
+  const walk = (p: string) => {
+    for (const entry of readdirSync(p, { withFileTypes: true })) {
+      const full = path.join(p, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else {
+        count++;
+        bytes += statSync(full).size;
+      }
+    }
+  };
+  walk(dir);
+  return { count, bytes };
+}
+
+function formatBytes(n: number): string {
+  if (n < 1024) return `${n} B`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(1)} KB`;
+  return `${(n / 1024 / 1024).toFixed(1)} MB`;
+}
+
 function run(cmd: string, opts: { allowExitCodes?: number[] } = {}) {
-  console.log(`  $ ${cmd}`);
+  if (VERBOSE) console.log(`  $ ${cmd}`);
   try {
     execSync(cmd, { stdio: "inherit" });
   } catch (e: any) {
@@ -223,6 +269,6 @@ function commandExists(cmd: string): boolean {
 }
 
 function notSupportedYet(rimeDir: string) {
-  console.log("[rime-snomiao] auto install not supported yet on this platform");
-  console.log(`[rime-snomiao] please copy: ${rimeDir} -> your Rime config directory`);
+  console.log("→ Auto install not supported on this platform yet.");
+  console.log(`→ Copy ${rimeDir} to your Rime config directory manually.`);
 }
