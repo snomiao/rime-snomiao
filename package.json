@@ -53,6 +53,17 @@
         "name": "alpha",
         "prerelease": true
       }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/npm",
+        {
+          "provenance": true
+        }
+      ],
+      "@semantic-release/github"
     ]
   },
   "devDependencies": {
@@ -62,7 +73,7 @@
     "prettier-plugin-organize-imports": "^3.2.2",
     "prettier-plugin-packagejson": "^2.4.0",
     "prettier-plugin-tsconfig": "^0.0.1",
-    "semantic-release": "^20.1.0",
+    "semantic-release": "^25",
     "snobuild": "^3.2.11"
   }
 }
