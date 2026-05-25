@@ -1,4 +1,5 @@
 patch:
   schema_list:
     - schema: sno_jpn_wubi86_eng
+    - schema: sno_japanese
   style/vxertical_text_with_wrap: false           # 文本竖排模式下，自动换行：true；false

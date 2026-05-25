@@ -27,6 +27,12 @@ The project mainly solve the following issues:
 
 ## List of Plans/Features
 
+### Japanese-Only Mode 🇯🇵
+
+A dedicated Japanese-only input mode (`sno_japanese`) that allows typing in Japanese without interference from other input methods (Wubi, English, etc.). Perfect for users who use different input methods for different languages.
+
+👉 See [JAPANESE_MODE.md](./JAPANESE_MODE.md) for detailed instructions.
+
 ### Snowstar-Wubi ⌨️
 
 ![](media/vary-length-wubi.png)
