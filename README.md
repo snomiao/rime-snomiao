@@ -11,6 +11,7 @@ The integrated input method for multilingual users now supports mixed input of P
 |<video src="./media/hai-understand.mp4" autoplay></video>||
 
 - Language: [English] | [简体中文](./README.chs.md)
+- Version history: [CHANGELOG](./CHANGELOG.md) · [Releases](https://github.com/snomiao/rime-snomiao/releases)
 
 ## Why?
 

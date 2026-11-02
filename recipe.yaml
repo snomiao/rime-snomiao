@@ -1,0 +1,10 @@
+# Rime recipe (install with plum: rime-install snomiao/rime-snomiao)
+# encoding: utf-8
+
+recipe:
+  name: rime-snomiao
+  version: "3.3.0" # keep in sync with the latest release, see CHANGELOG.md
+  description: 多语言一体化输入法 (中日英; 拼音+五笔+罗马字+英语混合输入) / multilingual IME (EN+JA+ZH)
+
+install_files:
+  - Rime/*.yaml
