@@ -63,8 +63,8 @@
 ## 示例 (Examples)
 
 ### 输入示例
-- 中国 `vggo` (zh→v, ong→s, gu→go, o→o)
-- 学习 `xtxp` (x, ue→t, x, i→p)
+- 中国 `vsgo` (zh→v, ong→s, g, uo→o)
+- 学习 `xtxi` (x, ue→t, x, i)
 - 知识 `viui` (zh→v, i, sh→u, i)
 
 ## 反查功能 (Reverse Lookup)
