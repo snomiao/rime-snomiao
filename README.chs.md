@@ -1,6 +1,7 @@
 # rime-snomiao iRime
 
 - 语言: [English](./README.md) | [简体中文]
+- 版本历史: [CHANGELOG](./CHANGELOG.md) · [Releases](https://github.com/snomiao/rime-snomiao/releases)
 
 ## 方案列表/特性
 
