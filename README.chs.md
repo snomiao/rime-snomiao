@@ -4,6 +4,12 @@
 
 ## 方案列表/特性
 
+### 日语专用模式 🇯🇵
+
+提供了专门的日语输入模式（`sno_japanese`），可以只输入日语而不被其他输入法（五笔、英文等）干扰。非常适合为不同语言使用不同输入法的用户。
+
+👉 详细使用说明请查看 [JAPANESE_MODE.md](./JAPANESE_MODE.md)
+
 ### 雪星五笔 ⌨️
 
 ![](media/vary-length-wubi.png)
